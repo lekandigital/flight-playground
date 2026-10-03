@@ -1,0 +1,31 @@
+# Flight Playground
+
+A static Three.js flight demo and aircraft inspector using the six supplied GLBs: Supermarine S.6B, Macchi MC.72, Macchi M.33, F4U Corsair, F-16, and Caproni Ca.60. All models and textures are bundled locally.
+
+The demo initially opens the Caproni Ca.60 in **Dev view**. Choose an aircraft, switch between **Parked** and **Flight pose**, and adjust its supported rig sliders. The parked Corsair has folded wings and lowered landing gear. The four flying boats / floatplanes use a water inspection surface. Drag to orbit, scroll to zoom, or use the front, side, and top cameras. Surface display switches between corrected textures, clay, and wireframe. Visibility switches affect groups or individual meshes, including imported parts hidden in the configured default. Search and group filters make the F-16's many mesh instances easier to inspect. Reset restores the pose and visibility; Restore resets visibility alone. These inspection settings are temporary; Take flight uses the configured flight pose.
+
+In flight, W / Up climbs, S / Down descends, A / Left and D / Right turn. Q / E adjust throttle; Shift boosts. C changes camera, R resets, and Escape pauses. Touch controls appear on touch devices. Flight uses arcade physics with automatic leveling and reset after contact with water or terrain.
+
+## Runtime model configuration
+
+Original GLBs are unchanged. The Corsair's insignia and number textures use alpha cutouts to remove opaque decal backgrounds; texture color space, filtering, imported reflectivity, and neutral inspection lighting are corrected in Three.js. UVs and original painted textures are preserved.
+
+The Corsair has a procedural three-blade propeller and hub, original gear attached to stable runtime groups, original control surfaces attached to geometry-fitted hinges, and corrected wing-fold direction. Overlapping external stores, imported propeller/discs, rocket rails, and the hook are hidden by default. Limits: wing fold 85°, flaps 25°, ailerons ±18°, elevators ±14°, rudder ±12°, cowl flaps 8°. Canopy travel is limited to 0.7 model units; landing gear has a bounded extension/retraction path. Parked pitch is fitted to the actual tire geometry so all three wheels meet the ground.
+
+The F-16 hides overlapping loadouts, alternate tails/nozzles, ground equipment, original gear, and unstable engine effects. It uses procedural tricycle gear and a simple nozzle. Original ailerons, stabilators, rudder, flaps, and air brakes are attached to fitted hinges. Limits: ailerons ±15°, stabilators ±12°, rudder ±15°, flaps 20°, air brakes 35°, canopy 28°. These are stylized bounded configurations, not a restoration of manufacturer-accurate mechanical linkage or every imported animation. Individual hidden variants can be revealed in the inspector.
+
+The Caproni Ca.60 uses the original `e193e5f3` GLB and the cowork version's geometry repair approach in `src/caproni.js`. The original export has no materials, a merged object spanning about 168 model units, duplicated wing variants, and an assembly-wide `scene` animation. The runtime hides the corrupt variants, preserves the original hull/glazing, floats, bracing, wires and engine nacelles without repositioning them, and copies the intact full triplane geometry into three banks. This preserves the original narrow wing tips and airfoil edges. The middle bank remains slightly lower. Native +Z is the bow and is aligned with the demo's flight direction.
+
+Four intact rudder panels are recovered from the merged object's sound lower pair and placed in the two rear interplane gaps. Eight independent solid propellers use the source shaft locations, including the inward-facing central push/pull pair at each end. Outer propellers have two blades; central propellers have four. Materials retain cream linen, brown wooden bracing/propellers, dark metal engine structures, dark glazing and a cream cabin over a dark brown boat bottom. The newer `1dec6a9e` model was reviewed but is not used.
+
+Caproni controls use ±12° differential ailerons and ±8° fore/aft pitch mixing, capped at ±16° combined; the four rudders stop at ±10°. Wings, cabin and nacelles remain fixed. The damaged imported meshes remain revealable through **Imported / quarantined**. These are application motion limits rather than documented historical travel limits. The result is a reference-guided visual model, not a certified exact historical reconstruction.
+
+References: [Flight, April 1921: description, photographs and scale drawings](https://aviadejavu.ru/Site/Crafts/Craft31976.htm), [1921 photograph on Lake Maggiore](https://commons.wikimedia.org/wiki/File:CaproniCa.60.jpg), and [three-view drawing](https://commons.wikimedia.org/wiki/File:Caproni_Ca.60_3-view.svg). The 1921 article establishes the lower middle stack, tractor/pusher arrangement, paired rear rudders, side floats and probable mixed aileron/elevator linkage. Four-blade central propellers are visible in the period photographs. No reference images are bundled as textures.
+
+The three seaplanes keep their imported propeller animations and use bounded control motions: ailerons ±16°, elevators ±12°, rudder ±10°. Pause freezes animation. Aircraft performance values are demo tuning. Asset ownership and original terms remain with their respective rights holders.
+
+## Development and validation
+
+Run `npm install`, `npm run build`, and serve `dist/`. Sources are in `src/`; deployed HTML, CSS, bundle, and GLBs are in `dist/`.
+
+Run `npm test` for all three suites, including the Caproni reconstruction checks. Checks load the actual GLBs, exercise parked/flight presets and control extremes, verify hinge stability and clamping, and check texture/visibility restoration. Textured neutral and deflected Corsair/F-16 poses were also reviewed through offline geometry rendering. The Caproni has also been checked in the live WebGL inspector, including front, side and top cameras, visibility, appearance, controls and flight. Earlier aircraft retain their prior validation.
