@@ -17,11 +17,11 @@ function subset(geometry,triangles){
 function linenTexture(){
  const width=512,height=64,data=new Uint8Array(width*height*4);let seed=27;
  for(let y=0;y<height;y++)for(let x=0;x<width;x++){
-  seed=(seed*1664525+1013904223)>>>0;const grain=(seed>>>28)-8;
-  const rib=(x%23===0?-12:x%23===1?-5:0),i=(y*width+x)*4;
-  data[i]=211+grain+rib;data[i+1]=196+grain+rib;data[i+2]=163+grain+rib;data[i+3]=255;
+  seed=(seed*1664525+1013904223)>>>0;const grain=((seed>>>28)-8)*.35;
+  const rib=(x%23===0?-6:x%23===1?-2:0),i=(y*width+x)*4;
+  data[i]=128+grain+rib;data[i+1]=136+grain+rib;data[i+2]=135+grain+rib;data[i+3]=255;
  }
- const texture=new THREE.DataTexture(data,width,height);texture.name='caproni_linen';texture.colorSpace=THREE.SRGBColorSpace;texture.magFilter=texture.minFilter=THREE.LinearFilter;texture.needsUpdate=true;return texture;
+ const texture=new THREE.DataTexture(data,width,height);texture.name='caproni_silver_gray_fabric';texture.colorSpace=THREE.SRGBColorSpace;texture.magFilter=texture.minFilter=THREE.LinearFilter;texture.needsUpdate=true;return texture;
 }
 // The export has planar coordinates outside 0..1 in its UV channel. Project
 // the new finishes onto the existing vertices so linen ribs and wood grain
@@ -40,6 +40,31 @@ function weaveTexture(){
  const size=128,data=new Uint8Array(size*size*4);
  for(let y=0;y<size;y++)for(let x=0;x<size;x++){const i=(y*size+x)*4,v=128+(x%4===0?11:0)+(y%4===0?8:0);data[i]=data[i+1]=data[i+2]=v;data[i+3]=255;}
  const texture=new THREE.DataTexture(data,size,size);texture.name='caproni_fabric_weave';texture.wrapS=texture.wrapT=THREE.RepeatWrapping;texture.repeat.set(8,2);texture.magFilter=texture.minFilter=THREE.LinearFilter;texture.needsUpdate=true;return texture;
+}
+const paint={ivory:[225,225,211],navy:[18,45,78],engine:[47,48,45]};
+// Project paint in the original Z/Y plane. Crisp texture bands keep the roof,
+// waterline and narrow trim sharp without splitting or reshaping the GLB.
+function paintedFinish(mesh,name,sample){
+ const geometry=mesh.geometry.clone(),position=geometry.attributes.position,points=[],point=new THREE.Vector3(),box=new THREE.Box3();
+ for(let i=0;i<position.count;i++){point.fromBufferAttribute(position,i).applyMatrix4(mesh.matrixWorld);points.push(point.clone());box.expandByPoint(point);}
+ const size=box.getSize(new THREE.Vector3()),uv=[];
+ for(const p of points)uv.push((p.z-box.min.z)/Math.max(.001,size.z),(p.y-box.min.y)/Math.max(.001,size.y));
+ geometry.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2));geometry.deleteAttribute('color');mesh.geometry=geometry;
+ const width=2048,height=256,data=new Uint8Array(width*height*4);
+ for(let y=0;y<height;y++)for(let x=0;x<width;x++){const z=box.min.z+size.z*x/(width-1),h=box.min.y+size.y*y/(height-1),color=sample(h,z,box),i=(y*width+x)*4;data[i]=color[0];data[i+1]=color[1];data[i+2]=color[2];data[i+3]=255;}
+ const map=new THREE.DataTexture(data,width,height);map.name=name;map.colorSpace=THREE.SRGBColorSpace;map.magFilter=map.minFilter=THREE.LinearFilter;map.needsUpdate=true;
+ mesh.material=new THREE.MeshStandardMaterial({color:'#ffffff',map,roughness:.62,metalness:.05,side:THREE.DoubleSide});
+}
+function enginePaint(y,z,box,central){
+ const lower=central?.348:.397,upper=central?.535:.502;
+ const end=Math.min(z-box.min.z,box.max.z-z);
+ // Dark machinery above the ivory nacelle, confined to the end engine bays.
+ if(y>upper+.010&&(central||end<.25))return paint.engine;
+ if(y<lower||Math.abs(y-(lower+.012))<.002||Math.abs(y-upper)<.002)return paint.navy;
+ // Three diagonal blue accents wrap each engine end, as on the reference.
+ const diagonal=end+(y-(lower+.065))*.55;
+ if(y<upper&&[.045,.069,.093].some(d=>Math.abs(diagonal-d)<.003))return paint.navy;
+ return paint.ivory;
 }
 function rotor(radius,material,metal,name,bladeCount){
  const group=new THREE.Group();group.name=name;
@@ -61,12 +86,13 @@ function exactBounds(root){
  root.updateMatrixWorld(true);const box=new THREE.Box3(),point=new THREE.Vector3();root.traverseVisible(o=>{if(!o.isMesh)return;const p=o.geometry.attributes.position;for(let i=0;i<p.count;i++)box.expandByPoint(point.fromBufferAttribute(p,i).applyMatrix4(o.matrixWorld));});return box;
 }
 export function prepareCaproni(root){
- const cloth=new THREE.MeshStandardMaterial({color:'#e4d7b8',map:linenTexture(),bumpMap:weaveTexture(),bumpScale:.0007,roughness:.86,metalness:0,side:THREE.DoubleSide,envMapIntensity:.15});
+ const cloth=new THREE.MeshStandardMaterial({color:'#ffffff',map:linenTexture(),bumpMap:weaveTexture(),bumpScale:.0007,roughness:.68,metalness:.18,side:THREE.DoubleSide,envMapIntensity:.25});
  const wood=new THREE.MeshStandardMaterial({color:'#ffffff',map:woodTexture(),roughness:.54,metalness:0,envMapIntensity:.25});
  const metal=new THREE.MeshStandardMaterial({color:'#68675f',roughness:.62,metalness:.28});
  const brass=new THREE.MeshStandardMaterial({color:'#ad925b',roughness:.44,metalness:.55});
  const glass=new THREE.MeshStandardMaterial({color:'#1c2a31',roughness:.24,metalness:.12,side:THREE.DoubleSide});
  const wire=new THREE.MeshStandardMaterial({color:'#443f35',roughness:.66,metalness:.4});
+ const strut=new THREE.MeshStandardMaterial({color:'#d8d9cd',roughness:.65,metalness:.02});
  const template=find(root,'Plane002');if(!template?.isMesh)throw new Error('Missing Ca.60 wing template');
  const wingGeometry=finishUV(worldGeometry(root,template)),position=wingGeometry.attributes.position,index=wingGeometry.index;
  const fixed=[],moving=Array.from({length:6},()=>[]),v=new THREE.Vector3();
@@ -90,16 +116,16 @@ export function prepareCaproni(root){
  }
  root.updateMatrixWorld(true);
  const originalHull=meshList(find(root,'Cube'));
- const hullColors=[new THREE.Color('#d5c7a5'),glass.color,new THREE.Color('#554839'),new THREE.Color('#d5c7a5'),glass.color,new THREE.Color('#8c887b')];
+ const hullColors=[new THREE.Color('#e1e1d3'),glass.color,new THREE.Color('#172d4e'),new THREE.Color('#e1e1d3'),glass.color,new THREE.Color('#8c887b')];
  for(let i=0;i<originalHull.length;i++){
-  const mesh=originalHull[i];if(i===0){mesh.geometry=mesh.geometry.clone();const p=mesh.geometry.attributes.position,colors=[];const top=hullColors[0],bottom=new THREE.Color('#68513b'),point=new THREE.Vector3();for(let j=0;j<p.count;j++){point.fromBufferAttribute(p,j).applyMatrix4(mesh.matrixWorld);const color=(point.y<-.035?bottom:top).clone();const seam=1-.035*Math.cos(point.z*92),variation=1-.016*Math.sin(point.z*41+point.y*18);color.multiplyScalar(seam*variation);colors.push(color.r,color.g,color.b);}mesh.geometry.setAttribute('color',new THREE.Float32BufferAttribute(colors,3));mesh.material=new THREE.MeshStandardMaterial({vertexColors:true,roughness:.7,metalness:0,side:THREE.DoubleSide});mesh.name='ca60_hull_cream_and_wood';}
-  else{mesh.material=new THREE.MeshStandardMaterial({color:hullColors[i]??hullColors[0],roughness:i===1||i===4?.3:.74,metalness:0,side:THREE.DoubleSide});mesh.name=`ca60_${i===1||i===4?'window_glass':'hull_detail'}_${i}`;}
+  const mesh=originalHull[i];if(i===0){paintedFinish(mesh,'caproni_navy_hull_and_roof',(y,z)=>y<-.035||(y>.083&&z>1.05&&z<2.95)?paint.navy:paint.ivory);mesh.name='ca60_hull_ivory_and_navy';}
+  else{mesh.material=new THREE.MeshStandardMaterial({color:hullColors[i]??hullColors[0],roughness:i===1||i===4?.3:.65,metalness:0,side:THREE.DoubleSide});mesh.name=`ca60_${i===1||i===4?'window_glass':'hull_detail'}_${i}`;}
  }
  for(const mesh of meshList(root)){
-  if(/^Cylinder\d*$/.test(mesh.name)){const n=mesh.name==='Cylinder'?0:Number(mesh.name.slice(8));mesh.material=n<72?wood:metal;if(n<72){mesh.geometry=mesh.geometry.clone();finishUV(mesh.geometry,true);}mesh.name=n<72?`ca60_bracing_strut_${n+1}`:`ca60_metal_detail_${n}`;}
+  if(/^Cylinder\d*$/.test(mesh.name)){const n=mesh.name==='Cylinder'?0:Number(mesh.name.slice(8));mesh.material=n<72?strut:metal;mesh.name=n<72?`ca60_bracing_strut_${n+1}`:`ca60_metal_detail_${n}`;}
   else if(/^NurbsPath/.test(mesh.name)){mesh.material=wire;mesh.name='ca60_bracing_wire_'+mesh.name;}
-  else if(mesh.name==='Cube001'||mesh.name==='Cube002'){mesh.material=metal;mesh.name='ca60_engine_nacelle_'+mesh.name;}
-  else if(mesh.name==='Cube003'){mesh.material=new THREE.MeshStandardMaterial({color:'#bea777',roughness:.68});mesh.name='ca60_outrigger_floats';}
+  else if(mesh.name==='Cube001'||mesh.name==='Cube002'){const central=mesh.name==='Cube001';paintedFinish(mesh,'caproni_'+(central?'central_engine':'longitudinal_boom')+'_blue_trim',(y,z,box)=>enginePaint(y,z,box,central));mesh.name='ca60_engine_nacelle_'+mesh.name;}
+  else if(mesh.name==='Cube003'){paintedFinish(mesh,'caproni_ivory_and_navy_floats',(y,z,box)=>y<box.min.y+(box.max.y-box.min.y)*.32?paint.navy:paint.ivory);mesh.name='ca60_outrigger_floats';}
  }
  const props=[];for(const [i,p]of [[-.354,.43,2.989],[.344,.43,2.989],[-.354,.43,.486],[.344,.43,.486],[0,.37,2.974],[0,.39,2.446],[0,.37,.50],[0,.39,1.02]].entries()){
   const prop=rotor(i<4?.135:.12,wood,brass,`procedural_caproni_propeller_${i+1}`,i<4?2:4);prop.position.set(...p);root.add(prop);props.push(prop);
@@ -130,5 +156,5 @@ export function prepareCaproni(root){
  function configure(s){for(const[m,v]of baseline)m.visible=v;const a=clamp(s.aileron??0,-1,1),e=clamp(s.elevator??0,-1,1),r=clamp(s.rudder??0,-1,1);for(const surface of aileronSurfaces){const pitch=surface.bank==='aft'?-e*8:surface.bank==='forward'?e*8:0;deflect(surface,clamp(surface.side*a*12+pitch,-16,16));}for(const surface of rudders)deflect(surface,r*10);}
  function spin(dt,engine){const throttle=clamp(engine??0,0,1);if(!throttle)return;for(let i=0;i<props.length;i++)props[i].rotation.z=(props[i].rotation.z+dt*(4+70*throttle)*(i<4?1:-1))%(Math.PI*2);}
  function update(dt,state,active,paused){if(paused)return;for(const key of ['aileron','elevator','rudder']){const target=active?clamp((key==='elevator'?state.pitch/.58:state.roll/.65),-1,1):0;current[key]+=(target-current[key])*(1-Math.exp(-dt*5));}configure(current);spin(dt,active?state.throttle:.05);}
- configure(current);const report={limitsDegrees:{aileron:12,elevator:8,rudder:10,combinedSurface:16},originalAnimationDisabled:true,wingBanks:3,propellerCount:8,summary:'Preserved wing edges, cabin, bracing and engine geometry. Eight tractor/pusher propellers and four rudders between the rear wings; warm linen, varnished wood, ivory cabin and muted engine metal.'};return{configure,spin,update,surfaces,rotors:props.map(rotor=>({rotor})),wingGroups:banks.map(assembly=>({assembly})),waterDraft:.085,isSeaplane:true,bounds:()=>exactBounds(root),fields:['aileron','elevator','rudder','engine'],labels:{elevator:'Fore / aft pitch controls'},report};
+ configure(current);const report={limitsDegrees:{aileron:12,elevator:8,rudder:10,combinedSurface:16},originalAnimationDisabled:true,wingBanks:3,propellerCount:8,summary:'Preserved wing edges, cabin, bracing and engine geometry. Eight tractor/pusher propellers and four rudders between the rear wings; light silver-gray fabric wings, navy hull and roof, ivory engine booms with blue trim, pale wing struts and wooden propellers.'};return{configure,spin,update,surfaces,rotors:props.map(rotor=>({rotor})),wingGroups:banks.map(assembly=>({assembly})),waterDraft:.085,isSeaplane:true,bounds:()=>exactBounds(root),fields:['aileron','elevator','rudder','engine'],labels:{elevator:'Fore / aft pitch controls'},report};
 }
