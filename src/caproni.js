@@ -19,9 +19,27 @@ function linenTexture(){
  for(let y=0;y<height;y++)for(let x=0;x<width;x++){
   seed=(seed*1664525+1013904223)>>>0;const grain=(seed>>>28)-8;
   const rib=(x%23===0?-12:x%23===1?-5:0),i=(y*width+x)*4;
-  data[i]=222+grain+rib;data[i+1]=209+grain+rib;data[i+2]=183+grain+rib;data[i+3]=255;
+  data[i]=211+grain+rib;data[i+1]=196+grain+rib;data[i+2]=163+grain+rib;data[i+3]=255;
  }
  const texture=new THREE.DataTexture(data,width,height);texture.name='caproni_linen';texture.colorSpace=THREE.SRGBColorSpace;texture.magFilter=texture.minFilter=THREE.LinearFilter;texture.needsUpdate=true;return texture;
+}
+// The export has planar coordinates outside 0..1 in its UV channel. Project
+// the new finishes onto the existing vertices so linen ribs and wood grain
+// remain visible instead of sampling a clamped texture edge.
+function finishUV(geometry,vertical=false){
+ const p=geometry.attributes.position;geometry.computeBoundingBox();const b=geometry.boundingBox,uv=[];
+ for(let i=0;i<p.count;i++)uv.push(vertical?(p.getZ(i)-b.min.z)/Math.max(.001,b.max.z-b.min.z):(p.getX(i)-b.min.x)/Math.max(.001,b.max.x-b.min.x),vertical?(p.getY(i)-b.min.y)/Math.max(.001,b.max.y-b.min.y):(p.getZ(i)-b.min.z)/Math.max(.001,b.max.z-b.min.z));
+ geometry.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2));return geometry;
+}
+function woodTexture(){
+ const width=256,height=64,data=new Uint8Array(width*height*4);
+ for(let y=0;y<height;y++)for(let x=0;x<width;x++){const grain=Math.sin(y*1.7+Math.sin(x*.035)*.7)*5+Math.sin(y*.47+x*.012)*3,i=(y*width+x)*4;data[i]=147+grain;data[i+1]=99+grain*.8;data[i+2]=54+grain*.5;data[i+3]=255;}
+ const texture=new THREE.DataTexture(data,width,height);texture.name='caproni_varnished_wood';texture.colorSpace=THREE.SRGBColorSpace;texture.wrapS=texture.wrapT=THREE.RepeatWrapping;texture.magFilter=texture.minFilter=THREE.LinearFilter;texture.needsUpdate=true;return texture;
+}
+function weaveTexture(){
+ const size=128,data=new Uint8Array(size*size*4);
+ for(let y=0;y<size;y++)for(let x=0;x<size;x++){const i=(y*size+x)*4,v=128+(x%4===0?11:0)+(y%4===0?8:0);data[i]=data[i+1]=data[i+2]=v;data[i+3]=255;}
+ const texture=new THREE.DataTexture(data,size,size);texture.name='caproni_fabric_weave';texture.wrapS=texture.wrapT=THREE.RepeatWrapping;texture.repeat.set(8,2);texture.magFilter=texture.minFilter=THREE.LinearFilter;texture.needsUpdate=true;return texture;
 }
 function rotor(radius,material,metal,name,bladeCount){
  const group=new THREE.Group();group.name=name;
@@ -43,13 +61,14 @@ function exactBounds(root){
  root.updateMatrixWorld(true);const box=new THREE.Box3(),point=new THREE.Vector3();root.traverseVisible(o=>{if(!o.isMesh)return;const p=o.geometry.attributes.position;for(let i=0;i<p.count;i++)box.expandByPoint(point.fromBufferAttribute(p,i).applyMatrix4(o.matrixWorld));});return box;
 }
 export function prepareCaproni(root){
- const cloth=new THREE.MeshStandardMaterial({color:'#ffffff',map:linenTexture(),roughness:.88,metalness:0,side:THREE.DoubleSide,envMapIntensity:.25});
- const wood=new THREE.MeshStandardMaterial({color:'#75503a',roughness:.68,metalness:0});
- const metal=new THREE.MeshStandardMaterial({color:'#3b4a4c',roughness:.58,metalness:.35});
- const brass=new THREE.MeshStandardMaterial({color:'#b39157',roughness:.5,metalness:.5});
- const glass=new THREE.MeshStandardMaterial({color:'#263b48',roughness:.28,metalness:.08,side:THREE.DoubleSide});
+ const cloth=new THREE.MeshStandardMaterial({color:'#e4d7b8',map:linenTexture(),bumpMap:weaveTexture(),bumpScale:.0007,roughness:.86,metalness:0,side:THREE.DoubleSide,envMapIntensity:.15});
+ const wood=new THREE.MeshStandardMaterial({color:'#ffffff',map:woodTexture(),roughness:.54,metalness:0,envMapIntensity:.25});
+ const metal=new THREE.MeshStandardMaterial({color:'#68675f',roughness:.62,metalness:.28});
+ const brass=new THREE.MeshStandardMaterial({color:'#ad925b',roughness:.44,metalness:.55});
+ const glass=new THREE.MeshStandardMaterial({color:'#1c2a31',roughness:.24,metalness:.12,side:THREE.DoubleSide});
+ const wire=new THREE.MeshStandardMaterial({color:'#443f35',roughness:.66,metalness:.4});
  const template=find(root,'Plane002');if(!template?.isMesh)throw new Error('Missing Ca.60 wing template');
- const wingGeometry=worldGeometry(root,template),position=wingGeometry.attributes.position,index=wingGeometry.index;
+ const wingGeometry=finishUV(worldGeometry(root,template)),position=wingGeometry.attributes.position,index=wingGeometry.index;
  const fixed=[],moving=Array.from({length:6},()=>[]),v=new THREE.Vector3();
  for(let k=0;k<(index?.count??position.count);k+=3){v.set(0,0,0);for(let j=0;j<3;j++)v.add(new THREE.Vector3().fromBufferAttribute(position,index?index.getX(k+j):k+j));v.multiplyScalar(1/3);const tier=clamp(Math.round((v.y-.215)/.284),0,2);if(Math.abs(v.x)>.93&&v.z<.665)moving[tier*2+(v.x>0?0:1)].push([k,k+1,k+2]);else fixed.push([k,k+1,k+2]);}
  const surfaces={},banks=[],aileronSurfaces=[];
@@ -71,16 +90,16 @@ export function prepareCaproni(root){
  }
  root.updateMatrixWorld(true);
  const originalHull=meshList(find(root,'Cube'));
- const hullColors=[new THREE.Color('#d6ceba'),glass.color,new THREE.Color('#263943'),wood.color,glass.color,new THREE.Color('#4d5556')];
+ const hullColors=[new THREE.Color('#d5c7a5'),glass.color,new THREE.Color('#554839'),new THREE.Color('#d5c7a5'),glass.color,new THREE.Color('#8c887b')];
  for(let i=0;i<originalHull.length;i++){
-  const mesh=originalHull[i];if(i===0){mesh.geometry=mesh.geometry.clone();const p=mesh.geometry.attributes.position,colors=[];const top=hullColors[0],bottom=new THREE.Color('#594737'),point=new THREE.Vector3();for(let j=0;j<p.count;j++){point.fromBufferAttribute(p,j).applyMatrix4(mesh.matrixWorld);const color=point.y<-.035?bottom:top;colors.push(color.r,color.g,color.b);}mesh.geometry.setAttribute('color',new THREE.Float32BufferAttribute(colors,3));mesh.material=new THREE.MeshStandardMaterial({vertexColors:true,roughness:.74,metalness:0,side:THREE.DoubleSide});mesh.name='ca60_hull_cream_and_blue';}
+  const mesh=originalHull[i];if(i===0){mesh.geometry=mesh.geometry.clone();const p=mesh.geometry.attributes.position,colors=[];const top=hullColors[0],bottom=new THREE.Color('#68513b'),point=new THREE.Vector3();for(let j=0;j<p.count;j++){point.fromBufferAttribute(p,j).applyMatrix4(mesh.matrixWorld);const color=(point.y<-.035?bottom:top).clone();const seam=1-.035*Math.cos(point.z*92),variation=1-.016*Math.sin(point.z*41+point.y*18);color.multiplyScalar(seam*variation);colors.push(color.r,color.g,color.b);}mesh.geometry.setAttribute('color',new THREE.Float32BufferAttribute(colors,3));mesh.material=new THREE.MeshStandardMaterial({vertexColors:true,roughness:.7,metalness:0,side:THREE.DoubleSide});mesh.name='ca60_hull_cream_and_wood';}
   else{mesh.material=new THREE.MeshStandardMaterial({color:hullColors[i]??hullColors[0],roughness:i===1||i===4?.3:.74,metalness:0,side:THREE.DoubleSide});mesh.name=`ca60_${i===1||i===4?'window_glass':'hull_detail'}_${i}`;}
  }
  for(const mesh of meshList(root)){
-  if(/^Cylinder\d*$/.test(mesh.name)){const n=mesh.name==='Cylinder'?0:Number(mesh.name.slice(8));mesh.material=n<72?wood:metal;mesh.name=n<72?`ca60_bracing_strut_${n+1}`:`ca60_metal_detail_${n}`;}
-  else if(/^NurbsPath/.test(mesh.name)){mesh.material=metal;mesh.name='ca60_bracing_wire_'+mesh.name;}
+  if(/^Cylinder\d*$/.test(mesh.name)){const n=mesh.name==='Cylinder'?0:Number(mesh.name.slice(8));mesh.material=n<72?wood:metal;if(n<72){mesh.geometry=mesh.geometry.clone();finishUV(mesh.geometry,true);}mesh.name=n<72?`ca60_bracing_strut_${n+1}`:`ca60_metal_detail_${n}`;}
+  else if(/^NurbsPath/.test(mesh.name)){mesh.material=wire;mesh.name='ca60_bracing_wire_'+mesh.name;}
   else if(mesh.name==='Cube001'||mesh.name==='Cube002'){mesh.material=metal;mesh.name='ca60_engine_nacelle_'+mesh.name;}
-  else if(mesh.name==='Cube003'){mesh.material=new THREE.MeshStandardMaterial({color:'#594737',roughness:.75});mesh.name='ca60_outrigger_floats';}
+  else if(mesh.name==='Cube003'){mesh.material=new THREE.MeshStandardMaterial({color:'#bea777',roughness:.68});mesh.name='ca60_outrigger_floats';}
  }
  const props=[];for(const [i,p]of [[-.354,.43,2.989],[.344,.43,2.989],[-.354,.43,.486],[.344,.43,.486],[0,.37,2.974],[0,.39,2.446],[0,.37,.50],[0,.39,1.02]].entries()){
   const prop=rotor(i<4?.135:.12,wood,brass,`procedural_caproni_propeller_${i+1}`,i<4?2:4);prop.position.set(...p);root.add(prop);props.push(prop);
@@ -92,7 +111,7 @@ export function prepareCaproni(root){
  const panels=components(worldGeometry(root,merged)).filter(g=>{const b=g.boundingBox,d=b.getSize(new THREE.Vector3()),c=b.getCenter(new THREE.Vector3());return d.x<.025&&d.y>.20&&d.y<.32&&d.z>.20&&d.z<.3&&Math.abs(Math.abs(c.x)-.575)<.02&&c.z<1&&b.max.y<.6;});
  if(panels.length!==2)throw new Error('Caproni rudder donor topology changed: '+panels.length);
  for(const [side,panel]of panels.entries())for(let tier=0;tier<2;tier++){
-  const geometry=panel.clone();geometry.translate(0,tier*.284,0);geometry.computeBoundingBox();const box=geometry.boundingBox,origin=box.getCenter(new THREE.Vector3());origin.z=box.max.z;geometry.translate(-origin.x,-origin.y,-origin.z);
+  const geometry=finishUV(panel.clone(),true);geometry.translate(0,tier*.284,0);geometry.computeBoundingBox();const box=geometry.boundingBox,origin=box.getCenter(new THREE.Vector3());origin.z=box.max.z;geometry.translate(-origin.x,-origin.y,-origin.z);
   const pivot=new THREE.Group();pivot.position.copy(origin);pivot.name=`repaired_caproni_rudder_${side}_${tier}_hinge`;root.add(pivot);const mesh=new THREE.Mesh(geometry,cloth);mesh.name=`repaired_caproni_rudder_${side}_${tier}`;mesh.userData.inspectorGroup='Control surfaces';mesh.castShadow=true;pivot.add(mesh);
   const surface={hinge:pivot,axis:new THREE.Vector3(0,1,0),rest:pivot.quaternion.clone(),angle:0};rudders.push(surface);surfaces[`rudder_${side}_${tier}`]=surface;
  }
@@ -111,5 +130,5 @@ export function prepareCaproni(root){
  function configure(s){for(const[m,v]of baseline)m.visible=v;const a=clamp(s.aileron??0,-1,1),e=clamp(s.elevator??0,-1,1),r=clamp(s.rudder??0,-1,1);for(const surface of aileronSurfaces){const pitch=surface.bank==='aft'?-e*8:surface.bank==='forward'?e*8:0;deflect(surface,clamp(surface.side*a*12+pitch,-16,16));}for(const surface of rudders)deflect(surface,r*10);}
  function spin(dt,engine){const throttle=clamp(engine??0,0,1);if(!throttle)return;for(let i=0;i<props.length;i++)props[i].rotation.z=(props[i].rotation.z+dt*(4+70*throttle)*(i<4?1:-1))%(Math.PI*2);}
  function update(dt,state,active,paused){if(paused)return;for(const key of ['aileron','elevator','rudder']){const target=active?clamp((key==='elevator'?state.pitch/.58:state.roll/.65),-1,1):0;current[key]+=(target-current[key])*(1-Math.exp(-dt*5));}configure(current);spin(dt,active?state.throttle:.05);}
- configure(current);const report={limitsDegrees:{aileron:12,elevator:8,rudder:10,combinedSurface:16},originalAnimationDisabled:true,wingBanks:3,propellerCount:8,summary:'Preserved wing edges, cabin, bracing and engine geometry. Eight tractor/pusher propellers and four rudders between the rear wings; cream linen, wood and dark boat hull.'};return{configure,spin,update,surfaces,rotors:props.map(rotor=>({rotor})),wingGroups:banks.map(assembly=>({assembly})),waterDraft:.085,isSeaplane:true,bounds:()=>exactBounds(root),fields:['aileron','elevator','rudder','engine'],labels:{elevator:'Fore / aft pitch controls'},report};
+ configure(current);const report={limitsDegrees:{aileron:12,elevator:8,rudder:10,combinedSurface:16},originalAnimationDisabled:true,wingBanks:3,propellerCount:8,summary:'Preserved wing edges, cabin, bracing and engine geometry. Eight tractor/pusher propellers and four rudders between the rear wings; warm linen, varnished wood, ivory cabin and muted engine metal.'};return{configure,spin,update,surfaces,rotors:props.map(rotor=>({rotor})),wingGroups:banks.map(assembly=>({assembly})),waterDraft:.085,isSeaplane:true,bounds:()=>exactBounds(root),fields:['aileron','elevator','rudder','engine'],labels:{elevator:'Fore / aft pitch controls'},report};
 }
