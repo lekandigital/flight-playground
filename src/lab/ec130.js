@@ -4,7 +4,7 @@ import {labFind,makeXmlRig,quarantine,sourceGlass} from './lab-tools.js';
 import {sourceRotor,mapRange} from './rotor-tools.js';
 const fields=['doors','collective','cyclicPitch','cyclicRoll','rudder','engine'];
 const signed=(v,r)=>v<0?-v*r[0]:v*r[1];
-function driver(a,s){const p=a.property??'';if(/doors\//.test(p))return s.doors;if(/aileron/.test(p))return s.cyclicRoll;if(/elevator/.test(p))return s.cyclicPitch;if(/flight\/rudder/.test(p))return s.rudder;if(/engine.*throttle/.test(p))return s.collective;if(/tail\/blade\/incidence/.test(p))return mapRange((1-s.rudder)/2,[34.2,-16.8]);return null;}
+function driver(a,s){const p=a.property??'';if(/doors\//.test(p))return s.doors;if(/aileron/.test(p))return s.cyclicRoll;if(/elevator/.test(p))return s.cyclicPitch;if(/flight\/rudder/.test(p))return s.rudder;if(/engine.*throttle/.test(p))return 1-s.collective;if(/tail\/blade\/incidence/.test(p))return mapRange((1-s.rudder)/2,[34.2,-16.8]);return null;}
 export async function prepareEc130Lab(root,animations,facts){
  root.traverse(o=>{if(o.name.startsWith('pivot_'))o.quaternion.identity();});root.updateMatrixWorld(true);
  const corrected=[],moving=new Set();

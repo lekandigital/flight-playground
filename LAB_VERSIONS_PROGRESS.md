@@ -24,7 +24,7 @@ For each aircraft: audit → pack/source/images → candidates/proportions → r
 | 8 | E-Flash | Implemented; tests pass; live evidence pending |
 | 9 | Macchi M.33 | Implemented; tests pass; live evidence pending |
 | 10 | Supermarine S.6B | Implemented; tests pass; live evidence pending |
-| 11 | Macchi M.C.72 | Pending |
+| 11 | Macchi M.C.72 | Implemented; tests pass; live evidence pending |
 | 12 | Caproni Ca.60 | Partial; geometry/paint preserved; live evidence pending |
 
 ## Pack-builder issues found during initial reads
@@ -673,3 +673,17 @@ Progress completion text (live onlyafterroot): XML15°controls exacthinges/signs
 Sources: [Flight28April1921 article/photos/drawings](https://aviadejavu.ru/Site/Crafts/Craft31976.htm); [Caproni Museum,Semprini](https://mostre.museocaproni.it/sala/en/pilota/semprini-federico/); [Munk,NACA-TN57 July1921](https://ntrs.nasa.gov/citations/19930080852). NACA's sixprop/108ft assumptions are a tentative aerodynamic analysis with unknown basicdetails; the detailed contemporaryFlight description and museummodel outweigh them for visiblelayout. No primaryPDF/referencephotos committed. Exact museum-guided finish sources remain in the preservedREADME section.
 
 Pack requests: non-FlightGear static/manual downloads need an inapplicable-animation warning instead of inventedXML instruction; export perpropeller bladecount, qualified reliable dimensions and sourcebasis; add verified frame/scale/dimensioned drawing, mechanicaltravels/hinges/driveRPM and loadedwaterline. Threeview11 downloaded image was solidblack; replace with usable original drawing.
+
+### Cross-aircraft review fixes and final validation
+
+- [x]12 Lab modules and interleaved entries registered, with one ordered local commit per aircraft. No remote push.
+- [x] Independent review confirmed25 protected baseline files (six original modules, original tests/artifacts/models) byte-identical; original README remains exact prefix. No alternate GLBs, source archives/XML/audio or reference photos copied into runtime data.
+- [x] EC130 cockpit collective lever now uses source inverted throttle convention while inspector blade-incidence slider runs low→high. Lever0° at minimum incidence,20° at maximum; actual-model test checks both sides.
+- [x] Shared Lab cyclic incidence now follows current blade azimuth as rotor spins, keeping cyclic direction fixed in world/shaft coordinates instead of rotating it with the blades. New test checks quarter/half/full turns, fixed shaft, collective invariance and stopped pose for all3 helicopters. Source basis: [FlightGear YASim Rotor.cpp](https://github.com/FlightGear/flightgear/blob/next/src/FDM/YASim/Rotor.cpp). Airfoil/flapping/aerodynamic phase response remains approximate.
+- [x] Helicopter sliders are independent full mechanical inspection ranges. They do not claim to reproduce source controller gains or affine neutral biases: source source-control channels may use reducedranges/invertedthrottle and nonzero cyclic bias. EC cockpit collective translation explicitly accounts for inverted rawproperty. Blade-incidence endpoint ranges remain source-derived.
+- [x] E-Flash pitch degree label now follows actual XMLtable+6/−3/−12 at input−1/0/+1.
+- [x] Actual-GLB textureloader capture across default+every named livery identified11 unused runtime files; removed them and dead binding rows. SpitfirePanel-Construction has no exportedUV although packclaimedUV. No currently used paint/livery data removed; embeddedoriginalmaps unchanged.
+- [x] Final validation2026-10-04: `npm run build` succeeds (752.2KB); all14 `npm run test:lab` files pass; unchanged `npm test` passes. Protected-file byte audit and originalREADME-prefix audit pass; `git diff --check` passes. Reviewbundle rebuilt for all12 entries.
+- [ ] Browser evidence: EC130 finalrecheck,Bo105,E-Flash,M33,S6B,MC72,Ca60 livecontrols/presets/defaultpaint and7 inspector/7compare artifacts. M33's1candidate andCa60's2candidate renders remain. Previewservers running5173/5175; stale browser tabs resolve to blockeddataURL, userreopen requested. No missingartifact falsely marked complete.
+
+Additional builder requests from final review: stop copying textures for emptyglb_nodes or meshes that lostUV; distinguish independent mechanical limits from source controllergain/mapping/bias; preserve rotorcyclic azimuth and source phi0/restphase metadata. Previously copiedunusedfiles were Spitfire green/red/white/mk20i,Seafire green/red/white,F4U pilot1,Dauphin two lightatlases/generalpilot. Runtime paint recovery may preserve authoredembeddedmap when a matching externalbinding is absent; this does not establish missingUV.

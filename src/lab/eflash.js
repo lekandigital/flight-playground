@@ -60,7 +60,7 @@ export async function prepareEflashLab(root,animations,facts){
   summary:'Lab E-Flash: exact AC parent transforms restored; original green/blue paint, XML 15° weight shift and +6/−12° pitch, tilted 20° nose steering; original three-blade Ø1.57m pusher.',
   rigExtras:{propeller:prop,groundContacts:[],labels:{wingRoll:'Weight shift roll',wingPitch:'Weight shift pitch',wheelSteer:'Nosewheel steering'}},
  });
- Object.assign(rig.report,{sourceVariant:facts.flight_model.variant,sailHeightCorrection:facts.source_geometry_restore.source_wing_loc[1],geometryRestorations:facts.source_geometry_restore.transforms.length,propellerBlades:3,inspectionRpm:1000,sourceLimitNotes:{
+ Object.assign(rig.report,{signedRanges:{wingPitch:[6,-12]},sourceVariant:facts.flight_model.variant,sailHeightCorrection:facts.source_geometry_restore.source_wing_loc[1],geometryRestorations:facts.source_geometry_restore.transforms.length,propellerBlades:3,inspectionRpm:1000,sourceLimitNotes:{
   geometry:'Recovered original AC, SHA256 '+facts.source_supplement.sha256+'; Wing children restored by [0.0159598,2.0388253,0.0000003], Trike children by [−0.3772432,0,0]. XML and set file match the handoff byte-for-byte.',
   ground:'FDM main contacts were misclassified as non-wheel and matched to NoseWheel. All fixed tyres remain original; −1.22° source pitch, ground placement from visible tyre geometry. Contact-to-model mismatch remains; no invented retraction.',
   propeller:'Original three blades retained within 3% of 61.8-inch FDM diameter. Source XML sign −1 about +X; 1000 rpm is a display inspection rate because the electric FDM has no fixed rated/cruise rpm. No high-speed blur substitute was exported.',
