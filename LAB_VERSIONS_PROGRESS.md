@@ -20,7 +20,7 @@ For each aircraft: audit → pack/source/images → candidates/proportions → r
 | 4 | F-16 | Partial exact-variant shape; rig/paint verified |
 | 5 | Dauphin | Done; startup aliases / blade profile requested |
 | 6 | EC130 | Implemented; tests pass; final live evidence pending |
-| 7 | Bo 105 | Pending |
+| 7 | Bo 105 | Implemented; tests pass; live evidence pending |
 | 8 | E-Flash | Pending |
 | 9 | Macchi M.33 | Pending |
 | 10 | Supermarine S.6B | Pending |
@@ -515,3 +515,34 @@ Pack has no XML/FDM/textures or named liveries. Its generic baked-animation warn
 - [ ] Final complete status after browser evidence; code committed separately in aircraft order.
 
 Pack requests: provide `ec130-base.xml`, named livery XML/startup accessory aliases, all texture/node rows beyond the400-row cutoff; mark skid/float contacts correctly and verify vertex contacts; qualify source height/variant/rotor azimuth; resolve visualXML versus FDM rotor-hub discrepancies. Source min/max rotor incidence and blade chord need retaining in builder output; neutral inverted tail incidence is8.7°, not0°.
+
+### Bo105 CBS implementation and verification
+
+#### Source corrections
+
+- [x] Guess audit read; amend earlier audit **aft hinged doors120° ->170°**, verified current sourceXML.
+- [x] `tail-angle-deg` is **crash deformation**, not a fold/retraction channel (Nasal crash sets35°, reset0). Lab holds0 and offers no gear/fold channel.
+- [x] Protected original module read; source full set/model/FDM/Nasal reviewed. No protected modules edited.
+- [x] Intended yellow thumbnail and military splash viewed. Museum reference02 viewed: clear panes, four main/two tail blades, detailed exposed mast, fixed skids, dark rotors. Military splash is a different preset; source Yellow MedEvac wins paint.
+- [x] No supplied candidates/alternates; originalGLB retained. User license clearance applied; no declined candidate.
+- [x] Original XML170° door travel/signs and0.03/0.6m source interpolation. One binding per actual mesh avoids converter pivot collisions. Front/aft XML lines project to actual edges within2mm; source axes retained.
+- [x] FDM rotor diameter/count/hub/normals/chord/RPM, fixed mast and independent mechanical blade-incidence controls. Source tail rudder invert maps−1=>20°,0=>5°,+1=>−10°; tailphi0110° initial azimuth. Collective0..1=>−0.2..15.8°, cyclicpitch−4.7..10.5°, roll−4.23..5.65°.
+- [x] Skid contacts fixed, mirrored andcoplanar after1.005086°; auxiliary tail contact excluded from parked-pitch fit. Mainactualskidouterwalls extend about3cm below point-contact datum; retainedsourcecontactplacement disclosed.
+- [x] Continuous source-sized procedural blades replace source segmented exports and unuseddiscs with permesh quarantine reason. Authored hubs/mast/gearbox retained; generatedduplicatehubs/zeroopacityblur excluded. Legacyshadowbillboards excluded in favor scene shadows. Sourceconditions choose optionalweapons andwirecutter, lightshalosoff in staticinspection. Logicalpilot/copilot selectors expanded to their actualmeshchildren.
+- [x] Source livery.rgb map applied to UV-equipped exterior, exact source diffuse properties andwhite alpha.2 glass. No namedvariantfiles/livery_names supplied. Original source eye/sounds/Nasal recordedonly.
+- [x] Actual-GLB test `node tests/lab/bo105.test.mjs` passed. Covers clamped XMLrigmotions, actualvertexdiameter/chord, FDMhub/axis/RPM, source tail restingphase, fixedmast, contactpitch, parkedqualifieddimensions, mirrorsatdoorfulltravel, sequentialpassengerslide, paint/colorspace/glass, wirecutter, hiddenreasons andpausedspin.
+- [ ] Root livecontrols/presets/rotor spin, source-default liveryinspection, candidate/base render (noalternates).
+- [ ] Root screenshots `artifacts/lab/bo105-inspector.jpg`, `artifacts/lab/bo105-compare.jpg`.
+- [ ] Root full original/Lab tests and build; README/progress; sequential commit `Lab version: Bo105`.
+
+#### Pack-builder requests
+
+1. `parked_pitch_deg_nose_up=9.12` incorrectly uses auxiliary tail contact in fit. Main fixedskid line is atan2(.04,2.28)=1.005086°; contacts also incorrectly `is_wheel:true`.
+2. The earlier guess audit's aftdoor120° was wrong; pack/current source travel correctly170°. Crash `tail-angle-deg` wrongly categorizedgear; keep out of fold/retractioncontrol.
+3. Runtime-preparer recovered sourceYASim chord/mechanical limits/phi0 (originalfacts omittedthese). Blade resting azimuth materially changes instantaneous dimensions; arbitraryverticaltwobladetailorientationinflatesheight by20%.
+4. Set sourceCBS andspecCB don't match; request dimensions for exactselectedCBS variant and the specification's rotorphase/datum.
+5. Set-requested `Textures/Rotor/orange.png` and medical insignia `Textures/Emblems/oebh.png` absent. Sourcepack onlyblack rotor andemptyemblem; named `Models/Variants/*.xml` also absent. Four instrumenttextures are missing and haveunresolvedgeneric `Face` bindings.
+6. Globalframeerror1.0075m doesnotapplyuniformly: mappeddoorlinesmatchactualverticeswithin2mm aftersource-restreset. Record perassembly/frameverification instead of aglobalfailurethreshold.
+7. Crew/category mappings incorrectly call headphonecoversgroundequipment; logicalpilot/copilot selectgroups absentinGLBrequirechildexpansion. Packedrotormotionnode lists truncated; preservefullobjectbindings forarticulatedblade/hubrigging.
+8. SourceFDM contactdatum differs fromactualouter skidwalls byabout3cm; nearest-nodeAABBdistance0 isnotexactvertexcontactvalidation.
+
