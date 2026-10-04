@@ -23,7 +23,7 @@ For each aircraft: audit → pack/source/images → candidates/proportions → r
 | 7 | Bo 105 | Implemented; tests pass; live evidence pending |
 | 8 | E-Flash | Implemented; tests pass; live evidence pending |
 | 9 | Macchi M.33 | Implemented; tests pass; live evidence pending |
-| 10 | Supermarine S.6B | Pending |
+| 10 | Supermarine S.6B | Implemented; tests pass; live evidence pending |
 | 11 | Macchi M.C.72 | Pending |
 | 12 | Caproni Ca.60 | Pending |
 
@@ -609,4 +609,26 @@ Suggested README row:
 `| Macchi M.33 · Lab | Own XML15/15/20° controls, exact point-axis hinges; original two-bladeØ1.744m shaft at−2.579/.789/0, source2500rpm and RPM blur selectors; original red Default sourcepaint and1.7° water datum. Level8.256×9.983×2.672m is within5% of8.55×9.74×2.68. [Period M.33](https://commons.wikimedia.org/wiki/File:Macchi_M.33_on_ground.jpg) and author thumbnail checked; source red retained because period photo is monochrome. [Compare](artifacts/lab/m33-compare.jpg). | Supplied manual M33 candidate matches base dimensions/outline; licence cleared by user, borrowing unnecessary if root visual confirms. Missing set include/indicative airspeed for dynamo, untrusted water contacts; no invented wheels/door. |`
 
 Progress completion text (live/candidate ticks only after root verifies): source XML and original named groups restored; initial default texture21 sourceobjects plus sanitized extra wing object recovered,27 binding applications; exact FDM source shaft diameter/RPM tests; all source controls bounded; separate surface signs tested;1.7° source pitch with water-datum caveat; original and alternative candidate compared; source Default option and pause verified.
+
+
+### Supermarine S.6B implementation and verification
+
+- [x] Guess audit, protected module, own source XML/FDM and intended images reviewed; actual GLB tests pass.
+- [x] Own clamped travel/signs/hinges, original propeller dimensions/RPM/source selectors, paint/default livery, fixed floats and pause tested.
+- [ ] Live presets/control endpoints/default livery and artifacts `artifacts/lab/s6b-inspector.jpg`, `s6b-compare.jpg` pending browser recovery.
+- [x] No alternates supplied; licensing did not prevent borrowing.
+## S6B — ready
+
+Biggest corrections: own±15° controls replace shared16/12/10; source−45° cockpit cover and standard/HDR glass selector are now supported; exact source prop hub−3.075/.358/0 and2070rpm plus source4.99° water-contact pose replace baked spin/genericpose. `Models/s6b.xml` uses signed normalized elevator/rudder fields; pack travel null is a builder omission, factor15×−1..1 recovers±15 without guess. Original2-blade geometry measuredØ2.75534 vsFDM2.80 (−1.60%, within3%); no replacement or arbitrary scaling. Source blur thresholds600/1500rpm. Standard vitres uses clear transmission adaptation of provided glass effect, original atlas retained; duplicate HDRvitres source-selected off and revealable.
+
+Author intent inspected: `reference/flightgear/Supermarine-S.6B_thumbnail.jpg`, blue/silverS1595 with fin tricolour. Museum `reference/web/02_Supermarine_S.6B_S1595_18503351333_cropped_.jpg` agrees blue fuselage/float undersides, silver wings/upper floats, fin tricolour/serial; original Schneider paint retained. [S1595 Science Museum photograph](https://commons.wikimedia.org/wiki/File:Supermarine_S.6B_%E2%80%98S1595%E2%80%99_(18503351333)_(cropped).jpg), CC BY-SA2.0, Alan Wilson. Prefer02/03 museum photo and low side camera for comparison. No alternate models supplied; licensing did not prevent borrowing.
+
+Measured level8.791693×9.113008×3.699128m vs8.788×9.144×3.734 (length+0.04%,span−0.34%,height−0.93%; allwithin1%). Source4.99° pitch derives water/buoyancy contacts; do not assert it matches a parked trolley. No invented landinggear and floats fixed.
+
+Remaining / lab requests: missing `Systems/s6b-base.xml`; verify water-contact datum/immersion. Source normalizedcontrols travel domains should be exported instead ofnull. Museum paint age/metallicresponse is not reproduced as fake weathering; sourceatlas kept.
+
+Suggested README row:
+`| Supermarine S.6B · Lab | Own XML±15° controls and−45° cockpitcover, standard glass selector; original two-bladeØ2.755m shaft with sourceØ2.80m/2070rpm, exact visualhub−3.075/.358/0; source Schneider blue/silver/tricolour Default paint. Level8.792×9.113×3.699m is within1% of specs. [S1595 Science Museum](https://commons.wikimedia.org/wiki/File:Supermarine_S.6B_%E2%80%98S1595%E2%80%99_(18503351333)_(cropped).jpg) and author thumbnail checked. [Compare](artifacts/lab/s6b-compare.jpg). | No candidates supplied. Missing base include and normalized elevator/rudder travel metadata;4.99° is untrusted water-contact datum, not ground trolley stance. Original blades retained within3%. |`
+
+Progress completion text (live only after root verifies): exact XML hinges/signs, recovered factor×normalizedlimits,45° cover, original2-blade visualshaft/RPM/diameter, named Default sourcepaint and HDRglassselector, measuredproportions and4.99° qualifiedsourcefloatpose; no alternate files available.
 
