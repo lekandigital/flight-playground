@@ -1,0 +1,21 @@
+import assert from 'node:assert/strict';
+import * as THREE from 'three';
+import {fixture} from './fixture.mjs';
+import {prepareCa60Lab} from '../../src/lab/ca60.js';
+import {meshList} from '../../src/rig-tools.js';
+const {root,facts,animations}=await fixture('man-caproni-ca60-e193e5f3');
+const rig=await prepareCa60Lab(root,animations,facts);
+assert.deepEqual(rig.fields,['engine']);assert(rig.report.originalAnimationDisabled);
+assert.equal(rig.rotors.length,8);assert.equal(rig.wingGroups.length,3);
+assert.equal(Object.keys(rig.surfaces).filter(n=>n.startsWith('rudder')).length,4);
+const size=rig.bounds().getSize(new THREE.Vector3());
+assert(Math.abs(size.z/30.0228-1)<1e-6);
+assert(Math.abs(size.x/size.z-2.755373992473369/3.145688083022833)<1e-6,'Uniform historical span calibration preserves source geometry proportions');
+assert(size.x/24.0792>1.05,'Length discrepancy remains explicit; no artificial axis stretch');
+assert.equal(rig.report.status,'partial');assert(rig.report.sourceLimitNotes.scale&&rig.report.sourceLimitNotes.controls);
+for(const v of [-100,100]){rig.configure({aileron:v,elevator:v,rudder:v});for(const s of Object.values(rig.surfaces))assert(Math.abs(s.angle)<1e-10,'Unknown historical travel is not invented');}
+assert(meshList(root).filter(m=>!m.visible).every(m=>m.name.startsWith('original_')&&m.userData.labHiddenReason));
+assert(meshList(root).filter(m=>m.visible).some(m=>m.material.map?.name==='caproni_silver_gray_fabric'));
+const before=rig.rotors.map(p=>p.rotor.rotation.z);rig.spin(1,0);assert.deepEqual(rig.rotors.map(p=>p.rotor.rotation.z),before);rig.spin(.1,1);assert(rig.rotors.every((p,i)=>p.rotor.rotation.z!==before[i]));
+const phase=rig.rotors.map(p=>p.rotor.rotation.z);rig.update(1,{throttle:1},true,true);assert.deepEqual(rig.rotors.map(p=>p.rotor.rotation.z),phase);
+console.log('Ca.60 Lab: preserved geometry/paint, eight reference-supported propellers, interplane rudders, uniform period-span calibration, neutral unknown travel, quarantine and pause passed; proportion/RPM limits explicit.');

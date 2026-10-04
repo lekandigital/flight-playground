@@ -25,7 +25,7 @@ For each aircraft: audit → pack/source/images → candidates/proportions → r
 | 9 | Macchi M.33 | Implemented; tests pass; live evidence pending |
 | 10 | Supermarine S.6B | Implemented; tests pass; live evidence pending |
 | 11 | Macchi M.C.72 | Pending |
-| 12 | Caproni Ca.60 | Pending |
+| 12 | Caproni Ca.60 | Partial; geometry/paint preserved; live evidence pending |
 
 ## Pack-builder issues found during initial reads
 
@@ -656,3 +656,20 @@ Suggested README row:
 
 Progress completion text (live onlyafterroot): XML15°controls exacthinges/signs, separatecontra2-bladeshafts sourcehubs/RPM/diameter,162°canopy withnormalizedaliascaveat,sourceDefaultpaint/glassselectors, fixedfloats, length/spanspectests,2.04°qualifiedwaterpose.
 
+
+### Caproni Ca.60 Lab implementation and verification
+
+- [x] Guess audit written first; preserved benchmark module/tests, no-XML pack,13 references and two candidate metadata read. Museum model/period photographs and primary1921Flight/NACA technical report consulted.
+- [x] Reuse preserved benchmark recovery of intact wing geometry, four interplane rudders, imported fixed hull/nacelles/booms/struts and eight propeller sites. Museum-guided silver fabric/navy lower hull and roof/ivory nacelles/navy engine trim/wood props retained. No protected module edits.
+- [x] Flight28April1921 explicitly describes two outer+central tractor/pusher pairs at each end: eight separate props. Retain mixed2-blade outer/4-blade central layout seen in supplied museummodel and periodphotos; generic pack4-blade metadata does not apply to every prop.
+- [x] Uniform span calibration from contemporary98ft6in=30.0228m, preserving vertex/shape proportions. Result26.2976m length /9.7903m height. Flight79ft=24.0792m gives length discrepancy+9.2%; museum25m gives+5.2%, pack22.6m+16.4%. No longitudinal squeeze or5%proportion pass claimed.
+- [x] Reference-supported control linkage has no travel numbers. Lab holds all surfaces neutral; original ChatGPT controls remain unchanged in separate entry. Propeller slider explicitly labels display rate, preserving benchmark visual spin without an installedRPM claim. Waterdraft remains provisional benchmark displaydatum.
+- [x] Every damaged/duplicate export quarantined under `original_` with reason and revealable. Generated procedural finishes need no copied photo or GLB; no sounds/Nasal/eye data supplied.
+- [x] `node tests/lab/ca60.test.mjs` actual-model test passes: uniformscale/proportion preservation, intact bank and mixedprop/rudder counts, neutralunknowntravel, quarantinereasons, proceduralpaint andpausedspin.
+- [ ] Both cleared supplied candidates from matching camera and final donor suitability decision. Metadata/earlier user comparison favors intact original; rounded1dec6a9e wing edges and missingfairtriangles inNoviplano are concerns, never licence exclusions.
+- [ ] Live parked/flight/engineendpoints/appearance/quarantine evidence; `artifacts/lab/ca60-inspector.jpg`, `ca60-compare.jpg` pending browser recovery.
+- [ ] Resolve historical travel/hub/propdiameter/RPM/draft and dimensions before asserting exact reconstruction.
+
+Sources: [Flight28April1921 article/photos/drawings](https://aviadejavu.ru/Site/Crafts/Craft31976.htm); [Caproni Museum,Semprini](https://mostre.museocaproni.it/sala/en/pilota/semprini-federico/); [Munk,NACA-TN57 July1921](https://ntrs.nasa.gov/citations/19930080852). NACA's sixprop/108ft assumptions are a tentative aerodynamic analysis with unknown basicdetails; the detailed contemporaryFlight description and museummodel outweigh them for visiblelayout. No primaryPDF/referencephotos committed. Exact museum-guided finish sources remain in the preservedREADME section.
+
+Pack requests: non-FlightGear static/manual downloads need an inapplicable-animation warning instead of inventedXML instruction; export perpropeller bladecount, qualified reliable dimensions and sourcebasis; add verified frame/scale/dimensioned drawing, mechanicaltravels/hinges/driveRPM and loadedwaterline. Threeview11 downloaded image was solidblack; replace with usable original drawing.

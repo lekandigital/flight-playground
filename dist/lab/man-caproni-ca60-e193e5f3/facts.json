@@ -1,0 +1,67 @@
+{
+  "asset_id": "man-caproni-ca60-e193e5f3",
+  "title": "Caproni Ca60",
+  "frame": {
+    "glb_axes": "glTF: +y up",
+    "note": "not a FlightGear model: no XML rig; check the nose direction from the reference renders and size_m"
+  },
+  "real_world_specs": {
+    "article": "https://en.wikipedia.org/wiki/Caproni_Ca.60",
+    "variant": "Ca.60",
+    "length m": "22.6",
+    "span m": "30.5",
+    "height m": "9.63",
+    "wing area sqm": "750",
+    "empty weight kg": "14000",
+    "max takeoff weight kg": "26000",
+    "cruise speed kmh": "130",
+    "crew": "8",
+    "capacity": "100 passengers",
+    "eng1 name": "Liberty L-12",
+    "eng1 number": "8",
+    "eng1 type": "V-12 water-cooled piston engines",
+    "prop blade number": "4",
+    "prop name": "fixed-pitch propellers",
+    "length_m": 22.6,
+    "span_m": 30.5,
+    "height_m": 9.63
+  },
+  "animations_from_xml": [],
+  "source_conditions": [],
+  "texture_by_part": [],
+  "textures": [],
+  "livery_names": [],
+  "eye_point": null,
+  "sounds_copied": [],
+  "nasal_files": [],
+  "fdm_geometry": {},
+  "runtime_notes": {
+    "status": "partial: no original mechanical rig or historical travel/RPM supplied",
+    "scale": {
+      "span_m": 30.0228,
+      "source": "Flight, 28 April1921,98ft6in",
+      "qualification": "Uniform span calibration only. Original corrected proportions retained; overall length remains9.2% above Flight79ft."
+    },
+    "references": [
+      {
+        "title": "Flight,28April1921,The Caproni Noviplano",
+        "url": "https://aviadejavu.ru/Site/Crafts/Craft31976.htm",
+        "facts": "Eight separate tractor/pusher propellers;98ft6in span,79ft overall length. Middle bank lower; paired interplane rudders."
+      },
+      {
+        "title": "Caproni Museum, Federico Semprini",
+        "url": "https://mostre.museocaproni.it/sala/en/pilota/semprini-federico/",
+        "facts": "30m span/25m overall length; approximate figures differ from pack and Flight."
+      },
+      {
+        "title": "NACA-TN-57, The Caproni Seaplane, July1921",
+        "url": "https://ntrs.nasa.gov/citations/19930080852",
+        "facts": "Tentative aerodynamic analysis assumes six propellers and108ft span; aircraft description/pictures in Flight are more specific."
+      }
+    ],
+    "paint": "Preserved benchmark museum-guided silver fabric/navy hull and roof/ivory nacelles/navy engine trim/pale struts/wood props. Generated textures; exact fresh1921 shades unverified.",
+    "alternates": "Both supplied candidates cleared by user; no licence-based exclusion. Roundedwing 1dec6a9e and fair-triangle-missing Noviplano have no demonstrably better separate assembly.",
+    "controls": "Surfaces held neutral because references describe linkage but give no mechanical travel. Existing ChatGPT controls remain available in its own entry.",
+    "propeller_rate": "Visual-only benchmark rate, not historical installed RPM."
+  }
+}
