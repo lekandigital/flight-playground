@@ -17,7 +17,7 @@ For each aircraft: audit → pack/source/images → candidates/proportions → r
 | 1 | Spitfire Mk Vb | Done; pose-qualified height reference requested |
 | 2 | Seafire Mk III | Done; source door/height review requested |
 | 3 | Corsair F4U-1 | Done; source contact/taxi-spin defects recorded |
-| 4 | F-16 | Pending |
+| 4 | F-16 | Partial exact-variant shape; rig/paint verified |
 | 5 | Dauphin | Pending |
 | 6 | EC130 | Pending |
 | 7 | Bo 105 | Pending |
@@ -450,3 +450,20 @@ Lab requests: identify a pose-qualified height reference; check exact source gea
 - [x] README and per-aircraft local commit; no push
 
 Primary dimension cross-check: Smithsonian F4U-1D record gives length10.2 m, span12.5 m and height4.6 m; pack describes F4U-4 and cannot be used as exact-variant evidence. The museum photo is a later F4U-1D family member, so canopy/markings are not copied blindly. Three blades and gull-wing layout agree. Source typo hook lateral coordinate is corrected to FDM/mesh centreline. Source right wheel spin centre/property and wheel contact-to-mesh discrepancies are recorded; static gear rig does not animate taxi spin or compression. Glass and RPM blur remain explicitly documented rendering adaptations.
+
+### F-16 completion and borrowing recheck
+
+- [x] Earlier guess audit read before implementation; pack/source, intended FlightGear thumbnails and museum reference inspected
+- [x] All9 alternate GLBs rendered over3 pages; same simplified low-poly production family. No geometry borrowing withheld for licensing; detailed original controls/gear/nozzle outperform them
+- [x] Missing main include recovered from author NikolaiVChr/f16; matches pack canopy30/hook57.175/gear112/main95/explicit offset-deg. Fingerprint retained in runtime facts
+- [x] Source compound gear offset/sequence, restored left-family bilateral translation and moving brace hierarchy; retained wheels throughout retraction
+- [x] FDM contacts/pitch1.92°, PW engine2 variant, source glass, 82 named liveries (80 pack +2 omitted YF schemes)
+- [x] Source mechanical textures kept; body/logo paint slots separated. Nested livery slot collision and generic offset handling repaired
+- [x] Control clamps, FCS radian conversion/±25° tailplanes, tyre containment within source airframe envelope, mirrors, contact heights, hidden reasons, all82 maps tested
+- [x] Unchanged original whole suite and all current Lab tests pass
+- [x] Live9 sliders Home/End, parked/flight, gear cycling, prototype/Combat Gray switch; original preserved
+- [x] Inspector and comparative artifact images; README row; local per-aircraft commit
+
+Lab requests: provide missing exact F-16.xml/f16-base.xml and complete shader-motion/material bindings in pack, capture uncapped liveries and source texture paths, qualify source airframe versus actual YF-16 prototype/75-0745 variant, provide closed physical gear-bay geometry and source brace hierarchy. A coarse body-envelope test is explicitly weaker than exact bay-wall containment. Source XML has opposite-side speedbrake centres; their lateral signs are snapped to geometry. Runtime only retains91 exterior paint files, not unused stores textures. The main inspector's60fps configure formerly re-scanned3303 nodes for each selector; cached node lookups fix that overhead. Simultaneous F-16 scratch renderers still slow this device, so release scratch canvases between live checks.
+
+Licensing recheck for completed aircraft: Spitfire retains correct3-blade source geometry; detailed donor's4 blades belong on Seafire (already integrated). Corsair supplied donor is A-7 jet. F-16 candidates simplify source detail. These are accuracy decisions. All supplied geometry borrowing is authorized; no off-by-default licence gate is used.

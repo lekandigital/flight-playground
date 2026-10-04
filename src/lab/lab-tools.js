@@ -56,9 +56,17 @@ export function channel(facts,name){
  const animations=(facts.animations_from_xml??[]).filter(a=>a.channel===name&&['rotate','translate'].includes(a.type));
  const signed=signedChannels.has(name),domain=signed?[-1,1]:[0,1];
  return{name,animations,domain,clamp:x=>clamp(Number(x)||0,...domain),evaluate(anim,x){
-  x=clamp(Number(x)||0,...domain);let value=anim.interpolation?interp(anim.interpolation,x):Number(anim.factor??1)*x;
-  if(anim.travel)value=clamp(value,Math.min(...anim.travel),Math.max(...anim.travel));return value;
+  return animationValue(anim,clamp(Number(x)||0,...domain));
  }};
+}
+export function animationValue(anim,input,properties={}){
+ const expression=anim.expression?evalExpression(anim.expression,properties):input;
+ if(expression==null)return null;
+ let value=anim.interpolation?interp(anim.interpolation,expression):Number(anim.factor??1)*expression;
+ // Explicit offset-deg / offset-m are applied after the source factor.
+ // Legacy <offset> is different; the pack preparer records its tag separately.
+ value+=Number(anim.offset??0)*(anim.offsetUnits==='legacy'?Number(anim.factor??1):1);
+ if(anim.travel)value=clamp(value,Math.min(...anim.travel),Math.max(...anim.travel));return value;
 }
 export function quarantine(node,reason,kind='variant',permanent=false){
  node?.traverse(o=>{if(!o.isMesh)return;o.userData.originalName??=o.name;o.userData.labHiddenReason=reason;if(permanent)o.userData.labPermanentHidden=true;o.userData.inspectorGroup=kind==='rotor'?'Original rotor / propeller':kind==='equipment'?'Optional equipment':'Original export variants';if(!o.name.startsWith('original_'))o.name=`original_${kind}_lab_${o.name}`;o.visible=false;});
@@ -77,7 +85,8 @@ export function evalExpression(node,properties){
  if(op==='or'){if(args.some(Boolean))return true;return args.some(a=>a==null)?null:false;}
  if(args.some(a=>a==null))return null;
  if(op==='not')return !args[0];
- if(op==='equals')return String(args[0])===String(args[1]);if(op==='not-equals')return String(args[0])!==String(args[1]);
+ const equal=(a,b)=>typeof a==='boolean'||typeof b==='boolean'?Number(a)===Number(b):String(a)===String(b);
+ if(op==='equals')return equal(args[0],args[1]);if(op==='not-equals')return !equal(args[0],args[1]);
  if(op==='less-than')return args[0]<args[1];if(op==='less-than-equals')return args[0]<=args[1];
  if(op==='greater-than')return args[0]>args[1];if(op==='greater-than-equals')return args[0]>=args[1];
  if(op==='sum')return args.reduce((a,b)=>a+b,0);if(op==='product')return args.reduce((a,b)=>a*b,1);
@@ -85,10 +94,14 @@ export function evalExpression(node,properties){
  if(op==='min')return Math.min(...args);if(op==='max')return Math.max(...args);if(op==='abs')return Math.abs(args[0]);
  return null;
 }
+const conditionCache=new WeakMap();
 function conditionNodes(root,rule){
- if(rule.glb_nodes)return uniqueRoots(rule.glb_nodes.map(n=>labFind(root,n)).filter(Boolean));
+ let cache=conditionCache.get(root);if(!cache){cache=new WeakMap();conditionCache.set(root,cache);}
+ if(cache.has(rule))return cache.get(rule);
+ if(rule.glb_nodes){const nodes=uniqueRoots(rule.glb_nodes.map(n=>labFind(root,n)).filter(Boolean));cache.set(rule,nodes);return nodes;}
  const names=new Set((rule.objects??[]).map(n=>THREE.PropertyBinding.sanitizeNodeName(n))),nodes=[];
- root.traverse(o=>{const name=o.userData.originalName??o.name;for(const suffix of names)if(name===suffix||new RegExp('^i\\d+_'+suffix.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'$').test(name))nodes.push(o);});return uniqueRoots(nodes);
+ const patterns=[...names].map(suffix=>new RegExp('^i\\d+_'+suffix.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'$'));
+ root.traverse(o=>{const name=o.userData.originalName??o.name;if(names.has(name)||patterns.some(pattern=>pattern.test(name)))nodes.push(o);});const result=uniqueRoots(nodes);cache.set(rule,result);return result;
 }
 export function hideByCondition(root,facts,state={}){
  const properties={...(facts.default_properties??{}),...state},unresolved=[],decisions=new Map();
@@ -188,7 +201,7 @@ export async function makeXmlRig(root,animations,facts,options={}){
   current={...defaults,...state};if(options.normalize)current=options.normalize(current);
   for(const field of options.fields??['gear','canopy','flaps','aileron','elevator','rudder','engine'])current[field]=clamp(Number(current[field])||0,signedChannels.has(field)||field==='wheelSteer'?-1:0,1);
   for(const[m,v]of baseVisibility)m.visible=m.userData.labPermanentHidden?false:v;
-  for(const surface of bindings){const a=surface.anim,input=(options.driver??defaultDriver)(a,current);let value=a.expression?evalExpression(a.expression,{...facts.default_properties,...defaultProperties,...options.stateProperties?.(current)}):a.interpolation?interp(a.interpolation,input):Number(a.factor??1)*input;if(value==null)continue;if(a.travel)value=clamp(value,Math.min(...a.travel),Math.max(...a.travel));surface.apply(value);}
+  for(const surface of bindings){const a=surface.anim,input=(options.driver??defaultDriver)(a,current),value=animationValue(a,input,{...facts.default_properties,...defaultProperties,...options.stateProperties?.(current)});if(value!=null)surface.apply(value);}
   const props={...defaultProperties,...options.stateProperties?.(current)};hideByCondition(root,facts,props);options.configure?.(current,bindings);
  }
  function spin(dt,engine){

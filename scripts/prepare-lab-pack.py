@@ -64,6 +64,9 @@ def prepare(asset, selected_set=None):
             kind = animation.findtext('type', 'rotate')
             entry = {'source_xml': str(path.relative_to(source)), 'objects': names,
                      'type': kind, 'property': animation.findtext('property', '')}
+            entry['offsetUnits'] = ('degrees' if animation.find('offset-deg') is not None
+                                    else 'metres' if animation.find('offset-m') is not None
+                                    else 'legacy' if animation.find('offset') is not None else None)
             expression = animation.find('expression')
             if expression is not None:
                 entry['expression'] = ast(expression)
@@ -79,7 +82,7 @@ def prepare(asset, selected_set=None):
                    and a['objects'] == animation.get('objects')
                    and a['property'].lstrip('/') == animation.get('property', '').lstrip('/')]
         if matches:
-            animation.update({k: matches[0][k] for k in ['source_xml', 'expression'] if k in matches[0]})
+            animation.update({k: matches[0][k] for k in ['source_xml', 'expression', 'offsetUnits'] if k in matches[0]})
         # EC130's map has no fitted pivots; retain the declared axis conversion.
         if not animation.get('glb_center') and animation.get('fg_center_m'):
             x, y, z = animation['fg_center_m']
@@ -124,21 +127,34 @@ def prepare(asset, selected_set=None):
             continue
         tree = ET.parse(path).getroot()
         slots = {}
-        for node in tree.iter():
-            if not len(node) and node.text and re.search(r'\.(png|rgb|jpg|jpeg)$', node.text.strip(), re.I):
-                value = node.text.strip()
-                candidates = [t for t in facts.get('textures', [])
-                              if t.get('original', '').endswith(value) or t.get('file', '').endswith(value)]
-                if candidates:
-                    selected_texture = candidates[0]
-                    slots[node.tag] = selected_texture['file']
-                    path = pack / selected_texture['file']
-                    if path.is_file():
-                        destination = target / selected_texture['file']
-                        destination.parent.mkdir(parents=True, exist_ok=True)
-                        shutil.copyfile(path, destination)
-                        if selected_texture not in textures:
-                            textures.append(selected_texture)
+        def leaves(element, prefix=''):
+            for node in element:
+                key = prefix + node.tag
+                if len(node):
+                    yield from leaves(node, key + '/')
+                elif node.text:
+                    yield key, node.text.strip()
+        leaf_slots = {}
+        for key, value in leaves(tree):
+            if not re.search(r'\.(png|rgb|jpg|jpeg)$', value, re.I):
+                continue
+            candidates = [t for t in facts.get('textures', [])
+                          if t.get('original', '').endswith(value) or t.get('file', '').endswith(value)]
+            if candidates:
+                selected_texture = candidates[0]
+                slots[key] = selected_texture['file']
+                leaf_slots.setdefault(key.rsplit('/', 1)[-1], []).append(selected_texture['file'])
+                path = pack / selected_texture['file']
+                if path.is_file():
+                    destination = target / selected_texture['file']
+                    destination.parent.mkdir(parents=True, exist_ok=True)
+                    shutil.copyfile(path, destination)
+                    if selected_texture not in textures:
+                        textures.append(selected_texture)
+        # Keep legacy unique slot aliases, never conflate body/pod/patch textures.
+        for key, files in leaf_slots.items():
+            if len(files) == 1:
+                slots[key] = files[0]
         livery['slots'] = slots
     trimmed['textures'] = textures
     (target / 'facts.json').write_text(json.dumps(trimmed, separators=(',', ':'), ensure_ascii=False) + '\n')
