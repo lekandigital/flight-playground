@@ -19,13 +19,13 @@ For each aircraft: audit → pack/source/images → candidates/proportions → r
 | 3 | Corsair F4U-1 | Done; source contact/taxi-spin defects recorded |
 | 4 | F-16 | Partial exact-variant shape; rig/paint verified |
 | 5 | Dauphin | Done; startup aliases / blade profile requested |
-| 6 | EC130 | Implemented; tests pass; final live evidence pending |
-| 7 | Bo 105 | Implemented; tests pass; live evidence pending |
-| 8 | E-Flash | Implemented; tests pass; live evidence pending |
-| 9 | Macchi M.33 | Implemented; tests pass; live evidence pending |
-| 10 | Supermarine S.6B | Implemented; tests pass; live evidence pending |
-| 11 | Macchi M.C.72 | Implemented; tests pass; live evidence pending |
-| 12 | Caproni Ca.60 | Partial; geometry/paint preserved; live evidence pending |
+| 6 | EC130 | Partial height/hub provenance; live rig and source paint verified |
+| 7 | Bo 105 | Done; CBS dimensions/contact review requested |
+| 8 | E-Flash | Done; fictional dimensions/contact gaps recorded |
+| 9 | Macchi M.33 | Done; water datum and source include requested |
+| 10 | Supermarine S.6B | Done; live checks and final artifacts verified |
+| 11 | Macchi M.C.72 | Done; live checks and final artifacts verified |
+| 12 | Caproni Ca.60 | Partial historical reconstruction; live and candidate checks complete |
 
 ## Pack-builder issues found during initial reads
 
@@ -510,9 +510,10 @@ Pack has no XML/FDM/textures or named liveries. Its generic baked-animation warn
 - [x] Exact compound0.85m slide/0.07m pop and source asymmetric80/70/100° doors;72 per-object bindings prevent converted pivot conflicts.
 - [x] Recovered77 UV-equipped source bindings from truncated pack metadata, four actually used texture files. Original FlightGear paint retained; no named livery XML. Standard exterior panes adapted to Three.js glass.
 - [x] Fixed skids; no invented gear channel. Misidentified deflated-float contacts ignored; visible skid geometry used with source−0.96° pitch. Swept rotor/body length12.641m fits12.64 within5%;3.684m height vs3.34 fails10.3%, explicitly recorded. Source FDM vs visual main/tail hub discrepancy retained and disclosed.
-- [x] `node tests/lab/ec130.test.mjs`; full unchanged `npm test` and build pass. Six controls were exercised Home/End and flight pose in the earlier session; subsequent inspector signed offset formatting still awaits live recheck.
-- [ ] Final live source-default livery/parked/flight controls and proof `artifacts/lab/ec130-inspector.jpg`, `ec130-compare.jpg`. Browser reconnect rejected because stale preview became a data URL; user reopening requested. Do not claim these artifacts exist.
-- [ ] Final complete status after browser evidence; code committed separately in aircraft order.
+- [x] `node tests/lab/ec130.test.mjs`; full unchanged `npm test` and build pass. Final live recheck exercised all six controls Home/End, signed offset formatting, parked/flight poses and the original source-only livery.
+- [x] Live inspector proof `artifacts/lab/ec130-inspector.jpg` and comparison saved through restored HTTP preview tabs.
+- [x] Final comparison re-export from the positive-Z reference camera; complete rotor tips remain in frame.
+- [x] Live runtime verification complete; historical height/hub discrepancy remains partial. Code committed separately in aircraft order.
 
 Pack requests: provide `ec130-base.xml`, named livery XML/startup accessory aliases, all texture/node rows beyond the400-row cutoff; mark skid/float contacts correctly and verify vertex contacts; qualify source height/variant/rotor azimuth; resolve visualXML versus FDM rotor-hub discrepancies. Source min/max rotor incidence and blade chord need retaining in builder output; neutral inverted tail incidence is8.7°, not0°.
 
@@ -531,9 +532,9 @@ Pack requests: provide `ec130-base.xml`, named livery XML/startup accessory alia
 - [x] Continuous source-sized procedural blades replace source segmented exports and unuseddiscs with permesh quarantine reason. Authored hubs/mast/gearbox retained; generatedduplicatehubs/zeroopacityblur excluded. Legacyshadowbillboards excluded in favor scene shadows. Sourceconditions choose optionalweapons andwirecutter, lightshalosoff in staticinspection. Logicalpilot/copilot selectors expanded to their actualmeshchildren.
 - [x] Source livery.rgb map applied to UV-equipped exterior, exact source diffuse properties andwhite alpha.2 glass. No namedvariantfiles/livery_names supplied. Original source eye/sounds/Nasal recordedonly.
 - [x] Actual-GLB test `node tests/lab/bo105.test.mjs` passed. Covers clamped XMLrigmotions, actualvertexdiameter/chord, FDMhub/axis/RPM, source tail restingphase, fixedmast, contactpitch, parkedqualifieddimensions, mirrorsatdoorfulltravel, sequentialpassengerslide, paint/colorspace/glass, wirecutter, hiddenreasons andpausedspin.
-- [ ] Root livecontrols/presets/rotor spin, source-default liveryinspection, candidate/base render (noalternates).
-- [ ] Root screenshots `artifacts/lab/bo105-inspector.jpg`, `artifacts/lab/bo105-compare.jpg`.
-- [ ] Root full original/Lab tests and build; README/progress; sequential commit `Lab version: Bo105`.
+- [x] Live six controls Home/End, parked/flight presets, rotor spin and source-default livery inspected. No alternates supplied.
+- [x] Screenshots `artifacts/lab/bo105-inspector.jpg`, `artifacts/lab/bo105-compare.jpg` saved with museum geometry comparison.
+- [x] Full original/Lab tests and build; README/progress; ordered local aircraft commit completed.
 
 #### Pack-builder requests
 
@@ -552,8 +553,8 @@ Pack requests: provide `ec130-base.xml`, named livery XML/startup accessory alia
 - [x] Original module and guess audit, pack/XML/FDM, intended splash and source structural references reviewed. No alternates supplied; no licence-based exclusion.
 - [x] Exact original AC recovered and validated against byte-identical model/set XML;114 source ancestor translations restored. Source weightshift/table/control sign, steering and source pilot aliases/defaults implemented.
 - [x] Actual GLB test `node tests/lab/eflash.test.mjs` passed; original shaft rotates true at FDM radius, restored source RGB/UV paint, hidden reasons, fixed tyre counter-motion, pauses and clamping checked. Span agrees with FDM34.61FT within0.1%.
-- [ ] Live controls/parked/flight/source paint inspection and artifacts `artifacts/lab/eflash-inspector.jpg`, `eflash-compare.jpg` pending browser recovery.
-- [ ] Final complete status after live evidence.
+- [x] Live four controls Home/End, parked/flight presets and original-only source paint inspected; `artifacts/lab/eflash-inspector.jpg`, `eflash-compare.jpg` saved.
+- [x] Live runtime verification complete; fictional-type/source contact limitations retained.
 
 ## Main corrections
 
@@ -591,8 +592,8 @@ Span exact FDM34.61 **FT** =10.549128m, actual10.54236m within0.1%. Original raw
 
 - [x] Guess audit, protected module, own source XML/FDM and intended images reviewed; actual GLB tests pass.
 - [x] Own clamped travel/signs/hinges, original propeller dimensions/RPM/source selectors, paint/default livery, fixed floats and pause tested.
-- [ ] Live presets/control endpoints/default livery and artifacts `artifacts/lab/m33-inspector.jpg`, `m33-compare.jpg` pending browser recovery.
-- [ ] Matching-camera supplied alternate render and final donor suitability decision.
+- [x] Live four controls Home/End, parked/flight presets and Default paint inspected; `artifacts/lab/m33-inspector.jpg`, `m33-compare.jpg` saved.
+- [x] Supplied alternate rendered from matching camera: same shape and paint, no better separable part; original source geometry retained.
 ## M33 — ready
 
 Biggest corrections: individual ±15° ailerons/elevators and ±20° rudder replace shared16/12/10; source visual shaft hub−2.579/.789/0 and2500rpm replace baked speed multiplier; original red Default paint plus source1.7° water-contact pose replace generic material/pose behavior. Source XML `Models/m33.xml` exact point-axis hinges and spin group HeliceComplete rebuilt from bol/helice/propblur/propdisc. Keep original two blades: measuredØ1.74450 vsFDM1.74 (+0.26%). FDM thrust point−1.605m is not the visual hub. Source RPM selectors correctly transition to intermediate blur300–900rpm and disc above900rpm. All hidden meshes have reasons and remain independently revealable. M33 has no retractable gear and no invented cockpit-door control.
@@ -601,7 +602,7 @@ Author intent inspected: `reference/flightgear/Macchi-M33_thumbnail.jpg`, red ra
 
 Measurements in level flight:8.256398×9.983220×2.671694m vs8.55×9.74×2.68 (length−3.43%, span+2.50%, height−0.31%, all within5%). Source water contacts have unequal compression and are not verified static contact points; source1.7° is a water datum, not a tyre/trolley pose. No visual rescaling.
 
-Alternate: one supplied `man-macchi-m-33-e380e6ee`. Licence cleared by user's blanket instruction; no off-by-default restriction. Its overall dimensions8.256398×9.983221×2.671697 match base to micrometres, anonymous merged Object_8 family vs the base's source-separated exterior; no clearly better separate part found in geometry inventory. ROOT: render candidate from same camera before recording final no-borrow decision. Keep base sound geometry unless render exposes useful improved part.
+Alternate: one supplied `man-macchi-m-33-e380e6ee`. Licence cleared by user's blanket instruction; no off-by-default restriction. Its overall dimensions8.256398×9.983221×2.671697 match base to micrometres, anonymous merged Object_8 family vs the base's source-separated exterior; no clearly better separate part found in geometry inventory. Final matching-camera render confirmed the same shape and paint, with no better separate part. Original source geometry retained.
 
 Remaining / lab requests: missing `m33-yasim-cnf.xml` and cockpit/pilot imported texture bindings; wind-driven dynamo's spin requires indicated airspeed (kept static; its source8×IAS animation is recorded, not replaced with engine spin). Verify water-contact datum against actual hull immersion. No exact historical red-shade claim.
 
@@ -615,7 +616,8 @@ Progress completion text (live/candidate ticks only after root verifies): source
 
 - [x] Guess audit, protected module, own source XML/FDM and intended images reviewed; actual GLB tests pass.
 - [x] Own clamped travel/signs/hinges, original propeller dimensions/RPM/source selectors, paint/default livery, fixed floats and pause tested.
-- [ ] Live presets/control endpoints/default livery and artifacts `artifacts/lab/s6b-inspector.jpg`, `s6b-compare.jpg` pending browser recovery.
+- [x] Live five controls Home/End, parked/flight presets and Default paint inspected; inspector/compare saved against S1595 museum reference.
+- [x] Final screenshots re-exported with the accurate Cockpit cover label.
 - [x] No alternates supplied; licensing did not prevent borrowing.
 ## S6B — ready
 
@@ -637,7 +639,8 @@ Progress completion text (live only after root verifies): exact XML hinges/signs
 
 - [x] Guess audit, protected module, own source XML/FDM and intended images reviewed; actual GLB tests pass.
 - [x] Own clamped travel/signs/hinges, original propeller dimensions/RPM/source selectors, paint/default livery, fixed floats and pause tested.
-- [ ] Live presets/control endpoints/default livery and artifacts `artifacts/lab/mc72-inspector.jpg`, `mc72-compare.jpg` pending browser recovery.
+- [x] Live five controls Home/End, parked/flight presets and Default paint inspected.
+- [x] Final `artifacts/lab/mc72-inspector.jpg`, `mc72-compare.jpg` exported after Cockpit cover label correction.
 - [x] No alternates supplied; licensing did not prevent borrowing.
 ## MC72 — ready
 
@@ -666,9 +669,9 @@ Progress completion text (live onlyafterroot): XML15°controls exacthinges/signs
 - [x] Reference-supported control linkage has no travel numbers. Lab holds all surfaces neutral; original ChatGPT controls remain unchanged in separate entry. Propeller slider explicitly labels display rate, preserving benchmark visual spin without an installedRPM claim. Waterdraft remains provisional benchmark displaydatum.
 - [x] Every damaged/duplicate export quarantined under `original_` with reason and revealable. Generated procedural finishes need no copied photo or GLB; no sounds/Nasal/eye data supplied.
 - [x] `node tests/lab/ca60.test.mjs` actual-model test passes: uniformscale/proportion preservation, intact bank and mixedprop/rudder counts, neutralunknowntravel, quarantinereasons, proceduralpaint andpausedspin.
-- [ ] Both cleared supplied candidates from matching camera and final donor suitability decision. Metadata/earlier user comparison favors intact original; rounded1dec6a9e wing edges and missingfairtriangles inNoviplano are concerns, never licence exclusions.
-- [ ] Live parked/flight/engineendpoints/appearance/quarantine evidence; `artifacts/lab/ca60-inspector.jpg`, `ca60-compare.jpg` pending browser recovery.
-- [ ] Resolve historical travel/hub/propdiameter/RPM/draft and dimensions before asserting exact reconstruction.
+- [x] Both cleared candidates reviewed with matching camera. Existing repaired base retains accurate wing edges/rudder layout. Candidate1dec6a9e has rounded wings and no better useful donor; named Sea platform hidden for comparison only. Noviplano export is empty (only radiator2479.obj node, zero meshes), so nothing can be borrowed. Evidence: `artifacts/lab/ca60-candidates.jpg`.
+- [x] Live parked/flight/display-speed Home/End, clay/textured display and reveal/restore quarantine verified. Final `artifacts/lab/ca60-inspector.jpg`, `ca60-compare.jpg` saved.
+- [x] Historical travel/hub/propdiameter/RPM/draft and dimension gaps explicitly documented as unresolved source requests; no exact reconstruction claim.
 
 Sources: [Flight28April1921 article/photos/drawings](https://aviadejavu.ru/Site/Crafts/Craft31976.htm); [Caproni Museum,Semprini](https://mostre.museocaproni.it/sala/en/pilota/semprini-federico/); [Munk,NACA-TN57 July1921](https://ntrs.nasa.gov/citations/19930080852). NACA's sixprop/108ft assumptions are a tentative aerodynamic analysis with unknown basicdetails; the detailed contemporaryFlight description and museummodel outweigh them for visiblelayout. No primaryPDF/referencephotos committed. Exact museum-guided finish sources remain in the preservedREADME section.
 
@@ -684,6 +687,17 @@ Pack requests: non-FlightGear static/manual downloads need an inapplicable-anima
 - [x] E-Flash pitch degree label now follows actual XMLtable+6/−3/−12 at input−1/0/+1.
 - [x] Actual-GLB textureloader capture across default+every named livery identified11 unused runtime files; removed them and dead binding rows. SpitfirePanel-Construction has no exportedUV although packclaimedUV. No currently used paint/livery data removed; embeddedoriginalmaps unchanged.
 - [x] Final validation2026-10-04: `npm run build` succeeds (752.2KB); all14 `npm run test:lab` files pass; unchanged `npm test` passes. Protected-file byte audit and originalREADME-prefix audit pass; `git diff --check` passes. Reviewbundle rebuilt for all12 entries.
-- [ ] Browser evidence: EC130 finalrecheck,Bo105,E-Flash,M33,S6B,MC72,Ca60 livecontrols/presets/defaultpaint and7 inspector/7compare artifacts. M33's1candidate andCa60's2candidate renders remain. Previewservers running5173/5175; stale browser tabs resolve to blockeddataURL, userreopen requested. No missingartifact falsely marked complete.
+- [x] All12 aircraft live controls, parked/flight, gear where supplied and every available livery verified; all12 inspector/compare pairs saved. Remaining M33/Ca60 candidate reviews completed. Fresh HTTP preview tabs resolved stale-tab access; no browser blocker remains. Review framing excludes unused indexed vertices and clears orbit damping before matching cameras; undefined original groundPitch defaults to zero instead of producing a NaN view.
 
 Additional builder requests from final review: stop copying textures for emptyglb_nodes or meshes that lostUV; distinguish independent mechanical limits from source controllergain/mapping/bias; preserve rotorcyclic azimuth and source phi0/restphase metadata. Previously copiedunusedfiles were Spitfire green/red/white/mk20i,Seafire green/red/white,F4U pilot1,Dauphin two lightatlases/generalpilot. Runtime paint recovery may preserve authoredembeddedmap when a matching externalbinding is absent; this does not establish missingUV.
+
+### Newest branch aircraft import — 2026-10-04
+
+- [x] Imported only four new aircraft and their runtime dependencies from remote commit45596a3; existing12 models SHA256-identical across baseline/current/remote. No whole-branch merge, original-module changes or replacement Ca.60.
+- [x] Official P51D:18 controls Home/End, all4 Delivery Day texture resolutions, parked/flight/gear and actual flight checked. daVinci P51D:9 controls, all11 liveries, presets/gear and flight checked. MustangIII:8 controls, source RAFpaint, presets/gear and flight checked. MiG29:11 controls, sourcepaint, presets/gear, lights, visibility overrides and actual flight checked. Source-only paint has no fabricated alternate selector.
+- [x] Four inspector images in `artifacts/flightgear/` plus MiG flight image saved. Browser diagnostics show no warnings/errors during final import review.
+- [x] Native inspector uses scale1/metres, Vector3contacts, per-rig signed fields/presets/formatting and source livery arrays. Fixes retain manual visibility after spin/configure, restore painted mode after native livery changes, refresh both coupled taileron rows, show throttle as percentage and remove extra0.025m floor lift for native contacts. World-wrapper contact audit gives all four tyre bottoms within0.4mm of floor.
+- [x] Proven MiG source Nasal navigation-light alias to MPfloat4 restored; On/off lamps now complementary. Original source XML/Nasal/effects and GPL text retained separately with notice. Runtime facts trimmed without changing numerical defaults or used animation/paint/condition facts.
+- [x] `npm run build`, original `npm test`,14-file `npm run test:lab` and27-test `npm run test:flightgear` all pass. Original README10630byte prefix and protected baseline files remain unchanged. Code diff whitespace checks pass.
+
+Remaining source requests: official P51D original enclosure mesh/XML and travel; daVinci parked height measurement and authoritative propellerFDM correction; MustangIII tailwheel FDM classification; MiG29 height/measurement pose and complete physical gear-bay surfaces. Native geometry, colors and paint remain from the supplied source; no speculative axis stretch or recolor. See `AIRCRAFT-NOTICE.md` for source/provenance. All work committed locally; no remote push.

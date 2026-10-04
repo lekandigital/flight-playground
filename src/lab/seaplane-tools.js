@@ -42,5 +42,6 @@ export async function sourceSeaplane(root,animations,facts,options){
  Object.assign(rig.report,{sourceVariant:options.variant,propellerBlades:propellerMeasurements.map(p=>p.count),propellers:propellerMeasurements,
   geometryMeasurements:{levelFlight:{size}},borrowedParts:[],remaining:options.remaining,
   sourceLimitNotes:{ground:'YASim water-contact points and source pitch retained. Contacts are untrusted buoyancy / water datum points, not tyre-bottom geometry; no invented retractable gear.',...options.sourceLimitNotes}});
+ rig.labels=options.labels??{};
  return rig;
 }

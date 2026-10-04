@@ -1,7 +1,7 @@
 import {sourceSeaplane} from './seaplane-tools.js';
 export async function prepareS6BLab(root,animations,facts){
  return sourceSeaplane(root,animations,facts,{
-  groups:{HeliceComplete:['bol','helice','propblur','propdisc']},blades:['helice'],fields:['aileron','elevator','rudder','doors','engine'],
+  groups:{HeliceComplete:['bol','helice','propblur','propdisc']},blades:['helice'],fields:['aileron','elevator','rudder','doors','engine'],labels:{doors:'Cockpit cover'},
   normalizedProperties:['controls/flight/elevator','controls/flight/rudder'],properties:{'sim/rendering/hdr/hdr-enabled':false},
   limits:{aileron:15,elevator:15,rudder:15,doors:45},variant:'Supermarine S.6B',glassSource:'s6b.xml glassrain effect; standard glass selected, HDR duplicate inactive',
   summary:'Lab S.6B: own XML ±15° controls and 45° cockpit cover; original two-blade Ø2.80m propeller at source hub, 2070rpm; source Schneider blue/silver paint and 4.99° float-contact pose.',

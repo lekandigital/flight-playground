@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <sim>
+    <model>
+      <livery>
+       <name type="string">Default</name>                   
+        <Fuselage>Liveries/Default/Mustang_1_t.png</Fuselage>
+       <WingTops>Liveries/Default/Mustang_2_t.png</WingTops>
+       <WingBottoms>Liveries/Default/Mustang_3_t.png</WingBottoms>
+       <HorizStabs>Liveries/Default/Mustang_4_t.png</HorizStabs>
+      </livery>
+    </model>
+  </sim>
+
+</PropertyList>

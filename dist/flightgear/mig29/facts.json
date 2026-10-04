@@ -1,0 +1,12375 @@
+{
+ "asset_id": "fg-mig-29-ac3aa937",
+ "title": "Mig-29",
+ "card": "http://192.168.86.152:8790/card.html?id=fg-mig-29-ac3aa937",
+ "glb": "model.glb (lab GLB, unchanged; original at /home/o/model-lab/derived/glb/fg-mig-29-ac3aa937.glb)",
+ "fg_sets": [],
+ "original_downloads": [
+  "/home/o/Downloads/models/FlightGear-Aircraft/Mig-29.zip"
+ ],
+ "frame": {
+  "glb_axes": "glTF: +y up, metres",
+  "flightgear_axes": "x aft, y right, z up (metres)",
+  "fg_to_glb": {
+   "map": "x=fgX, y=fgZ, z=-fgY",
+   "median_error_m": 0.0,
+   "samples": 22,
+   "trusted": true,
+   "left_right_check": [
+    [
+     "fwdgeardoor.L",
+     "L",
+     1.255
+    ],
+    [
+     "reargeardoor.L",
+     "L",
+     1.632
+    ],
+    [
+     "gear1.L",
+     "L",
+     1.348
+    ],
+    [
+     "fwdgeardoor.R",
+     "R",
+     -1.255
+    ],
+    [
+     "reargeardoor.R",
+     "R",
+     -1.632
+    ],
+    [
+     "gear1.R",
+     "R",
+     -1.348
+    ],
+    [
+     "nosegeardoor.L",
+     "L",
+     0.316
+    ],
+    [
+     "nosegeardoor.R",
+     "R",
+     -0.316
+    ]
+   ],
+   "note": "z of parts named L/R under this map; FlightGear's left is -y (so +z here when z=-fgY)"
+  },
+  "nose_points": "-x",
+  "note": "verified by matching XML hinge centres to the GLB's pivot_ nodes"
+ },
+ "size_m": {
+  "min": [
+   -1.065,
+   -1.739,
+   -6.119
+  ],
+  "max": [
+   21.561,
+   2.692,
+   6.119
+  ],
+  "size": [
+   22.626,
+   4.43,
+   12.238
+  ]
+ },
+ "flight_model": {
+  "flight_model": "yasim",
+  "cruise_speed_kt": 790.0,
+  "empty_mass_lb": 24250.0,
+  "description": "MiG-29 Fulcrum"
+ },
+ "animations_from_xml": [
+  {
+   "type": "rotate",
+   "objects": [
+    "RudderL"
+   ],
+   "glb_nodes": [
+    "i0_RudderL",
+    "pivot_000_RudderL"
+   ],
+   "property": "surface-positions/rudder-pos-norm",
+   "channel": "rudder",
+   "factor": "-25",
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "points_m": [
+     [
+      14.042,
+      -1.806,
+      0.525
+     ],
+     [
+      14.376,
+      -1.922,
+      1.739
+     ]
+    ]
+   },
+   "fg_center_m": null,
+   "travel": [
+    -25.0,
+    25.0
+   ],
+   "travel_source": "factor x property range (-1..1)",
+   "glb_axis_points": [
+    [
+     14.042,
+     0.525,
+     1.806
+    ],
+    [
+     14.376,
+     1.739,
+     1.922
+    ]
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "RudderR"
+   ],
+   "glb_nodes": [
+    "i0_RudderR",
+    "pivot_001_RudderR"
+   ],
+   "property": "surface-positions/rudder-pos-norm",
+   "channel": "rudder",
+   "factor": "-25",
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "points_m": [
+     [
+      14.042,
+      1.806,
+      0.525
+     ],
+     [
+      14.376,
+      1.922,
+      1.739
+     ]
+    ]
+   },
+   "fg_center_m": null,
+   "travel": [
+    -25.0,
+    25.0
+   ],
+   "travel_source": "factor x property range (-1..1)",
+   "glb_axis_points": [
+    [
+     14.042,
+     0.525,
+     -1.806
+    ],
+    [
+     14.376,
+     1.739,
+     -1.922
+    ]
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "StabilizerL"
+   ],
+   "glb_nodes": [
+    "i0_StabilizerL"
+   ],
+   "property": "surface-positions/left-elevon-pos-norm",
+   "channel": null,
+   "factor": "30",
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "points_m": [
+     [
+      13.488,
+      -1.833,
+      0.101
+     ],
+     [
+      13.488,
+      1.833,
+      0.101
+     ]
+    ]
+   },
+   "fg_center_m": null,
+   "travel": [
+    -30.0,
+    30.0
+   ],
+   "travel_source": "factor x property range (-1..1)",
+   "glb_axis_points": [
+    [
+     13.488,
+     0.101,
+     1.833
+    ],
+    [
+     13.488,
+     0.101,
+     -1.833
+    ]
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "StabilizerR"
+   ],
+   "glb_nodes": [
+    "i0_StabilizerR"
+   ],
+   "property": "surface-positions/right-elevon-pos-norm",
+   "channel": null,
+   "factor": "30",
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "points_m": [
+     [
+      13.488,
+      -1.833,
+      0.101
+     ],
+     [
+      13.488,
+      1.833,
+      0.101
+     ]
+    ]
+   },
+   "fg_center_m": null,
+   "travel": [
+    -30.0,
+    30.0
+   ],
+   "travel_source": "factor x property range (-1..1)",
+   "glb_axis_points": [
+    [
+     13.488,
+     0.101,
+     1.833
+    ],
+    [
+     13.488,
+     0.101,
+     -1.833
+    ]
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "AileronL"
+   ],
+   "glb_nodes": [
+    "i0_AileronL",
+    "pivot_004_AileronL"
+   ],
+   "property": "controls/flight/aileron",
+   "channel": "aileron",
+   "factor": "20",
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "points_m": [
+     [
+      12.062,
+      -5.065,
+      0.106
+     ],
+     [
+      11.656,
+      -3.715,
+      0.149
+     ]
+    ]
+   },
+   "fg_center_m": null,
+   "travel": null,
+   "travel_source": "not bounded in the XML (direct property, e.g. caster angle or rpm)",
+   "offset": "-5",
+   "glb_axis_points": [
+    [
+     12.062,
+     0.106,
+     5.065
+    ],
+    [
+     11.656,
+     0.149,
+     3.715
+    ]
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "AileronR"
+   ],
+   "glb_nodes": [
+    "i0_AileronR",
+    "pivot_005_AileronR"
+   ],
+   "property": "controls/flight/aileron",
+   "channel": "aileron",
+   "factor": "20",
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "points_m": [
+     [
+      12.062,
+      5.065,
+      0.106
+     ],
+     [
+      11.656,
+      3.715,
+      0.149
+     ]
+    ]
+   },
+   "fg_center_m": null,
+   "travel": null,
+   "travel_source": "not bounded in the XML (direct property, e.g. caster angle or rpm)",
+   "offset": "5",
+   "glb_axis_points": [
+    [
+     12.062,
+     0.106,
+     -5.065
+    ],
+    [
+     11.656,
+     0.149,
+     -3.715
+    ]
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "FlapsL"
+   ],
+   "glb_nodes": [
+    "i0_FlapsL",
+    "pivot_006_FlapsL"
+   ],
+   "property": "surface-positions/flap-pos-norm",
+   "channel": "flaps",
+   "factor": "20",
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "points_m": [
+     [
+      11.656,
+      -3.715,
+      0.149
+     ],
+     [
+      11.102,
+      -1.833,
+      0.207
+     ]
+    ]
+   },
+   "fg_center_m": null,
+   "travel": [
+    0.0,
+    20.0
+   ],
+   "travel_source": "factor x property range (0..1)",
+   "glb_axis_points": [
+    [
+     11.656,
+     0.149,
+     3.715
+    ],
+    [
+     11.102,
+     0.207,
+     1.833
+    ]
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "FlapsR"
+   ],
+   "glb_nodes": [
+    "i0_FlapsR",
+    "pivot_007_FlapsR"
+   ],
+   "property": "surface-positions/flap-pos-norm",
+   "channel": "flaps",
+   "factor": "-20",
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "points_m": [
+     [
+      11.656,
+      3.715,
+      0.149
+     ],
+     [
+      11.102,
+      1.833,
+      0.207
+     ]
+    ]
+   },
+   "fg_center_m": null,
+   "travel": [
+    -20.0,
+    0.0
+   ],
+   "travel_source": "factor x property range (0..1)",
+   "glb_axis_points": [
+    [
+     11.656,
+     0.149,
+     -3.715
+    ],
+    [
+     11.102,
+     0.207,
+     -1.833
+    ]
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "SlatsL"
+   ],
+   "glb_nodes": [
+    "i0_SlatsL",
+    "pivot_008_SlatsL"
+   ],
+   "property": "surface-positions/slat-pos-norm",
+   "channel": null,
+   "factor": "-20",
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "points_m": [
+     [
+      10.889,
+      -5.067,
+      0.182
+     ],
+     [
+      8.206,
+      -1.723,
+      0.344
+     ]
+    ]
+   },
+   "fg_center_m": null,
+   "travel": [
+    -20.0,
+    0.0
+   ],
+   "travel_source": "factor x property range (0..1)",
+   "glb_axis_points": [
+    [
+     10.889,
+     0.182,
+     5.067
+    ],
+    [
+     8.206,
+     0.344,
+     1.723
+    ]
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "SlatsR"
+   ],
+   "glb_nodes": [
+    "i0_SlatsR",
+    "pivot_009_SlatsR"
+   ],
+   "property": "surface-positions/slat-pos-norm",
+   "channel": null,
+   "factor": "20",
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "points_m": [
+     [
+      10.889,
+      5.067,
+      0.182
+     ],
+     [
+      8.206,
+      1.723,
+      0.344
+     ]
+    ]
+   },
+   "fg_center_m": null,
+   "travel": [
+    0.0,
+    20.0
+   ],
+   "travel_source": "factor x property range (0..1)",
+   "glb_axis_points": [
+    [
+     10.889,
+     0.182,
+     -5.067
+    ],
+    [
+     8.206,
+     0.344,
+     -1.723
+    ]
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "AirBrakeU"
+   ],
+   "glb_nodes": [
+    "i0_AirBrakeU",
+    "pivot_010_AirBrakeU"
+   ],
+   "property": "surface-positions/speedbrake-pos-norm",
+   "channel": "speedbrake",
+   "factor": "-56",
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "points_m": [
+     [
+      13.14,
+      -0.435,
+      0.16
+     ],
+     [
+      13.14,
+      0.435,
+      0.16
+     ]
+    ]
+   },
+   "fg_center_m": null,
+   "travel": [
+    -56.0,
+    0.0
+   ],
+   "travel_source": "factor x property range (0..1)",
+   "glb_axis_points": [
+    [
+     13.14,
+     0.16,
+     0.435
+    ],
+    [
+     13.14,
+     0.16,
+     -0.435
+    ]
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "AirBrakeB"
+   ],
+   "glb_nodes": [
+    "i0_AirBrakeB",
+    "pivot_011_AirBrakeB"
+   ],
+   "property": "surface-positions/speedbrake-pos-norm",
+   "channel": "speedbrake",
+   "factor": "60",
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "points_m": [
+     [
+      13.14,
+      -0.435,
+      -0.16
+     ],
+     [
+      13.14,
+      0.435,
+      -0.16
+     ]
+    ]
+   },
+   "fg_center_m": null,
+   "travel": [
+    0.0,
+    60.0
+   ],
+   "travel_source": "factor x property range (0..1)",
+   "glb_axis_points": [
+    [
+     13.14,
+     -0.16,
+     0.435
+    ],
+    [
+     13.14,
+     -0.16,
+     -0.435
+    ]
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "fwdgeardoor.L"
+   ],
+   "glb_nodes": [
+    "i0_fwdgeardoor.L",
+    "pivot_012_fwdgeardoor.L"
+   ],
+   "property": "/gear/gear[1]/position-norm",
+   "channel": "gear",
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "points_m": [
+     [
+      8.112,
+      -1.206,
+      -0.354
+     ],
+     [
+      9.154,
+      -1.304,
+      -0.309
+     ]
+    ]
+   },
+   "fg_center_m": [
+    8.633,
+    -1.255,
+    -0.331
+   ],
+   "travel": [
+    0.0,
+    155.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     0.0
+    ],
+    [
+     0.4,
+     155.0
+    ],
+    [
+     1.0,
+     155.0
+    ]
+   ],
+   "glb_center": [
+    8.633,
+    -0.331,
+    1.255
+   ],
+   "glb_axis_points": [
+    [
+     8.112,
+     -0.354,
+     1.206
+    ],
+    [
+     9.154,
+     -0.309,
+     1.304
+    ]
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "reargeardoor.L"
+   ],
+   "glb_nodes": [
+    "i0_reargeardoor.L",
+    "pivot_013_reargeardoor.L"
+   ],
+   "property": "/gear/gear[1]/position-norm",
+   "channel": "gear",
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "points_m": [
+     [
+      9.752,
+      -1.612,
+      0.107
+     ],
+     [
+      10.368,
+      -1.652,
+      0.068
+     ]
+    ]
+   },
+   "fg_center_m": [
+    10.06,
+    -1.632,
+    0.259
+   ],
+   "travel": [
+    -80.0,
+    0.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     0.0
+    ],
+    [
+     0.3,
+     -80.0
+    ],
+    [
+     1.0,
+     -80.0
+    ]
+   ],
+   "glb_center": [
+    10.06,
+    0.259,
+    1.632
+   ],
+   "glb_axis_points": [
+    [
+     9.752,
+     0.107,
+     1.612
+    ],
+    [
+     10.368,
+     0.068,
+     1.652
+    ]
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "gear1.L",
+    "gear2.L",
+    "wheel.L"
+   ],
+   "glb_nodes": [
+    "i0_gear1.L",
+    "i0_gear2.L",
+    "i0_wheel.L",
+    "pivot_014_gear1.L"
+   ],
+   "property": "/gear/gear[1]/position-norm",
+   "channel": "gear",
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "points_m": [
+     [
+      10.225,
+      -1.309,
+      0.174
+     ],
+     [
+      10.105,
+      -1.147,
+      0.034
+     ]
+    ]
+   },
+   "fg_center_m": [
+    10.14,
+    -1.348,
+    0.07
+   ],
+   "travel": [
+    0.0,
+    115.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     115.0
+    ],
+    [
+     0.15,
+     115.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    10.14,
+    0.07,
+    1.348
+   ],
+   "glb_axis_points": [
+    [
+     10.225,
+     0.174,
+     1.309
+    ],
+    [
+     10.105,
+     0.034,
+     1.147
+    ]
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "fwdgeardoor.R"
+   ],
+   "glb_nodes": [
+    "i0_fwdgeardoor.R",
+    "pivot_015_fwdgeardoor.R"
+   ],
+   "property": "/gear/gear[2]/position-norm",
+   "channel": "gear",
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "points_m": [
+     [
+      8.112,
+      1.206,
+      -0.354
+     ],
+     [
+      9.154,
+      1.304,
+      -0.309
+     ]
+    ]
+   },
+   "fg_center_m": [
+    8.633,
+    1.255,
+    -0.331
+   ],
+   "travel": [
+    -155.0,
+    0.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     0.0
+    ],
+    [
+     0.4,
+     -155.0
+    ],
+    [
+     1.0,
+     -155.0
+    ]
+   ],
+   "glb_center": [
+    8.633,
+    -0.331,
+    -1.255
+   ],
+   "glb_axis_points": [
+    [
+     8.112,
+     -0.354,
+     -1.206
+    ],
+    [
+     9.154,
+     -0.309,
+     -1.304
+    ]
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "reargeardoor.R"
+   ],
+   "glb_nodes": [
+    "i0_reargeardoor.R",
+    "pivot_016_reargeardoor.R"
+   ],
+   "property": "/gear/gear[2]/position-norm",
+   "channel": "gear",
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "points_m": [
+     [
+      9.752,
+      1.612,
+      0.107
+     ],
+     [
+      10.368,
+      1.652,
+      0.068
+     ]
+    ]
+   },
+   "fg_center_m": [
+    10.06,
+    1.632,
+    0.259
+   ],
+   "travel": [
+    0.0,
+    80.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     0.0
+    ],
+    [
+     0.3,
+     80.0
+    ],
+    [
+     1.0,
+     80.0
+    ]
+   ],
+   "glb_center": [
+    10.06,
+    0.259,
+    -1.632
+   ],
+   "glb_axis_points": [
+    [
+     9.752,
+     0.107,
+     -1.612
+    ],
+    [
+     10.368,
+     0.068,
+     -1.652
+    ]
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "gear1.R",
+    "gear2.R",
+    "wheel.R"
+   ],
+   "glb_nodes": [
+    "i0_gear1.R",
+    "i0_gear2.R",
+    "i0_wheel.R",
+    "pivot_017_gear1.R"
+   ],
+   "property": "/gear/gear[2]/position-norm",
+   "channel": "gear",
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "points_m": [
+     [
+      10.225,
+      1.309,
+      0.174
+     ],
+     [
+      10.105,
+      1.147,
+      0.034
+     ]
+    ]
+   },
+   "fg_center_m": [
+    10.14,
+    1.348,
+    0.07
+   ],
+   "travel": [
+    -115.0,
+    0.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     -115.0
+    ],
+    [
+     0.15,
+     -115.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    10.14,
+    0.07,
+    -1.348
+   ],
+   "glb_axis_points": [
+    [
+     10.225,
+     0.174,
+     -1.309
+    ],
+    [
+     10.105,
+     0.034,
+     -1.147
+    ]
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "nosegear1",
+    "nosegear2",
+    "nosewheels",
+    "WheelGuard"
+   ],
+   "glb_nodes": [
+    "i0_WheelGuard",
+    "i0_nosegear1",
+    "i0_nosegear2",
+    "i0_nosewheels",
+    "pivot_018_nosegear1",
+    "pivot_022_nosewheels"
+   ],
+   "property": "/gear/gear[0]/position-norm",
+   "channel": "gear",
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     -1.0,
+     0.0
+    ]
+   },
+   "fg_center_m": [
+    5.915,
+    0.0,
+    0.029
+   ],
+   "travel": [
+    0.0,
+    80.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     80.0
+    ],
+    [
+     0.15,
+     80.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    5.915,
+    0.029,
+    -0.0
+   ],
+   "glb_axis_dir": [
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "fwdnosegeardoor"
+   ],
+   "glb_nodes": [
+    "i0_fwdnosegeardoor",
+    "pivot_019_fwdnosegeardoor"
+   ],
+   "property": "/gear/gear[0]/position-norm",
+   "channel": "gear",
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     -1.0,
+     0.0
+    ]
+   },
+   "fg_center_m": [
+    4.797,
+    0.0,
+    -0.159
+   ],
+   "travel": [
+    -30.0,
+    0.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     0.0
+    ],
+    [
+     0.15,
+     0.0
+    ],
+    [
+     1.0,
+     -30.0
+    ]
+   ],
+   "glb_center": [
+    4.797,
+    -0.159,
+    -0.0
+   ],
+   "glb_axis_dir": [
+    0.0,
+    0.0,
+    1.0
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "nosegeardoor.L"
+   ],
+   "glb_nodes": [
+    "i0_nosegeardoor.L",
+    "pivot_020_nosegeardoor.L"
+   ],
+   "property": "/gear/gear[0]/position-norm",
+   "channel": "gear",
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "points_m": [
+     [
+      5.879,
+      -0.322,
+      -0.092
+     ],
+     [
+      7.856,
+      -0.309,
+      -0.157
+     ]
+    ]
+   },
+   "fg_center_m": [
+    6.867,
+    -0.316,
+    -0.124
+   ],
+   "travel": [
+    -80.0,
+    0.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     0.0
+    ],
+    [
+     0.15,
+     -80.0
+    ],
+    [
+     1.0,
+     -80.0
+    ]
+   ],
+   "glb_center": [
+    6.867,
+    -0.124,
+    0.316
+   ],
+   "glb_axis_points": [
+    [
+     5.879,
+     -0.092,
+     0.322
+    ],
+    [
+     7.856,
+     -0.157,
+     0.309
+    ]
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "nosegeardoor.R"
+   ],
+   "glb_nodes": [
+    "i0_nosegeardoor.R",
+    "pivot_021_nosegeardoor.R"
+   ],
+   "property": "/gear/gear[0]/position-norm",
+   "channel": "gear",
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "points_m": [
+     [
+      5.879,
+      0.322,
+      -0.092
+     ],
+     [
+      7.856,
+      0.309,
+      -0.157
+     ]
+    ]
+   },
+   "fg_center_m": [
+    6.867,
+    0.316,
+    -0.124
+   ],
+   "travel": [
+    0.0,
+    80.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     0.0
+    ],
+    [
+     0.15,
+     80.0
+    ],
+    [
+     1.0,
+     80.0
+    ]
+   ],
+   "glb_center": [
+    6.867,
+    -0.124,
+    -0.316
+   ],
+   "glb_axis_points": [
+    [
+     5.879,
+     -0.092,
+     -0.322
+    ],
+    [
+     7.856,
+     -0.157,
+     -0.309
+    ]
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "nosewheels",
+    "WheelGuard"
+   ],
+   "glb_nodes": [
+    "i0_WheelGuard",
+    "i0_nosewheels",
+    "pivot_022_nosewheels"
+   ],
+   "property": "surface-positions/rudder-pos-norm",
+   "channel": "gear",
+   "factor": "-50",
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "points_m": [
+     [
+      6.008,
+      0.0,
+      -0.936
+     ],
+     [
+      6.069,
+      0.0,
+      -1.49
+     ]
+    ]
+   },
+   "fg_center_m": null,
+   "travel": [
+    -50.0,
+    50.0
+   ],
+   "travel_source": "factor x property range (-1..1)",
+   "glb_axis_points": [
+    [
+     6.008,
+     -0.936,
+     -0.0
+    ],
+    [
+     6.069,
+     -1.49,
+     -0.0
+    ]
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "LouversL1"
+   ],
+   "glb_nodes": [
+    "i0_LouversL1"
+   ],
+   "property": "/gear/gear[1]/wow",
+   "channel": "gear",
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "points_m": [
+     [
+      5.939,
+      -1.105,
+      0.266
+     ],
+     [
+      5.939,
+      -0.579,
+      0.566
+     ]
+    ]
+   },
+   "fg_center_m": null,
+   "travel": [
+    0.0,
+    60.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     60.0
+    ]
+   ],
+   "glb_axis_points": [
+    [
+     5.939,
+     0.266,
+     1.105
+    ],
+    [
+     5.939,
+     0.566,
+     0.579
+    ]
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "LouversL2"
+   ],
+   "glb_nodes": [
+    "i0_LouversL2"
+   ],
+   "property": "/gear/gear[1]/wow",
+   "channel": "gear",
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "points_m": [
+     [
+      6.221,
+      -1.105,
+      0.309
+     ],
+     [
+      6.221,
+      -0.579,
+      0.584
+     ]
+    ]
+   },
+   "fg_center_m": null,
+   "travel": [
+    0.0,
+    60.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     60.0
+    ]
+   ],
+   "glb_axis_points": [
+    [
+     6.221,
+     0.309,
+     1.105
+    ],
+    [
+     6.221,
+     0.584,
+     0.579
+    ]
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "LouversL3"
+   ],
+   "glb_nodes": [
+    "i0_LouversL3"
+   ],
+   "property": "/gear/gear[1]/wow",
+   "channel": "gear",
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "points_m": [
+     [
+      6.438,
+      -1.105,
+      0.341
+     ],
+     [
+      6.438,
+      -0.579,
+      0.597
+     ]
+    ]
+   },
+   "fg_center_m": null,
+   "travel": [
+    0.0,
+    60.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     60.0
+    ]
+   ],
+   "glb_axis_points": [
+    [
+     6.438,
+     0.341,
+     1.105
+    ],
+    [
+     6.438,
+     0.597,
+     0.579
+    ]
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "LouversL4"
+   ],
+   "glb_nodes": [
+    "i0_LouversL4"
+   ],
+   "property": "/gear/gear[1]/wow",
+   "channel": "gear",
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "points_m": [
+     [
+      6.646,
+      -1.105,
+      0.373
+     ],
+     [
+      6.646,
+      -0.579,
+      0.608
+     ]
+    ]
+   },
+   "fg_center_m": null,
+   "travel": [
+    0.0,
+    60.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     60.0
+    ]
+   ],
+   "glb_axis_points": [
+    [
+     6.646,
+     0.373,
+     1.105
+    ],
+    [
+     6.646,
+     0.608,
+     0.579
+    ]
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "LouversL5"
+   ],
+   "glb_nodes": [
+    "i0_LouversL5"
+   ],
+   "property": "/gear/gear[1]/wow",
+   "channel": "gear",
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "points_m": [
+     [
+      6.884,
+      -1.105,
+      0.409
+     ],
+     [
+      6.884,
+      -0.579,
+      0.618
+     ]
+    ]
+   },
+   "fg_center_m": null,
+   "travel": [
+    0.0,
+    60.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     60.0
+    ]
+   ],
+   "glb_axis_points": [
+    [
+     6.884,
+     0.409,
+     1.105
+    ],
+    [
+     6.884,
+     0.618,
+     0.579
+    ]
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "LouversR1"
+   ],
+   "glb_nodes": [
+    "i0_LouversR1"
+   ],
+   "property": "/gear/gear[1]/wow",
+   "channel": "gear",
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "points_m": [
+     [
+      5.939,
+      1.105,
+      0.266
+     ],
+     [
+      5.939,
+      0.579,
+      0.566
+     ]
+    ]
+   },
+   "fg_center_m": null,
+   "travel": [
+    -60.0,
+    0.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     -60.0
+    ]
+   ],
+   "glb_axis_points": [
+    [
+     5.939,
+     0.266,
+     -1.105
+    ],
+    [
+     5.939,
+     0.566,
+     -0.579
+    ]
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "LouversR2"
+   ],
+   "glb_nodes": [
+    "i0_LouversR2"
+   ],
+   "property": "/gear/gear[1]/wow",
+   "channel": "gear",
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "points_m": [
+     [
+      6.221,
+      1.105,
+      0.309
+     ],
+     [
+      6.221,
+      0.579,
+      0.584
+     ]
+    ]
+   },
+   "fg_center_m": null,
+   "travel": [
+    -60.0,
+    0.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     -60.0
+    ]
+   ],
+   "glb_axis_points": [
+    [
+     6.221,
+     0.309,
+     -1.105
+    ],
+    [
+     6.221,
+     0.584,
+     -0.579
+    ]
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "LouversR3"
+   ],
+   "glb_nodes": [
+    "i0_LouversR3"
+   ],
+   "property": "/gear/gear[1]/wow",
+   "channel": "gear",
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "points_m": [
+     [
+      6.438,
+      1.105,
+      0.341
+     ],
+     [
+      6.438,
+      0.579,
+      0.597
+     ]
+    ]
+   },
+   "fg_center_m": null,
+   "travel": [
+    -60.0,
+    0.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     -60.0
+    ]
+   ],
+   "glb_axis_points": [
+    [
+     6.438,
+     0.341,
+     -1.105
+    ],
+    [
+     6.438,
+     0.597,
+     -0.579
+    ]
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "LouversR4"
+   ],
+   "glb_nodes": [
+    "i0_LouversR4"
+   ],
+   "property": "/gear/gear[1]/wow",
+   "channel": "gear",
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "points_m": [
+     [
+      6.646,
+      1.105,
+      0.373
+     ],
+     [
+      6.646,
+      0.579,
+      0.608
+     ]
+    ]
+   },
+   "fg_center_m": null,
+   "travel": [
+    -60.0,
+    0.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     -60.0
+    ]
+   ],
+   "glb_axis_points": [
+    [
+     6.646,
+     0.373,
+     -1.105
+    ],
+    [
+     6.646,
+     0.608,
+     -0.579
+    ]
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "LouversR5"
+   ],
+   "glb_nodes": [
+    "i0_LouversR5"
+   ],
+   "property": "/gear/gear[1]/wow",
+   "channel": "gear",
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "points_m": [
+     [
+      6.884,
+      1.105,
+      0.409
+     ],
+     [
+      6.884,
+      0.579,
+      0.618
+     ]
+    ]
+   },
+   "fg_center_m": null,
+   "travel": [
+    -60.0,
+    0.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     0.0
+    ],
+    [
+     1.0,
+     -60.0
+    ]
+   ],
+   "glb_axis_points": [
+    [
+     6.884,
+     0.409,
+     -1.105
+    ],
+    [
+     6.884,
+     0.618,
+     -0.579
+    ]
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "outernozzle.L"
+   ],
+   "glb_nodes": [
+    "i10_outernozzle.L",
+    "i11_outernozzle.L",
+    "i12_outernozzle.L",
+    "i13_outernozzle.L",
+    "i14_outernozzle.L",
+    "i15_outernozzle.L",
+    "i16_outernozzle.L",
+    "i17_outernozzle.L",
+    "i18_outernozzle.L",
+    "i19_outernozzle.L",
+    "i20_outernozzle.L",
+    "i3_outernozzle.L"
+   ],
+   "property": "controls/engines/engine[0]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     0.0,
+     1.0
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    -1.479,
+    -0.176
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    -0.176,
+    1.479
+   ],
+   "glb_axis_dir": [
+    0.0,
+    1.0,
+    -0.0
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "innernozzle.L"
+   ],
+   "glb_nodes": [
+    "i10_innernozzle.L",
+    "i11_innernozzle.L",
+    "i12_innernozzle.L",
+    "i13_innernozzle.L",
+    "i14_innernozzle.L",
+    "i15_innernozzle.L",
+    "i16_innernozzle.L",
+    "i17_innernozzle.L",
+    "i18_innernozzle.L",
+    "i19_innernozzle.L",
+    "i20_innernozzle.L",
+    "i3_innernozzle.L"
+   ],
+   "property": "controls/engines/engine[0]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     0.0,
+     1.0
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    -1.367,
+    -0.176
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    -0.176,
+    1.367
+   ],
+   "glb_axis_dir": [
+    0.0,
+    1.0,
+    -0.0
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "outernozzle.R"
+   ],
+   "glb_nodes": [
+    "i10_outernozzle.R",
+    "i11_outernozzle.R",
+    "i12_outernozzle.R",
+    "i13_outernozzle.R",
+    "i14_outernozzle.R",
+    "i15_outernozzle.R",
+    "i16_outernozzle.R",
+    "i17_outernozzle.R",
+    "i18_outernozzle.R",
+    "i19_outernozzle.R",
+    "i20_outernozzle.R",
+    "i3_outernozzle.R"
+   ],
+   "property": "controls/engines/engine[0]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     0.0,
+     -1.0
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    -0.43499999999999994,
+    -0.176
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    -0.176,
+    0.435
+   ],
+   "glb_axis_dir": [
+    0.0,
+    -1.0,
+    -0.0
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "innernozzle.R"
+   ],
+   "glb_nodes": [
+    "i10_innernozzle.R",
+    "i11_innernozzle.R",
+    "i12_innernozzle.R",
+    "i13_innernozzle.R",
+    "i14_innernozzle.R",
+    "i15_innernozzle.R",
+    "i16_innernozzle.R",
+    "i17_innernozzle.R",
+    "i18_innernozzle.R",
+    "i19_innernozzle.R",
+    "i20_innernozzle.R",
+    "i3_innernozzle.R"
+   ],
+   "property": "controls/engines/engine[0]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     0.0,
+     -1.0
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    -0.5469999999999999,
+    -0.176
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    -0.176,
+    0.547
+   ],
+   "glb_axis_dir": [
+    0.0,
+    -1.0,
+    -0.0
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "outernozzle.L"
+   ],
+   "glb_nodes": [
+    "i10_outernozzle.L",
+    "i11_outernozzle.L",
+    "i12_outernozzle.L",
+    "i13_outernozzle.L",
+    "i14_outernozzle.L",
+    "i15_outernozzle.L",
+    "i16_outernozzle.L",
+    "i17_outernozzle.L",
+    "i18_outernozzle.L",
+    "i19_outernozzle.L",
+    "i20_outernozzle.L",
+    "i3_outernozzle.L"
+   ],
+   "property": "controls/engines/engine[0]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     -0.3420201433256687,
+     0.9396926207859084
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    -1.447519548050244,
+    -0.35453451481599907
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    -0.3545,
+    1.4475
+   ],
+   "glb_axis_dir": [
+    0.0,
+    0.9397,
+    0.342
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "innernozzle.L"
+   ],
+   "glb_nodes": [
+    "i10_innernozzle.L",
+    "i11_innernozzle.L",
+    "i12_innernozzle.L",
+    "i13_innernozzle.L",
+    "i14_innernozzle.L",
+    "i15_innernozzle.L",
+    "i16_innernozzle.L",
+    "i17_innernozzle.L",
+    "i18_innernozzle.L",
+    "i19_innernozzle.L",
+    "i20_innernozzle.L",
+    "i3_innernozzle.L"
+   ],
+   "property": "controls/engines/engine[0]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     -0.3420201433256687,
+     0.9396926207859084
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    -1.3422739745222225,
+    -0.3162282587635241
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    -0.3162,
+    1.3423
+   ],
+   "glb_axis_dir": [
+    0.0,
+    0.9397,
+    0.342
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "outernozzle.R"
+   ],
+   "glb_nodes": [
+    "i10_outernozzle.R",
+    "i11_outernozzle.R",
+    "i12_outernozzle.R",
+    "i13_outernozzle.R",
+    "i14_outernozzle.R",
+    "i15_outernozzle.R",
+    "i16_outernozzle.R",
+    "i17_outernozzle.R",
+    "i18_outernozzle.R",
+    "i19_outernozzle.R",
+    "i20_outernozzle.R",
+    "i3_outernozzle.R"
+   ],
+   "property": "controls/engines/engine[0]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     0.3420201433256687,
+     -0.9396926207859084
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    -0.46648045194975574,
+    0.0025345148159990893
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    0.0025,
+    0.4665
+   ],
+   "glb_axis_dir": [
+    0.0,
+    -0.9397,
+    -0.342
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "innernozzle.R"
+   ],
+   "glb_nodes": [
+    "i10_innernozzle.R",
+    "i11_innernozzle.R",
+    "i12_innernozzle.R",
+    "i13_innernozzle.R",
+    "i14_innernozzle.R",
+    "i15_innernozzle.R",
+    "i16_innernozzle.R",
+    "i17_innernozzle.R",
+    "i18_innernozzle.R",
+    "i19_innernozzle.R",
+    "i20_innernozzle.R",
+    "i3_innernozzle.R"
+   ],
+   "property": "controls/engines/engine[0]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     0.3420201433256687,
+     -0.9396926207859084
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    -0.5717260254777775,
+    -0.035771741236475835
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    -0.0358,
+    0.5717
+   ],
+   "glb_axis_dir": [
+    0.0,
+    -0.9397,
+    -0.342
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "outernozzle.L"
+   ],
+   "glb_nodes": [
+    "i10_outernozzle.L",
+    "i11_outernozzle.L",
+    "i12_outernozzle.L",
+    "i13_outernozzle.L",
+    "i14_outernozzle.L",
+    "i15_outernozzle.L",
+    "i16_outernozzle.L",
+    "i17_outernozzle.L",
+    "i18_outernozzle.L",
+    "i19_outernozzle.L",
+    "i20_outernozzle.L",
+    "i3_outernozzle.L"
+   ],
+   "property": "controls/engines/engine[0]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     -0.6427876096865393,
+     0.766044443118978
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    -1.3568751993081065,
+    -0.5115351322563735
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    -0.5115,
+    1.3569
+   ],
+   "glb_axis_dir": [
+    0.0,
+    0.766,
+    0.6428
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "innernozzle.L"
+   ],
+   "glb_nodes": [
+    "i10_innernozzle.L",
+    "i11_innernozzle.L",
+    "i12_innernozzle.L",
+    "i13_innernozzle.L",
+    "i14_innernozzle.L",
+    "i15_innernozzle.L",
+    "i16_innernozzle.L",
+    "i17_innernozzle.L",
+    "i18_innernozzle.L",
+    "i19_innernozzle.L",
+    "i20_innernozzle.L",
+    "i3_innernozzle.L"
+   ],
+   "property": "controls/engines/engine[0]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     -0.6427876096865393,
+     0.766044443118978
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    -1.2710782216787808,
+    -0.4395429199714811
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    -0.4395,
+    1.2711
+   ],
+   "glb_axis_dir": [
+    0.0,
+    0.766,
+    0.6428
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "outernozzle.R"
+   ],
+   "glb_nodes": [
+    "i10_outernozzle.R",
+    "i11_outernozzle.R",
+    "i12_outernozzle.R",
+    "i13_outernozzle.R",
+    "i14_outernozzle.R",
+    "i15_outernozzle.R",
+    "i16_outernozzle.R",
+    "i17_outernozzle.R",
+    "i18_outernozzle.R",
+    "i19_outernozzle.R",
+    "i20_outernozzle.R",
+    "i3_outernozzle.R"
+   ],
+   "property": "controls/engines/engine[0]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     0.6427876096865393,
+     -0.766044443118978
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    -0.5571248006918934,
+    0.1595351322563735
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    0.1595,
+    0.5571
+   ],
+   "glb_axis_dir": [
+    0.0,
+    -0.766,
+    -0.6428
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "innernozzle.R"
+   ],
+   "glb_nodes": [
+    "i10_innernozzle.R",
+    "i11_innernozzle.R",
+    "i12_innernozzle.R",
+    "i13_innernozzle.R",
+    "i14_innernozzle.R",
+    "i15_innernozzle.R",
+    "i16_innernozzle.R",
+    "i17_innernozzle.R",
+    "i18_innernozzle.R",
+    "i19_innernozzle.R",
+    "i20_innernozzle.R",
+    "i3_innernozzle.R"
+   ],
+   "property": "controls/engines/engine[0]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     0.6427876096865393,
+     -0.766044443118978
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    -0.642921778321219,
+    0.08754291997148111
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    0.0875,
+    0.6429
+   ],
+   "glb_axis_dir": [
+    0.0,
+    -0.766,
+    -0.6428
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "outernozzle.L"
+   ],
+   "glb_nodes": [
+    "i10_outernozzle.L",
+    "i11_outernozzle.L",
+    "i12_outernozzle.L",
+    "i13_outernozzle.L",
+    "i14_outernozzle.L",
+    "i15_outernozzle.L",
+    "i16_outernozzle.L",
+    "i17_outernozzle.L",
+    "i18_outernozzle.L",
+    "i19_outernozzle.L",
+    "i20_outernozzle.L",
+    "i3_outernozzle.L"
+   ],
+   "property": "controls/engines/engine[0]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     -0.8660254037844386,
+     0.5000000000000001
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    -1.218,
+    -0.628065260775477
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    -0.6281,
+    1.218
+   ],
+   "glb_axis_dir": [
+    0.0,
+    0.5,
+    0.866
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "innernozzle.L"
+   ],
+   "glb_nodes": [
+    "i10_innernozzle.L",
+    "i11_innernozzle.L",
+    "i12_innernozzle.L",
+    "i13_innernozzle.L",
+    "i14_innernozzle.L",
+    "i15_innernozzle.L",
+    "i16_innernozzle.L",
+    "i17_innernozzle.L",
+    "i18_innernozzle.L",
+    "i19_innernozzle.L",
+    "i20_innernozzle.L",
+    "i3_innernozzle.L"
+   ],
+   "property": "controls/engines/engine[0]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     -0.8660254037844386,
+     0.5000000000000001
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    -1.162,
+    -0.5310704155516197
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    -0.5311,
+    1.162
+   ],
+   "glb_axis_dir": [
+    0.0,
+    0.5,
+    0.866
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "outernozzle.R"
+   ],
+   "glb_nodes": [
+    "i10_outernozzle.R",
+    "i11_outernozzle.R",
+    "i12_outernozzle.R",
+    "i13_outernozzle.R",
+    "i14_outernozzle.R",
+    "i15_outernozzle.R",
+    "i16_outernozzle.R",
+    "i17_outernozzle.R",
+    "i18_outernozzle.R",
+    "i19_outernozzle.R",
+    "i20_outernozzle.R",
+    "i3_outernozzle.R"
+   ],
+   "property": "controls/engines/engine[0]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     0.8660254037844386,
+     -0.5000000000000001
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    -0.696,
+    0.276065260775477
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    0.2761,
+    0.696
+   ],
+   "glb_axis_dir": [
+    0.0,
+    -0.5,
+    -0.866
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "innernozzle.R"
+   ],
+   "glb_nodes": [
+    "i10_innernozzle.R",
+    "i11_innernozzle.R",
+    "i12_innernozzle.R",
+    "i13_innernozzle.R",
+    "i14_innernozzle.R",
+    "i15_innernozzle.R",
+    "i16_innernozzle.R",
+    "i17_innernozzle.R",
+    "i18_innernozzle.R",
+    "i19_innernozzle.R",
+    "i20_innernozzle.R",
+    "i3_innernozzle.R"
+   ],
+   "property": "controls/engines/engine[0]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     0.8660254037844386,
+     -0.5000000000000001
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    -0.7519999999999999,
+    0.1790704155516198
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    0.1791,
+    0.752
+   ],
+   "glb_axis_dir": [
+    0.0,
+    -0.5,
+    -0.866
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "outernozzle.L"
+   ],
+   "glb_nodes": [
+    "i10_outernozzle.L",
+    "i11_outernozzle.L",
+    "i12_outernozzle.L",
+    "i13_outernozzle.L",
+    "i14_outernozzle.L",
+    "i15_outernozzle.L",
+    "i16_outernozzle.L",
+    "i17_outernozzle.L",
+    "i18_outernozzle.L",
+    "i19_outernozzle.L",
+    "i20_outernozzle.L",
+    "i3_outernozzle.L"
+   ],
+   "property": "controls/engines/engine[0]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     -0.984807753012208,
+     0.17364817766693041
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    -1.0476443487421376,
+    -0.6900696470723726
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    -0.6901,
+    1.0476
+   ],
+   "glb_axis_dir": [
+    0.0,
+    0.1736,
+    0.9848
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "innernozzle.L"
+   ],
+   "glb_nodes": [
+    "i10_innernozzle.L",
+    "i11_innernozzle.L",
+    "i12_innernozzle.L",
+    "i13_innernozzle.L",
+    "i14_innernozzle.L",
+    "i15_innernozzle.L",
+    "i16_innernozzle.L",
+    "i17_innernozzle.L",
+    "i18_innernozzle.L",
+    "i19_innernozzle.L",
+    "i20_innernozzle.L",
+    "i3_innernozzle.L"
+   ],
+   "property": "controls/engines/engine[0]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     -0.984807753012208,
+     0.17364817766693041
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    -1.0281957528434413,
+    -0.5797711787350053
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    -0.5798,
+    1.0282
+   ],
+   "glb_axis_dir": [
+    0.0,
+    0.1736,
+    0.9848
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "outernozzle.R"
+   ],
+   "glb_nodes": [
+    "i10_outernozzle.R",
+    "i11_outernozzle.R",
+    "i12_outernozzle.R",
+    "i13_outernozzle.R",
+    "i14_outernozzle.R",
+    "i15_outernozzle.R",
+    "i16_outernozzle.R",
+    "i17_outernozzle.R",
+    "i18_outernozzle.R",
+    "i19_outernozzle.R",
+    "i20_outernozzle.R",
+    "i3_outernozzle.R"
+   ],
+   "property": "controls/engines/engine[0]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     0.984807753012208,
+     -0.17364817766693041
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    -0.8663556512578623,
+    0.3380696470723726
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    0.3381,
+    0.8664
+   ],
+   "glb_axis_dir": [
+    0.0,
+    -0.1736,
+    -0.9848
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "innernozzle.R"
+   ],
+   "glb_nodes": [
+    "i10_innernozzle.R",
+    "i11_innernozzle.R",
+    "i12_innernozzle.R",
+    "i13_innernozzle.R",
+    "i14_innernozzle.R",
+    "i15_innernozzle.R",
+    "i16_innernozzle.R",
+    "i17_innernozzle.R",
+    "i18_innernozzle.R",
+    "i19_innernozzle.R",
+    "i20_innernozzle.R",
+    "i3_innernozzle.R"
+   ],
+   "property": "controls/engines/engine[0]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     0.984807753012208,
+     -0.17364817766693041
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    -0.8858042471565585,
+    0.2277711787350053
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    0.2278,
+    0.8858
+   ],
+   "glb_axis_dir": [
+    0.0,
+    -0.1736,
+    -0.9848
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "outernozzle.L"
+   ],
+   "glb_nodes": [
+    "i10_outernozzle.L",
+    "i11_outernozzle.L",
+    "i12_outernozzle.L",
+    "i13_outernozzle.L",
+    "i14_outernozzle.L",
+    "i15_outernozzle.L",
+    "i16_outernozzle.L",
+    "i17_outernozzle.L",
+    "i18_outernozzle.L",
+    "i19_outernozzle.L",
+    "i20_outernozzle.L",
+    "i3_outernozzle.L"
+   ],
+   "property": "controls/engines/engine[0]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     -0.984807753012208,
+     -0.1736481776669303
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    -0.8663556512578623,
+    -0.6900696470723726
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    -0.6901,
+    0.8664
+   ],
+   "glb_axis_dir": [
+    0.0,
+    -0.1736,
+    0.9848
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "innernozzle.L"
+   ],
+   "glb_nodes": [
+    "i10_innernozzle.L",
+    "i11_innernozzle.L",
+    "i12_innernozzle.L",
+    "i13_innernozzle.L",
+    "i14_innernozzle.L",
+    "i15_innernozzle.L",
+    "i16_innernozzle.L",
+    "i17_innernozzle.L",
+    "i18_innernozzle.L",
+    "i19_innernozzle.L",
+    "i20_innernozzle.L",
+    "i3_innernozzle.L"
+   ],
+   "property": "controls/engines/engine[0]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     -0.984807753012208,
+     -0.1736481776669303
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    -0.8858042471565586,
+    -0.5797711787350053
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    -0.5798,
+    0.8858
+   ],
+   "glb_axis_dir": [
+    0.0,
+    -0.1736,
+    0.9848
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "outernozzle.R"
+   ],
+   "glb_nodes": [
+    "i10_outernozzle.R",
+    "i11_outernozzle.R",
+    "i12_outernozzle.R",
+    "i13_outernozzle.R",
+    "i14_outernozzle.R",
+    "i15_outernozzle.R",
+    "i16_outernozzle.R",
+    "i17_outernozzle.R",
+    "i18_outernozzle.R",
+    "i19_outernozzle.R",
+    "i20_outernozzle.R",
+    "i3_outernozzle.R"
+   ],
+   "property": "controls/engines/engine[0]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     0.984807753012208,
+     0.1736481776669303
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    -1.0476443487421376,
+    0.3380696470723726
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    0.3381,
+    1.0476
+   ],
+   "glb_axis_dir": [
+    0.0,
+    0.1736,
+    -0.9848
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "innernozzle.R"
+   ],
+   "glb_nodes": [
+    "i10_innernozzle.R",
+    "i11_innernozzle.R",
+    "i12_innernozzle.R",
+    "i13_innernozzle.R",
+    "i14_innernozzle.R",
+    "i15_innernozzle.R",
+    "i16_innernozzle.R",
+    "i17_innernozzle.R",
+    "i18_innernozzle.R",
+    "i19_innernozzle.R",
+    "i20_innernozzle.R",
+    "i3_innernozzle.R"
+   ],
+   "property": "controls/engines/engine[0]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     0.984807753012208,
+     0.1736481776669303
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    -1.0281957528434413,
+    0.2277711787350053
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    0.2278,
+    1.0282
+   ],
+   "glb_axis_dir": [
+    0.0,
+    0.1736,
+    -0.9848
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "outernozzle.L"
+   ],
+   "glb_nodes": [
+    "i10_outernozzle.L",
+    "i11_outernozzle.L",
+    "i12_outernozzle.L",
+    "i13_outernozzle.L",
+    "i14_outernozzle.L",
+    "i15_outernozzle.L",
+    "i16_outernozzle.L",
+    "i17_outernozzle.L",
+    "i18_outernozzle.L",
+    "i19_outernozzle.L",
+    "i20_outernozzle.L",
+    "i3_outernozzle.L"
+   ],
+   "property": "controls/engines/engine[0]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     -0.8660254037844387,
+     -0.4999999999999998
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    -0.6960000000000001,
+    -0.6280652607754771
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    -0.6281,
+    0.696
+   ],
+   "glb_axis_dir": [
+    0.0,
+    -0.5,
+    0.866
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "innernozzle.L"
+   ],
+   "glb_nodes": [
+    "i10_innernozzle.L",
+    "i11_innernozzle.L",
+    "i12_innernozzle.L",
+    "i13_innernozzle.L",
+    "i14_innernozzle.L",
+    "i15_innernozzle.L",
+    "i16_innernozzle.L",
+    "i17_innernozzle.L",
+    "i18_innernozzle.L",
+    "i19_innernozzle.L",
+    "i20_innernozzle.L",
+    "i3_innernozzle.L"
+   ],
+   "property": "controls/engines/engine[0]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     -0.8660254037844387,
+     -0.4999999999999998
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    -0.752,
+    -0.5310704155516198
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    -0.5311,
+    0.752
+   ],
+   "glb_axis_dir": [
+    0.0,
+    -0.5,
+    0.866
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "outernozzle.R"
+   ],
+   "glb_nodes": [
+    "i10_outernozzle.R",
+    "i11_outernozzle.R",
+    "i12_outernozzle.R",
+    "i13_outernozzle.R",
+    "i14_outernozzle.R",
+    "i15_outernozzle.R",
+    "i16_outernozzle.R",
+    "i17_outernozzle.R",
+    "i18_outernozzle.R",
+    "i19_outernozzle.R",
+    "i20_outernozzle.R",
+    "i3_outernozzle.R"
+   ],
+   "property": "controls/engines/engine[0]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     0.8660254037844387,
+     0.4999999999999998
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    -1.218,
+    0.27606526077547705
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    0.2761,
+    1.218
+   ],
+   "glb_axis_dir": [
+    0.0,
+    0.5,
+    -0.866
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "innernozzle.R"
+   ],
+   "glb_nodes": [
+    "i10_innernozzle.R",
+    "i11_innernozzle.R",
+    "i12_innernozzle.R",
+    "i13_innernozzle.R",
+    "i14_innernozzle.R",
+    "i15_innernozzle.R",
+    "i16_innernozzle.R",
+    "i17_innernozzle.R",
+    "i18_innernozzle.R",
+    "i19_innernozzle.R",
+    "i20_innernozzle.R",
+    "i3_innernozzle.R"
+   ],
+   "property": "controls/engines/engine[0]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     0.8660254037844387,
+     0.4999999999999998
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    -1.162,
+    0.17907041555161984
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    0.1791,
+    1.162
+   ],
+   "glb_axis_dir": [
+    0.0,
+    0.5,
+    -0.866
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "outernozzle.L"
+   ],
+   "glb_nodes": [
+    "i10_outernozzle.L",
+    "i11_outernozzle.L",
+    "i12_outernozzle.L",
+    "i13_outernozzle.L",
+    "i14_outernozzle.L",
+    "i15_outernozzle.L",
+    "i16_outernozzle.L",
+    "i17_outernozzle.L",
+    "i18_outernozzle.L",
+    "i19_outernozzle.L",
+    "i20_outernozzle.L",
+    "i3_outernozzle.L"
+   ],
+   "property": "controls/engines/engine[0]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     -0.6427876096865395,
+     -0.7660444431189779
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    -0.5571248006918934,
+    -0.5115351322563736
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    -0.5115,
+    0.5571
+   ],
+   "glb_axis_dir": [
+    0.0,
+    -0.766,
+    0.6428
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "innernozzle.L"
+   ],
+   "glb_nodes": [
+    "i10_innernozzle.L",
+    "i11_innernozzle.L",
+    "i12_innernozzle.L",
+    "i13_innernozzle.L",
+    "i14_innernozzle.L",
+    "i15_innernozzle.L",
+    "i16_innernozzle.L",
+    "i17_innernozzle.L",
+    "i18_innernozzle.L",
+    "i19_innernozzle.L",
+    "i20_innernozzle.L",
+    "i3_innernozzle.L"
+   ],
+   "property": "controls/engines/engine[0]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     -0.6427876096865395,
+     -0.7660444431189779
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    -0.6429217783212191,
+    -0.43954291997148115
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    -0.4395,
+    0.6429
+   ],
+   "glb_axis_dir": [
+    0.0,
+    -0.766,
+    0.6428
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "outernozzle.R"
+   ],
+   "glb_nodes": [
+    "i10_outernozzle.R",
+    "i11_outernozzle.R",
+    "i12_outernozzle.R",
+    "i13_outernozzle.R",
+    "i14_outernozzle.R",
+    "i15_outernozzle.R",
+    "i16_outernozzle.R",
+    "i17_outernozzle.R",
+    "i18_outernozzle.R",
+    "i19_outernozzle.R",
+    "i20_outernozzle.R",
+    "i3_outernozzle.R"
+   ],
+   "property": "controls/engines/engine[0]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     0.6427876096865395,
+     0.7660444431189779
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    -1.3568751993081065,
+    0.1595351322563736
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    0.1595,
+    1.3569
+   ],
+   "glb_axis_dir": [
+    0.0,
+    0.766,
+    -0.6428
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "innernozzle.R"
+   ],
+   "glb_nodes": [
+    "i10_innernozzle.R",
+    "i11_innernozzle.R",
+    "i12_innernozzle.R",
+    "i13_innernozzle.R",
+    "i14_innernozzle.R",
+    "i15_innernozzle.R",
+    "i16_innernozzle.R",
+    "i17_innernozzle.R",
+    "i18_innernozzle.R",
+    "i19_innernozzle.R",
+    "i20_innernozzle.R",
+    "i3_innernozzle.R"
+   ],
+   "property": "controls/engines/engine[0]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     0.6427876096865395,
+     0.7660444431189779
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    -1.2710782216787808,
+    0.08754291997148117
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    0.0875,
+    1.2711
+   ],
+   "glb_axis_dir": [
+    0.0,
+    0.766,
+    -0.6428
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "outernozzle.L"
+   ],
+   "glb_nodes": [
+    "i10_outernozzle.L",
+    "i11_outernozzle.L",
+    "i12_outernozzle.L",
+    "i13_outernozzle.L",
+    "i14_outernozzle.L",
+    "i15_outernozzle.L",
+    "i16_outernozzle.L",
+    "i17_outernozzle.L",
+    "i18_outernozzle.L",
+    "i19_outernozzle.L",
+    "i20_outernozzle.L",
+    "i3_outernozzle.L"
+   ],
+   "property": "controls/engines/engine[0]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     -0.3420201433256689,
+     -0.9396926207859083
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    -0.4664804519497558,
+    -0.3545345148159992
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    -0.3545,
+    0.4665
+   ],
+   "glb_axis_dir": [
+    0.0,
+    -0.9397,
+    0.342
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "innernozzle.L"
+   ],
+   "glb_nodes": [
+    "i10_innernozzle.L",
+    "i11_innernozzle.L",
+    "i12_innernozzle.L",
+    "i13_innernozzle.L",
+    "i14_innernozzle.L",
+    "i15_innernozzle.L",
+    "i16_innernozzle.L",
+    "i17_innernozzle.L",
+    "i18_innernozzle.L",
+    "i19_innernozzle.L",
+    "i20_innernozzle.L",
+    "i3_innernozzle.L"
+   ],
+   "property": "controls/engines/engine[0]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     -0.3420201433256689,
+     -0.9396926207859083
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    -0.5717260254777776,
+    -0.31622825876352423
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    -0.3162,
+    0.5717
+   ],
+   "glb_axis_dir": [
+    0.0,
+    -0.9397,
+    0.342
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "outernozzle.R"
+   ],
+   "glb_nodes": [
+    "i10_outernozzle.R",
+    "i11_outernozzle.R",
+    "i12_outernozzle.R",
+    "i13_outernozzle.R",
+    "i14_outernozzle.R",
+    "i15_outernozzle.R",
+    "i16_outernozzle.R",
+    "i17_outernozzle.R",
+    "i18_outernozzle.R",
+    "i19_outernozzle.R",
+    "i20_outernozzle.R",
+    "i3_outernozzle.R"
+   ],
+   "property": "controls/engines/engine[0]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     0.3420201433256689,
+     0.9396926207859083
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    -1.447519548050244,
+    0.0025345148159991726
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    0.0025,
+    1.4475
+   ],
+   "glb_axis_dir": [
+    0.0,
+    0.9397,
+    -0.342
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "innernozzle.R"
+   ],
+   "glb_nodes": [
+    "i10_innernozzle.R",
+    "i11_innernozzle.R",
+    "i12_innernozzle.R",
+    "i13_innernozzle.R",
+    "i14_innernozzle.R",
+    "i15_innernozzle.R",
+    "i16_innernozzle.R",
+    "i17_innernozzle.R",
+    "i18_innernozzle.R",
+    "i19_innernozzle.R",
+    "i20_innernozzle.R",
+    "i3_innernozzle.R"
+   ],
+   "property": "controls/engines/engine[0]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     0.3420201433256689,
+     0.9396926207859083
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    -1.3422739745222223,
+    -0.03577174123647575
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    -0.0358,
+    1.3423
+   ],
+   "glb_axis_dir": [
+    0.0,
+    0.9397,
+    -0.342
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "outernozzle.L"
+   ],
+   "glb_nodes": [
+    "i10_outernozzle.L",
+    "i11_outernozzle.L",
+    "i12_outernozzle.L",
+    "i13_outernozzle.L",
+    "i14_outernozzle.L",
+    "i15_outernozzle.L",
+    "i16_outernozzle.L",
+    "i17_outernozzle.L",
+    "i18_outernozzle.L",
+    "i19_outernozzle.L",
+    "i20_outernozzle.L",
+    "i3_outernozzle.L"
+   ],
+   "property": "controls/engines/engine[1]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     0.0,
+     1.0
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    0.43499999999999994,
+    -0.176
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    -0.176,
+    -0.435
+   ],
+   "glb_axis_dir": [
+    0.0,
+    1.0,
+    -0.0
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "innernozzle.L"
+   ],
+   "glb_nodes": [
+    "i10_innernozzle.L",
+    "i11_innernozzle.L",
+    "i12_innernozzle.L",
+    "i13_innernozzle.L",
+    "i14_innernozzle.L",
+    "i15_innernozzle.L",
+    "i16_innernozzle.L",
+    "i17_innernozzle.L",
+    "i18_innernozzle.L",
+    "i19_innernozzle.L",
+    "i20_innernozzle.L",
+    "i3_innernozzle.L"
+   ],
+   "property": "controls/engines/engine[1]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     0.0,
+     1.0
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    0.5469999999999999,
+    -0.176
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    -0.176,
+    -0.547
+   ],
+   "glb_axis_dir": [
+    0.0,
+    1.0,
+    -0.0
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "outernozzle.R"
+   ],
+   "glb_nodes": [
+    "i10_outernozzle.R",
+    "i11_outernozzle.R",
+    "i12_outernozzle.R",
+    "i13_outernozzle.R",
+    "i14_outernozzle.R",
+    "i15_outernozzle.R",
+    "i16_outernozzle.R",
+    "i17_outernozzle.R",
+    "i18_outernozzle.R",
+    "i19_outernozzle.R",
+    "i20_outernozzle.R",
+    "i3_outernozzle.R"
+   ],
+   "property": "controls/engines/engine[1]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     0.0,
+     -1.0
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    1.479,
+    -0.176
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    -0.176,
+    -1.479
+   ],
+   "glb_axis_dir": [
+    0.0,
+    -1.0,
+    -0.0
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "innernozzle.R"
+   ],
+   "glb_nodes": [
+    "i10_innernozzle.R",
+    "i11_innernozzle.R",
+    "i12_innernozzle.R",
+    "i13_innernozzle.R",
+    "i14_innernozzle.R",
+    "i15_innernozzle.R",
+    "i16_innernozzle.R",
+    "i17_innernozzle.R",
+    "i18_innernozzle.R",
+    "i19_innernozzle.R",
+    "i20_innernozzle.R",
+    "i3_innernozzle.R"
+   ],
+   "property": "controls/engines/engine[1]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     0.0,
+     -1.0
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    1.367,
+    -0.176
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    -0.176,
+    -1.367
+   ],
+   "glb_axis_dir": [
+    0.0,
+    -1.0,
+    -0.0
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "outernozzle.L"
+   ],
+   "glb_nodes": [
+    "i10_outernozzle.L",
+    "i11_outernozzle.L",
+    "i12_outernozzle.L",
+    "i13_outernozzle.L",
+    "i14_outernozzle.L",
+    "i15_outernozzle.L",
+    "i16_outernozzle.L",
+    "i17_outernozzle.L",
+    "i18_outernozzle.L",
+    "i19_outernozzle.L",
+    "i20_outernozzle.L",
+    "i3_outernozzle.L"
+   ],
+   "property": "controls/engines/engine[1]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     -0.3420201433256687,
+     0.9396926207859084
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    0.46648045194975574,
+    -0.35453451481599907
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    -0.3545,
+    -0.4665
+   ],
+   "glb_axis_dir": [
+    0.0,
+    0.9397,
+    0.342
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "innernozzle.L"
+   ],
+   "glb_nodes": [
+    "i10_innernozzle.L",
+    "i11_innernozzle.L",
+    "i12_innernozzle.L",
+    "i13_innernozzle.L",
+    "i14_innernozzle.L",
+    "i15_innernozzle.L",
+    "i16_innernozzle.L",
+    "i17_innernozzle.L",
+    "i18_innernozzle.L",
+    "i19_innernozzle.L",
+    "i20_innernozzle.L",
+    "i3_innernozzle.L"
+   ],
+   "property": "controls/engines/engine[1]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     -0.3420201433256687,
+     0.9396926207859084
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    0.5717260254777775,
+    -0.3162282587635241
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    -0.3162,
+    -0.5717
+   ],
+   "glb_axis_dir": [
+    0.0,
+    0.9397,
+    0.342
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "outernozzle.R"
+   ],
+   "glb_nodes": [
+    "i10_outernozzle.R",
+    "i11_outernozzle.R",
+    "i12_outernozzle.R",
+    "i13_outernozzle.R",
+    "i14_outernozzle.R",
+    "i15_outernozzle.R",
+    "i16_outernozzle.R",
+    "i17_outernozzle.R",
+    "i18_outernozzle.R",
+    "i19_outernozzle.R",
+    "i20_outernozzle.R",
+    "i3_outernozzle.R"
+   ],
+   "property": "controls/engines/engine[1]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     0.3420201433256687,
+     -0.9396926207859084
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    1.447519548050244,
+    0.0025345148159990893
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    0.0025,
+    -1.4475
+   ],
+   "glb_axis_dir": [
+    0.0,
+    -0.9397,
+    -0.342
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "innernozzle.R"
+   ],
+   "glb_nodes": [
+    "i10_innernozzle.R",
+    "i11_innernozzle.R",
+    "i12_innernozzle.R",
+    "i13_innernozzle.R",
+    "i14_innernozzle.R",
+    "i15_innernozzle.R",
+    "i16_innernozzle.R",
+    "i17_innernozzle.R",
+    "i18_innernozzle.R",
+    "i19_innernozzle.R",
+    "i20_innernozzle.R",
+    "i3_innernozzle.R"
+   ],
+   "property": "controls/engines/engine[1]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     0.3420201433256687,
+     -0.9396926207859084
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    1.3422739745222225,
+    -0.035771741236475835
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    -0.0358,
+    -1.3423
+   ],
+   "glb_axis_dir": [
+    0.0,
+    -0.9397,
+    -0.342
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "outernozzle.L"
+   ],
+   "glb_nodes": [
+    "i10_outernozzle.L",
+    "i11_outernozzle.L",
+    "i12_outernozzle.L",
+    "i13_outernozzle.L",
+    "i14_outernozzle.L",
+    "i15_outernozzle.L",
+    "i16_outernozzle.L",
+    "i17_outernozzle.L",
+    "i18_outernozzle.L",
+    "i19_outernozzle.L",
+    "i20_outernozzle.L",
+    "i3_outernozzle.L"
+   ],
+   "property": "controls/engines/engine[1]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     -0.6427876096865393,
+     0.766044443118978
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    0.5571248006918934,
+    -0.5115351322563735
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    -0.5115,
+    -0.5571
+   ],
+   "glb_axis_dir": [
+    0.0,
+    0.766,
+    0.6428
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "innernozzle.L"
+   ],
+   "glb_nodes": [
+    "i10_innernozzle.L",
+    "i11_innernozzle.L",
+    "i12_innernozzle.L",
+    "i13_innernozzle.L",
+    "i14_innernozzle.L",
+    "i15_innernozzle.L",
+    "i16_innernozzle.L",
+    "i17_innernozzle.L",
+    "i18_innernozzle.L",
+    "i19_innernozzle.L",
+    "i20_innernozzle.L",
+    "i3_innernozzle.L"
+   ],
+   "property": "controls/engines/engine[1]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     -0.6427876096865393,
+     0.766044443118978
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    0.642921778321219,
+    -0.4395429199714811
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    -0.4395,
+    -0.6429
+   ],
+   "glb_axis_dir": [
+    0.0,
+    0.766,
+    0.6428
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "outernozzle.R"
+   ],
+   "glb_nodes": [
+    "i10_outernozzle.R",
+    "i11_outernozzle.R",
+    "i12_outernozzle.R",
+    "i13_outernozzle.R",
+    "i14_outernozzle.R",
+    "i15_outernozzle.R",
+    "i16_outernozzle.R",
+    "i17_outernozzle.R",
+    "i18_outernozzle.R",
+    "i19_outernozzle.R",
+    "i20_outernozzle.R",
+    "i3_outernozzle.R"
+   ],
+   "property": "controls/engines/engine[1]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     0.6427876096865393,
+     -0.766044443118978
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    1.3568751993081065,
+    0.1595351322563735
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    0.1595,
+    -1.3569
+   ],
+   "glb_axis_dir": [
+    0.0,
+    -0.766,
+    -0.6428
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "innernozzle.R"
+   ],
+   "glb_nodes": [
+    "i10_innernozzle.R",
+    "i11_innernozzle.R",
+    "i12_innernozzle.R",
+    "i13_innernozzle.R",
+    "i14_innernozzle.R",
+    "i15_innernozzle.R",
+    "i16_innernozzle.R",
+    "i17_innernozzle.R",
+    "i18_innernozzle.R",
+    "i19_innernozzle.R",
+    "i20_innernozzle.R",
+    "i3_innernozzle.R"
+   ],
+   "property": "controls/engines/engine[1]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     0.6427876096865393,
+     -0.766044443118978
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    1.2710782216787808,
+    0.08754291997148111
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    0.0875,
+    -1.2711
+   ],
+   "glb_axis_dir": [
+    0.0,
+    -0.766,
+    -0.6428
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "outernozzle.L"
+   ],
+   "glb_nodes": [
+    "i10_outernozzle.L",
+    "i11_outernozzle.L",
+    "i12_outernozzle.L",
+    "i13_outernozzle.L",
+    "i14_outernozzle.L",
+    "i15_outernozzle.L",
+    "i16_outernozzle.L",
+    "i17_outernozzle.L",
+    "i18_outernozzle.L",
+    "i19_outernozzle.L",
+    "i20_outernozzle.L",
+    "i3_outernozzle.L"
+   ],
+   "property": "controls/engines/engine[1]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     -0.8660254037844386,
+     0.5000000000000001
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    0.696,
+    -0.628065260775477
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    -0.6281,
+    -0.696
+   ],
+   "glb_axis_dir": [
+    0.0,
+    0.5,
+    0.866
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "innernozzle.L"
+   ],
+   "glb_nodes": [
+    "i10_innernozzle.L",
+    "i11_innernozzle.L",
+    "i12_innernozzle.L",
+    "i13_innernozzle.L",
+    "i14_innernozzle.L",
+    "i15_innernozzle.L",
+    "i16_innernozzle.L",
+    "i17_innernozzle.L",
+    "i18_innernozzle.L",
+    "i19_innernozzle.L",
+    "i20_innernozzle.L",
+    "i3_innernozzle.L"
+   ],
+   "property": "controls/engines/engine[1]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     -0.8660254037844386,
+     0.5000000000000001
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    0.7519999999999999,
+    -0.5310704155516197
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    -0.5311,
+    -0.752
+   ],
+   "glb_axis_dir": [
+    0.0,
+    0.5,
+    0.866
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "outernozzle.R"
+   ],
+   "glb_nodes": [
+    "i10_outernozzle.R",
+    "i11_outernozzle.R",
+    "i12_outernozzle.R",
+    "i13_outernozzle.R",
+    "i14_outernozzle.R",
+    "i15_outernozzle.R",
+    "i16_outernozzle.R",
+    "i17_outernozzle.R",
+    "i18_outernozzle.R",
+    "i19_outernozzle.R",
+    "i20_outernozzle.R",
+    "i3_outernozzle.R"
+   ],
+   "property": "controls/engines/engine[1]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     0.8660254037844386,
+     -0.5000000000000001
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    1.218,
+    0.276065260775477
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    0.2761,
+    -1.218
+   ],
+   "glb_axis_dir": [
+    0.0,
+    -0.5,
+    -0.866
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "innernozzle.R"
+   ],
+   "glb_nodes": [
+    "i10_innernozzle.R",
+    "i11_innernozzle.R",
+    "i12_innernozzle.R",
+    "i13_innernozzle.R",
+    "i14_innernozzle.R",
+    "i15_innernozzle.R",
+    "i16_innernozzle.R",
+    "i17_innernozzle.R",
+    "i18_innernozzle.R",
+    "i19_innernozzle.R",
+    "i20_innernozzle.R",
+    "i3_innernozzle.R"
+   ],
+   "property": "controls/engines/engine[1]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     0.8660254037844386,
+     -0.5000000000000001
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    1.162,
+    0.1790704155516198
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    0.1791,
+    -1.162
+   ],
+   "glb_axis_dir": [
+    0.0,
+    -0.5,
+    -0.866
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "outernozzle.L"
+   ],
+   "glb_nodes": [
+    "i10_outernozzle.L",
+    "i11_outernozzle.L",
+    "i12_outernozzle.L",
+    "i13_outernozzle.L",
+    "i14_outernozzle.L",
+    "i15_outernozzle.L",
+    "i16_outernozzle.L",
+    "i17_outernozzle.L",
+    "i18_outernozzle.L",
+    "i19_outernozzle.L",
+    "i20_outernozzle.L",
+    "i3_outernozzle.L"
+   ],
+   "property": "controls/engines/engine[1]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     -0.984807753012208,
+     0.17364817766693041
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    0.8663556512578623,
+    -0.6900696470723726
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    -0.6901,
+    -0.8664
+   ],
+   "glb_axis_dir": [
+    0.0,
+    0.1736,
+    0.9848
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "innernozzle.L"
+   ],
+   "glb_nodes": [
+    "i10_innernozzle.L",
+    "i11_innernozzle.L",
+    "i12_innernozzle.L",
+    "i13_innernozzle.L",
+    "i14_innernozzle.L",
+    "i15_innernozzle.L",
+    "i16_innernozzle.L",
+    "i17_innernozzle.L",
+    "i18_innernozzle.L",
+    "i19_innernozzle.L",
+    "i20_innernozzle.L",
+    "i3_innernozzle.L"
+   ],
+   "property": "controls/engines/engine[1]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     -0.984807753012208,
+     0.17364817766693041
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    0.8858042471565585,
+    -0.5797711787350053
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    -0.5798,
+    -0.8858
+   ],
+   "glb_axis_dir": [
+    0.0,
+    0.1736,
+    0.9848
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "outernozzle.R"
+   ],
+   "glb_nodes": [
+    "i10_outernozzle.R",
+    "i11_outernozzle.R",
+    "i12_outernozzle.R",
+    "i13_outernozzle.R",
+    "i14_outernozzle.R",
+    "i15_outernozzle.R",
+    "i16_outernozzle.R",
+    "i17_outernozzle.R",
+    "i18_outernozzle.R",
+    "i19_outernozzle.R",
+    "i20_outernozzle.R",
+    "i3_outernozzle.R"
+   ],
+   "property": "controls/engines/engine[1]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     0.984807753012208,
+     -0.17364817766693041
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    1.0476443487421376,
+    0.3380696470723726
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    0.3381,
+    -1.0476
+   ],
+   "glb_axis_dir": [
+    0.0,
+    -0.1736,
+    -0.9848
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "innernozzle.R"
+   ],
+   "glb_nodes": [
+    "i10_innernozzle.R",
+    "i11_innernozzle.R",
+    "i12_innernozzle.R",
+    "i13_innernozzle.R",
+    "i14_innernozzle.R",
+    "i15_innernozzle.R",
+    "i16_innernozzle.R",
+    "i17_innernozzle.R",
+    "i18_innernozzle.R",
+    "i19_innernozzle.R",
+    "i20_innernozzle.R",
+    "i3_innernozzle.R"
+   ],
+   "property": "controls/engines/engine[1]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     0.984807753012208,
+     -0.17364817766693041
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    1.0281957528434413,
+    0.2277711787350053
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    0.2278,
+    -1.0282
+   ],
+   "glb_axis_dir": [
+    0.0,
+    -0.1736,
+    -0.9848
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "outernozzle.L"
+   ],
+   "glb_nodes": [
+    "i10_outernozzle.L",
+    "i11_outernozzle.L",
+    "i12_outernozzle.L",
+    "i13_outernozzle.L",
+    "i14_outernozzle.L",
+    "i15_outernozzle.L",
+    "i16_outernozzle.L",
+    "i17_outernozzle.L",
+    "i18_outernozzle.L",
+    "i19_outernozzle.L",
+    "i20_outernozzle.L",
+    "i3_outernozzle.L"
+   ],
+   "property": "controls/engines/engine[1]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     -0.984807753012208,
+     -0.1736481776669303
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    1.0476443487421376,
+    -0.6900696470723726
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    -0.6901,
+    -1.0476
+   ],
+   "glb_axis_dir": [
+    0.0,
+    -0.1736,
+    0.9848
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "innernozzle.L"
+   ],
+   "glb_nodes": [
+    "i10_innernozzle.L",
+    "i11_innernozzle.L",
+    "i12_innernozzle.L",
+    "i13_innernozzle.L",
+    "i14_innernozzle.L",
+    "i15_innernozzle.L",
+    "i16_innernozzle.L",
+    "i17_innernozzle.L",
+    "i18_innernozzle.L",
+    "i19_innernozzle.L",
+    "i20_innernozzle.L",
+    "i3_innernozzle.L"
+   ],
+   "property": "controls/engines/engine[1]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     -0.984807753012208,
+     -0.1736481776669303
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    1.0281957528434413,
+    -0.5797711787350053
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    -0.5798,
+    -1.0282
+   ],
+   "glb_axis_dir": [
+    0.0,
+    -0.1736,
+    0.9848
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "outernozzle.R"
+   ],
+   "glb_nodes": [
+    "i10_outernozzle.R",
+    "i11_outernozzle.R",
+    "i12_outernozzle.R",
+    "i13_outernozzle.R",
+    "i14_outernozzle.R",
+    "i15_outernozzle.R",
+    "i16_outernozzle.R",
+    "i17_outernozzle.R",
+    "i18_outernozzle.R",
+    "i19_outernozzle.R",
+    "i20_outernozzle.R",
+    "i3_outernozzle.R"
+   ],
+   "property": "controls/engines/engine[1]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     0.984807753012208,
+     0.1736481776669303
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    0.8663556512578623,
+    0.3380696470723726
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    0.3381,
+    -0.8664
+   ],
+   "glb_axis_dir": [
+    0.0,
+    0.1736,
+    -0.9848
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "innernozzle.R"
+   ],
+   "glb_nodes": [
+    "i10_innernozzle.R",
+    "i11_innernozzle.R",
+    "i12_innernozzle.R",
+    "i13_innernozzle.R",
+    "i14_innernozzle.R",
+    "i15_innernozzle.R",
+    "i16_innernozzle.R",
+    "i17_innernozzle.R",
+    "i18_innernozzle.R",
+    "i19_innernozzle.R",
+    "i20_innernozzle.R",
+    "i3_innernozzle.R"
+   ],
+   "property": "controls/engines/engine[1]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     0.984807753012208,
+     0.1736481776669303
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    0.8858042471565586,
+    0.2277711787350053
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    0.2278,
+    -0.8858
+   ],
+   "glb_axis_dir": [
+    0.0,
+    0.1736,
+    -0.9848
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "outernozzle.L"
+   ],
+   "glb_nodes": [
+    "i10_outernozzle.L",
+    "i11_outernozzle.L",
+    "i12_outernozzle.L",
+    "i13_outernozzle.L",
+    "i14_outernozzle.L",
+    "i15_outernozzle.L",
+    "i16_outernozzle.L",
+    "i17_outernozzle.L",
+    "i18_outernozzle.L",
+    "i19_outernozzle.L",
+    "i20_outernozzle.L",
+    "i3_outernozzle.L"
+   ],
+   "property": "controls/engines/engine[1]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     -0.8660254037844387,
+     -0.4999999999999998
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    1.218,
+    -0.6280652607754771
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    -0.6281,
+    -1.218
+   ],
+   "glb_axis_dir": [
+    0.0,
+    -0.5,
+    0.866
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "innernozzle.L"
+   ],
+   "glb_nodes": [
+    "i10_innernozzle.L",
+    "i11_innernozzle.L",
+    "i12_innernozzle.L",
+    "i13_innernozzle.L",
+    "i14_innernozzle.L",
+    "i15_innernozzle.L",
+    "i16_innernozzle.L",
+    "i17_innernozzle.L",
+    "i18_innernozzle.L",
+    "i19_innernozzle.L",
+    "i20_innernozzle.L",
+    "i3_innernozzle.L"
+   ],
+   "property": "controls/engines/engine[1]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     -0.8660254037844387,
+     -0.4999999999999998
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    1.162,
+    -0.5310704155516198
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    -0.5311,
+    -1.162
+   ],
+   "glb_axis_dir": [
+    0.0,
+    -0.5,
+    0.866
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "outernozzle.R"
+   ],
+   "glb_nodes": [
+    "i10_outernozzle.R",
+    "i11_outernozzle.R",
+    "i12_outernozzle.R",
+    "i13_outernozzle.R",
+    "i14_outernozzle.R",
+    "i15_outernozzle.R",
+    "i16_outernozzle.R",
+    "i17_outernozzle.R",
+    "i18_outernozzle.R",
+    "i19_outernozzle.R",
+    "i20_outernozzle.R",
+    "i3_outernozzle.R"
+   ],
+   "property": "controls/engines/engine[1]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     0.8660254037844387,
+     0.4999999999999998
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    0.6960000000000001,
+    0.27606526077547705
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    0.2761,
+    -0.696
+   ],
+   "glb_axis_dir": [
+    0.0,
+    0.5,
+    -0.866
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "innernozzle.R"
+   ],
+   "glb_nodes": [
+    "i10_innernozzle.R",
+    "i11_innernozzle.R",
+    "i12_innernozzle.R",
+    "i13_innernozzle.R",
+    "i14_innernozzle.R",
+    "i15_innernozzle.R",
+    "i16_innernozzle.R",
+    "i17_innernozzle.R",
+    "i18_innernozzle.R",
+    "i19_innernozzle.R",
+    "i20_innernozzle.R",
+    "i3_innernozzle.R"
+   ],
+   "property": "controls/engines/engine[1]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     0.8660254037844387,
+     0.4999999999999998
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    0.752,
+    0.17907041555161984
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    0.1791,
+    -0.752
+   ],
+   "glb_axis_dir": [
+    0.0,
+    0.5,
+    -0.866
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "outernozzle.L"
+   ],
+   "glb_nodes": [
+    "i10_outernozzle.L",
+    "i11_outernozzle.L",
+    "i12_outernozzle.L",
+    "i13_outernozzle.L",
+    "i14_outernozzle.L",
+    "i15_outernozzle.L",
+    "i16_outernozzle.L",
+    "i17_outernozzle.L",
+    "i18_outernozzle.L",
+    "i19_outernozzle.L",
+    "i20_outernozzle.L",
+    "i3_outernozzle.L"
+   ],
+   "property": "controls/engines/engine[1]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     -0.6427876096865395,
+     -0.7660444431189779
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    1.3568751993081065,
+    -0.5115351322563736
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    -0.5115,
+    -1.3569
+   ],
+   "glb_axis_dir": [
+    0.0,
+    -0.766,
+    0.6428
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "innernozzle.L"
+   ],
+   "glb_nodes": [
+    "i10_innernozzle.L",
+    "i11_innernozzle.L",
+    "i12_innernozzle.L",
+    "i13_innernozzle.L",
+    "i14_innernozzle.L",
+    "i15_innernozzle.L",
+    "i16_innernozzle.L",
+    "i17_innernozzle.L",
+    "i18_innernozzle.L",
+    "i19_innernozzle.L",
+    "i20_innernozzle.L",
+    "i3_innernozzle.L"
+   ],
+   "property": "controls/engines/engine[1]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     -0.6427876096865395,
+     -0.7660444431189779
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    1.2710782216787808,
+    -0.43954291997148115
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    -0.4395,
+    -1.2711
+   ],
+   "glb_axis_dir": [
+    0.0,
+    -0.766,
+    0.6428
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "outernozzle.R"
+   ],
+   "glb_nodes": [
+    "i10_outernozzle.R",
+    "i11_outernozzle.R",
+    "i12_outernozzle.R",
+    "i13_outernozzle.R",
+    "i14_outernozzle.R",
+    "i15_outernozzle.R",
+    "i16_outernozzle.R",
+    "i17_outernozzle.R",
+    "i18_outernozzle.R",
+    "i19_outernozzle.R",
+    "i20_outernozzle.R",
+    "i3_outernozzle.R"
+   ],
+   "property": "controls/engines/engine[1]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     0.6427876096865395,
+     0.7660444431189779
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    0.5571248006918934,
+    0.1595351322563736
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    0.1595,
+    -0.5571
+   ],
+   "glb_axis_dir": [
+    0.0,
+    0.766,
+    -0.6428
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "innernozzle.R"
+   ],
+   "glb_nodes": [
+    "i10_innernozzle.R",
+    "i11_innernozzle.R",
+    "i12_innernozzle.R",
+    "i13_innernozzle.R",
+    "i14_innernozzle.R",
+    "i15_innernozzle.R",
+    "i16_innernozzle.R",
+    "i17_innernozzle.R",
+    "i18_innernozzle.R",
+    "i19_innernozzle.R",
+    "i20_innernozzle.R",
+    "i3_innernozzle.R"
+   ],
+   "property": "controls/engines/engine[1]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     0.6427876096865395,
+     0.7660444431189779
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    0.6429217783212191,
+    0.08754291997148117
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    0.0875,
+    -0.6429
+   ],
+   "glb_axis_dir": [
+    0.0,
+    0.766,
+    -0.6428
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "outernozzle.L"
+   ],
+   "glb_nodes": [
+    "i10_outernozzle.L",
+    "i11_outernozzle.L",
+    "i12_outernozzle.L",
+    "i13_outernozzle.L",
+    "i14_outernozzle.L",
+    "i15_outernozzle.L",
+    "i16_outernozzle.L",
+    "i17_outernozzle.L",
+    "i18_outernozzle.L",
+    "i19_outernozzle.L",
+    "i20_outernozzle.L",
+    "i3_outernozzle.L"
+   ],
+   "property": "controls/engines/engine[1]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     -0.3420201433256689,
+     -0.9396926207859083
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    1.447519548050244,
+    -0.3545345148159992
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    -0.3545,
+    -1.4475
+   ],
+   "glb_axis_dir": [
+    0.0,
+    -0.9397,
+    0.342
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "innernozzle.L"
+   ],
+   "glb_nodes": [
+    "i10_innernozzle.L",
+    "i11_innernozzle.L",
+    "i12_innernozzle.L",
+    "i13_innernozzle.L",
+    "i14_innernozzle.L",
+    "i15_innernozzle.L",
+    "i16_innernozzle.L",
+    "i17_innernozzle.L",
+    "i18_innernozzle.L",
+    "i19_innernozzle.L",
+    "i20_innernozzle.L",
+    "i3_innernozzle.L"
+   ],
+   "property": "controls/engines/engine[1]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     -0.3420201433256689,
+     -0.9396926207859083
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    1.3422739745222223,
+    -0.31622825876352423
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    -0.3162,
+    -1.3423
+   ],
+   "glb_axis_dir": [
+    0.0,
+    -0.9397,
+    0.342
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "outernozzle.R"
+   ],
+   "glb_nodes": [
+    "i10_outernozzle.R",
+    "i11_outernozzle.R",
+    "i12_outernozzle.R",
+    "i13_outernozzle.R",
+    "i14_outernozzle.R",
+    "i15_outernozzle.R",
+    "i16_outernozzle.R",
+    "i17_outernozzle.R",
+    "i18_outernozzle.R",
+    "i19_outernozzle.R",
+    "i20_outernozzle.R",
+    "i3_outernozzle.R"
+   ],
+   "property": "controls/engines/engine[1]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     0.3420201433256689,
+     0.9396926207859083
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    0.4664804519497558,
+    0.0025345148159991726
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    0.0025,
+    -0.4665
+   ],
+   "glb_axis_dir": [
+    0.0,
+    0.9397,
+    -0.342
+   ]
+  },
+  {
+   "type": "rotate",
+   "objects": [
+    "innernozzle.R"
+   ],
+   "glb_nodes": [
+    "i10_innernozzle.R",
+    "i11_innernozzle.R",
+    "i12_innernozzle.R",
+    "i13_innernozzle.R",
+    "i14_innernozzle.R",
+    "i15_innernozzle.R",
+    "i16_innernozzle.R",
+    "i17_innernozzle.R",
+    "i18_innernozzle.R",
+    "i19_innernozzle.R",
+    "i20_innernozzle.R",
+    "i3_innernozzle.R"
+   ],
+   "property": "controls/engines/engine[1]/throttle",
+   "channel": null,
+   "factor": null,
+   "range_deg_or_m": null,
+   "fg_axis": {
+    "dir": [
+     0.0,
+     0.3420201433256689,
+     0.9396926207859083
+    ]
+   },
+   "fg_center_m": [
+    13.847,
+    0.5717260254777776,
+    -0.03577174123647575
+   ],
+   "travel": [
+    0.0,
+    15.0
+   ],
+   "travel_source": "interpolation table",
+   "interpolation": [
+    [
+     0.0,
+     15.0
+    ],
+    [
+     0.4,
+     15.0
+    ],
+    [
+     0.8,
+     10.0
+    ],
+    [
+     1.0,
+     0.0
+    ]
+   ],
+   "glb_center": [
+    13.847,
+    -0.0358,
+    -0.5717
+   ],
+   "glb_axis_dir": [
+    0.0,
+    0.9397,
+    -0.342
+   ]
+  }
+ ],
+ "shown_or_hidden_by_condition": [
+  {
+   "xml": "Mig-29/Models/Mig-29.xml",
+   "type": "range",
+   "objects": [
+    "Cockpit"
+   ],
+   "condition_properties": [],
+   "condition_values": "",
+   "range_m": [
+    "0",
+    "50"
+   ]
+  },
+  {
+   "xml": "Mig-29/Models/Mig-29.xml",
+   "type": "select",
+   "objects": [
+    "gear1.L",
+    "gear2.L",
+    "wheel.L"
+   ],
+   "condition_properties": [
+    "gear/gear[1]/position-norm"
+   ],
+   "condition_values": "gear/gear[1]/position-norm 0.0",
+   "range_m": null
+  },
+  {
+   "xml": "Mig-29/Models/Mig-29.xml",
+   "type": "select",
+   "objects": [
+    "gear1.R",
+    "gear2.R",
+    "wheel.R"
+   ],
+   "condition_properties": [
+    "gear/gear[2]/position-norm"
+   ],
+   "condition_values": "gear/gear[2]/position-norm 0.0",
+   "range_m": null
+  },
+  {
+   "xml": "Mig-29/Models/Mig-29.xml",
+   "type": "select",
+   "objects": [
+    "nosegear1",
+    "nosegear2",
+    "nosewheels",
+    "WheelGuard"
+   ],
+   "condition_properties": [
+    "gear/gear[0]/position-norm"
+   ],
+   "condition_values": "gear/gear[0]/position-norm 0.0",
+   "range_m": null
+  },
+  {
+   "xml": "Mig-29/Models/Mig-29.xml",
+   "type": "select",
+   "objects": [
+    "IntakeScreenL",
+    "IntakeScreenR"
+   ],
+   "condition_properties": [
+    "/gear/gear[1]/wow"
+   ],
+   "condition_values": "/gear/gear[1]/wow",
+   "range_m": null
+  },
+  {
+   "xml": "Mig-29/Models/Mig-29_Reheat.xml",
+   "type": "select",
+   "objects": [
+    "ReheatL"
+   ],
+   "condition_properties": [
+    "sim/multiplay/generic/float[2]",
+    "engines/engine[0]/out-of-fuel"
+   ],
+   "condition_values": "sim/multiplay/generic/float[2] engines/engine[0]/out-of-fuel",
+   "range_m": null
+  },
+  {
+   "xml": "Mig-29/Models/Mig-29_Reheat.xml",
+   "type": "select",
+   "objects": [
+    "ReheatR"
+   ],
+   "condition_properties": [
+    "sim/multiplay/generic/float[3]",
+    "engines/engine[1]/out-of-fuel"
+   ],
+   "condition_values": "sim/multiplay/generic/float[3] engines/engine[1]/out-of-fuel",
+   "range_m": null
+  },
+  {
+   "xml": "Mig-29/Models/Mig-29_Lights.xml",
+   "type": "select",
+   "objects": [
+    "TailLampOn"
+   ],
+   "condition_properties": [
+    "sim/multiplay/generic/float[4]"
+   ],
+   "condition_values": "sim/multiplay/generic/float[4]",
+   "range_m": null
+  },
+  {
+   "xml": "Mig-29/Models/Mig-29_Lights.xml",
+   "type": "select",
+   "objects": [
+    "TailLamp"
+   ],
+   "condition_properties": [
+    "sim/multiplay/generic/float[4]"
+   ],
+   "condition_values": "sim/multiplay/generic/float[4]",
+   "range_m": null
+  },
+  {
+   "xml": "Mig-29/Models/Mig-29_Lights.xml",
+   "type": "select",
+   "objects": [
+    "WingtipLampLOn",
+    "WingtipLampROn"
+   ],
+   "condition_properties": [
+    "/controls/lighting/nav"
+   ],
+   "condition_values": "/controls/lighting/nav",
+   "range_m": null
+  },
+  {
+   "xml": "Mig-29/Models/Mig-29_Lights.xml",
+   "type": "select",
+   "objects": [
+    "WingtipLampL",
+    "WingtipLampR"
+   ],
+   "condition_properties": [
+    "sim/multiplay/generic/float[4]"
+   ],
+   "condition_values": "sim/multiplay/generic/float[4]",
+   "range_m": null
+  },
+  {
+   "xml": "Mig-29/Models/Mig-29_Lights.xml",
+   "type": "select",
+   "objects": [
+    "LightNavGlowL"
+   ],
+   "condition_properties": [
+    "sim/multiplay/generic/float[4]"
+   ],
+   "condition_values": "sim/multiplay/generic/float[4]",
+   "range_m": null
+  },
+  {
+   "xml": "Mig-29/Models/Mig-29_Lights.xml",
+   "type": "select",
+   "objects": [
+    "LightNavGlowR"
+   ],
+   "condition_properties": [
+    "sim/multiplay/generic/float[4]"
+   ],
+   "condition_values": "sim/multiplay/generic/float[4]",
+   "range_m": null
+  },
+  {
+   "xml": "Mig-29/Models/Mig-29_Lights.xml",
+   "type": "select",
+   "objects": [
+    "LightTailGlow"
+   ],
+   "condition_properties": [
+    "sim/multiplay/generic/float[4]"
+   ],
+   "condition_values": "sim/multiplay/generic/float[4]",
+   "range_m": null
+  }
+ ],
+ "skipped_submodels": [
+  {
+   "name": "Cockpit",
+   "file": "Mig-29/Models/Mig-29_Cockpit.xml",
+   "why": "interior/effects sub-model"
+  }
+ ],
+ "propellers_rotors": [],
+ "sounds_in_package": [],
+ "fdm_geometry": {
+  "flight_model": "yasim",
+  "file": "Mig-29-yasim.xml",
+  "gear_contacts": [
+   {
+    "name": "",
+    "fg_m": [
+     6.281,
+     -0.0,
+     -1.739
+    ],
+    "compression_m": 0.3,
+    "retracts": true,
+    "steers": true,
+    "glb": [
+     6.281,
+     -1.739,
+     0.0
+    ],
+    "nearest_gear_node": "i0_nosewheels",
+    "distance_m": 0.001,
+    "node_bottom_y": -1.738,
+    "is_wheel": true
+   },
+   {
+    "name": "",
+    "fg_m": [
+     9.808,
+     -1.57,
+     -1.735
+    ],
+    "compression_m": 0.2,
+    "retracts": true,
+    "steers": false,
+    "glb": [
+     9.808,
+     -1.735,
+     1.57
+    ],
+    "nearest_gear_node": "i0_wheel.L",
+    "distance_m": 0.0,
+    "node_bottom_y": -1.735,
+    "is_wheel": true
+   },
+   {
+    "name": "",
+    "fg_m": [
+     9.808,
+     1.57,
+     -1.735
+    ],
+    "compression_m": 0.2,
+    "retracts": true,
+    "steers": false,
+    "glb": [
+     9.808,
+     -1.735,
+     -1.57
+    ],
+    "nearest_gear_node": "i0_wheel.R",
+    "distance_m": 0.0,
+    "node_bottom_y": -1.735,
+    "is_wheel": true
+   }
+  ],
+  "propellers": [],
+  "rotors": [],
+  "files": [
+   "Mig-29/Mig-29-yasim.xml"
+  ],
+  "gear_contacts_trusted": true,
+  "parked_pitch_deg_nose_up": 0.06
+ },
+ "eye_point": {
+  "fg_m": [
+   4.6,
+   0.0,
+   1.2
+  ],
+  "pitch_offset_deg": -8.0,
+  "fov_deg": 60.0,
+  "glb": [
+   4.6,
+   1.2,
+   -0.0
+  ]
+ },
+ "livery_names": [],
+ "intended_look_images": [
+  "reference/flightgear/Mig-29_thumbnail.jpg"
+ ],
+ "source_extra_files": 5,
+ "sounds_copied": [],
+ "nasal_files": [
+  "Mig-29/Mig-29.nas",
+  "Mig-29/Nasal/Mig-29-menu.nas",
+  "Mig-29/Nasal/Mig-29.nas",
+  "Mig-29/pilot-g.nas"
+ ],
+ "nodes": [
+  {
+   "name": "i0_Canopy",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     3.8493,
+     1.0039,
+     -0.4201
+    ],
+    [
+     5.47,
+     1.5305,
+     0.4201
+    ]
+   ],
+   "has_uv": false,
+   "category": "canopy/glass"
+  },
+  {
+   "name": "i0_CanopyFrame",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     3.7996,
+     0.9475,
+     -0.4553
+    ],
+    [
+     5.8497,
+     1.3863,
+     0.4553
+    ]
+   ],
+   "has_uv": true,
+   "category": "canopy/glass"
+  },
+  {
+   "name": "i0_ChuteCap",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     14.1463,
+     -0.1166,
+     -0.1182
+    ],
+    [
+     14.2661,
+     0.1199,
+     0.1182
+    ]
+   ],
+   "has_uv": false,
+   "category": null
+  },
+  {
+   "name": "i0_ChuteCase",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     13.1319,
+     -0.1166,
+     -0.1182
+    ],
+    [
+     14.1463,
+     0.1199,
+     0.1182
+    ]
+   ],
+   "has_uv": false,
+   "category": null
+  },
+  {
+   "name": "i0_CombustionChamberL",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     12.9725,
+     -0.5929,
+     0.5464
+    ],
+    [
+     14.2257,
+     0.2409,
+     1.3676
+    ]
+   ],
+   "has_uv": false,
+   "category": null
+  },
+  {
+   "name": "i0_CombustionChamberR",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     12.9725,
+     -0.5929,
+     -1.3676
+    ],
+    [
+     14.2257,
+     0.2409,
+     -0.5464
+    ]
+   ],
+   "has_uv": false,
+   "category": null
+  },
+  {
+   "name": "i0_EngineL",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     9.1499,
+     -0.8427,
+     0.3791
+    ],
+    [
+     10.5968,
+     0.0233,
+     1.1016
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i0_EngineR",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     9.1499,
+     -0.8427,
+     -1.1016
+    ],
+    [
+     10.5968,
+     0.0233,
+     -0.379
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i0_FlameholderL",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     13.1351,
+     -0.5752,
+     0.5578
+    ],
+    [
+     13.1351,
+     0.2232,
+     1.3562
+    ]
+   ],
+   "has_uv": false,
+   "category": null
+  },
+  {
+   "name": "i0_FlameholderR",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     13.1351,
+     -0.5752,
+     -1.3562
+    ],
+    [
+     13.1351,
+     0.2232,
+     -0.5578
+    ]
+   ],
+   "has_uv": false,
+   "category": null
+  },
+  {
+   "name": "i0_fuselage",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.0093,
+     -0.9187,
+     -1.8806
+    ],
+    [
+     14.7189,
+     1.3723,
+     1.8806
+    ]
+   ],
+   "has_uv": true,
+   "category": null
+  },
+  {
+   "name": "i0_GearWellL",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     8.1078,
+     -0.304,
+     0.7168
+    ],
+    [
+     10.3685,
+     0.4343,
+     1.652
+    ]
+   ],
+   "has_uv": false,
+   "category": "landing gear"
+  },
+  {
+   "name": "i0_GearWellR",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     8.1078,
+     -0.304,
+     -1.652
+    ],
+    [
+     10.3685,
+     0.4343,
+     -0.7168
+    ]
+   ],
+   "has_uv": false,
+   "category": "landing gear"
+  },
+  {
+   "name": "i0_IntakeScreenL",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     6.2139,
+     -0.8083,
+     0.369
+    ],
+    [
+     6.8735,
+     -0.0543,
+     1.0674
+    ]
+   ],
+   "has_uv": true,
+   "category": "engine"
+  },
+  {
+   "name": "i0_IntakeScreenR",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     6.2139,
+     -0.8083,
+     -1.0674
+    ],
+    [
+     6.8735,
+     -0.0543,
+     -0.369
+    ]
+   ],
+   "has_uv": true,
+   "category": "engine"
+  },
+  {
+   "name": "i0_IRglass",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     2.5349,
+     0.7435,
+     -0.2562
+    ],
+    [
+     2.6206,
+     0.915,
+     -0.0848
+    ]
+   ],
+   "has_uv": false,
+   "category": "canopy/glass"
+  },
+  {
+   "name": "i0_LouverDuctL",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     5.9387,
+     0.0459,
+     0.4912
+    ],
+    [
+     7.3434,
+     0.6259,
+     1.1052
+    ]
+   ],
+   "has_uv": false,
+   "category": null
+  },
+  {
+   "name": "i0_LouverDuctR",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     5.9387,
+     0.0459,
+     -1.1052
+    ],
+    [
+     7.3434,
+     0.6259,
+     -0.4912
+    ]
+   ],
+   "has_uv": false,
+   "category": null
+  },
+  {
+   "name": "i0_LouverFrameL",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     6.15,
+     0.268,
+     0.5795
+    ],
+    [
+     6.8838,
+     0.6177,
+     1.1052
+    ]
+   ],
+   "has_uv": false,
+   "category": null
+  },
+  {
+   "name": "i0_LouverFrameR",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     6.15,
+     0.268,
+     -1.1052
+    ],
+    [
+     6.8838,
+     0.6177,
+     -0.5795
+    ]
+   ],
+   "has_uv": false,
+   "category": null
+  },
+  {
+   "name": "i0_LouversL1",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     5.9387,
+     0.266,
+     0.5795
+    ],
+    [
+     6.15,
+     0.5795,
+     1.1052
+    ]
+   ],
+   "has_uv": false,
+   "category": null
+  },
+  {
+   "name": "i0_LouversL2",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     6.2205,
+     0.3086,
+     0.5795
+    ],
+    [
+     6.4011,
+     0.5923,
+     1.1052
+    ]
+   ],
+   "has_uv": false,
+   "category": null
+  },
+  {
+   "name": "i0_LouversL3",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     6.438,
+     0.3414,
+     0.5795
+    ],
+    [
+     6.6067,
+     0.6044,
+     1.1052
+    ]
+   ],
+   "has_uv": false,
+   "category": null
+  },
+  {
+   "name": "i0_LouversL4",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     6.6464,
+     0.3734,
+     0.5798
+    ],
+    [
+     6.8445,
+     0.6145,
+     1.1052
+    ]
+   ],
+   "has_uv": false,
+   "category": null
+  },
+  {
+   "name": "i0_LouversL5",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     6.8838,
+     0.4093,
+     0.5813
+    ],
+    [
+     7.0919,
+     0.6259,
+     1.1049
+    ]
+   ],
+   "has_uv": false,
+   "category": null
+  },
+  {
+   "name": "i0_LouversR1",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     5.9387,
+     0.266,
+     -1.1052
+    ],
+    [
+     6.15,
+     0.5795,
+     -0.5795
+    ]
+   ],
+   "has_uv": false,
+   "category": null
+  },
+  {
+   "name": "i0_LouversR2",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     6.2205,
+     0.3086,
+     -1.1052
+    ],
+    [
+     6.4011,
+     0.5923,
+     -0.5795
+    ]
+   ],
+   "has_uv": false,
+   "category": null
+  },
+  {
+   "name": "i0_LouversR3",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     6.438,
+     0.3414,
+     -1.1052
+    ],
+    [
+     6.6067,
+     0.6044,
+     -0.5795
+    ]
+   ],
+   "has_uv": false,
+   "category": null
+  },
+  {
+   "name": "i0_LouversR4",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     6.6464,
+     0.3734,
+     -1.1052
+    ],
+    [
+     6.8445,
+     0.6145,
+     -0.5798
+    ]
+   ],
+   "has_uv": false,
+   "category": null
+  },
+  {
+   "name": "i0_LouversR5",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     6.8838,
+     0.4093,
+     -1.1049
+    ],
+    [
+     7.0919,
+     0.6259,
+     -0.5813
+    ]
+   ],
+   "has_uv": false,
+   "category": null
+  },
+  {
+   "name": "i0_nosegeaerwell",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     4.7975,
+     -0.2286,
+     -0.3224
+    ],
+    [
+     7.8558,
+     0.1607,
+     0.3224
+    ]
+   ],
+   "has_uv": false,
+   "category": null
+  },
+  {
+   "name": "i0_Probe",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     -1.0652,
+     -0.1675,
+     -0.0332
+    ],
+    [
+     0.0254,
+     -0.0101,
+     0.0332
+    ]
+   ],
+   "has_uv": true,
+   "category": null
+  },
+  {
+   "name": "i0_StabilizerL",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     12.7682,
+     0.0111,
+     1.7809
+    ],
+    [
+     16.1738,
+     0.177,
+     3.9528
+    ]
+   ],
+   "has_uv": true,
+   "category": "control surface"
+  },
+  {
+   "name": "i0_StabilizerR",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     12.7682,
+     0.0111,
+     -3.9528
+    ],
+    [
+     16.1738,
+     0.177,
+     -1.7809
+    ]
+   ],
+   "has_uv": true,
+   "category": "control surface"
+  },
+  {
+   "name": "i0_Vstabs",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     8.7593,
+     0.1318,
+     -2.0189
+    ],
+    [
+     15.0331,
+     2.6838,
+     2.0189
+    ]
+   ],
+   "has_uv": true,
+   "category": "control surface"
+  },
+  {
+   "name": "i0_Windscreen",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     2.9894,
+     0.8682,
+     -0.4236
+    ],
+    [
+     3.8519,
+     1.3549,
+     0.4236
+    ]
+   ],
+   "has_uv": false,
+   "category": null
+  },
+  {
+   "name": "i0_WingL",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     8.0123,
+     0.0658,
+     1.7234
+    ],
+    [
+     12.5747,
+     0.363,
+     5.723
+    ]
+   ],
+   "has_uv": true,
+   "category": null
+  },
+  {
+   "name": "i0_WingR",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     8.0123,
+     0.0658,
+     -5.723
+    ],
+    [
+     12.5747,
+     0.363,
+     -1.7234
+    ]
+   ],
+   "has_uv": true,
+   "category": null
+  },
+  {
+   "name": "i0_RudderL",
+   "parent": "pivot_000_RudderL",
+   "translation": [
+    -14.209,
+    -1.132,
+    -1.864
+   ],
+   "bounds_local": [
+    [
+     14.0271,
+     0.52,
+     1.753
+    ],
+    [
+     14.8274,
+     1.7426,
+     1.962
+    ]
+   ],
+   "has_uv": true,
+   "category": "control surface"
+  },
+  {
+   "name": "pivot_000_RudderL",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    14.209,
+    1.132,
+    1.864
+   ],
+   "category": "control surface"
+  },
+  {
+   "name": "i0_RudderR",
+   "parent": "pivot_001_RudderR",
+   "translation": [
+    -14.209,
+    -1.132,
+    1.864
+   ],
+   "bounds_local": [
+    [
+     14.0271,
+     0.52,
+     -1.962
+    ],
+    [
+     14.8274,
+     1.7426,
+     -1.7528
+    ]
+   ],
+   "has_uv": true,
+   "category": "control surface"
+  },
+  {
+   "name": "pivot_001_RudderR",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    14.209,
+    1.132,
+    -1.864
+   ],
+   "category": "control surface"
+  },
+  {
+   "name": "i0_AileronL",
+   "parent": "pivot_004_AileronL",
+   "translation": [
+    -11.859,
+    -0.1275,
+    -4.39
+   ],
+   "bounds_local": [
+    [
+     11.6463,
+     0.0759,
+     3.7122
+    ],
+    [
+     12.5103,
+     0.1887,
+     5.065
+    ]
+   ],
+   "has_uv": true,
+   "category": "control surface"
+  },
+  {
+   "name": "pivot_004_AileronL",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    11.859,
+    0.1275,
+    4.39
+   ],
+   "category": "control surface"
+  },
+  {
+   "name": "i0_AileronR",
+   "parent": "pivot_005_AileronR",
+   "translation": [
+    -11.859,
+    -0.1275,
+    4.39
+   ],
+   "bounds_local": [
+    [
+     11.6463,
+     0.0759,
+     -5.065
+    ],
+    [
+     12.5103,
+     0.1887,
+     -3.7122
+    ]
+   ],
+   "has_uv": true,
+   "category": "control surface"
+  },
+  {
+   "name": "pivot_005_AileronR",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    11.859,
+    0.1275,
+    -4.39
+   ],
+   "category": "control surface"
+  },
+  {
+   "name": "i0_FlapsL",
+   "parent": "pivot_006_FlapsL",
+   "translation": [
+    -11.379,
+    -0.178,
+    -2.774
+   ],
+   "bounds_local": [
+    [
+     11.1019,
+     0.1099,
+     1.8326
+    ],
+    [
+     12.2618,
+     0.2668,
+     3.715
+    ]
+   ],
+   "has_uv": true,
+   "category": "control surface"
+  },
+  {
+   "name": "pivot_006_FlapsL",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    11.379,
+    0.178,
+    2.774
+   ],
+   "category": "control surface"
+  },
+  {
+   "name": "i0_FlapsR",
+   "parent": "pivot_007_FlapsR",
+   "translation": [
+    -11.379,
+    -0.178,
+    2.774
+   ],
+   "bounds_local": [
+    [
+     11.1019,
+     0.1099,
+     -3.715
+    ],
+    [
+     12.2618,
+     0.2668,
+     -1.8326
+    ]
+   ],
+   "has_uv": true,
+   "category": "control surface"
+  },
+  {
+   "name": "pivot_007_FlapsR",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    11.379,
+    0.178,
+    -2.774
+   ],
+   "category": "control surface"
+  },
+  {
+   "name": "i0_SlatsL",
+   "parent": "pivot_008_SlatsL",
+   "translation": [
+    -9.5475,
+    -0.263,
+    -3.395
+   ],
+   "bounds_local": [
+    [
+     7.7355,
+     0.0961,
+     1.7234
+    ],
+    [
+     10.8886,
+     0.3439,
+     5.0668
+    ]
+   ],
+   "has_uv": true,
+   "category": null
+  },
+  {
+   "name": "pivot_008_SlatsL",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    9.5475,
+    0.263,
+    3.395
+   ],
+   "category": null
+  },
+  {
+   "name": "i0_SlatsR",
+   "parent": "pivot_009_SlatsR",
+   "translation": [
+    -9.5475,
+    -0.263,
+    3.395
+   ],
+   "bounds_local": [
+    [
+     7.7355,
+     0.0961,
+     -5.0668
+    ],
+    [
+     10.8886,
+     0.3439,
+     -1.7234
+    ]
+   ],
+   "has_uv": true,
+   "category": null
+  },
+  {
+   "name": "pivot_009_SlatsR",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    9.5475,
+    0.263,
+    -3.395
+   ],
+   "category": null
+  },
+  {
+   "name": "i0_AirBrakeU",
+   "parent": "pivot_010_AirBrakeU",
+   "translation": [
+    -13.14,
+    -0.16,
+    0
+   ],
+   "bounds_local": [
+    [
+     13.145,
+     0.002,
+     -0.435
+    ],
+    [
+     14.2103,
+     0.174,
+     0.435
+    ]
+   ],
+   "has_uv": true,
+   "category": "landing gear"
+  },
+  {
+   "name": "pivot_010_AirBrakeU",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    13.14,
+    0.16,
+    0
+   ],
+   "category": "landing gear"
+  },
+  {
+   "name": "i0_AirBrakeB",
+   "parent": "pivot_011_AirBrakeB",
+   "translation": [
+    -13.14,
+    0.16,
+    0
+   ],
+   "bounds_local": [
+    [
+     13.145,
+     -0.174,
+     -0.435
+    ],
+    [
+     14.2103,
+     -0.002,
+     0.435
+    ]
+   ],
+   "has_uv": true,
+   "category": "landing gear"
+  },
+  {
+   "name": "pivot_011_AirBrakeB",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    13.14,
+    -0.16,
+    0
+   ],
+   "category": "landing gear"
+  },
+  {
+   "name": "i0_fwdgeardoor.L",
+   "parent": "pivot_012_fwdgeardoor.L",
+   "translation": [
+    -8.633,
+    0.331,
+    -1.255
+   ],
+   "bounds_local": [
+    [
+     8.1078,
+     -0.304,
+     1.1306
+    ],
+    [
+     9.5515,
+     0.1725,
+     1.5739
+    ]
+   ],
+   "has_uv": true,
+   "category": "landing gear"
+  },
+  {
+   "name": "pivot_012_fwdgeardoor.L",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    8.633,
+    -0.331,
+    1.255
+   ],
+   "category": "landing gear"
+  },
+  {
+   "name": "i0_reargeardoor.L",
+   "parent": "pivot_013_reargeardoor.L",
+   "translation": [
+    -10.06,
+    -0.259,
+    -1.632
+   ],
+   "bounds_local": [
+    [
+     9.5477,
+     -0.094,
+     1.2766
+    ],
+    [
+     10.3693,
+     0.1225,
+     1.652
+    ]
+   ],
+   "has_uv": true,
+   "category": "landing gear"
+  },
+  {
+   "name": "pivot_013_reargeardoor.L",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    10.06,
+    0.259,
+    1.632
+   ],
+   "category": "landing gear"
+  },
+  {
+   "name": "i0_gear1.L",
+   "parent": "pivot_014_gear1.L",
+   "translation": [
+    -10.14,
+    -0.07,
+    -1.348
+   ],
+   "bounds_local": [
+    [
+     9.8364,
+     -1.039,
+     1.2065
+    ],
+    [
+     10.2313,
+     0.2144,
+     1.4896
+    ]
+   ],
+   "has_uv": false,
+   "category": "landing gear"
+  },
+  {
+   "name": "i0_gear2.L",
+   "parent": "pivot_014_gear1.L",
+   "translation": [
+    -10.14,
+    -0.07,
+    -1.348
+   ],
+   "bounds_local": [
+    [
+     9.7564,
+     -1.3414,
+     1.3201
+    ],
+    [
+     10.0205,
+     -0.658,
+     1.6714
+    ]
+   ],
+   "has_uv": false,
+   "category": "landing gear"
+  },
+  {
+   "name": "i0_wheel.L",
+   "parent": "pivot_014_gear1.L",
+   "translation": [
+    -10.14,
+    -0.07,
+    -1.348
+   ],
+   "bounds_local": [
+    [
+     9.4081,
+     -1.7352,
+     1.468
+    ],
+    [
+     10.2853,
+     -0.858,
+     1.7513
+    ]
+   ],
+   "has_uv": false,
+   "category": "landing gear"
+  },
+  {
+   "name": "pivot_014_gear1.L",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    10.14,
+    0.07,
+    1.348
+   ],
+   "category": "landing gear"
+  },
+  {
+   "name": "i0_fwdgeardoor.R",
+   "parent": "pivot_015_fwdgeardoor.R",
+   "translation": [
+    -8.633,
+    0.331,
+    1.255
+   ],
+   "bounds_local": [
+    [
+     8.1078,
+     -0.304,
+     -1.5739
+    ],
+    [
+     9.5515,
+     0.1725,
+     -1.1306
+    ]
+   ],
+   "has_uv": true,
+   "category": "landing gear"
+  },
+  {
+   "name": "pivot_015_fwdgeardoor.R",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    8.633,
+    -0.331,
+    -1.255
+   ],
+   "category": "landing gear"
+  },
+  {
+   "name": "i0_reargeardoor.R",
+   "parent": "pivot_016_reargeardoor.R",
+   "translation": [
+    -10.06,
+    -0.259,
+    1.632
+   ],
+   "bounds_local": [
+    [
+     9.5477,
+     -0.094,
+     -1.652
+    ],
+    [
+     10.3693,
+     0.1225,
+     -1.2766
+    ]
+   ],
+   "has_uv": true,
+   "category": "landing gear"
+  },
+  {
+   "name": "pivot_016_reargeardoor.R",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    10.06,
+    0.259,
+    -1.632
+   ],
+   "category": "landing gear"
+  },
+  {
+   "name": "i0_gear1.R",
+   "parent": "pivot_017_gear1.R",
+   "translation": [
+    -10.14,
+    -0.07,
+    1.348
+   ],
+   "bounds_local": [
+    [
+     9.8364,
+     -1.039,
+     -1.4896
+    ],
+    [
+     10.2313,
+     0.2144,
+     -1.2065
+    ]
+   ],
+   "has_uv": false,
+   "category": "landing gear"
+  },
+  {
+   "name": "i0_gear2.R",
+   "parent": "pivot_017_gear1.R",
+   "translation": [
+    -10.14,
+    -0.07,
+    1.348
+   ],
+   "bounds_local": [
+    [
+     9.7564,
+     -1.3414,
+     -1.6714
+    ],
+    [
+     10.0205,
+     -0.658,
+     -1.3201
+    ]
+   ],
+   "has_uv": false,
+   "category": "landing gear"
+  },
+  {
+   "name": "i0_wheel.R",
+   "parent": "pivot_017_gear1.R",
+   "translation": [
+    -10.14,
+    -0.07,
+    1.348
+   ],
+   "bounds_local": [
+    [
+     9.4081,
+     -1.7352,
+     -1.7513
+    ],
+    [
+     10.2852,
+     -0.858,
+     -1.4679
+    ]
+   ],
+   "has_uv": false,
+   "category": "landing gear"
+  },
+  {
+   "name": "pivot_017_gear1.R",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    10.14,
+    0.07,
+    -1.348
+   ],
+   "category": "landing gear"
+  },
+  {
+   "name": "i0_fwdnosegeardoor",
+   "parent": "pivot_019_fwdnosegeardoor",
+   "translation": [
+    -4.797,
+    0.159,
+    0
+   ],
+   "bounds_local": [
+    [
+     4.7975,
+     -0.2083,
+     -0.1438
+    ],
+    [
+     5.8871,
+     -0.151,
+     0.0
+    ]
+   ],
+   "has_uv": true,
+   "category": "landing gear"
+  },
+  {
+   "name": "pivot_019_fwdnosegeardoor",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    4.797,
+    -0.159,
+    0
+   ],
+   "category": "landing gear"
+  },
+  {
+   "name": "i0_nosegeardoor.L",
+   "parent": "pivot_020_nosegeardoor.L",
+   "translation": [
+    -6.867,
+    0.124,
+    -0.316
+   ],
+   "bounds_local": [
+    [
+     5.8786,
+     -0.2286,
+     -0.0
+    ],
+    [
+     7.8558,
+     -0.0827,
+     0.3224
+    ]
+   ],
+   "has_uv": true,
+   "category": "landing gear"
+  },
+  {
+   "name": "pivot_020_nosegeardoor.L",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    6.867,
+    -0.124,
+    0.316
+   ],
+   "category": "landing gear"
+  },
+  {
+   "name": "i0_nosegeardoor.R",
+   "parent": "pivot_021_nosegeardoor.R",
+   "translation": [
+    -6.867,
+    0.124,
+    0.316
+   ],
+   "bounds_local": [
+    [
+     5.8786,
+     -0.2286,
+     -0.3224
+    ],
+    [
+     7.8561,
+     -0.0827,
+     0.0026
+    ]
+   ],
+   "has_uv": true,
+   "category": "landing gear"
+  },
+  {
+   "name": "pivot_021_nosegeardoor.R",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    6.867,
+    -0.124,
+    -0.316
+   ],
+   "category": "landing gear"
+  },
+  {
+   "name": "i0_nosegear1",
+   "parent": "pivot_018_nosegear1",
+   "translation": [
+    -5.915,
+    -0.029,
+    0
+   ],
+   "bounds_local": [
+    [
+     5.9745,
+     -1.492,
+     -0.0337
+    ],
+    [
+     6.1033,
+     -0.934,
+     0.034
+    ]
+   ],
+   "has_uv": false,
+   "category": "landing gear"
+  },
+  {
+   "name": "i0_nosegear2",
+   "parent": "pivot_018_nosegear1",
+   "translation": [
+    -5.915,
+    -0.029,
+    0
+   ],
+   "bounds_local": [
+    [
+     5.8404,
+     -1.0511,
+     -0.0754
+    ],
+    [
+     6.0904,
+     0.0287,
+     0.0754
+    ]
+   ],
+   "has_uv": false,
+   "category": "landing gear"
+  },
+  {
+   "name": "i0_nosewheels",
+   "parent": "pivot_018_nosegear1",
+   "translation": [
+    -5.915,
+    -0.029,
+    0
+   ],
+   "bounds_local": [
+    [
+     5.9925,
+     -1.7385,
+     -0.2075
+    ],
+    [
+     6.6258,
+     -1.1052,
+     0.2075
+    ]
+   ],
+   "has_uv": false,
+   "category": "landing gear"
+  },
+  {
+   "name": "i0_WheelGuard",
+   "parent": "pivot_018_nosegear1",
+   "translation": [
+    -5.915,
+    -0.029,
+    0
+   ],
+   "bounds_local": [
+    [
+     6.3109,
+     -1.5873,
+     -0.2395
+    ],
+    [
+     6.6588,
+     -1.4115,
+     0.2395
+    ]
+   ],
+   "has_uv": false,
+   "category": "landing gear"
+  },
+  {
+   "name": "pivot_018_nosegear1",
+   "parent": "pivot_022_nosewheels",
+   "translation": [
+    -0.1235,
+    1.242,
+    0
+   ],
+   "category": "landing gear"
+  },
+  {
+   "name": "pivot_022_nosewheels",
+   "parent": "i0_ACWorld_0",
+   "translation": [
+    6.0385,
+    -1.213,
+    0
+   ],
+   "category": "landing gear"
+  },
+  {
+   "name": "i0_ACWorld_0",
+   "parent": "i0_Mig-29",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "category": null
+  },
+  {
+   "name": "i1_Cockpit",
+   "parent": "i0_Mig-29",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "category": "cockpit"
+  },
+  {
+   "name": "i21_ReheatL",
+   "parent": "i21_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     13.7393,
+     -0.6621,
+     0.475
+    ],
+    [
+     21.561,
+     0.2903,
+     1.425
+    ]
+   ],
+   "has_uv": true,
+   "category": null
+  },
+  {
+   "name": "i21_ReheatR",
+   "parent": "i21_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     13.7392,
+     -0.6578,
+     -1.4221
+    ],
+    [
+     21.561,
+     0.286,
+     -0.4779
+    ]
+   ],
+   "has_uv": true,
+   "category": null
+  },
+  {
+   "name": "i21_ACWorld_0",
+   "parent": "i21_Reheat",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "category": null
+  },
+  {
+   "name": "i21_Reheat",
+   "parent": "i0_Mig-29",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "category": null
+  },
+  {
+   "name": "i22_LightNavGlowL",
+   "parent": "i22_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     11.3146,
+     -0.2873,
+     5.3231
+    ],
+    [
+     12.2074,
+     0.5127,
+     6.1187
+    ]
+   ],
+   "has_uv": true,
+   "category": "lights"
+  },
+  {
+   "name": "i22_LightNavGlowR",
+   "parent": "i22_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     11.3146,
+     -0.2873,
+     -6.1188
+    ],
+    [
+     12.2074,
+     0.5127,
+     -5.3232
+    ]
+   ],
+   "has_uv": true,
+   "category": "lights"
+  },
+  {
+   "name": "i22_LightTailGlow",
+   "parent": "i22_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     14.4067,
+     1.6916,
+     1.4648
+    ],
+    [
+     15.4067,
+     2.6916,
+     2.4648
+    ]
+   ],
+   "has_uv": true,
+   "category": "lights"
+  },
+  {
+   "name": "i22_TailLamp",
+   "parent": "i22_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     14.8048,
+     2.1574,
+     1.9305
+    ],
+    [
+     14.8621,
+     2.2266,
+     1.9997
+    ]
+   ],
+   "has_uv": false,
+   "category": null
+  },
+  {
+   "name": "i22_TailLampOn",
+   "parent": "i22_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     14.8048,
+     2.1574,
+     1.9305
+    ],
+    [
+     14.8621,
+     2.2266,
+     1.9997
+    ]
+   ],
+   "has_uv": false,
+   "category": null
+  },
+  {
+   "name": "i22_WingtipAftLampL",
+   "parent": "i22_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     12.102,
+     0.0894,
+     5.69
+    ],
+    [
+     12.1282,
+     0.1154,
+     5.716
+    ]
+   ],
+   "has_uv": false,
+   "category": null
+  },
+  {
+   "name": "i22_WingtipAftLampR",
+   "parent": "i22_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     12.102,
+     0.0894,
+     -5.7158
+    ],
+    [
+     12.1282,
+     0.1154,
+     -5.6898
+    ]
+   ],
+   "has_uv": false,
+   "category": null
+  },
+  {
+   "name": "i22_WingtipLampL",
+   "parent": "i22_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     11.7826,
+     0.0983,
+     5.6882
+    ],
+    [
+     11.8118,
+     0.1272,
+     5.7171
+    ]
+   ],
+   "has_uv": false,
+   "category": null
+  },
+  {
+   "name": "i22_WingtipLampLOn",
+   "parent": "i22_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     11.7826,
+     0.0983,
+     5.6882
+    ],
+    [
+     11.8118,
+     0.1272,
+     5.7171
+    ]
+   ],
+   "has_uv": false,
+   "category": null
+  },
+  {
+   "name": "i22_WingtipLampR",
+   "parent": "i22_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     11.7826,
+     0.0983,
+     -5.7169
+    ],
+    [
+     11.8118,
+     0.1272,
+     -5.688
+    ]
+   ],
+   "has_uv": false,
+   "category": null
+  },
+  {
+   "name": "i22_WingtipLampROn",
+   "parent": "i22_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     11.7826,
+     0.0983,
+     -5.7169
+    ],
+    [
+     11.8118,
+     0.1272,
+     -5.688
+    ]
+   ],
+   "has_uv": false,
+   "category": null
+  },
+  {
+   "name": "i22_ACWorld_0",
+   "parent": "i22_External_Lights",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "category": null
+  },
+  {
+   "name": "i22_External_Lights",
+   "parent": "i0_Mig-29",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "category": "lights"
+  },
+  {
+   "name": "i10_innernozzle.L",
+   "parent": "i10_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.3787,
+     -0.0846,
+     0.4105
+    ],
+    [
+     0.8482,
+     0.0846,
+     0.5186
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i10_innernozzle.R",
+   "parent": "i10_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.3787,
+     -0.0846,
+     -0.5186
+    ],
+    [
+     0.8482,
+     0.0846,
+     -0.4105
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i10_outernozzle.L",
+   "parent": "i10_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.0,
+     -0.0942,
+     0.5163
+    ],
+    [
+     0.7568,
+     0.0951,
+     0.5365
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i10_outernozzle.R",
+   "parent": "i10_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.0,
+     -0.0942,
+     -0.5369
+    ],
+    [
+     0.7568,
+     0.0951,
+     -0.5168
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i10_ACWorld_0",
+   "parent": "i10_Mig-29_NozzleL",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "category": null
+  },
+  {
+   "name": "i10_Mig-29_NozzleL",
+   "parent": "i2_Exhaust_Nozzles",
+   "translation": [
+    13.847,
+    -0.176,
+    0.957
+   ],
+   "category": "engine"
+  },
+  {
+   "name": "i11_innernozzle.L",
+   "parent": "i11_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.3787,
+     -0.0846,
+     0.4105
+    ],
+    [
+     0.8482,
+     0.0846,
+     0.5186
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i11_innernozzle.R",
+   "parent": "i11_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.3787,
+     -0.0846,
+     -0.5186
+    ],
+    [
+     0.8482,
+     0.0846,
+     -0.4105
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i11_outernozzle.L",
+   "parent": "i11_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.0,
+     -0.0942,
+     0.5163
+    ],
+    [
+     0.7568,
+     0.0951,
+     0.5365
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i11_outernozzle.R",
+   "parent": "i11_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.0,
+     -0.0942,
+     -0.5369
+    ],
+    [
+     0.7568,
+     0.0951,
+     -0.5168
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i11_ACWorld_0",
+   "parent": "i11_Mig-29_NozzleL",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "category": null
+  },
+  {
+   "name": "i11_Mig-29_NozzleL",
+   "parent": "i2_Exhaust_Nozzles",
+   "translation": [
+    13.847,
+    -0.176,
+    0.957
+   ],
+   "category": "engine"
+  },
+  {
+   "name": "i12_innernozzle.L",
+   "parent": "i12_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.3787,
+     -0.0846,
+     0.4105
+    ],
+    [
+     0.8482,
+     0.0846,
+     0.5186
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i12_innernozzle.R",
+   "parent": "i12_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.3787,
+     -0.0846,
+     -0.5186
+    ],
+    [
+     0.8482,
+     0.0846,
+     -0.4105
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i12_outernozzle.L",
+   "parent": "i12_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.0,
+     -0.0942,
+     0.5163
+    ],
+    [
+     0.7568,
+     0.0951,
+     0.5365
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i12_outernozzle.R",
+   "parent": "i12_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.0,
+     -0.0942,
+     -0.5369
+    ],
+    [
+     0.7568,
+     0.0951,
+     -0.5168
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i12_ACWorld_0",
+   "parent": "i12_Mig-29_NozzleR",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "category": null
+  },
+  {
+   "name": "i12_Mig-29_NozzleR",
+   "parent": "i2_Exhaust_Nozzles",
+   "translation": [
+    13.847,
+    -0.176,
+    -0.957
+   ],
+   "category": "engine"
+  },
+  {
+   "name": "i13_innernozzle.L",
+   "parent": "i13_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.3787,
+     -0.0846,
+     0.4105
+    ],
+    [
+     0.8482,
+     0.0846,
+     0.5186
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i13_innernozzle.R",
+   "parent": "i13_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.3787,
+     -0.0846,
+     -0.5186
+    ],
+    [
+     0.8482,
+     0.0846,
+     -0.4105
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i13_outernozzle.L",
+   "parent": "i13_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.0,
+     -0.0942,
+     0.5163
+    ],
+    [
+     0.7568,
+     0.0951,
+     0.5365
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i13_outernozzle.R",
+   "parent": "i13_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.0,
+     -0.0942,
+     -0.5369
+    ],
+    [
+     0.7568,
+     0.0951,
+     -0.5168
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i13_ACWorld_0",
+   "parent": "i13_Mig-29_NozzleR",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "category": null
+  },
+  {
+   "name": "i13_Mig-29_NozzleR",
+   "parent": "i2_Exhaust_Nozzles",
+   "translation": [
+    13.847,
+    -0.176,
+    -0.957
+   ],
+   "category": "engine"
+  },
+  {
+   "name": "i14_innernozzle.L",
+   "parent": "i14_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.3787,
+     -0.0846,
+     0.4105
+    ],
+    [
+     0.8482,
+     0.0846,
+     0.5186
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i14_innernozzle.R",
+   "parent": "i14_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.3787,
+     -0.0846,
+     -0.5186
+    ],
+    [
+     0.8482,
+     0.0846,
+     -0.4105
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i14_outernozzle.L",
+   "parent": "i14_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.0,
+     -0.0942,
+     0.5163
+    ],
+    [
+     0.7568,
+     0.0951,
+     0.5365
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i14_outernozzle.R",
+   "parent": "i14_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.0,
+     -0.0942,
+     -0.5369
+    ],
+    [
+     0.7568,
+     0.0951,
+     -0.5168
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i14_ACWorld_0",
+   "parent": "i14_Mig-29_NozzleR",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "category": null
+  },
+  {
+   "name": "i14_Mig-29_NozzleR",
+   "parent": "i2_Exhaust_Nozzles",
+   "translation": [
+    13.847,
+    -0.176,
+    -0.957
+   ],
+   "category": "engine"
+  },
+  {
+   "name": "i15_innernozzle.L",
+   "parent": "i15_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.3787,
+     -0.0846,
+     0.4105
+    ],
+    [
+     0.8482,
+     0.0846,
+     0.5186
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i15_innernozzle.R",
+   "parent": "i15_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.3787,
+     -0.0846,
+     -0.5186
+    ],
+    [
+     0.8482,
+     0.0846,
+     -0.4105
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i15_outernozzle.L",
+   "parent": "i15_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.0,
+     -0.0942,
+     0.5163
+    ],
+    [
+     0.7568,
+     0.0951,
+     0.5365
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i15_outernozzle.R",
+   "parent": "i15_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.0,
+     -0.0942,
+     -0.5369
+    ],
+    [
+     0.7568,
+     0.0951,
+     -0.5168
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i15_ACWorld_0",
+   "parent": "i15_Mig-29_NozzleR",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "category": null
+  },
+  {
+   "name": "i15_Mig-29_NozzleR",
+   "parent": "i2_Exhaust_Nozzles",
+   "translation": [
+    13.847,
+    -0.176,
+    -0.957
+   ],
+   "category": "engine"
+  },
+  {
+   "name": "i16_innernozzle.L",
+   "parent": "i16_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.3787,
+     -0.0846,
+     0.4105
+    ],
+    [
+     0.8482,
+     0.0846,
+     0.5186
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i16_innernozzle.R",
+   "parent": "i16_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.3787,
+     -0.0846,
+     -0.5186
+    ],
+    [
+     0.8482,
+     0.0846,
+     -0.4105
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i16_outernozzle.L",
+   "parent": "i16_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.0,
+     -0.0942,
+     0.5163
+    ],
+    [
+     0.7568,
+     0.0951,
+     0.5365
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i16_outernozzle.R",
+   "parent": "i16_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.0,
+     -0.0942,
+     -0.5369
+    ],
+    [
+     0.7568,
+     0.0951,
+     -0.5168
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i16_ACWorld_0",
+   "parent": "i16_Mig-29_NozzleR",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "category": null
+  },
+  {
+   "name": "i16_Mig-29_NozzleR",
+   "parent": "i2_Exhaust_Nozzles",
+   "translation": [
+    13.847,
+    -0.176,
+    -0.957
+   ],
+   "category": "engine"
+  },
+  {
+   "name": "i17_innernozzle.L",
+   "parent": "i17_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.3787,
+     -0.0846,
+     0.4105
+    ],
+    [
+     0.8482,
+     0.0846,
+     0.5186
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i17_innernozzle.R",
+   "parent": "i17_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.3787,
+     -0.0846,
+     -0.5186
+    ],
+    [
+     0.8482,
+     0.0846,
+     -0.4105
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i17_outernozzle.L",
+   "parent": "i17_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.0,
+     -0.0942,
+     0.5163
+    ],
+    [
+     0.7568,
+     0.0951,
+     0.5365
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i17_outernozzle.R",
+   "parent": "i17_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.0,
+     -0.0942,
+     -0.5369
+    ],
+    [
+     0.7568,
+     0.0951,
+     -0.5168
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i17_ACWorld_0",
+   "parent": "i17_Mig-29_NozzleR",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "category": null
+  },
+  {
+   "name": "i17_Mig-29_NozzleR",
+   "parent": "i2_Exhaust_Nozzles",
+   "translation": [
+    13.847,
+    -0.176,
+    -0.957
+   ],
+   "category": "engine"
+  },
+  {
+   "name": "i18_innernozzle.L",
+   "parent": "i18_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.3787,
+     -0.0846,
+     0.4105
+    ],
+    [
+     0.8482,
+     0.0846,
+     0.5186
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i18_innernozzle.R",
+   "parent": "i18_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.3787,
+     -0.0846,
+     -0.5186
+    ],
+    [
+     0.8482,
+     0.0846,
+     -0.4105
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i18_outernozzle.L",
+   "parent": "i18_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.0,
+     -0.0942,
+     0.5163
+    ],
+    [
+     0.7568,
+     0.0951,
+     0.5365
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i18_outernozzle.R",
+   "parent": "i18_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.0,
+     -0.0942,
+     -0.5369
+    ],
+    [
+     0.7568,
+     0.0951,
+     -0.5168
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i18_ACWorld_0",
+   "parent": "i18_Mig-29_NozzleR",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "category": null
+  },
+  {
+   "name": "i18_Mig-29_NozzleR",
+   "parent": "i2_Exhaust_Nozzles",
+   "translation": [
+    13.847,
+    -0.176,
+    -0.957
+   ],
+   "category": "engine"
+  },
+  {
+   "name": "i19_innernozzle.L",
+   "parent": "i19_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.3787,
+     -0.0846,
+     0.4105
+    ],
+    [
+     0.8482,
+     0.0846,
+     0.5186
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i19_innernozzle.R",
+   "parent": "i19_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.3787,
+     -0.0846,
+     -0.5186
+    ],
+    [
+     0.8482,
+     0.0846,
+     -0.4105
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i19_outernozzle.L",
+   "parent": "i19_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.0,
+     -0.0942,
+     0.5163
+    ],
+    [
+     0.7568,
+     0.0951,
+     0.5365
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i19_outernozzle.R",
+   "parent": "i19_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.0,
+     -0.0942,
+     -0.5369
+    ],
+    [
+     0.7568,
+     0.0951,
+     -0.5168
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i19_ACWorld_0",
+   "parent": "i19_Mig-29_NozzleR",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "category": null
+  },
+  {
+   "name": "i19_Mig-29_NozzleR",
+   "parent": "i2_Exhaust_Nozzles",
+   "translation": [
+    13.847,
+    -0.176,
+    -0.957
+   ],
+   "category": "engine"
+  },
+  {
+   "name": "i20_innernozzle.L",
+   "parent": "i20_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.3787,
+     -0.0846,
+     0.4105
+    ],
+    [
+     0.8482,
+     0.0846,
+     0.5186
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i20_innernozzle.R",
+   "parent": "i20_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.3787,
+     -0.0846,
+     -0.5186
+    ],
+    [
+     0.8482,
+     0.0846,
+     -0.4105
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i20_outernozzle.L",
+   "parent": "i20_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.0,
+     -0.0942,
+     0.5163
+    ],
+    [
+     0.7568,
+     0.0951,
+     0.5365
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i20_outernozzle.R",
+   "parent": "i20_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.0,
+     -0.0942,
+     -0.5369
+    ],
+    [
+     0.7568,
+     0.0951,
+     -0.5168
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i20_ACWorld_0",
+   "parent": "i20_Mig-29_NozzleR",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "category": null
+  },
+  {
+   "name": "i20_Mig-29_NozzleR",
+   "parent": "i2_Exhaust_Nozzles",
+   "translation": [
+    13.847,
+    -0.176,
+    -0.957
+   ],
+   "category": "engine"
+  },
+  {
+   "name": "i3_innernozzle.L",
+   "parent": "i3_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.3787,
+     -0.0846,
+     0.4105
+    ],
+    [
+     0.8482,
+     0.0846,
+     0.5186
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i3_innernozzle.R",
+   "parent": "i3_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.3787,
+     -0.0846,
+     -0.5186
+    ],
+    [
+     0.8482,
+     0.0846,
+     -0.4105
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i3_outernozzle.L",
+   "parent": "i3_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.0,
+     -0.0942,
+     0.5163
+    ],
+    [
+     0.7568,
+     0.0951,
+     0.5365
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i3_outernozzle.R",
+   "parent": "i3_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.0,
+     -0.0942,
+     -0.5369
+    ],
+    [
+     0.7568,
+     0.0951,
+     -0.5168
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i3_ACWorld_0",
+   "parent": "i3_Mig-29_NozzleL",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "category": null
+  },
+  {
+   "name": "i3_Mig-29_NozzleL",
+   "parent": "i2_Exhaust_Nozzles",
+   "translation": [
+    13.847,
+    -0.176,
+    0.957
+   ],
+   "category": "engine"
+  },
+  {
+   "name": "i4_innernozzle.L",
+   "parent": "i4_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.3787,
+     -0.0846,
+     0.4105
+    ],
+    [
+     0.8482,
+     0.0846,
+     0.5186
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i4_innernozzle.R",
+   "parent": "i4_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.3787,
+     -0.0846,
+     -0.5186
+    ],
+    [
+     0.8482,
+     0.0846,
+     -0.4105
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i4_outernozzle.L",
+   "parent": "i4_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.0,
+     -0.0942,
+     0.5163
+    ],
+    [
+     0.7568,
+     0.0951,
+     0.5365
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i4_outernozzle.R",
+   "parent": "i4_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.0,
+     -0.0942,
+     -0.5369
+    ],
+    [
+     0.7568,
+     0.0951,
+     -0.5168
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i4_ACWorld_0",
+   "parent": "i4_Mig-29_NozzleL",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "category": null
+  },
+  {
+   "name": "i4_Mig-29_NozzleL",
+   "parent": "i2_Exhaust_Nozzles",
+   "translation": [
+    13.847,
+    -0.176,
+    0.957
+   ],
+   "category": "engine"
+  },
+  {
+   "name": "i5_innernozzle.L",
+   "parent": "i5_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.3787,
+     -0.0846,
+     0.4105
+    ],
+    [
+     0.8482,
+     0.0846,
+     0.5186
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i5_innernozzle.R",
+   "parent": "i5_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.3787,
+     -0.0846,
+     -0.5186
+    ],
+    [
+     0.8482,
+     0.0846,
+     -0.4105
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i5_outernozzle.L",
+   "parent": "i5_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.0,
+     -0.0942,
+     0.5163
+    ],
+    [
+     0.7568,
+     0.0951,
+     0.5365
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i5_outernozzle.R",
+   "parent": "i5_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.0,
+     -0.0942,
+     -0.5369
+    ],
+    [
+     0.7568,
+     0.0951,
+     -0.5168
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i5_ACWorld_0",
+   "parent": "i5_Mig-29_NozzleL",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "category": null
+  },
+  {
+   "name": "i5_Mig-29_NozzleL",
+   "parent": "i2_Exhaust_Nozzles",
+   "translation": [
+    13.847,
+    -0.176,
+    0.957
+   ],
+   "category": "engine"
+  },
+  {
+   "name": "i6_innernozzle.L",
+   "parent": "i6_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.3787,
+     -0.0846,
+     0.4105
+    ],
+    [
+     0.8482,
+     0.0846,
+     0.5186
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i6_innernozzle.R",
+   "parent": "i6_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.3787,
+     -0.0846,
+     -0.5186
+    ],
+    [
+     0.8482,
+     0.0846,
+     -0.4105
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i6_outernozzle.L",
+   "parent": "i6_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.0,
+     -0.0942,
+     0.5163
+    ],
+    [
+     0.7568,
+     0.0951,
+     0.5365
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i6_outernozzle.R",
+   "parent": "i6_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.0,
+     -0.0942,
+     -0.5369
+    ],
+    [
+     0.7568,
+     0.0951,
+     -0.5168
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i6_ACWorld_0",
+   "parent": "i6_Mig-29_NozzleL",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "category": null
+  },
+  {
+   "name": "i6_Mig-29_NozzleL",
+   "parent": "i2_Exhaust_Nozzles",
+   "translation": [
+    13.847,
+    -0.176,
+    0.957
+   ],
+   "category": "engine"
+  },
+  {
+   "name": "i7_innernozzle.L",
+   "parent": "i7_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.3787,
+     -0.0846,
+     0.4105
+    ],
+    [
+     0.8482,
+     0.0846,
+     0.5186
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i7_innernozzle.R",
+   "parent": "i7_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.3787,
+     -0.0846,
+     -0.5186
+    ],
+    [
+     0.8482,
+     0.0846,
+     -0.4105
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i7_outernozzle.L",
+   "parent": "i7_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.0,
+     -0.0942,
+     0.5163
+    ],
+    [
+     0.7568,
+     0.0951,
+     0.5365
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i7_outernozzle.R",
+   "parent": "i7_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.0,
+     -0.0942,
+     -0.5369
+    ],
+    [
+     0.7568,
+     0.0951,
+     -0.5168
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i7_ACWorld_0",
+   "parent": "i7_Mig-29_NozzleL",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "category": null
+  },
+  {
+   "name": "i7_Mig-29_NozzleL",
+   "parent": "i2_Exhaust_Nozzles",
+   "translation": [
+    13.847,
+    -0.176,
+    0.957
+   ],
+   "category": "engine"
+  },
+  {
+   "name": "i8_innernozzle.L",
+   "parent": "i8_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.3787,
+     -0.0846,
+     0.4105
+    ],
+    [
+     0.8482,
+     0.0846,
+     0.5186
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i8_innernozzle.R",
+   "parent": "i8_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.3787,
+     -0.0846,
+     -0.5186
+    ],
+    [
+     0.8482,
+     0.0846,
+     -0.4105
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i8_outernozzle.L",
+   "parent": "i8_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.0,
+     -0.0942,
+     0.5163
+    ],
+    [
+     0.7568,
+     0.0951,
+     0.5365
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i8_outernozzle.R",
+   "parent": "i8_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.0,
+     -0.0942,
+     -0.5369
+    ],
+    [
+     0.7568,
+     0.0951,
+     -0.5168
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i8_ACWorld_0",
+   "parent": "i8_Mig-29_NozzleL",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "category": null
+  },
+  {
+   "name": "i8_Mig-29_NozzleL",
+   "parent": "i2_Exhaust_Nozzles",
+   "translation": [
+    13.847,
+    -0.176,
+    0.957
+   ],
+   "category": "engine"
+  },
+  {
+   "name": "i9_innernozzle.L",
+   "parent": "i9_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.3787,
+     -0.0846,
+     0.4105
+    ],
+    [
+     0.8482,
+     0.0846,
+     0.5186
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i9_innernozzle.R",
+   "parent": "i9_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.3787,
+     -0.0846,
+     -0.5186
+    ],
+    [
+     0.8482,
+     0.0846,
+     -0.4105
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i9_outernozzle.L",
+   "parent": "i9_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.0,
+     -0.0942,
+     0.5163
+    ],
+    [
+     0.7568,
+     0.0951,
+     0.5365
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i9_outernozzle.R",
+   "parent": "i9_ACWorld_0",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "bounds_local": [
+    [
+     0.0,
+     -0.0942,
+     -0.5369
+    ],
+    [
+     0.7568,
+     0.0951,
+     -0.5168
+    ]
+   ],
+   "has_uv": false,
+   "category": "engine"
+  },
+  {
+   "name": "i9_ACWorld_0",
+   "parent": "i9_Mig-29_NozzleL",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "category": null
+  },
+  {
+   "name": "i9_Mig-29_NozzleL",
+   "parent": "i2_Exhaust_Nozzles",
+   "translation": [
+    13.847,
+    -0.176,
+    0.957
+   ],
+   "category": "engine"
+  },
+  {
+   "name": "i2_Exhaust_Nozzles",
+   "parent": "i0_Mig-29",
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "category": "engine"
+  },
+  {
+   "name": "i0_Mig-29",
+   "parent": null,
+   "translation": [
+    0,
+    0,
+    0
+   ],
+   "category": null
+  }
+ ],
+ "node_categories": {
+  "canopy/glass": [
+   "i0_Canopy",
+   "i0_CanopyFrame",
+   "i0_IRglass"
+  ],
+  "engine": [
+   "i0_EngineL",
+   "i0_EngineR",
+   "i0_IntakeScreenL",
+   "i0_IntakeScreenR",
+   "i10_innernozzle.L",
+   "i10_innernozzle.R",
+   "i10_outernozzle.L",
+   "i10_outernozzle.R",
+   "i10_Mig-29_NozzleL",
+   "i11_innernozzle.L",
+   "i11_innernozzle.R",
+   "i11_outernozzle.L",
+   "i11_outernozzle.R",
+   "i11_Mig-29_NozzleL",
+   "i12_innernozzle.L",
+   "i12_innernozzle.R",
+   "i12_outernozzle.L",
+   "i12_outernozzle.R",
+   "i12_Mig-29_NozzleR",
+   "i13_innernozzle.L",
+   "i13_innernozzle.R",
+   "i13_outernozzle.L",
+   "i13_outernozzle.R",
+   "i13_Mig-29_NozzleR",
+   "i14_innernozzle.L",
+   "i14_innernozzle.R",
+   "i14_outernozzle.L",
+   "i14_outernozzle.R",
+   "i14_Mig-29_NozzleR",
+   "i15_innernozzle.L",
+   "i15_innernozzle.R",
+   "i15_outernozzle.L",
+   "i15_outernozzle.R",
+   "i15_Mig-29_NozzleR",
+   "i16_innernozzle.L",
+   "i16_innernozzle.R",
+   "i16_outernozzle.L",
+   "i16_outernozzle.R",
+   "i16_Mig-29_NozzleR",
+   "i17_innernozzle.L",
+   "i17_innernozzle.R",
+   "i17_outernozzle.L",
+   "i17_outernozzle.R",
+   "i17_Mig-29_NozzleR",
+   "i18_innernozzle.L",
+   "i18_innernozzle.R",
+   "i18_outernozzle.L",
+   "i18_outernozzle.R",
+   "i18_Mig-29_NozzleR",
+   "i19_innernozzle.L",
+   "i19_innernozzle.R",
+   "i19_outernozzle.L",
+   "i19_outernozzle.R",
+   "i19_Mig-29_NozzleR",
+   "i20_innernozzle.L",
+   "i20_innernozzle.R",
+   "i20_outernozzle.L",
+   "i20_outernozzle.R",
+   "i20_Mig-29_NozzleR",
+   "i3_innernozzle.L",
+   "... 95 total"
+  ],
+  "landing gear": [
+   "i0_GearWellL",
+   "i0_GearWellR",
+   "i0_AirBrakeU",
+   "pivot_010_AirBrakeU",
+   "i0_AirBrakeB",
+   "pivot_011_AirBrakeB",
+   "i0_fwdgeardoor.L",
+   "pivot_012_fwdgeardoor.L",
+   "i0_reargeardoor.L",
+   "pivot_013_reargeardoor.L",
+   "i0_gear1.L",
+   "i0_gear2.L",
+   "i0_wheel.L",
+   "pivot_014_gear1.L",
+   "i0_fwdgeardoor.R",
+   "pivot_015_fwdgeardoor.R",
+   "i0_reargeardoor.R",
+   "pivot_016_reargeardoor.R",
+   "i0_gear1.R",
+   "i0_gear2.R",
+   "i0_wheel.R",
+   "pivot_017_gear1.R",
+   "i0_fwdnosegeardoor",
+   "pivot_019_fwdnosegeardoor",
+   "i0_nosegeardoor.L",
+   "pivot_020_nosegeardoor.L",
+   "i0_nosegeardoor.R",
+   "pivot_021_nosegeardoor.R",
+   "i0_nosegear1",
+   "i0_nosegear2",
+   "i0_nosewheels",
+   "i0_WheelGuard",
+   "pivot_018_nosegear1",
+   "pivot_022_nosewheels"
+  ],
+  "control surface": [
+   "i0_StabilizerL",
+   "i0_StabilizerR",
+   "i0_Vstabs",
+   "i0_RudderL",
+   "pivot_000_RudderL",
+   "i0_RudderR",
+   "pivot_001_RudderR",
+   "i0_AileronL",
+   "pivot_004_AileronL",
+   "i0_AileronR",
+   "pivot_005_AileronR",
+   "i0_FlapsL",
+   "pivot_006_FlapsL",
+   "i0_FlapsR",
+   "pivot_007_FlapsR"
+  ],
+  "cockpit": [
+   "i1_Cockpit"
+  ],
+  "lights": [
+   "i22_LightNavGlowL",
+   "i22_LightNavGlowR",
+   "i22_LightTailGlow",
+   "i22_External_Lights"
+  ]
+ },
+ "material_warnings": {
+  "ior_too_high": [
+   "exterior_light.004: ior 1000",
+   "exterior_medium.002: ior 1000",
+   "exhaust: ior 1000",
+   "InteriorDk: ior 1000",
+   "flameholder: ior 1000",
+   "exterior_medium.009: ior 1000",
+   "WheelHub.002: ior 1000",
+   "Tire.001: ior 1000",
+   "DefaultWhite.003: ior 1000",
+   "ac3dmat1.001: ior 1000",
+   "ac3dmat1.004: ior 1000",
+   "LightGlow: ior 1000",
+   "... 20 total"
+  ],
+  "mirror_smooth_untextured": [
+   "ac3dmat1.001",
+   "LightGlow"
+  ],
+  "alpha_blend": [
+   "ac3dmat1.001"
+  ],
+  "glowing_untextured": [
+   "ac3dmat1.001",
+   "ac3dmat1.004",
+   "LightGlow",
+   "LampWhiteOn"
+  ]
+ },
+ "textures": [
+  {
+   "file": "textures/Models/Mig-29.png",
+   "original": "Mig-29/Models/Mig-29.rgb",
+   "role": "base",
+   "size": [
+    1024,
+    1024
+   ],
+   "cutout_alpha": false,
+   "in_glb": true
+  },
+  {
+   "file": "textures/Models/tex_reheat.png",
+   "original": "Mig-29/Models/tex_reheat.rgb",
+   "role": "base",
+   "size": [
+    128,
+    128
+   ],
+   "cutout_alpha": false,
+   "in_glb": true
+  },
+  {
+   "file": "textures/Models/txt_lights_exterior.png",
+   "original": "Mig-29/Models/txt_lights_exterior.rgb",
+   "role": "emissive",
+   "size": [
+    128,
+    128
+   ],
+   "cutout_alpha": false,
+   "in_glb": true
+  }
+ ],
+ "liveries": {
+  "copied": [],
+  "not_copied_over_size_cap": 0
+ },
+ "texture_by_part": [
+  {
+   "ac_object": "Case",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/textures_gauge_support.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "Screws",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/textures_gauge_support.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "AI.Ball",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/ai_ball.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "AI.BankIndex",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/ai_ball.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "AI.BezelMask",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/ai_bezel.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "AI.Bar.Aircraft",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/ai_bezel.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "AI.Knob.Hor",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/textures_gauge_support.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "Screws",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/textures_gauge_support.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "ALT.FacePressure",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/altpres.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "ALT.Face",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/alt.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "ALT.Knob",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/textures_gauge_support.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "ALT.Needle1",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/alt.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "ALT.Needle2",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/alt.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "ALT.Needle3",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/alt.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "Face",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/aoa.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "Face2",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/aoa.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "Needle.AoA",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/aoa.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "Needle.g",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/aoa.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "Screws",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/textures_gauge_support.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "Screws",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/textures_gauge_support.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "ASI.Face",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/asi.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "ASI.Needle",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/asi.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "Clock.Face",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/clock.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "Clock.Hour",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/clock.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "Clock.Knob",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/textures_gauge_support.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "Clock.Minute",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/clock.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "Clock.Second",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/clock.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "Screws",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/textures_gauge_support.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "Screws",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/textures_gauge_support.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "Controls.FaceBack",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/control_positions.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "Controls.NeedleAil",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/control_positions.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "Controls.NeedleEl",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/control_positions.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "Controls.NeedleRud",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/control_positions.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "Controls.Face",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/control_positions.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "Screws",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/textures_gauge_support.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "Face",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/eng_temp.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "Face2",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/eng_temp.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "Needle",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/eng_temp.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "Face",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/fuel_display.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "FuelSelect1",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/fuel_display.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "FuelSelect1On",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/fuel_display.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "FuelSelect2",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/fuel_display.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "FuelSelect2On",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/fuel_display.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "FuelSelect3",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/fuel_display.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "FuelSelect3On",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/fuel_display.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "FuelSelect4",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/fuel_display.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "FuelSelect4On",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/fuel_display.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "Needle",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/fuel_display.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "ScaleL",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/fuel_display.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "ScaleR",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/fuel_display.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "Screws",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/textures_gauge_support.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "Tape",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/fuel_display.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "Face",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/gear_display.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "Ind.AirBrake",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/gear_display.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "Ind.Brake",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/gear_display.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "Ind.Flaps1",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/gear_display.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "Ind.Flaps2",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/gear_display.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "Ind.GearLeftDown",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/gear_display.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "Ind.GearLeftUnlocked",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/gear_display.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "Ind.GearNoseDown",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/gear_display.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "Ind.GearNoseUnlocked",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/gear_display.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "Ind.GearRightDown",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/gear_display.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "Ind.GearRightUnlocked",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/gear_display.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "Ind.Slats",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/gear_display.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "Screws",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/textures_gauge_support.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "Screws",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/textures_gauge_support.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "Mach.Face",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/mach.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "Mach.Needle",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/mach.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "RadAlt.Face",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/radio_alt.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "RadAlt.Needle",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/radio_alt.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "Screws",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/textures_gauge_support.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "Face",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/ramps.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "Needle1",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/ramps.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "Needle2",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/ramps.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "Screws",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/textures_gauge_support.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "Screws",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/textures_gauge_support.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "RPM.Face",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/rpm.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "RPM.Needle1",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/rpm.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "RPM.Needle2",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/Instruments/rpm.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "AileronL",
+   "glb_nodes": [
+    "i0_AileronL"
+   ],
+   "texture": "Mig-29/Models/Mig-29.rgb",
+   "has_uv": true,
+   "texture_in_glb": true
+  },
+  {
+   "ac_object": "AileronR",
+   "glb_nodes": [
+    "i0_AileronR"
+   ],
+   "texture": "Mig-29/Models/Mig-29.rgb",
+   "has_uv": true,
+   "texture_in_glb": true
+  },
+  {
+   "ac_object": "AirBrakeB",
+   "glb_nodes": [
+    "i0_AirBrakeB"
+   ],
+   "texture": "Mig-29/Models/Mig-29.rgb",
+   "has_uv": true,
+   "texture_in_glb": true
+  },
+  {
+   "ac_object": "AirBrakeU",
+   "glb_nodes": [
+    "i0_AirBrakeU"
+   ],
+   "texture": "Mig-29/Models/Mig-29.rgb",
+   "has_uv": true,
+   "texture_in_glb": true
+  },
+  {
+   "ac_object": "CanopyFrame",
+   "glb_nodes": [
+    "i0_CanopyFrame"
+   ],
+   "texture": "Mig-29/Models/Mig-29.rgb",
+   "has_uv": true,
+   "texture_in_glb": true
+  },
+  {
+   "ac_object": "FlapsL",
+   "glb_nodes": [
+    "i0_FlapsL"
+   ],
+   "texture": "Mig-29/Models/Mig-29.rgb",
+   "has_uv": true,
+   "texture_in_glb": true
+  },
+  {
+   "ac_object": "FlapsR",
+   "glb_nodes": [
+    "i0_FlapsR"
+   ],
+   "texture": "Mig-29/Models/Mig-29.rgb",
+   "has_uv": true,
+   "texture_in_glb": true
+  },
+  {
+   "ac_object": "IntakeScreenL",
+   "glb_nodes": [
+    "i0_IntakeScreenL"
+   ],
+   "texture": "Mig-29/Models/Mig-29.rgb",
+   "has_uv": true,
+   "texture_in_glb": true
+  },
+  {
+   "ac_object": "IntakeScreenR",
+   "glb_nodes": [
+    "i0_IntakeScreenR"
+   ],
+   "texture": "Mig-29/Models/Mig-29.rgb",
+   "has_uv": true,
+   "texture_in_glb": true
+  },
+  {
+   "ac_object": "Probe",
+   "glb_nodes": [
+    "i0_Probe"
+   ],
+   "texture": "Mig-29/Models/Mig-29.rgb",
+   "has_uv": true,
+   "texture_in_glb": true
+  },
+  {
+   "ac_object": "RudderL",
+   "glb_nodes": [
+    "i0_RudderL"
+   ],
+   "texture": "Mig-29/Models/Mig-29.rgb",
+   "has_uv": true,
+   "texture_in_glb": true
+  },
+  {
+   "ac_object": "RudderR",
+   "glb_nodes": [
+    "i0_RudderR"
+   ],
+   "texture": "Mig-29/Models/Mig-29.rgb",
+   "has_uv": true,
+   "texture_in_glb": true
+  },
+  {
+   "ac_object": "SlatsL",
+   "glb_nodes": [
+    "i0_SlatsL"
+   ],
+   "texture": "Mig-29/Models/Mig-29.rgb",
+   "has_uv": true,
+   "texture_in_glb": true
+  },
+  {
+   "ac_object": "SlatsR",
+   "glb_nodes": [
+    "i0_SlatsR"
+   ],
+   "texture": "Mig-29/Models/Mig-29.rgb",
+   "has_uv": true,
+   "texture_in_glb": true
+  },
+  {
+   "ac_object": "StabilizerL",
+   "glb_nodes": [
+    "i0_StabilizerL"
+   ],
+   "texture": "Mig-29/Models/Mig-29.rgb",
+   "has_uv": true,
+   "texture_in_glb": true
+  },
+  {
+   "ac_object": "StabilizerR",
+   "glb_nodes": [
+    "i0_StabilizerR"
+   ],
+   "texture": "Mig-29/Models/Mig-29.rgb",
+   "has_uv": true,
+   "texture_in_glb": true
+  },
+  {
+   "ac_object": "Vstabs",
+   "glb_nodes": [
+    "i0_Vstabs"
+   ],
+   "texture": "Mig-29/Models/Mig-29.rgb",
+   "has_uv": true,
+   "texture_in_glb": true
+  },
+  {
+   "ac_object": "WingL",
+   "glb_nodes": [
+    "i0_WingL"
+   ],
+   "texture": "Mig-29/Models/Mig-29.rgb",
+   "has_uv": true,
+   "texture_in_glb": true
+  },
+  {
+   "ac_object": "WingR",
+   "glb_nodes": [
+    "i0_WingR"
+   ],
+   "texture": "Mig-29/Models/Mig-29.rgb",
+   "has_uv": true,
+   "texture_in_glb": true
+  },
+  {
+   "ac_object": "fuselage",
+   "glb_nodes": [
+    "i0_fuselage"
+   ],
+   "texture": "Mig-29/Models/Mig-29.rgb",
+   "has_uv": true,
+   "texture_in_glb": true
+  },
+  {
+   "ac_object": "fwdgeardoor.L",
+   "glb_nodes": [
+    "i0_fwdgeardoor.L"
+   ],
+   "texture": "Mig-29/Models/Mig-29.rgb",
+   "has_uv": true,
+   "texture_in_glb": true
+  },
+  {
+   "ac_object": "fwdgeardoor.R",
+   "glb_nodes": [
+    "i0_fwdgeardoor.R"
+   ],
+   "texture": "Mig-29/Models/Mig-29.rgb",
+   "has_uv": true,
+   "texture_in_glb": true
+  },
+  {
+   "ac_object": "fwdnosegeardoor",
+   "glb_nodes": [
+    "i0_fwdnosegeardoor"
+   ],
+   "texture": "Mig-29/Models/Mig-29.rgb",
+   "has_uv": true,
+   "texture_in_glb": true
+  },
+  {
+   "ac_object": "nosegeardoor.L",
+   "glb_nodes": [
+    "i0_nosegeardoor.L"
+   ],
+   "texture": "Mig-29/Models/Mig-29.rgb",
+   "has_uv": true,
+   "texture_in_glb": true
+  },
+  {
+   "ac_object": "nosegeardoor.R",
+   "glb_nodes": [
+    "i0_nosegeardoor.R"
+   ],
+   "texture": "Mig-29/Models/Mig-29.rgb",
+   "has_uv": true,
+   "texture_in_glb": true
+  },
+  {
+   "ac_object": "reargeardoor.L",
+   "glb_nodes": [
+    "i0_reargeardoor.L"
+   ],
+   "texture": "Mig-29/Models/Mig-29.rgb",
+   "has_uv": true,
+   "texture_in_glb": true
+  },
+  {
+   "ac_object": "reargeardoor.R",
+   "glb_nodes": [
+    "i0_reargeardoor.R"
+   ],
+   "texture": "Mig-29/Models/Mig-29.rgb",
+   "has_uv": true,
+   "texture_in_glb": true
+  },
+  {
+   "ac_object": "AnnunModules",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/tex_warnings.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "WarnABL",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/tex_warnings.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "WarnABR",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/tex_warnings.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "WarnFuel",
+   "glb_nodes": [],
+   "texture": "Mig-29/Models/tex_warnings.rgb",
+   "has_uv": true,
+   "texture_in_glb": false
+  },
+  {
+   "ac_object": "LightNavGlowL",
+   "glb_nodes": [
+    "i22_LightNavGlowL"
+   ],
+   "texture": "Mig-29/Models/txt_lights_exterior.rgb",
+   "has_uv": true,
+   "texture_in_glb": true
+  },
+  {
+   "ac_object": "LightNavGlowR",
+   "glb_nodes": [
+    "i22_LightNavGlowR"
+   ],
+   "texture": "Mig-29/Models/txt_lights_exterior.rgb",
+   "has_uv": true,
+   "texture_in_glb": true
+  },
+  {
+   "ac_object": "LightTailGlow",
+   "glb_nodes": [
+    "i22_LightTailGlow"
+   ],
+   "texture": "Mig-29/Models/txt_lights_exterior.rgb",
+   "has_uv": true,
+   "texture_in_glb": true
+  },
+  {
+   "ac_object": "ReheatR",
+   "glb_nodes": [
+    "i21_ReheatR"
+   ],
+   "texture": "Mig-29/Models/tex_reheat.rgb",
+   "has_uv": true,
+   "texture_in_glb": true
+  },
+  {
+   "ac_object": "ReheatL",
+   "glb_nodes": [
+    "i21_ReheatL"
+   ],
+   "texture": "Mig-29/Models/tex_reheat.rgb",
+   "has_uv": true,
+   "texture_in_glb": true
+  }
+ ],
+ "known_defects": {
+  "glb_has_geometry": true,
+  "primitives_without_uv": 53,
+  "exterior_textures_missing_from_glb": 0,
+  "animations_in_glb": [
+   "control_surfaces",
+   "gear"
+  ],
+  "note": "The GLB's baked animations play each part's full range; drive parts from channels within the XML limits instead."
+ },
+ "alternates": [],
+ "real_world_specs": {
+  "article": "https://en.wikipedia.org/wiki/Mikoyan_MiG-29",
+  "variant": "MiG-29",
+  "length m": "17.32",
+  "span m": "11.36",
+  "height m": "4.73",
+  "wing area sqm": "38",
+  "empty weight kg": "11000",
+  "gross weight kg": "14900",
+  "max takeoff weight kg": "18000",
+  "max speed kmh": "2450",
+  "crew": "1",
+  "eng1 name": "Klimov RD-33",
+  "eng1 number": "2",
+  "eng1 type": "[[afterburner",
+  "length_m": 17.32,
+  "span_m": 11.36,
+  "height_m": 4.73
+ },
+ "reference_images": 14
+}
