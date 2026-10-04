@@ -18,7 +18,7 @@ For each aircraft: audit → pack/source/images → candidates/proportions → r
 | 2 | Seafire Mk III | Done; source door/height review requested |
 | 3 | Corsair F4U-1 | Done; source contact/taxi-spin defects recorded |
 | 4 | F-16 | Partial exact-variant shape; rig/paint verified |
-| 5 | Dauphin | Pending |
+| 5 | Dauphin | Done; startup aliases / blade profile requested |
 | 6 | EC130 | Pending |
 | 7 | Bo 105 | Pending |
 | 8 | E-Flash | Pending |
@@ -467,3 +467,18 @@ Primary dimension cross-check: Smithsonian F4U-1D record gives length10.2 m, spa
 Lab requests: provide missing exact F-16.xml/f16-base.xml and complete shader-motion/material bindings in pack, capture uncapped liveries and source texture paths, qualify source airframe versus actual YF-16 prototype/75-0745 variant, provide closed physical gear-bay geometry and source brace hierarchy. A coarse body-envelope test is explicitly weaker than exact bay-wall containment. Source XML has opposite-side speedbrake centres; their lateral signs are snapped to geometry. Runtime only retains91 exterior paint files, not unused stores textures. The main inspector's60fps configure formerly re-scanned3303 nodes for each selector; cached node lookups fix that overhead. Simultaneous F-16 scratch renderers still slow this device, so release scratch canvases between live checks.
 
 Licensing recheck for completed aircraft: Spitfire retains correct3-blade source geometry; detailed donor's4 blades belong on Seafire (already integrated). Corsair supplied donor is A-7 jet. F-16 candidates simplify source detail. These are accuracy decisions. All supplied geometry borrowing is authorized; no off-by-default licence gate is used.
+
+### Dauphin completion
+
+- [x] Guess audit before implementation; XML/FDM/material slots, author thumbnail and M-IKEY AS365 photo read
+- [x] Base and single alternate rendered. Alternate is Robin DR400, not Dauphin helicopter; licensing is cleared but geometry is unsuitable
+- [x] Source gear logical groups expanded, baked hierarchy flattened per moving object,−90° gear/±35° twist/−80° doors restored; wheels retained throughout sequence
+- [x] Rotor11.94m/4 and Fenestron1.10m/11 at FDM hubs/RPM; original hubs and mast retained, segmented blades replaced at source diameter/chord
+- [x] FDM collective−12/+12, cyclic pitch±12/roll±8, tail−20/+14; cyclic changes blade incidence, not mast tilt; independent mechanical inspector limits, not FDM flight simulation
+- [x] Source70° crew/passenger doors and0.95m slider/popout tables, standard glass effect and12 source liveries; door panels were wrongly categorized as crew in pack and kept visible
+- [x] Clamps, rotor actual vertex radii, source contact heights/pitch0°, mirrored gear, real tyre containment within source fuselage, source textures/all liveries/hidden reasons/pause tested
+- [x] All original unchanged tests and current Lab suite pass
+- [x] Live all7 control sliders Home/End, gear cycling, parked/flight presets and all12 livery choices; comparison/inspector saved
+- [x] README row and local per-aircraft commit; no push
+
+Lab requests: provide missing dauphin-base.xml startup aliases, exact closed rotor airfoil profile/Fenestron nonuniform spacing and complete glass cubemap/material conversion. Standard panes and nez1 match author thumbnail but startup alias truth remains unverified. Generated zero-opacity blur ring was wrongly counted as geometric diameter when rotated; it is quarantined separately. Rotor `ccw` is a numeric string in pack and now parsed explicitly. FDM source parameters (chord/min-max collective/cyclic) were omitted by builder and now packaged from actual XML. Named livery changes use a cancellation generation so late downloads cannot overwrite a newer choice/reset.

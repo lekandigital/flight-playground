@@ -1,5 +1,6 @@
 """Copy runtime-only handoff data; preserve XML conditions instead of flattened text."""
 import argparse
+import hashlib
 import json
 import re
 import shutil
@@ -94,6 +95,15 @@ def prepare(asset, selected_set=None):
             animation['glb_axis_dir'] = [x, z, -y]
         if not animation.get('glb_axis_points') and axis.get('points_m'):
             animation['glb_axis_points'] = [[x, z, -y] for x, y, z in axis['points_m']]
+    for rotor in (facts.get('fdm_geometry') or {}).get('rotors', []):
+        matches = [(path, node) for path, tree in parsed for node in tree.iter('rotor')
+                   if node.get('name') == rotor['name'] and node.get('diameter')
+                   and abs(float(node.get('diameter')) - rotor['diameter_m']) < .001]
+        if matches:
+            path, node = matches[0]
+            rotor['source_parameters'] = dict(node.attrib)
+            rotor['source_controls'] = [dict(n.attrib) for n in node.findall('control-input')]
+            rotor['source_xml'] = str(path.relative_to(source))
     facts['source_conditions'] = conditions
     facts['default_properties'] = defaults
     facts['selected_set'] = selected
@@ -156,6 +166,23 @@ def prepare(asset, selected_set=None):
             if len(files) == 1:
                 slots[key] = files[0]
         livery['slots'] = slots
+    # The packs contain byte-identical AI/aircraft aliases. Keep original-path
+    # provenance but ship one runtime file for each actual image.
+    hashes, aliases = {}, {}
+    for texture in textures:
+        file = texture['file']
+        digest = hashlib.sha256((target / file).read_bytes()).hexdigest()
+        canonical = hashes.setdefault(digest, file)
+        aliases[file] = canonical
+        texture['file'] = canonical
+    for livery in trimmed.get('livery_names') or []:
+        livery['slots'] = {key: aliases.get(file, file) for key, file in livery.get('slots', {}).items()}
+    needed = {t['file'] for t in textures if t.get('original') in used}
+    needed.update(file for livery in trimmed.get('livery_names') or [] for file in livery.get('slots', {}).values())
+    textures = [t for t in textures if t['file'] in needed]
+    for file in target.rglob('*'):
+        if file.is_file() and file.suffix.lower() in ['.png', '.jpg', '.jpeg'] and str(file.relative_to(target)) not in needed:
+            file.unlink()
     trimmed['textures'] = textures
     (target / 'facts.json').write_text(json.dumps(trimmed, separators=(',', ':'), ensure_ascii=False) + '\n')
     print(asset, 'animations', len(trimmed.get('animations_from_xml') or []),

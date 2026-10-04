@@ -141,7 +141,8 @@ export function fdmRotor(root,facts,{index=0,name='lab',position}={}){
  const rotor=helicopterRotor(root,{name,position:vector(hub),radius,count:spec.blades,tail:false});
  const rest=new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0,1,0),normal);rotor.mount.quaternion.copy(rest);
  rotor.setPitch=(collective,pitch=0,roll=0)=>{rotor.mount.quaternion.copy(rest).multiply(new THREE.Quaternion().setFromEuler(new THREE.Euler(roll*RAD,0,pitch*RAD)));for(const blade of rotor.blades)blade.rotation.z=collective*RAD;};
- rotor.spin=(dt,engine)=>{if(!engine)return;rotor.rotor.rotation.y=(rotor.rotor.rotation.y+dt*(spec.rpm??0)*Math.PI/30*engine*(spec.ccw===false?-1:1))%(Math.PI*2);};
+ const ccw=spec.ccw===true||spec.ccw===1||spec.ccw==='1';
+ rotor.spin=(dt,engine)=>{if(!engine)return;rotor.rotor.rotation.y=(rotor.rotor.rotation.y+dt*(spec.rpm??0)*Math.PI/30*engine*(ccw?1:-1))%(Math.PI*2);};
  return{...rotor,spec,diameter:spec.diameter_m,source:'FDM procedural'};
 }
 async function texture(url){if(!textureCache.has(url))textureCache.set(url,new THREE.TextureLoader().loadAsync(url).then(t=>{t.flipY=false;t.colorSpace=THREE.SRGBColorSpace;return t;}));return textureCache.get(url);}
@@ -158,12 +159,14 @@ export async function applyTextures(root,facts,base,{loader=texture}={}){
 export function liverySwitch(root,facts,base,{loader=texture,slots={}}={}){
  const options=(facts.livery_names??[]).filter(l=>l.name&&l.slots&&Object.keys(l.slots).length),baseMaps=new Map();
  for(const m of meshList(root))for(const mat of Array.isArray(m.material)?m.material:[m.material])baseMaps.set(mat,mat.map);
- let selected='';
+ let selected='',selection=0;
  async function select(name){
-  selected=name;
+  selected=name;const generation=++selection;
   if(!name){for(const[mat,map]of baseMaps){mat.map=map;mat.userData.baseMap=map;mat.needsUpdate=true;}return;}
   const option=options.find(l=>l.name===name);if(!option)throw new Error('Unknown source livery '+name);
-  for(const[slot,file]of Object.entries(option.slots)){const map=await loader(`${base}/${file}`);for(const nodeName of slots[slot]??[])for(const m of meshList(labFind(root,nodeName)))for(const mat of Array.isArray(m.material)?m.material:[m.material]){mat.map=map;mat.userData.baseMap=map;mat.needsUpdate=true;}}
+  const maps=await Promise.all(Object.entries(option.slots).map(async([slot,file])=>[slot,await loader(`${base}/${file}`)]));
+  if(generation!==selection)return;
+  for(const[slot,map]of maps)for(const nodeName of slots[slot]??[])for(const m of meshList(labFind(root,nodeName)))for(const mat of Array.isArray(m.material)?m.material:[m.material]){mat.map=map;mat.userData.baseMap=map;mat.needsUpdate=true;}
  }
  return{get selected(){return selected;},options:options.map(l=>({value:l.name,label:l.name})),select,defaultLabel:facts.default_properties?.['sim/model/livery/name']??'Original download'};
 }
@@ -212,7 +215,9 @@ export async function makeXmlRig(root,animations,facts,options={}){
  function update(dt,state,active,paused){if(paused)return;const targets=options.flightTargets?.(state,active)??Object.fromEntries(['aileron','elevator','rudder'].map(key=>[key,active?clamp((key==='elevator'?state.pitch/.58:state.roll/.65),-1,1):0]));for(const[key,target]of Object.entries(targets))current[key]=(current[key]??0)+(target-(current[key]??0))*(1-Math.exp(-dt*7));current.engine=active?clamp(state.throttle,0,1):0;configure(current);spin(dt,current.engine);}
  configure(current);
  const testLoader=facts.runtimeTextureLoader?{loader:facts.runtimeTextureLoader}:{};
- const textures=await applyTextures(root,facts,`/lab/${facts.asset_id}`,{...options.textureOptions,...testLoader}),liveries=liverySwitch(root,facts,`/lab/${facts.asset_id}`,{...options.liveryOptions,...testLoader});
+ const textures=await applyTextures(root,facts,`/lab/${facts.asset_id}`,{...options.textureOptions,...testLoader});
+ options.finishMaterials?.(root);
+ const liveries=liverySwitch(root,facts,`/lab/${facts.asset_id}`,{...options.liveryOptions,...testLoader});
  const fields=options.fields??['gear','canopy','flaps','aileron','elevator','rudder','engine'];
  const report={originalAnimationDisabled:true,lab:true,frameError,bindings,skipped,textures,eyePoint:facts.eye_point,sounds:facts.sounds_copied,nasalFiles:facts.nasal_files,limitsDegrees:options.limits??{},summary:options.summary??'Lab: original-download XML rig and paint; see progress notes.'};
  return{configure,spin,update,bindings,spins,fields,liveries,report,groundRoot:root,groundContacts:facts.fdm_geometry?.gear_contacts?.filter(c=>c.glb&&c.is_wheel!==false),groundPitch:options.groundPitch??contactsPitch(facts),bounds:()=>visibleBounds(root),isSeaplane:!!options.isSeaplane,...options.rigExtras};
