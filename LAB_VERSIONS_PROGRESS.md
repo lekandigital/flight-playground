@@ -15,7 +15,7 @@ For each aircraft: audit → pack/source/images → candidates/proportions → r
 | Order | Aircraft | Status |
 | --- | --- | --- |
 | 1 | Spitfire Mk Vb | Done; pose-qualified height reference requested |
-| 2 | Seafire Mk III | Audit in progress |
+| 2 | Seafire Mk III | Done; source door/height review requested |
 | 3 | Corsair F4U-1 | Audit in progress |
 | 4 | F-16 | Pending |
 | 5 | Dauphin | Pending |
@@ -421,3 +421,19 @@ Missing source includes: source/Macchi-Castoldi-MC72/mc72-set.xml → Systems/mc
 ### Spitfire verification details
 
 All 29 supplied alternates rendered in the scratch comparison page, grouped three at a time with a matching camera direction and normalized span/length. Their different source axis conventions remain visible, so those front-on views are not dimensional evidence. Same-family FlightGear variants share the source geometry; the most detailed separable propeller donor has four blades and is reserved for Seafire. Mk Vb retains its correct three-blade source propeller. No licensing constraint remains. Live inspector checked every slider at both ends, gear cycling, parked/flight presets and original-only livery. Physical glass shader defines repaired after live WebGL diagnostics. Tests verify true blade radius and coplanar FDM contacts. Height disagreement is explicitly recorded in README.
+
+### Seafire completion and licensing revision
+
+The earlier read-only writeup above predates the user's licensing clearance and donor integration. Its statements about no borrowing and the original-only 3.357 m propeller no longer describe the final Lab implementation. The runtime now uses `man-supermarine-spitfire-1093b498 / Propelers` contours at FDM diameter 3.276 m, source axial envelope/shaft/spinner and reprojected source paint. Only that geometry JSON is shipped; no donor GLB or raw reference photo is copied. Original blades remain individually revealable. The user authorized all supplied alternate borrowing, with no licence constraint; exact metadata remains unprovided rather than invented.
+
+- [x] Guess audit before rig implementation
+- [x] XML, set, FDM, intended images and period references
+- [x] Candidates: 28 GLBs hash-identical to already rendered Spitfire alternates; extra Vb equals the reviewed base
+- [x] Source rig, true nested tip folds, hook, contacts, original naval paint and donor propeller
+- [x] Actual donor vertex radius within 3%; wheel containment, symmetry, clamps, source paint and pause tests
+- [x] Whole unchanged ChatGPT test suite
+- [x] Live parked and flight poses, every control Home/End, gear cycling, original-only livery
+- [x] Inspector and matched-perspective period-photo comparison
+- [x] README row and local per-aircraft commit
+
+Lab requests: identify a pose-qualified height reference; check exact source gear-door axis/lower edge, source-material UV projection near borrowed blade roots and supply exact donor licence metadata for archival provenance. These are recorded limitations, not licensing blockers.

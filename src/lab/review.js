@@ -9,7 +9,7 @@ import {prepareCaproni} from '../caproni.js';
 import {prepareLab} from './index.js';
 import {repairMaterials,visibleBounds,presetState} from '../rig-tools.js';
 const assets={spitfire:'fg-spitfire-spitfirevb-371986bf',seafire:'fg-spitfire-seafireiiic-e1e7c198',f4u:'fg-f4u-8cea7feb',f16:'fg-f16-defa67fc',dauphin:'fg-dauphin-ea380a4c',ec130:'fg-ec130-9797aa83',bo105:'fg-bo105-5f1245bd',eflash:'fg-e-flash-c73b47ce',m33:'fg-macchi-m33-70f57d9d',s6b:'man-supermarine-s-6b-366f4f6d',mc72:'man-macchi-castoldi-mc72-6fa2f786',ca60:'man-caproni-ca60-e193e5f3'};
-const refPrefix={spitfire:'09_',seafire:'03_',f4u:'05_'};
+const refPrefix={spitfire:'09_',seafire:'05_',f4u:'05_'};
 const $=id=>document.getElementById(id),query=new URLSearchParams(location.search),id=query.get('id')??'spitfire',asset=assets[id],page=Number(query.get('page')??0),candidateMode=query.has('candidates'),meta=await fetch('/meta/'+asset).then(r=>r.json());
 $('title').textContent=`${meta.title} · ${candidateMode?'geometry candidates':'ChatGPT / Lab / reference'}`;
 document.body.classList.toggle('candidates',candidateMode);
