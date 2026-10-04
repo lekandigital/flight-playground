@@ -19,7 +19,7 @@ For each aircraft: audit → pack/source/images → candidates/proportions → r
 | 3 | Corsair F4U-1 | Done; source contact/taxi-spin defects recorded |
 | 4 | F-16 | Partial exact-variant shape; rig/paint verified |
 | 5 | Dauphin | Done; startup aliases / blade profile requested |
-| 6 | EC130 | Pending |
+| 6 | EC130 | Implemented; tests pass; final live evidence pending |
 | 7 | Bo 105 | Pending |
 | 8 | E-Flash | Pending |
 | 9 | Macchi M.33 | Pending |
@@ -482,3 +482,36 @@ Licensing recheck for completed aircraft: Spitfire retains correct3-blade source
 - [x] README row and local per-aircraft commit; no push
 
 Lab requests: provide missing dauphin-base.xml startup aliases, exact closed rotor airfoil profile/Fenestron nonuniform spacing and complete glass cubemap/material conversion. Standard panes and nez1 match author thumbnail but startup alias truth remains unverified. Generated zero-opacity blur ring was wrongly counted as geometric diameter when rotated; it is quarantined separately. Rotor `ccw` is a numeric string in pack and now parsed explicitly. FDM source parameters (chord/min-max collective/cyclic) were omitted by builder and now packaged from actual XML. Named livery changes use a cancellation generation so late downloads cannot overwrite a newer choice/reset.
+
+### Ca.60 guess audit (before Lab implementation)
+
+The preserved `prepareCaproni` is the visual benchmark. It already recovers intact `Plane002` wing geometry, keeps the hull/booms/bracing transforms and isolates exploded merged parts. This Lab version will reuse those techniques and keep the established silver/navy/ivory finish unless a reference supports a correction.
+
+| Existing typed choice | Pack / reference check and Lab action |
+|---|---|
+| Native+Z bow, yaw−90°; exact vertex bounds | Pack has no verified FlightGear frame. Retain correct native orientation; exclude168.082 m exploded parts before measuring |
+| Three wing banks offsetsZ0/.985/1.975,Y.01/−.035/−.01; tiers.284 | No XML facts. Validate preserved geometry against museum scale model and period photo; do not reshape wing edges |
+| Aileron±12°, pitchfore/aft±8°, combined±16°, rudder±10° | No supplied travel/hinge source. Seek period technical record; keep any unresolved degree limits explicitly partial rather than claim them source-derived |
+| Eight propeller sites; outer2-blade radius.135 /central4-blade radius.12 | Pack blanket4-blade count is not per-engine-qualified. Museum model shows outer2 andcentral4; inspect period evidence before overriding correct mixed layout |
+| Rotor speed4+70×throttle rad/s, opposinggroups | No RPM in pack. Unverified display rate; replace only if period/engine record supports installed drive ratio |
+| Hull/roof bandsY−.035/.083,Z1.05–2.95; booms/engine trim; floatnavy32%; silver/wood/pale struts | Reference04 museumscale model and prior user-provided Volandia model photo support palette; precise color/paint masks remain rendering adaptation |
+| Four recovered interplane rudders atX±.575, duplicatedone.284 tier | Reference04 scale model and periodNACA/1921 photos check placement; preserve benchmark while checking |
+| Water draft.085nativeunits; parkedpitch0 | No water-contactFDM or loadedwaterline source. Retain neutral display pose; draft is unverified |
+| Modelnative dimensionsabout2.7×3.2 | Compare proportion ratios after uniformspan30.5 m calibration against22.6×30.5×9.63; disclose unmatched dimensions rather than stretch axes |
+
+Pack has no XML/FDM/textures or named liveries. Its generic baked-animation warning is inapplicable to this static/manual download. User licensing clearance covers both supplied alternates; donor suitability will be based on geometry, with provenance preserved.
+
+### EC130 B4 implementation and verification
+
+- [x] Guess audit and protected ChatGPT module read; original source set/model/FDM, intended-look images and historical reference checked.
+- [x] Base and both supplied candidates compared from matching camera in the earlier live session. BaseB4 chosen; T2 differs by variant; B4 alternate has an added shadow billboard and no clearly better aircraft part. User licence clearance honored.
+- [x] B4 set variant1, source6 passenger seats and exact B4 door/motion rules; unsupported T2 families, overlapping shader panes and source-disabled equipment quarantined with reasons.
+- [x] Three-blade10.69m/386rpm main and ten-blade1.0m/3568rpm tail, FDM hubs/normals/chord; separate blade incidence retains fixed shafts. Source collective0.5/16°, cyclicpitch−12.6/+9.9, roll−7.1/+5.53; inverted tail−1=>−16.8°,0=>8.7°,+1=>34.2°.
+- [x] Exact compound0.85m slide/0.07m pop and source asymmetric80/70/100° doors;72 per-object bindings prevent converted pivot conflicts.
+- [x] Recovered77 UV-equipped source bindings from truncated pack metadata, four actually used texture files. Original FlightGear paint retained; no named livery XML. Standard exterior panes adapted to Three.js glass.
+- [x] Fixed skids; no invented gear channel. Misidentified deflated-float contacts ignored; visible skid geometry used with source−0.96° pitch. Swept rotor/body length12.641m fits12.64 within5%;3.684m height vs3.34 fails10.3%, explicitly recorded. Source FDM vs visual main/tail hub discrepancy retained and disclosed.
+- [x] `node tests/lab/ec130.test.mjs`; full unchanged `npm test` and build pass. Six controls were exercised Home/End and flight pose in the earlier session; subsequent inspector signed offset formatting still awaits live recheck.
+- [ ] Final live source-default livery/parked/flight controls and proof `artifacts/lab/ec130-inspector.jpg`, `ec130-compare.jpg`. Browser reconnect rejected because stale preview became a data URL; user reopening requested. Do not claim these artifacts exist.
+- [ ] Final complete status after browser evidence; code committed separately in aircraft order.
+
+Pack requests: provide `ec130-base.xml`, named livery XML/startup accessory aliases, all texture/node rows beyond the400-row cutoff; mark skid/float contacts correctly and verify vertex contacts; qualify source height/variant/rotor azimuth; resolve visualXML versus FDM rotor-hub discrepancies. Source min/max rotor incidence and blade chord need retaining in builder output; neutral inverted tail incidence is8.7°, not0°.
