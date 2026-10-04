@@ -21,7 +21,7 @@ For each aircraft: audit → pack/source/images → candidates/proportions → r
 | 5 | Dauphin | Done; startup aliases / blade profile requested |
 | 6 | EC130 | Implemented; tests pass; final live evidence pending |
 | 7 | Bo 105 | Implemented; tests pass; live evidence pending |
-| 8 | E-Flash | Pending |
+| 8 | E-Flash | Implemented; tests pass; live evidence pending |
 | 9 | Macchi M.33 | Pending |
 | 10 | Supermarine S.6B | Pending |
 | 11 | Macchi M.C.72 | Pending |
@@ -546,3 +546,43 @@ Pack requests: provide `ec130-base.xml`, named livery XML/startup accessory alia
 7. Crew/category mappings incorrectly call headphonecoversgroundequipment; logicalpilot/copilot selectgroups absentinGLBrequirechildexpansion. Packedrotormotionnode lists truncated; preservefullobjectbindings forarticulatedblade/hubrigging.
 8. SourceFDM contactdatum differs fromactualouter skidwalls byabout3cm; nearest-nodeAABBdistance0 isnotexactvertexcontactvalidation.
 
+
+### E-Flash implementation and verification
+
+- [x] Original module and guess audit, pack/XML/FDM, intended splash and source structural references reviewed. No alternates supplied; no licence-based exclusion.
+- [x] Exact original AC recovered and validated against byte-identical model/set XML;114 source ancestor translations restored. Source weightshift/table/control sign, steering and source pilot aliases/defaults implemented.
+- [x] Actual GLB test `node tests/lab/eflash.test.mjs` passed; original shaft rotates true at FDM radius, restored source RGB/UV paint, hidden reasons, fixed tyre counter-motion, pauses and clamping checked. Span agrees with FDM34.61FT within0.1%.
+- [ ] Live controls/parked/flight/source paint inspection and artifacts `artifacts/lab/eflash-inspector.jpg`, `eflash-compare.jpg` pending browser recovery.
+- [ ] Final complete status after live evidence.
+
+## Main corrections
+
+- Recovered the original public FlightGear archive from https://mirrors.ibiblio.org/flightgear/ftp/Aircraft-trunk/e-flash.zip into `/tmp/eflash-source.zip`. Model XML **and set XML are byte-identical to the handoff**. Original `Models/e-flash.ac` SHA256 `db48f2423844fa46a86ca64ff9b327e617178a03c517582f409f2bf796d128f2`.
+- The low sail is a converter bug, rather than an unverified 2.04 m hinge-based guess: original Wing parent `loc [0.0159598,2.0388253,0.0000003]` and Trike parent `loc [-0.3772432,0,0]` were omitted on child geometry. Pilot/passenger ancestor locations were also omitted. 114 per-part constant translations restore exact AC world bounds, with shapes agreeing within 0.1 mm. No copied AC geometry/archive/reference photo in runtime. Empty/tiny hierarchy marker meshes are quarantined independently; sound children remain visible.
+- Exact source weight shift: trike roll ±15° about `[1.55,2.04,0]`; trike pitch table `[-1:+6,0:-3,1:-12]` about `[1.55,1.96,0]`; whole-wing ground counter-roll and separate pitch table `[-1:-6,0:+3,1:+12]`. Ground tyre positions stay fixed through weight shift; in flight the wing stays fixed and the pod shifts. Original shared motion ±6/±5 was wrong. Source table expression AST was recovered correctly; original preparer matched pitch to the first roll expression because both had empty properties.
+- NoseWheel **and NoseStrut** turn ±20° about normalized `[-.2,1,0]`, not just wheel about global Y. Fixed tricycle gear; no invented retracting channel. Source −1.22° parked pitch. Misclassified/untrusted contacts are excluded from UI ground placement; renderer uses actual tyre vertices. Source gear contacts differ from original AC (main X by .38 m; tyre Y by .046 m), so contact/model mismatch remains explicit. Ground tyre heights differ only ~9 mm at source pitch. Original rear tyre outlines have 21 mm lateral asymmetry, preserved.
+- Original three-blade prop becomes sound once Trike's missing parent translation is restored. Retained, not unnecessarily rebuilt. Radius within3% of exact 61.8 inch (1.56972 m) FDM diameter; spin XML hub `[2.4,.55,0]`, axis+X, sign−1. Prop's axial plane is ahead of the XML hub but rotation is true and matches original drive shaft. Source no fixed electric rated/cruise RPM: 1000 rpm is explicitly a display inspection rate. Original select switches blades off over500 rpm but GLB lacks corresponding blur, so keep original blades at every display speed with recorded reason.
+- Original RGB colours restored. Names `PinkFairing.001`/`PinkWing` are misleading: actual AC defines **green** fairing `[.0943,.3245,.0619]` and **blue** fin `[.1395,.1414,.8849]`, matching author's splash. Keep pale sail and metal/wire original colours; no orange, invented bump, or blue metal override. 29 UV source bindings applied (pilot/passenger/source registration). Original shader transparency/alpha/tint preserved with repaired IOR1.5; flat authored sails/prop double-sided.
+- Source bool `1` was incorrectly parsed false for pilot and FES switches. Corrected exact set values. Pilot=1/passenger=0 bridged from set's `eflash` names through its multiplayer mapping to model's `flash2a` alias names. Pilot visible, passenger/deployed parachute hidden with independent reason. `NoseCone` is wing structure, incorrectly categorized as ground equipment; retained. No named liveries in original archive.
+
+## References and alternate checks
+
+This source set explicitly says: “This is a fictional electric microlight based on the Flash2a.” Consequently generic trike photos validate suspension/pusher/tricycle arrangement only, never type-specific paint or dimensions. No alternate models supplied; licensing does not exclude any potential donor.
+
+Read intended images `reference/flightgear/e-flash_Splash_exterior1.jpg` and thumbnail. Read structural diagram `reference/web/07_Ultralight_trike_components.jpg`, public domain KVDP, https://commons.wikimedia.org/wiki/File:Ultralight_trike_components.JPG. Read front flying photo `reference/web/06_Ultralight_Trike_01.jpg`, Oliver Ren, CC BY-SA3.0, https://commons.wikimedia.org/wiki/File:Ultralight_Trike_01.JPG. The latter is a different real trike, suitable structural comparison only; closest matching front camera about `[-15,3,19]` and photo06 recommended for final compare.
+
+## Dimensions and remaining issues
+
+Span exact FDM34.61 **FT** =10.549128m, actual10.54236m within0.1%. Original raw13.018m length and5.578m height included a deployed parachute, so excluded from aircraft proportions. No authoritative type-specific length/height for this fictional aircraft. Missing source `magnetoswitch.rgb` is also absent from downloaded original archive, not just handoff. Instrument texture facts include nodes omitted from exporter; report unresolved rather than claiming recovery. No full aerodynamic weight-shift/electric motor or cockpit instrument simulation required here. Source aliases and masks now mechanically resolved.
+
+## Pack builder requests
+
+1. Preserve nested AC ancestor `loc` on geometry, or provide source transform facts; loss affected114 parts, not merely sail Y.
+2. Expression matching needs animation ordinal/axis/centre, not only type/objects/empty property; whole-wing pitch mistakenly reused roll AST.
+3. Numeric bool1 must parse true; pilot and FES defaults false are wrong.
+4. Source set↔model aliases should resolve `eflash`→multiplayer→`flash2a`.
+5. Fixed main wheels are misclassified non-wheel/matched NoseWheel, and source FDM/AC contacts conflict.
+6. JSBSim units must be retained (wingspan34.61FT); metadata should state fictional variant explicitly.
+7. Category guesses misclassify Wing NoseCone as ground equipment.
+8. Source archive lacks referenced magnetoswitch texture; omitted cockpit-node texture bindings should be distinguished from visible exterior misses.
+9. Author RPM not supplied for electric model; do not fabricate a cruise RPM.

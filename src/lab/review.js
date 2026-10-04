@@ -9,7 +9,7 @@ import {prepareCaproni} from '../caproni.js';
 import {prepareLab} from './index.js';
 import {repairMaterials,visibleBounds,presetState} from '../rig-tools.js';
 const assets={spitfire:'fg-spitfire-spitfirevb-371986bf',seafire:'fg-spitfire-seafireiiic-e1e7c198',f4u:'fg-f4u-8cea7feb',f16:'fg-f16-defa67fc',dauphin:'fg-dauphin-ea380a4c',ec130:'fg-ec130-9797aa83',bo105:'fg-bo105-5f1245bd',eflash:'fg-e-flash-c73b47ce',m33:'fg-macchi-m33-70f57d9d',s6b:'man-supermarine-s-6b-366f4f6d',mc72:'man-macchi-castoldi-mc72-6fa2f786',ca60:'man-caproni-ca60-e193e5f3'};
-const refPrefix={spitfire:'09_',seafire:'05_',f4u:'05_',f16:'08_',dauphin:'05_',ec130:'04_',bo105:'02_'};
+const refPrefix={spitfire:'09_',seafire:'05_',f4u:'05_',f16:'08_',dauphin:'05_',ec130:'04_',bo105:'02_',eflash:'06_'};
 const $=id=>document.getElementById(id),query=new URLSearchParams(location.search),id=query.get('id')??'spitfire',asset=assets[id],page=Number(query.get('page')??0),candidateMode=query.has('candidates'),meta=await fetch('/meta/'+asset).then(r=>r.json());
 $('title').textContent=`${meta.title} · ${candidateMode?'geometry candidates':'ChatGPT / Lab / reference'}`;
 document.body.classList.toggle('candidates',candidateMode);
@@ -26,7 +26,7 @@ async function model(url,label,kind){
  }catch(e){div.textContent='Render failed: '+e.message;div.dataset.error=e.message;}
 }
 function pose(){for(const v of views){v.rig.configure(current);v.group.rotation.z=parked?-v.rig.groundPitch:0;v.group.position.set(0,0,0);v.group.updateMatrixWorld(true);const box=visibleBounds(v.group);v.group.position.y=-box.getCenter(new THREE.Vector3()).y;setCamera(v);}}
-function setCamera(v){const distance=Math.max(21,7/(Math.tan(17*Math.PI/180)*Math.min(1,v.camera.aspect)));v.camera.position.copy(cameraView==='side'?new THREE.Vector3(0,2,-distance):(id==='f4u'?new THREE.Vector3(-15,3,19):['dauphin','ec130','bo105'].includes(id)?new THREE.Vector3(-15,3,-19):new THREE.Vector3(-15,10,-19)).normalize().multiplyScalar(distance));v.orbit.target.set(0,0,0);v.orbit.update();}
+function setCamera(v){const distance=Math.max(21,7/(Math.tan(17*Math.PI/180)*Math.min(1,v.camera.aspect)));v.camera.position.copy(cameraView==='side'?new THREE.Vector3(0,2,-distance):(['f4u','eflash'].includes(id)?new THREE.Vector3(-15,3,19):['dauphin','ec130','bo105'].includes(id)?new THREE.Vector3(-15,3,-19):new THREE.Vector3(-15,10,-19)).normalize().multiplyScalar(distance));v.orbit.target.set(0,0,0);v.orbit.update();}
 $('parked').onclick=()=>{parked=true;current=presetState(true);pose();};$('flight').onclick=()=>{parked=false;current=presetState(false);pose();};$('side').onclick=()=>{cameraView='side';views.forEach(setCamera);};$('perspective').onclick=()=>{cameraView='perspective';views.forEach(setCamera);};
 if(candidateMode){await model(`/pack/${asset}/model.glb`,'Base download','raw');for(const alt of meta.alternates.slice(page*3,page*3+3))await model(`/pack/${asset}/alternates/${alt}/model.glb`,alt,'alternate');$('status').textContent=`Candidates ${page*3+1}–${Math.min(page*3+3,meta.alternates.length)} of ${meta.alternates.length}; same camera direction and 12 m normalized span/length. Source axis conventions retained.`;}
 else{
