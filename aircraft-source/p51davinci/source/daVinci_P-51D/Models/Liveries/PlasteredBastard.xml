@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <sim>
+    <model>
+      <livery>
+       <name type="string">PlasteredBastard</name>                   
+       <Fuselage>Liveries/PlasteredBastard/Mustang_1_t.png</Fuselage>
+       <WingTops>Liveries/PlasteredBastard/Mustang_2_t.png</WingTops>
+       <WingBottoms>Liveries/PlasteredBastard/Mustang_3_t.png</WingBottoms>
+       <HorizStabs>Liveries/PlasteredBastard/Mustang_4_t.png</HorizStabs>
+      </livery>
+    </model>
+  </sim>
+
+</PropertyList>

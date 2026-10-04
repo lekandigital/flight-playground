@@ -1,0 +1,2552 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Copyright (c) 2010 - 2014 Hal V. Engel
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<PropertyList include="p51d-bombableinclude.xml">
+
+    <params>
+        <doors>
+            <coolant>sim/multiplay/generic/float[3]</coolant>
+            <oil>sim/multiplay/generic/float[4]</oil>
+        </doors>
+        <gear>
+            <rollspeed-left>sim/multiplay/generic/float[12]</rollspeed-left>
+            <rollspeed-right>sim/multiplay/generic/float[13]</rollspeed-right>
+            <rollspeed-tail>sim/multiplay/generic/float[14]</rollspeed-tail>
+        </gear>
+        <lighting>
+            <landing-light>sim/multiplay/generic/bool[5]</landing-light>
+
+            <wing-position>sim/multiplay/generic/short[0]</wing-position>
+            <tail-position>sim/multiplay/generic/short[1]</tail-position>
+
+            <!-- Recognition lights on right wing -->
+            <red-rec>sim/multiplay/generic/bool[6]</red-rec>
+            <green-rec>sim/multiplay/generic/bool[7]</green-rec>
+            <amber-rec>sim/multiplay/generic/bool[8]</amber-rec>
+        </lighting>
+        <securing>
+            <pitot-cover>sim/multiplay/generic/bool[0]</pitot-cover>
+            <left-tiedown>sim/multiplay/generic/bool[1]</left-tiedown>
+            <right-tiedown>sim/multiplay/generic/bool[2]</right-tiedown>
+            <tail-left-tiedown>sim/multiplay/generic/bool[3]</tail-left-tiedown>
+            <tail-right-tiedown>sim/multiplay/generic/bool[4]</tail-right-tiedown>
+        </securing>
+        <surfaces>
+            <aileron>sim/multiplay/generic/float[15]</aileron>
+            <elevator>sim/multiplay/generic/float[16]</elevator>
+            <rudder>sim/multiplay/generic/float[17]</rudder>
+
+            <roll-trim>sim/multiplay/generic/float[18]</roll-trim>
+            <pitch-trim>sim/multiplay/generic/float[19]</pitch-trim>
+            <yaw-trim>sim/multiplay/generic/float[20]</yaw-trim>
+        </surfaces>
+    </params>
+
+ <path>P-51D-25NA.ac</path>
+ 
+  <nasal>
+    <load>
+          <![CDATA[
+      var self = cmdarg();
+	  print("LOAD P-51D-25-NA ", self.getPath());
+      var livery_update = aircraft.livery_update.new("Aircraft/p51d/Models/Liveries", 10);
+      # this needs to be true when the engines are working otherwise the fire and smoke animation will be visible.
+      # so when using 2017.2 or later protocol this will be the value that is transmitted, however for
+      # earlier protocols the booleans will never be transmitted and therefore always be false; so we set it to true for
+      # this case so it has a sensible value. RJH 2018-
+      self.getNode("sim/multiplay/generic/bool[25]",1).setValue(1);
+      self.initNode("sim/model/is-remote", 1, "BOOL");
+    ]]></load>
+ 
+    <unload><![CDATA[
+      print("UNLOAD P-51D-25-NA ", self.getPath());
+      livery_update.stop();
+    ]]></unload>
+ </nasal>
+
+ <!-- Pilot -->
+ <model>
+   <path>Aircraft/p51d/Models/Pilot/pilotWWII.xml</path>
+   <name>pilot</name>
+   <nopreview/>
+   <offsets>
+     <x-m>2.99</x-m>
+     <y-m>-0.0</y-m>
+     <z-m>0.215</z-m>
+   </offsets>
+ </model>
+ 
+ <!-- propeller -->
+ <model>
+  <path>Aircraft/p51d/Models/prop.xml</path>
+  <offsets>
+   <x-m>0</x-m>
+   <y-m>0</y-m>
+   <z-m>0</z-m>
+  </offsets>
+ </model>
+ 
+ <model>
+  <path>Aircraft/p51d/Models/propDisk.xml</path>
+  <offsets>
+   <x-m>0</x-m>
+   <y-m>0</y-m>
+   <z-m>0</z-m>
+  </offsets>
+ </model> 
+
+ <animation>
+   <type>select</type>
+   <object-name>pilot</object-name>
+   <condition>
+   <or>
+       <not-equals>
+         <property>/sim/current-view/view-number</property>
+         <value>0</value>
+       </not-equals>
+       <property>/aircraft/pilot/always-visible</property>
+       <!-- so the pilot is always visible on multiplayer -->
+       <property>sim/model/is-remote</property>
+     </or>
+   </condition>
+ </animation> 
+
+ <animation>
+  <type>material</type>
+  <object-name>pilot</object-name>
+  <emission>
+    <factor-prop>controls/lighting/cabin-norm</factor-prop>
+    <red>0.25</red>
+    <green>0.15</green>
+    <blue>0.15</blue>
+  </emission>
+ </animation>
+ 
+ 
+<effect>
+    <inherits-from>Aircraft/p51d/Models/Effects/bumpSpecFus</inherits-from>
+    <object-name>cowl</object-name>
+    <object-name>wingFilletLeft</object-name>
+    <object-name>wingFilletRight</object-name>    
+    <object-name>tailFaringLeft</object-name>
+    <object-name>tailFaringRight</object-name>
+    <object-name>tailWheelDoorRight</object-name>
+    <object-name>tailWheelDoorLeft</object-name>
+    <object-name>fuselage</object-name>
+    <object-name>dogHouse</object-name>
+    <object-name>coolingDoor</object-name>
+    <object-name>oilCoolerDoor</object-name>    
+    <object-name>rudderTrimTab</object-name>
+</effect>
+
+<effect>
+    <inherits-from>Aircraft/p51d/Models/Effects/effectsWing1</inherits-from>
+    <object-name>horizontalStabilizer</object-name>
+    <object-name>elevator</object-name>
+    <object-name>VerticalStab</object-name>
+    <object-name>dorsal</object-name>
+    <object-name>wingLeft</object-name>
+    <object-name>aileronLeft</object-name>
+    <object-name>flapsLeft</object-name>
+    <object-name>aileronTrimTabLeft</object-name>
+    <object-name>upperStrutLeft</object-name>
+    <object-name>upperScissorsLeft</object-name>
+    <object-name>lowerScissorsLeft</object-name>
+    <object-name>forwardGearDoorLinkLeft</object-name>
+    <object-name>forwardGearDoorEyeBoltLeft</object-name>
+    <object-name>rearGearDoorLinkLeft</object-name>
+    <object-name>rearGearDoorEyeBoltLeft</object-name>
+    <object-name>lowerStrutLeft</object-name>    
+    <object-name>upperStrutRight</object-name>
+    <object-name>upperScissorsRight</object-name>
+    <object-name>lowerScissorsRight</object-name>
+    <object-name>forwardGearDoorLinkRight</object-name>
+    <object-name>forwardGearDoorEyeBoltRight</object-name>
+    <object-name>rearGearDoorLinkRight</object-name>
+    <object-name>rearGearDoorEyeBoltRight</object-name>
+    <object-name>lowerStrutRight</object-name>
+    <object-name>elevatorTrimTabLeft</object-name>
+    <object-name>elevatorTrimTabRight</object-name>
+    <object-name>centerWingFairing</object-name>
+    <object-name>innerGearDoorLeft</object-name>
+    <object-name>outerDoorLeft</object-name>
+</effect>
+
+<effect>
+    <inherits-from>Aircraft/p51d/Models/Effects/effectsTires</inherits-from>
+    <object-name>mainWheelRight</object-name>
+    <object-name>mainWheelLeft</object-name>
+</effect>
+
+<effect>
+    <inherits-from>Aircraft/p51d/Models/Effects/effectsExhaustCovers</inherits-from>
+    <object-name>exhaustCoverLeft</object-name>
+    <object-name>exhaustCoverRight</object-name>
+</effect>
+
+<effect>
+    <inherits-from>Aircraft/p51d/Models/Effects/effectsWing2</inherits-from>
+    <object-name>wingRight</object-name>
+    <object-name>aileronRight</object-name>
+    <object-name>flapsRight</object-name>
+    <object-name>innerGearDoorRight</object-name>
+    <object-name>outerDoorRight</object-name>
+    <object-name>gunBastTubeFairingRight</object-name>
+    <object-name>wingTipLightBodyRight</object-name>
+    <object-name>aileronTrimTabRight</object-name>
+    <object-name>gunBastTubeFairingLeft</object-name>
+</effect>
+
+    <effect>
+        <inherits-from>Aircraft/p51d/Models/Effects/interior/interior</inherits-from>
+        <object-name>amorGlassLowerFrame</object-name>
+        <object-name>canopyreleaseCableCover</object-name>
+        <object-name>fuselage</object-name>
+        <object-name>frontCanopySeal</object-name>
+        <object-name>fugelageInside</object-name>
+        <object-name>instrumentShroud</object-name>
+        <object-name>panel</object-name>
+        <object-name>windshieldFrame</object-name>
+    </effect>
+
+ <model>
+    <path>Aircraft/p51d/Models/Instruments/Instruments.xml</path>
+ </model>
+ 
+    <model>
+        <path>Aircraft/p51d/Models/Cockpit/K14/gunsight.xml</path>
+    </model>
+
+    <model>
+        <name>Gyro-gun-sight</name>
+        <path>Aircraft/Instruments-3d/computing-gun-sights/K14/K14-pipper.xml</path>
+        <offsets>
+            <x-m>2.90042</x-m>
+            <y-m>0.000</y-m>
+            <z-m>0.672</z-m>
+        </offsets>
+    </model>
+
+    <model>
+        <path>Aircraft/p51d/Models/Cockpit/SeatAndArmor/seat-vintage.xml</path>
+    </model>
+
+    <model>
+        <usage>interior</usage>
+        <path>Aircraft/p51d/Models/Cockpit/cockpit.xml</path>
+    </model>
+ 
+ <model>
+  <path>Aircraft/p51d/Models/Cockpit/enclosure.xml</path>
+ </model> 
+
+  <model>
+  <name>ExternalStores</name>
+  <path>Aircraft/p51d/Models/weapons.xml</path>
+  <offsets>
+   <x-m>-1</x-m>
+   <y-m>0</y-m>
+   <z-m>0</z-m>
+  </offsets>
+ </model>
+
+ <!-- Marker model used by checklists -->
+ <model>
+   <path>Aircraft/Generic/marker.xml</path>
+ </model>
+ 
+ <!-- start up smoke left -->
+ <model>
+    <path>Aircraft/p51d/Models/Effects/cranking/cranking.xml</path>
+       <offsets>
+         <x-m> 0.979708 </x-m>
+         <y-m> -0.49 </y-m>
+         <z-m> -0.012 </z-m>
+         <heading-deg> -80 </heading-deg>
+         <pitch-deg>10</pitch-deg>
+         <roll-deg>-30</roll-deg>
+       </offsets>
+  </model>
+  
+  <model>
+    <path>Aircraft/p51d/Models/Effects/cranking/cranking.xml</path>
+       <offsets>
+         <x-m> 0.820108 </x-m>
+         <y-m> -0.49 </y-m>
+         <z-m> -0.012 </z-m>
+         <heading-deg> -80 </heading-deg>
+         <pitch-deg>10</pitch-deg>
+         <roll-deg>-30</roll-deg>
+       </offsets>
+  </model>
+  
+  <model>
+    <path>Aircraft/p51d/Models/Effects/cranking/cranking.xml</path>
+       <offsets>
+         <x-m> 0.670036 </x-m>
+         <y-m> -0.49 </y-m>
+         <z-m> -0.012 </z-m>
+         <heading-deg> -80 </heading-deg>
+         <pitch-deg>10</pitch-deg>
+         <roll-deg>-30</roll-deg>
+       </offsets>
+  </model>
+  
+  <model>
+    <path>Aircraft/p51d/Models/Effects/cranking/cranking.xml</path>
+       <offsets>
+         <x-m> 0.514009 </x-m>
+         <y-m> -0.49 </y-m>
+         <z-m> -0.012 </z-m>
+         <heading-deg> -80 </heading-deg>
+         <pitch-deg>10</pitch-deg>
+         <roll-deg>-30</roll-deg>
+       </offsets>
+  </model>
+  
+  <model>
+    <path>Aircraft/p51d/Models/Effects/cranking/cranking.xml</path>
+       <offsets>
+         <x-m> 0.363938</x-m>
+         <y-m> -0.49 </y-m>
+         <z-m> -0.012 </z-m>
+         <heading-deg> -80 </heading-deg>
+         <pitch-deg>10</pitch-deg>
+         <roll-deg>-30</roll-deg>
+       </offsets>
+  </model>
+  
+  <model>
+    <path>Aircraft/p51d/Models/Effects/cranking/cranking.xml</path>
+       <offsets>
+         <x-m> 0.183 </x-m>
+         <y-m> -0.49 </y-m>
+         <z-m> -0.012 </z-m>
+         <heading-deg> -80 </heading-deg>
+         <pitch-deg>10</pitch-deg>
+         <roll-deg>-30</roll-deg>
+       </offsets>
+  </model>
+
+  <!-- start up smoke right side -->
+  
+  <model>
+    <path>Aircraft/p51d/Models/Effects/cranking/cranking.xml</path>
+       <offsets>
+         <x-m> 0.979708 </x-m>
+         <y-m> 0.49 </y-m>
+         <z-m> -0.012 </z-m>
+         <heading-deg> 40 </heading-deg>
+         <pitch-deg>10</pitch-deg>
+         <roll-deg>-30</roll-deg>
+       </offsets>
+  </model>
+  
+  <model>
+    <path>Aircraft/p51d/Models/Effects/cranking/cranking.xml</path>
+       <offsets>
+         <x-m> 0.820108 </x-m>
+         <y-m> 0.49 </y-m>
+         <z-m> -0.012 </z-m>
+         <heading-deg> 40 </heading-deg>
+         <pitch-deg>10</pitch-deg>
+         <roll-deg>-30</roll-deg>
+       </offsets>
+  </model>
+  
+  <model>
+    <path>Aircraft/p51d/Models/Effects/cranking/cranking.xml</path>
+       <offsets>
+         <x-m> 0.670036 </x-m>
+         <y-m> 0.49 </y-m>
+         <z-m> -0.012 </z-m>
+         <heading-deg> 40 </heading-deg>
+         <pitch-deg>10</pitch-deg>
+         <roll-deg>-30</roll-deg>
+       </offsets>
+  </model>
+  
+  <model>
+    <path>Aircraft/p51d/Models/Effects/cranking/cranking.xml</path>
+       <offsets>
+         <x-m> 0.514009 </x-m>
+         <y-m> 0.49 </y-m>
+         <z-m> -0.012 </z-m>
+         <heading-deg> 40 </heading-deg>
+         <pitch-deg>10</pitch-deg>
+         <roll-deg>-30</roll-deg>
+       </offsets>
+  </model>
+  
+  <model>
+    <path>Aircraft/p51d/Models/Effects/cranking/cranking.xml</path>
+       <offsets>
+         <x-m> 0.363938</x-m>
+         <y-m> 0.49 </y-m>
+         <z-m> -0.012 </z-m>
+         <heading-deg> 40 </heading-deg>
+         <pitch-deg>30</pitch-deg>
+         <roll-deg>-30</roll-deg>
+       </offsets>
+  </model>
+  
+  <model>
+    <path>Aircraft/p51d/Models/Effects/cranking/cranking.xml</path>
+       <offsets>
+         <x-m> 0.188 </x-m>
+         <y-m> 0.49 </y-m>
+         <z-m> -0.012 </z-m>
+         <heading-deg> 40 </heading-deg>
+         <pitch-deg>30</pitch-deg>
+         <roll-deg>-30</roll-deg>
+       </offsets>
+  </model>
+ 
+ <!-- gear animations -->
+ 
+ <animation>
+  <type>rotate</type>
+  <object-name>upperStrutLeft</object-name>
+  <object-name>lowerStrutLeft</object-name>
+  <object-name>mainWheelLeft</object-name>
+  <object-name>lowerScissorsLeft</object-name>
+  <object-name>upperScissorsLeft</object-name>
+  <object-name>forwardGearDoorLinkLeft</object-name>
+  <object-name>rearGearDoorLinkLeft</object-name>
+  <object-name>rearGearDoorEyeBoltLeft</object-name>
+  <object-name>forwardGearDoorEyeBoltLeft</object-name>
+  <property>gear/gear[1]/position-norm</property>
+  <interpolation>
+   <entry>
+    <ind>0.0</ind>
+    <dep>88</dep>
+   </entry>
+   <entry>
+    <ind>0.33</ind>
+    <dep>87.9</dep>
+   </entry>
+   <entry>
+    <ind>1.00</ind>
+    <dep>0.0</dep>
+   </entry>
+  </interpolation>
+  <axis>   
+   <x1-m>2.1860</x1-m>
+   <y1-m>-1.7550</y1-m>
+   <z1-m>-0.5523</z1-m>
+   <x2-m>2.49897</x2-m>
+   <y2-m>-1.79827</y2-m>
+   <z2-m>-0.589755</z2-m>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>outerDoorLeft</object-name>
+  <property>gear/gear[0]/position-norm</property>
+  <interpolation>
+   <entry>
+    <ind>0.0</ind>
+    <dep>0</dep>
+   </entry>
+   <entry>
+    <ind>0.32</ind>
+    <dep>0</dep>
+   </entry>
+   <entry>
+    <ind>0.4</ind>
+    <dep>-9</dep>
+   </entry>
+   <entry>
+    <ind>0.55</ind>
+    <dep>-29</dep>
+   </entry>
+   <entry>
+    <ind>0.7</ind>
+    <dep>-49</dep>
+   </entry>
+   <entry>
+    <ind>1.00</ind>
+    <dep>-94</dep>
+   </entry>
+  </interpolation>
+  <axis>   
+   <x1-m>2.0141</x1-m>
+   <y1-m>-1.8399</y1-m>
+   <z1-m>-0.62664</z1-m>
+   <x2-m>2.2122</x2-m>
+   <y2-m>-1.8646</y2-m>
+   <z2-m>-0.6575</z2-m>
+  </axis>
+ </animation>
+ 
+  
+  <animation>
+  <type>rotate</type>
+  <object-name>forwardGearDoorLinkLeft</object-name>
+  <object-name>forwardGearDoorEyeBoltLeft</object-name>
+  <object-name>rearGearDoorLinkLeft</object-name>
+  <object-name>rearGearDoorEyeBoltLeft</object-name>
+  <property>gear/gear[1]/position-norm</property>
+  <interpolation>
+   <entry>
+    <ind>0.3</ind>
+    <dep>-42</dep>
+   </entry>
+   <entry>
+    <ind>0.55</ind>
+    <dep>-22</dep>
+   </entry>
+   <entry>
+    <ind>0.7</ind>
+    <dep>-12</dep>
+   </entry>
+   <entry>
+    <ind>0.85</ind>
+    <dep>-1</dep>
+   </entry>
+   <entry>
+    <ind>1.00</ind>
+    <dep>10</dep>
+   </entry>
+  </interpolation>
+  <axis>   
+   <x1-m>1.96326</x1-m>
+   <y1-m>-1.68568</y1-m>
+   <z1-m>-1.05666</z1-m>
+   <x2-m>2.15667</x2-m>
+   <y2-m>-1.7025</y2-m>
+   <z2-m>-1.09343</z2-m>
+  </axis>
+ </animation>
+ 
+ <animation>
+  <type>rotate</type>
+  <object-name>landingLight</object-name>
+  <property>gear/gear[1]/position-norm</property>
+  <interpolation>
+   <entry>
+    <ind>0.0</ind>
+    <dep>0</dep>
+   </entry>
+   <entry>
+    <ind>0.32</ind>
+    <dep>0</dep>
+   </entry>
+   <entry>
+    <ind>0.38</ind>
+    <dep>-30</dep>
+   </entry>
+   <entry>
+    <ind>1.00</ind>
+    <dep>-30</dep>
+   </entry>
+  </interpolation>
+  <axis>   
+   <x1-m>2.64413</x1-m>
+   <y1-m>-1.0</y1-m>
+   <z1-m>-0.683655</z1-m>
+   <x2-m>2.64413</x2-m>
+   <y2-m>-0.2</y2-m>
+   <z2-m>-0.683655</z2-m>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>innerGearDoorLeft</object-name>
+  <property>sim/multiplay/generic/float[0]</property>
+  <interpolation>
+   <entry>
+    <ind>0.0</ind>
+    <dep>0.2</dep>
+   </entry>
+   <entry>
+    <ind>1.0</ind>
+    <dep>85</dep>
+   </entry>
+  </interpolation>
+  <axis>   
+   <x1-m>1.8966</x1-m>
+   <y1-m>-0.053</y1-m>
+   <z1-m>-0.897265</z1-m>
+   <x2-m>2.67245</x2-m>
+   <y2-m>-0.053</y2-m>
+   <z2-m>-0.897265</z2-m>
+  </axis>
+ </animation>
+ 
+ <animation>
+  <type>rotate</type>
+  <object-name>GearDoorHydralicBodyLeft</object-name>
+  <object-name>GearDoorHydralicArmLeft</object-name>
+  <property>sim/multiplay/generic/float[0]</property>
+  <interpolation>
+   <entry>
+    <ind>0.0</ind>
+    <dep>0.0</dep>
+   </entry>
+   <entry>
+    <ind>1.0</ind>
+    <dep>1</dep>
+   </entry>
+  </interpolation>
+  <axis>   
+   <x1-m>2.626</x1-m>
+   <y1-m>-0.3</y1-m>
+   <z1-m>-0.50878</z1-m>
+   <x2-m>2.626</x2-m>
+   <y2-m>-0.1</y2-m>
+   <z2-m>-0.50878</z2-m>
+  </axis>
+ </animation>
+ 
+  <animation>
+  <type>rotate</type>
+  <object-name>GearDoorHydralicBodyLeft</object-name>
+  <object-name>GearDoorHydralicArmLeft</object-name>
+  <property>sim/multiplay/generic/float[0]</property>
+  <!-- <property>/fdm/jsbsim/systems/gear/inner-doors</property> -->
+  <interpolation>
+   <entry>
+    <ind>0.0</ind>
+    <dep>0.0</dep>
+   </entry>
+   <entry>
+    <ind>0.1</ind>
+    <dep>2</dep>
+   </entry>
+   <entry>
+    <ind>0.3</ind>
+    <dep>0</dep>
+   </entry>
+   <entry>
+    <ind>0.37</ind>
+    <dep>-1</dep>
+   </entry>
+   <entry>
+    <ind>0.45</ind>
+    <dep>-2.5</dep>
+   </entry>
+   <entry>
+    <ind>1.0</ind>
+    <dep>-15</dep>
+   </entry>>
+  </interpolation>
+  <axis>   
+   <x1-m>2.6</x1-m>
+   <y1-m>-0.249072</y1-m>
+   <z1-m>-0.50878</z1-m>
+   <x2-m>2.4</x2-m>
+   <y2-m>-0.249072</y2-m>
+   <z2-m>-0.50878</z2-m>
+  </axis>
+ </animation>
+ 
+  <animation>
+  <type>translate</type>
+  <object-name>GearDoorHydralicArmLeft</object-name>
+  <property>sim/multiplay/generic/float[0]</property>
+  <interpolation>
+   <entry>
+    <ind>0.0</ind>
+    <dep>0.0</dep>
+   </entry>
+   <entry>
+    <ind>0.3</ind>
+    <dep>0.108</dep>
+   </entry>
+   <entry>
+    <ind>0.45</ind>
+    <dep>0.155</dep>
+   </entry>
+   <entry>
+    <ind>0.60</ind>
+    <dep>0.26</dep>
+   </entry>
+   <entry>
+    <ind>1.0</ind>
+    <dep>0.30</dep>
+   </entry>
+  </interpolation>
+  <axis>   
+   <x1-m>2.626</x1-m>
+   <y1-m>-0.2585387</y1-m>
+   <z1-m>-0.5655285</z1-m>
+   <x2-m>2.63152</x2-m>
+   <y2-m>-0.277918</y2-m>
+   <z2-m>-0.7984396</z2-m>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>upperStrutLeft</object-name>
+  <object-name>lowerStrutLeft</object-name>
+  <object-name>lowerScissorsLeft</object-name>
+  <object-name>upperScissorsLeft</object-name>
+  <object-name>forwardGearDoorLinkLeft</object-name>
+  <object-name>rearGearDoorLinkLeft</object-name>
+  <object-name>rearGearDoorEyeBoltLeft</object-name>
+  <object-name>forwardGearDoorEyeBoltLeft</object-name>
+  <condition>
+   <greater-than>
+    <property>gear/gear[0]/position-norm</property>
+    <value>0.02</value>
+   </greater-than>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>mainWheelLeft</object-name>
+  <condition>
+   <greater-than>
+    <property>gear/gear[0]/position-norm</property>
+    <value>0.01</value>
+   </greater-than>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>upperStrutRight</object-name>
+  <object-name>lowerStrutRight</object-name>
+  <object-name>mainWheelRight</object-name>
+  <object-name>lowerScissorsRight</object-name>
+  <object-name>upperScissorsRight</object-name>
+  <object-name>forwardGearDoorLinkRight</object-name>
+  <object-name>rearGearDoorLinkRight</object-name>
+  <object-name>rearGearDoorEyeBoltRight</object-name>
+  <object-name>forwardGearDoorEyeBoltRight</object-name>
+  <property>gear/gear[1]/position-norm</property>
+  <interpolation>
+   <entry>
+    <ind>0.0</ind>
+    <dep>-88</dep>
+   </entry>
+   <entry>
+    <ind>0.33</ind>
+    <dep>-87.9</dep>
+   </entry>
+   <entry>
+    <ind>1.00</ind>
+    <dep>0.0</dep>
+   </entry>
+  </interpolation>
+  <axis>   
+   <x1-m>2.1860</x1-m>
+   <y1-m>1.7550</y1-m>
+   <z1-m>-0.5523</z1-m>
+   <x2-m>2.49897</x2-m>
+   <y2-m>1.79827</y2-m>
+   <z2-m>-0.589755</z2-m>
+  </axis>
+ </animation>
+ 
+   <interpolation>
+   <entry>
+    <ind>0.0</ind>
+    <dep>0</dep>
+   </entry>
+   <entry>
+    <ind>0.32</ind>
+    <dep>0</dep>
+   </entry>
+   <entry>
+    <ind>0.4</ind>
+    <dep>-9</dep>
+   </entry>
+   <entry>
+    <ind>0.55</ind>
+    <dep>-29</dep>
+   </entry>
+   <entry>
+    <ind>0.7</ind>
+    <dep>-49</dep>
+   </entry>
+   <entry>
+    <ind>1.00</ind>
+    <dep>-94</dep>
+   </entry>
+  </interpolation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>outerDoorRight</object-name>
+  <property>gear/gear[1]/position-norm</property>
+  <interpolation>
+   <entry>
+    <ind>0.0</ind>
+    <dep>0</dep>
+   </entry>
+   <entry>
+    <ind>0.32</ind>
+    <dep>0</dep>
+   </entry>
+   <entry>
+    <ind>0.4</ind>
+    <dep>9</dep>
+   </entry>
+   <entry>
+   <entry>
+    <ind>0.55</ind>
+    <dep>30</dep>
+   </entry>
+   <entry>
+    <ind>0.76</ind>
+    <dep>60</dep>
+   </entry>
+    <ind>1.00</ind>
+    <dep>94</dep>
+   </entry>
+  </interpolation>
+  <axis>   
+   <x1-m>2.0141</x1-m>
+   <y1-m>1.8399</y1-m>
+   <z1-m>-0.62664</z1-m>
+   <x2-m>2.2122</x2-m>
+   <y2-m>1.8646</y2-m>
+   <z2-m>-0.6585</z2-m>
+  </axis>
+ </animation>
+ 
+   <animation>
+  <type>rotate</type>
+  <object-name>forwardGearDoorLinkRight</object-name>
+  <object-name>forwardGearDoorEyeBoltRight</object-name>
+  <object-name>rearGearDoorLinkRight</object-name>
+  <object-name>rearGearDoorEyeBoltRight</object-name>
+  <property>gear/gear[1]/position-norm</property>
+  <interpolation>
+   <entry>
+    <ind>0.3</ind>
+    <dep>42</dep>
+   </entry>
+   <entry>
+    <ind>0.55</ind>
+    <dep>20</dep>
+   </entry>
+   <entry>
+    <ind>0.7</ind>
+    <dep>10</dep>
+   </entry>
+   <entry>
+    <ind>0.85</ind>
+    <dep>-2</dep>
+   </entry>
+   <entry>
+    <ind>1.00</ind>
+    <dep>-10</dep>
+   </entry>
+  </interpolation>
+  <axis>   
+   <x1-m>1.96549</x1-m>
+   <y1-m>1.68772</y1-m>
+   <z1-m>-1.05709</z1-m>
+   <x2-m>2.15526</x2-m>
+   <y2-m>1.70255</y2-m>
+   <z2-m>-1.09508</z2-m>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>innerGearDoorRight</object-name>
+  <property>sim/multiplay/generic/float[0]</property>
+  <interpolation>
+   <entry>
+    <ind>0.0</ind>
+    <dep>0</dep>
+   </entry>
+   <entry>
+    <ind>1.0</ind>
+    <dep>-85</dep>
+   </entry>
+  </interpolation>
+  <axis>   
+   <x1-m>1.8966</x1-m>
+   <y1-m>0.0477</y1-m>
+   <z1-m>-0.897265</z1-m>
+   <x2-m>2.67245</x2-m>
+   <y2-m>0.0477</y2-m>
+   <z2-m>-0.897265</z2-m>
+  </axis>
+ </animation>
+ 
+  <animation>
+  <type>rotate</type>
+  <object-name>GearDoorHydralicBodyRight</object-name>
+  <object-name>GearDoorHydralicArmRight</object-name>
+  <property>sim/multiplay/generic/float[0]</property>
+  <interpolation>
+   <entry>
+    <ind>0.0</ind>
+    <dep>0.0</dep>
+   </entry>
+   <entry>
+    <ind>1.0</ind>
+    <dep>1</dep>
+   </entry>
+  </interpolation>
+  <axis>   
+   <x1-m>2.626</x1-m>
+   <y1-m>0.3</y1-m>
+   <z1-m>-0.50878</z1-m>
+   <x2-m>2.626</x2-m>
+   <y2-m>0.1</y2-m>
+   <z2-m>-0.50878</z2-m>
+  </axis>
+ </animation>
+ 
+  <animation>
+  <type>rotate</type>
+  <object-name>GearDoorHydralicBodyRight</object-name>
+  <object-name>GearDoorHydralicArmRight</object-name>
+  <property>sim/multiplay/generic/float[0]</property>
+  <interpolation>
+   <entry>
+    <ind>0.0</ind>
+    <dep>0.0</dep>
+   </entry>
+   <entry>
+    <ind>0.1</ind>
+    <dep>-2</dep>
+   </entry>
+   <entry>
+    <ind>0.3</ind>
+    <dep>-0</dep>
+   </entry>
+   <entry>
+    <ind>0.37</ind>
+    <dep>1</dep>
+   </entry>
+   <entry>
+    <ind>0.45</ind>
+    <dep>2.5</dep>
+   </entry>
+   <entry>
+    <ind>1.0</ind>
+    <dep>15</dep>
+   </entry>
+  </interpolation>
+  <axis>   
+   <x1-m>2.6</x1-m>
+   <y1-m>0.249072</y1-m>
+   <z1-m>-0.50878</z1-m>
+   <x2-m>2.4</x2-m>
+   <y2-m>0.249072</y2-m>
+   <z2-m>-0.50878</z2-m>
+  </axis>
+ </animation>
+ 
+  <animation>
+  <type>translate</type>
+  <object-name>GearDoorHydralicArmRight</object-name>
+  <property>sim/multiplay/generic/float[0]</property>
+  <interpolation>
+   <entry>
+    <ind>0.0</ind>
+    <dep>0.0</dep>
+   </entry>
+   <entry>
+    <ind>0.3</ind>
+    <dep>0.108</dep>
+   </entry>
+   <entry>
+    <ind>0.45</ind>
+    <dep>0.155</dep>
+   </entry>
+   <entry>
+    <ind>0.60</ind>
+    <dep>0.26</dep>
+   </entry>
+   <entry>
+    <ind>1.0</ind>
+    <dep>0.30</dep>
+   </entry>
+  </interpolation>
+  <axis>   
+   <x1-m>2.626</x1-m>
+   <y1-m>0.2585387</y1-m>
+   <z1-m>-0.5655285</z1-m>
+   <x2-m>2.63152</x2-m>
+   <y2-m>0.277918</y2-m>
+   <z2-m>-0.7984396</z2-m>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>upperStrutRight</object-name>
+  <object-name>lowerStrutRight</object-name>
+  <object-name>lowerScissorsRight</object-name>
+  <object-name>upperScissorsRight</object-name>
+  <object-name>forwardGearDoorLinkRight</object-name>
+  <object-name>rearGearDoorLinkRight</object-name>
+  <object-name>rearGearDoorEyeBoltRight</object-name>
+  <object-name>forwardGearDoorEyeBoltRight</object-name>
+  <condition>
+   <greater-than>
+    <property>gear/gear[1]/position-norm</property>
+    <value>0.02</value>
+   </greater-than>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>mainWheelRight</object-name>
+  <condition>
+   <greater-than>
+    <property>gear/gear[1]/position-norm</property>
+    <value>0.01</value>
+   </greater-than>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>tailWheelOleoHousing</object-name>
+  <object-name>tailWheelSpinleAssembly</object-name>
+  <object-name>tailWheelKnuckle</object-name>
+  <object-name>tailWheel</object-name>
+  <property>gear/gear[1]/position-norm</property>
+  <interpolation>
+   <entry>
+    <ind>0.0</ind>
+    <dep>-58</dep>
+   </entry>
+   <entry>
+    <ind>0.4</ind>
+    <dep>-58</dep>
+   </entry>
+   <entry>
+    <ind>1.00</ind>
+    <dep>0.0</dep>
+   </entry>
+  </interpolation>
+  <axis>   
+   <x1-m>7.09437</x1-m>
+   <y1-m>1.0</y1-m>
+   <z1-m>-0.2631263</z1-m>
+   <x2-m>7.09437</x2-m>
+   <y2-m>-1.0</y2-m>
+   <z2-m>-0.2631263</z2-m>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>tailWheelDoorRight</object-name>
+  <property>gear/gear[1]/position-norm</property>
+  <interpolation>
+   <entry>
+    <ind>0.0</ind>
+    <dep>0</dep>
+   </entry>
+   <entry>
+    <ind>0.3</ind>
+    <dep>-80</dep>
+   </entry>
+   <entry>
+    <ind>1.00</ind>
+    <dep>-90</dep>
+   </entry>
+  </interpolation>
+  <axis>   
+   <x1-m>7.12847</x1-m>
+   <y1-m>0.1276236</y1-m>
+   <z1-m>-0.3879204</z1-m>
+   <x2-m>6.28962</x2-m>
+   <y2-m>0.126775</y2-m>
+   <z2-m>-0.5126833</z2-m>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>tailWheelDoorLeft</object-name>
+  <property>gear/gear[1]/position-norm</property>
+  <interpolation>
+   <entry>
+    <ind>0.0</ind>
+    <dep>0</dep>
+   </entry>
+   <entry>
+    <ind>0.3</ind>
+    <dep>80</dep>
+   </entry>
+   <entry>
+    <ind>1.00</ind>
+    <dep>90</dep>
+   </entry>
+  </interpolation>
+  <axis>   
+   <x1-m>7.12847</x1-m>
+   <y1-m>-0.1261677</y1-m>
+   <z1-m>-0.3879204</z1-m>
+   <x2-m>6.28962</x2-m>
+   <y2-m>-0.1270625</y2-m>
+   <z2-m>-0.5126866</z2-m>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>flapsRight</object-name>
+  <property>surface-positions/flap-pos-norm</property>
+  <factor>47.0</factor>
+  <axis>   
+   <x1-m>3.63264</x1-m>
+   <y1-m>0.56173737</y1-m>
+   <z1-m>-0.739113337</z1-m>
+   <x2-m>3.29359</x2-m>
+   <y2-m>3.26042</y2-m>
+   <z2-m>-0.44</z2-m>
+  </axis>
+ </animation>
+
+
+ <animation>
+  <type>rotate</type>
+  <object-name>flapsLeft</object-name>
+  <property>surface-positions/flap-pos-norm</property>
+  <factor>-47.0</factor>
+  <axis>   
+   <x1-m>3.63264</x1-m>
+   <y1-m>-0.56173737</y1-m>
+   <z1-m>-0.739113337</z1-m>
+   <x2-m>3.278</x2-m>
+   <y2-m>-3.26042</y2-m>
+   <z2-m>-0.43</z2-m>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>aileronRight</object-name>
+  <object-name>aileronTrimTabRight</object-name>
+  <object-name>aileronTrimTabLinkageRight</object-name>
+  <property alias="/params/surfaces/aileron"/>
+  <factor>-15</factor><!-- 15 deg -->
+  <axis>   
+   <x1-m>3.37</x1-m>
+   <y1-m>3.317</y1-m>
+   <z1-m>-0.485</z1-m>
+   <x2-m>3.14276</x2-m>
+   <y2-m>5.4262</y2-m>
+   <z2-m>-0.225</z2-m>
+  </axis>
+ </animation>
+ 
+  <animation>
+  <type>rotate</type>
+  <object-name>aileronLeft</object-name>
+  <object-name>aileronTrimTabLeft</object-name>
+  <object-name>aileronTrimTabLinkageLeft</object-name>
+  <property alias="/params/surfaces/aileron"/>
+  <factor>-15</factor><!-- 15 deg -->
+  <axis>   
+   <x1-m>3.37</x1-m>
+   <y1-m>-3.317</y1-m>
+   <z1-m>-0.485</z1-m>
+   <x2-m>3.14276</x2-m>
+   <y2-m>-5.4262</y2-m>
+   <z2-m>-0.225</z2-m>
+  </axis>
+ </animation>
+
+    <!-- Right aileron trim tab is fixed. Adjustable on ground only
+         (maintenance manual, section IV, page 95)
+    -->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>aileronTrimTabLeft</object-name>
+  <object-name>aileronTrimTabLinkageLeft</object-name>
+  <property alias="/params/surfaces/roll-trim"/>
+  <factor>10</factor><!-- 10 deg -->
+  <axis>
+   <x1-m>3.47279</x1-m>
+   <y1-m>-4.15314</y1-m>
+   <z1-m>-0.3522498</z1-m>
+   <x2-m>3.57858</x2-m>
+   <y2-m>-3.49482</y2-m>
+   <z2-m>-0.4147907</z2-m>
+  </axis>
+ </animation>
+ 
+ <animation>
+  <type>rotate</type>
+  <object-name>aileronTrimTabLinkageLeft</object-name>
+  <property alias="/params/surfaces/roll-trim"/>
+  <factor>-7.0</factor>
+  <axis>
+   <x1-m>3.5804</x1-m>
+   <y1-m>-3.51677</y1-m>
+   <z1-m>-0.4401955</z1-m>
+   <x2-m>3.58204</x2-m>
+   <y2-m>-3.50752</y2-m>
+   <z2-m>-0.4404708</z2-m>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>rudder</object-name>
+  <object-name>tailLightfixture</object-name>
+  <object-name>tailLight</object-name>
+  <object-name>rudderTrimTab</object-name>
+  <object-name>rudderTrimLinkageFairing</object-name>
+  <object-name>rudderTrimTabHorn</object-name>
+  <object-name>rudderTrimTabRod</object-name>
+  <property alias="/params/surfaces/rudder"/>
+  <factor>30.0</factor><!-- 30 deg -->
+  <axis>   
+   <x1-m>8.32</x1-m>
+   <y1-m>0</y1-m>
+   <z1-m>1</z1-m>
+   <x2-m>8.32</x2-m>
+   <y2-m>0</y2-m>
+   <z2-m>-1</z2-m>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>elevator</object-name>
+  <object-name>elevatorTrimTabLeft</object-name>
+  <object-name>elevatorTrimTabRight</object-name>
+  <object-name>elevatorTrimTabRodleft</object-name>
+  <object-name>elevatorTrimTabRodRight</object-name>
+  <property alias="/params/surfaces/elevator"/>
+  <factor>-30.0</factor><!-- 30 deg up, 20 deg down -->
+  <axis>   
+   <x1-m>7.82</x1-m>
+   <y1-m>2</y1-m>
+   <z1-m>0.29335</z1-m>
+   <x2-m>7.82</x2-m>
+   <y2-m>-2</y2-m>
+   <z2-m>0.29335</z2-m>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>coolingDoor</object-name>
+  <property alias="/params/doors/coolant" />
+  <factor>-20.0</factor>
+  <axis>   
+   <x1-m>5.2255</x1-m>
+   <y1-m>2</y1-m>
+   <z1-m>-0.85474</z1-m>
+   <x2-m>5.2255</x2-m>
+   <y2-m>-2</y2-m>
+   <z2-m>-0.85474</z2-m>
+  </axis>
+ </animation>
+ 
+  <animation>
+  <type>translate</type>
+  <object-name>coolingDoorActuatorRod</object-name>
+  <property alias="/params/doors/coolant" />
+  <interpolation>
+   <entry>
+    <ind>0</ind>
+    <dep>0.0</dep>
+   </entry>
+   <entry>
+    <ind>0.5</ind>
+    <dep>0.05</dep>
+   </entry>
+   <entry>
+    <ind>1.00</ind>
+    <dep>0.1</dep>
+   </entry>
+  </interpolation>
+  <axis>   
+   <x1-m>5.42789</x1-m>
+   <y1-m>0.00045915</y1-m>
+   <z1-m>-0.1667564</z1-m>
+   <x2-m>5.64427</x2-m>
+   <y2-m>-0.00015418</y2-m>
+   <z2-m>-0.7366683</z2-m>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>oilCoolerDoor</object-name>
+  <property alias="/params/doors/oil" />
+  <factor>-18.0</factor>
+  <axis>   
+   <x1-m>4.3892</x1-m>
+   <y1-m>2</y1-m>
+   <z1-m>-1.118</z1-m>
+   <x2-m>4.3892</x2-m>
+   <y2-m>-2</y2-m>
+   <z2-m>-0.8545</z2-m>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>material</type>
+  <object-name>signalLightFront</object-name>
+  <emission>
+    <red>0.6</red>
+    <green>0.0</green>
+    <blue>0.0</blue>
+  </emission>
+  <condition>
+     <property alias="/params/lighting/red-rec"/>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>material</type>
+  <object-name>signalLightcenter</object-name>
+  <emission>
+    <red>0.0</red>
+    <green>0.6</green>
+    <blue>0.0</blue>
+  </emission>
+  <condition>
+     <property alias="/params/lighting/green-rec"/>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>material</type>
+  <object-name>signalLightRear</object-name>
+  <emission>
+    <red>0.8</red>
+    <green>0.5</green>
+    <blue>0.0</blue>
+  </emission>
+  <condition>
+     <property alias="/params/lighting/amber-rec"/>
+  </condition>
+ </animation>
+
+<animation>
+  <type>translate</type>
+  <object-name>tailWheel</object-name>
+  <object-name>tailWheelKnuckle</object-name>
+  <object-name>tailWheelSpinleAssembly</object-name>
+  <property>gear/gear[2]/compression-norm</property>
+  <factor>-0.2</factor>
+  <axis>   
+   <x1-m>6.97341</x1-m>
+   <y1-m>0.00011905</y1-m>
+   <z1-m>-0.2106776</z1-m>
+   <x2-m>6.87642</x2-m>
+   <y2-m>-0.000a170819</y2-m>
+   <z2-m>-0.5470887azz</z2-m>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>mainWheelLeft</object-name>
+  <object-name>lowerStrutLeft</object-name>
+  <object-name>lowerScissorsLeft</object-name>
+  <property>gear/gear[0]/compression-norm</property>
+  <factor>-0.5</factor>
+  <axis>   
+   <x1-m>2.15854</x1-m>
+   <y1-m>1.75925</y1-m>
+   <z1-m>-0.4874567a</z1-m>
+   <x2-m>2.04137</x2-m>
+   <y2-m>1.75958</y2-m>
+   <z2-m>-1.14602</z2-m>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>lowerScissorsLeft</object-name>
+  <property>gear/gear[0]/compression-norm</property>
+  <factor>83</factor>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+  <center>
+   <x-m>2.06506</x-m>
+   <y-m>0.000</y-m>
+   <z-m>-1.45422</z-m>
+  </center>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>upperScissorsLeft</object-name>
+  <property>gear/gear[0]/compression-norm</property>
+  <factor>-83</factor>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+  <center>
+   <x-m>2.12193</x-m>
+   <y-m>0.000</y-m>
+   <z-m>-1.13957</z-m>
+  </center>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>mainWheelRight</object-name>
+  <object-name>lowerStrutRight</object-name>
+  <object-name>lowerScissorsRight</object-name>
+  <property>gear/gear[1]/compression-norm</property>
+  <factor>-0.5</factor>
+  <axis>   
+   <x1-m>2.1585</x1-m>
+   <y1-m>1.7591</y1-m>
+   <z1-m>-0.4876939</z1-m>
+   <x2-m>2.04133</x2-m>
+   <y2-m>1.7589</y2-m>
+   <z2-m>-1.14626</z2-m>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>lowerScissorsRight</object-name>
+  <property>gear/gear[1]/compression-norm</property>
+  <factor>83</factor>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+  <center>
+   <x-m>2.06501</x-m>
+   <y-m>0.000</y-m>
+   <z-m>-1.45451</z-m>
+  </center>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>upperScissorsRight</object-name>
+  <property>gear/gear[1]/compression-norm</property>
+  <factor>-83</factor>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+  <center>
+   <x-m>2.12189</x-m>
+   <y-m>0.000</y-m>
+   <z-m>-1.13986</z-m>
+  </center>
+ </animation>
+ 
+ <animation>
+  <type>rotate</type>
+  <object-name>tailWheel</object-name>
+  <object-name>tailWheelKnuckle</object-name>
+  <property>sim/multiplay/generic/float[5]</property>
+  <factor>1</factor>
+  <axis>   
+   <x1-m>6.71027</x1-m>
+   <y1-m>-0.00164087</y1-m>
+   <z1-m>-0.5428931</z1-m>
+   <x2-m>6.74277</x2-m>
+   <y2-m>-0.00351397</y2-m>
+   <z2-m>-0.6498853</z2-m>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>elevatorTrimTabLeft</object-name>
+  <object-name>elevatorTrimTabRodleft</object-name>
+  <property alias="/params/surfaces/pitch-trim"/>
+  <interpolation>
+   <entry>
+    <ind>-1</ind>
+    <dep>-25.0</dep>
+   </entry>
+   <entry>
+    <ind>0</ind>
+    <dep>0.0</dep>
+   </entry>
+   <entry>
+    <ind>1.00</ind>
+    <dep>10</dep>
+   </entry>
+  </interpolation>
+  <axis>   
+   <x1-m>8.0348</x1-m>
+   <y1-m>-1.15484</y1-m>
+   <z1-m>0.2919646</z1-m>
+   <x2-m>8.13146</x2-m>
+   <y2-m>-0.3428557</y2-m>
+   <z2-m>0.2912077</z2-m>
+  </axis>
+ </animation>
+ 
+  <animation>
+  <type>rotate</type>
+  <object-name>elevatorTrimTabRodleft</object-name>
+  <property alias="/params/surfaces/pitch-trim"/>
+  <interpolation>
+   <entry>
+    <ind>-1</ind>
+    <dep>12.0</dep>
+   </entry>
+   <entry>
+    <ind>0</ind>
+    <dep>0.0</dep>
+   </entry>
+   <entry>
+    <ind>1.00</ind>
+    <dep>-5</dep>
+   </entry>
+  </interpolation>
+  <axis>   
+   <x1-m>8.09107</x1-m>
+   <y1-m>-0.8529083</y1-m>
+   <z1-m>0.251202</z1-m>
+   <x2-m>8.0923</x2-m>
+   <y2-m>-0.8453384</y2-m>
+   <z2-m>0.250719</z2-m>
+  </axis>
+ </animation>
+ 
+  <animation>
+  <type>rotate</type>
+  <object-name>elevatorTrimTabRight</object-name>
+  <object-name>elevatorTrimTabRodRight</object-name>
+  <property alias="/params/surfaces/pitch-trim"/>
+  <interpolation>
+   <entry>
+    <ind>1</ind>
+    <dep>-10.0</dep>
+   </entry>
+   <entry>
+    <ind>0</ind>
+    <dep>0.0</dep>
+   </entry>
+   <entry>
+    <ind>-1.00</ind>
+    <dep>25</dep>
+   </entry>
+  </interpolation>
+  <axis>   
+   <x1-m>8.03512</x1-m>
+   <y1-m>1.15425</y1-m>
+   <z1-m>0.2922849</z1-m>
+   <x2-m>8.13132</x2-m>
+   <y2-m>0.3422153</y2-m>
+   <z2-m>0.2913586</z2-m>
+  </axis>
+ </animation>
+ 
+   <animation>
+  <type>rotate</type>
+  <object-name>elevatorTrimTabRodRight</object-name>
+  <property alias="/params/surfaces/pitch-trim"/>
+  <interpolation>
+   <entry>
+    <ind>1</ind>
+    <dep>5.0</dep>
+   </entry>
+   <entry>
+    <ind>0</ind>
+    <dep>0.0</dep>
+   </entry>
+   <entry>
+    <ind>-1.00</ind>
+    <dep>-12</dep>
+   </entry>
+  </interpolation>
+  <axis>   
+   <x1-m>8.09311</x1-m>
+   <y1-m>0.8524648</y1-m>
+   <z1-m>0.3330533</z1-m>
+   <x2-m>8.09435</x2-m>
+   <y2-m>0.8448954</y2-m>
+   <z2-m>0.3335139</z2-m>
+  </axis>
+ </animation>
+ 
+ <animation>
+  <type>rotate</type>
+  <object-name>rudderTrimTab</object-name>
+  <property alias="/params/surfaces/yaw-trim"/>
+  <factor>-10</factor>
+    <axis>   
+   <x1-m>8.74048</x1-m>
+   <y1-m>-0.00015213</y1-m>
+   <z1-m>0.7686898</z1-m>
+   <x2-m>8.6472</x2-m>
+   <y2-m>-0.00015161</y2-m>
+   <z2-m>1.31022</z2-m>
+  </axis>
+ </animation>
+ 
+ <animation>
+  <type>translate</type>
+  <object-name>rudderTrimTabRod</object-name>
+  <property alias="/params/surfaces/yaw-trim"/>
+  <factor>0.001</factor>
+    <axis>   
+   <x1-m>8.49452</x1-m>
+   <y1-m>0.0303467</y1-m>
+   <z1-m>0.7875517</z1-m>
+   <x2-m>8.75349</x2-m>
+   <y2-m>-0.00015161</y2-m>
+   <z2-m>0.786804</z2-m>
+  </axis>
+ </animation>
+
+    <!--
+         Radius of main wheel is 0.704 / 2 = 0.352
+         Circumference is 2*pi*radius = 2.211681228
+         RPM = rollspeed-ms / 2.211681228 * 60.0
+    -->
+  <animation>
+  <type>spin</type>
+  <object-name>mainWheelLeft</object-name>
+  <property alias="/params/gear/rollspeed-left"/>
+  <factor>-27.12868348</factor>
+  <center>
+   <x-m>1.91262</x-m>
+   <y-m>-1.83774</y-m>
+   <z-m>-1.86667</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>spin</type>
+  <object-name>mainWheelRight</object-name>
+  <property alias="/params/gear/rollspeed-right"/>
+  <factor>-27.12868348</factor>
+  <center>
+   <x-m>1.91262</x-m>
+   <y-m>-1.83774</y-m>
+   <z-m>-1.86667</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+    <!--
+         Radius of tail wheel is 0.248 / 2 = 0.124
+         Circumference is 2*pi*radius = 0.779114978
+         RPM = rollspeed-ms / 0.779114978 * 60.0
+    -->
+
+    <animation>
+        <type>spin</type>
+        <object-name>tailWheel</object-name>
+        <property alias="/params/gear/rollspeed-tail"/>
+        <factor>-77.01045633</factor>
+        <center>
+            <x-m> 6.86282</x-m>
+            <y-m>-0.00356</y-m>
+            <z-m>-0.79865</z-m>
+        </center>
+        <axis>
+            <y>1.0</y>
+        </axis>
+    </animation>
+
+ <animation>
+  <type>material</type>
+  <object-name>fugelageInside</object-name>
+  <object-name>panel</object-name>
+  <object-name>right-flor-body</object-name>
+  <object-name>right-flor-front</object-name>
+  <object-name>left-flor-body</object-name>
+  <object-name>left-flor-front</object-name>
+  <object-name>hot-air</object-name>
+  <object-name>ram-air</object-name>
+  <emission>
+    <factor-prop>controls/lighting/cabin-norm</factor-prop>
+    <red>0.25</red>
+    <green>0.12</green>
+    <blue>0.12</blue>
+  </emission>
+ </animation>
+
+ <model>
+   <path>Aircraft/p51d/Models/Effects/guns/fire-outside-guns.xml</path>
+   <offsets>
+      <x-m> 1.9224</x-m>
+      <y-m> -2.4074 </y-m>
+      <z-m> -0.491615 </z-m>
+      <pitch-deg> 180 </pitch-deg>
+   </offsets>
+ </model>
+ 
+  <model>
+   <path>Aircraft/p51d/Models/Effects/guns/fire-outside-guns.xml</path>
+   <offsets>
+      <x-m> 1.9171</x-m>
+      <y-m> -2.2115 </y-m>
+      <z-m> -0.516539 </z-m>
+      <pitch-deg> 180 </pitch-deg>
+   </offsets>
+ </model>
+ 
+  <model>
+   <path>Aircraft/p51d/Models/Effects/guns/fire.xml</path>
+   <offsets>
+      <x-m> 1.8471</x-m>
+      <y-m> -2.0094 </y-m>
+      <z-m> -0.534216 </z-m>
+      <pitch-deg> 180 </pitch-deg>
+   </offsets>
+ </model>
+ 
+ <model>
+   <path>Aircraft/p51d/Models/Effects/guns/fire-outside-guns.xml</path>
+   <offsets>
+      <x-m> 1.9224</x-m>
+      <y-m> 2.4074 </y-m>
+      <z-m> -0.491615 </z-m>
+      <pitch-deg> 180 </pitch-deg>
+   </offsets>
+ </model>
+ 
+  <model>
+   <path>Aircraft/p51d/Models/Effects/guns/fire-outside-guns.xml</path>
+   <offsets>
+      <x-m> 1.9171</x-m>
+      <y-m> 2.2115 </y-m>
+      <z-m> -0.516539 </z-m>
+      <pitch-deg> 180 </pitch-deg>
+   </offsets>
+ </model>
+ 
+  <model>
+   <path>Aircraft/p51d/Models/Effects/guns/fire.xml</path>
+   <offsets>
+      <x-m> 1.8471</x-m>
+      <y-m> 2.0094 </y-m>
+      <z-m> -0.534216 </z-m>
+      <pitch-deg> 180 </pitch-deg>
+   </offsets>
+ </model>  
+ 
+ <animation>
+  <type>material</type>
+   <object-name>wingRight</object-name>
+   <object-name>flapsRight</object-name>
+   <object-name>aileronRight</object-name>
+   <object-name>aileronTrimTabRight</object-name>
+   <object-name>innerGearDoorRight</object-name>
+   <object-name>outerDoorRight</object-name>
+   <object-name>AN-104A</object-name>
+   <object-name>gunBastTubeFairingRight</object-name>
+   <object-name>gunBastTubeFairingLeft</object-name>
+   <property-base>sim/model/livery</property-base>
+   <texture-prop>texture-wing1</texture-prop>
+   <texture>DDwing1.png</texture>
+ </animation>
+ 
+ <animation>
+  <type>material</type>
+   <object-name>wingLeft</object-name>
+   <object-name>flapsLeft</object-name>
+   <object-name>aileronLeft</object-name>
+   <object-name>aileronTrimTabLeft</object-name>
+   <object-name>innerGearDoorLeft</object-name>
+   <object-name>outerDoorLeft</object-name>
+   <object-name>tailLightfixture</object-name>
+   <object-name>rudder</object-name>
+   <object-name>rudderTrimTab</object-name>
+   <object-name>rudderTrimLinkageFairing</object-name>
+   <object-name>elevatorTrimTabLeft</object-name>   
+   <object-name>elevatorTrimTabRight</object-name>
+   <object-name>elevator</object-name>
+   <object-name>horizontalStabilizer</object-name>
+   <object-name>VerticalStab</object-name>
+   <object-name>dorsal</object-name>
+   <property-base>sim/model/livery</property-base>
+   <texture-prop>texture-wing2</texture-prop>
+   <texture>DDwing2.png</texture>
+ </animation>
+  
+ <animation>
+  <type>material</type>
+   <object-name>fuselage</object-name>
+   <object-name>wingFilletLeft</object-name>
+   <object-name>wingFilletRight</object-name>
+   <object-name>cowl</object-name>
+   <object-name>tailWheelDoorLeft</object-name>
+   <object-name>tailWheelDoorRight</object-name>
+   <object-name>coolingDoor</object-name>
+   <object-name>oilCoolerDoor</object-name>
+   <object-name>tailFaringLeft</object-name>
+   <object-name>tailFaringRight</object-name>
+   <object-name>dogHouse</object-name>
+   <property-base>sim/model/livery</property-base>
+   <texture-prop>texture-fuselage</texture-prop>
+   <texture>DDfuselage.png</texture>
+ </animation>
+ 
+ <model>
+  <path>Aircraft/p51d/Models/Effects/ground/tyre-smoke-port.xml</path> <!-- gear/gear[0] -->
+  <name>tyre-smoke-port</name>
+  <offsets>
+   <x-m>1.9331</x-m>
+   <y-m>-1.8506</y-m>
+   <z-m>-2.2212</z-m>
+  </offsets>
+ </model>
+ 
+ <model>
+  <path>Aircraft/p51d/Models/Effects/ground/tyre-smoke-starboard.xml</path> <!-- gear/gear[1] -->
+  <name>tyre-smoke-starboard</name>
+  <offsets>
+   <x-m>1.9331</x-m>
+   <y-m>1.8506</y-m>
+   <z-m>-2.2212</z-m>
+  </offsets>
+ </model>
+ 
+ <model>
+  <path>Aircraft/p51d/Models/Effects/ground/tyre-smoke-tail.xml</path> <!-- gear/gear[2] -->
+  <name>tyre-smoke-tail</name>
+  <offsets>
+   <x-m>-6.8399</x-m>
+   <y-m>0</y-m>
+   <z-m>-0.921178</z-m>
+  </offsets>
+ </model>
+ 
+ <!-- rain animations -->
+
+<!--    <animation>
+        <type>select</type>
+        <nopreview/>
+        <object-name>Canopy</object-name>
+        <object-name>CanopyRail_1</object-name>
+        <object-name>Windscreen</object-name>
+        <object-name>Windscreen-Frame</object-name>
+        <condition>
+            <greater-than>
+                <property>sim/model/rain/raining-norm</property>
+                <value>0.01</value>
+            </greater-than>
+        </condition>
+    </animation>
+
+    <animation>
+        <type>select</type>
+        <object-name>Canopy</object-name>
+        <object-name>CanopyRail_1</object-name>
+        <object-name>Windscreen</object-name>
+        <object-name>Windscreen-Frame</object-name>
+        <condition>
+            <less-than-equals>
+                <property>sim/model/rain/raining-norm</property>
+                <value>0.01</value>
+            </less-than-equals>
+        </condition>
+    </animation> -->
+
+    <!-- =============================================================== -->
+    <!-- Engine Fire                                                     -->
+    <!-- =============================================================== -->
+
+    <model>
+        <path>Effects/fire/smoke.xml</path>
+        <name>engine-smoke</name>
+        <offsets>
+            <x-m> 0.0</x-m>
+            <y-m> 0.0</y-m>
+            <z-m>-0.4</z-m>
+        </offsets>
+    </model>
+
+    <model>
+        <path>Effects/fire/fire.xml</path>
+        <name>engine-fire</name>
+        <offsets>
+            <x-m> 0.0</x-m>
+            <y-m> 0.0</y-m>
+            <z-m>-0.4</z-m>
+        </offsets>
+    </model>
+
+    <!-- =============================================================== -->
+    <!-- Contact Sparks                                                  -->
+    <!-- =============================================================== -->
+
+    <!-- Wing left -->
+    <model>
+        <path>Models/Effects/damage/left.xml</path>
+        <offsets>
+            <x-m> 2.1336</x-m>
+            <y-m>-5.6515</y-m>
+            <z-m>-0.11684</z-m>
+        </offsets>
+        <overlay>
+            <params>
+                <enabled>sim/multiplay/generic/bool[26]</enabled>
+            </params>
+        </overlay>
+    </model>
+
+    <!-- Wing right -->
+    <model>
+        <path>Models/Effects/damage/right.xml</path>
+        <offsets>
+            <x-m> 2.1336</x-m>
+            <y-m> 5.6015</y-m>
+            <z-m>-0.21684</z-m>
+        </offsets>
+        <overlay>
+            <params>
+                <enabled>sim/multiplay/generic/bool[27]</enabled>
+            </params>
+        </overlay>
+    </model>
+
+    <!-- Tail bottom -->
+    <model>
+        <path>Models/Effects/damage/center.xml</path>
+        <offsets>
+            <x-m> 8.3058</x-m>
+            <y-m> 0.0000</y-m>
+            <z-m>-0.2184</z-m>
+        </offsets>
+        <overlay>
+            <params>
+                <enabled>sim/multiplay/generic/bool[28]</enabled>
+            </params>
+        </overlay>
+    </model>
+
+    <!-- Tail top -->
+    <model>
+        <path>Models/Effects/damage/center.xml</path>
+        <offsets>
+            <x-m>8.0772</x-m>
+            <y-m>0.0000</y-m>
+            <z-m>1.6510</z-m>
+        </offsets>
+        <overlay>
+            <params>
+                <enabled>sim/multiplay/generic/bool[29]</enabled>
+            </params>
+        </overlay>
+    </model>
+
+    <!-- Nose -->
+    <model>
+        <path>Models/Effects/damage/center.xml</path>
+        <offsets>
+            <x-m>0.0000</x-m>
+            <y-m>0.0000</y-m>
+            <z-m>0.3302</z-m>
+        </offsets>
+        <overlay>
+            <params>
+                <enabled>sim/multiplay/generic/bool[30]</enabled>
+            </params>
+        </overlay>
+    </model>
+
+    <!-- Belly -->
+    <model>
+        <path>Models/Effects/damage/center.xml</path>
+        <offsets>
+            <x-m> 1.3208</x-m>
+            <y-m> 0.0000</y-m>
+            <z-m>-0.8636</z-m>
+        </offsets>
+        <overlay>
+            <params>
+                <enabled>sim/multiplay/generic/bool[31]</enabled>
+            </params>
+        </overlay>
+    </model>
+
+    <!-- Dog house -->
+    <model>
+        <path>Models/Effects/damage/center.xml</path>
+        <offsets>
+            <x-m> 3.6322</x-m>
+            <y-m> 0.0000</y-m>
+            <z-m>-1.1684</z-m>
+        </offsets>
+        <overlay>
+            <params>
+                <enabled>sim/multiplay/generic/bool[32]</enabled>
+            </params>
+        </overlay>
+    </model>
+
+    <!-- =============================================================== -->
+    <!-- ALS Navigation Lights                                           -->
+    <!-- =============================================================== -->
+
+    <!-- Red navigation light on port side (left) -->
+    <model>
+        <name>nav-light-left-dim</name>
+        <path>Effects/lights/procedural_light_nav_left.xml</path>
+        <offsets>
+            <x-m> 2.52125</x-m>
+            <y-m>-5.67153</y-m><!-- 0.01 extra offset away from fuselage -->
+            <z-m>-0.20485</z-m>
+        </offsets>
+    </model>
+    <model>
+        <name>nav-light-left-bright</name>
+        <path>Effects/lights/procedural_light_nav_left_bright.xml</path>
+        <offsets>
+            <x-m> 2.52125</x-m>
+            <y-m>-5.67153</y-m><!-- 0.01 extra offset away from fuselage -->
+            <z-m>-0.20485</z-m>
+        </offsets>
+    </model>
+
+    <!-- Green navigation light on starboard side (right) -->
+    <model>
+        <name>nav-light-right-dim</name>
+        <path>Effects/lights/procedural_light_nav_right.xml</path>
+        <offsets>
+            <x-m> 2.52371</x-m>
+            <y-m> 5.66931</y-m><!-- 0.01 extra offset away from fuselage -->
+            <z-m>-0.18933</z-m>
+        </offsets>
+    </model>
+    <model>
+        <name>nav-light-right-bright</name>
+        <path>Effects/lights/procedural_light_nav_right_bright.xml</path>
+        <offsets>
+            <x-m> 2.52371</x-m>
+            <y-m> 5.66931</y-m><!-- 0.01 extra offset away from fuselage -->
+            <z-m>-0.18933</z-m>
+        </offsets>
+    </model>
+
+    <!-- White navigation light on tail -->
+    <model>
+        <name>nav-light-tail-dim</name>
+        <path>Effects/lights/procedural_light_nav_tail.xml</path>
+        <offsets>
+            <x-m>9.03266</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.19977</z-m>
+        </offsets>
+    </model>
+    <model>
+        <name>nav-light-tail-bright</name>
+        <path>Effects/lights/procedural_light_nav_tail_bright.xml</path>
+        <offsets>
+            <x-m>9.03266</x-m>
+            <y-m>0.0</y-m>
+            <z-m>0.19977</z-m>
+        </offsets>
+    </model>
+
+    <animation>
+        <type>select</type>
+        <object-name>nav-light-left-dim</object-name>
+        <object-name>nav-light-right-dim</object-name>
+        <nopreview/>
+        <condition>
+            <and>
+                <property>/sim/rendering/shaders/skydome</property>
+                <equals>
+                    <property alias="/params/lighting/wing-position"/>
+                    <value>2.0</value><!-- 1 = bright, 2 = dim -->
+                </equals>
+            </and>
+        </condition>
+    </animation>
+
+    <animation>
+        <type>select</type>
+        <object-name>nav-light-left-bright</object-name>
+        <object-name>nav-light-right-bright</object-name>
+        <nopreview/>
+        <condition>
+            <and>
+                <property>/sim/rendering/shaders/skydome</property>
+                <equals>
+                    <property alias="/params/lighting/wing-position"/>
+                    <value>1.0</value><!-- 1 = bright, 2 = dim -->
+                </equals>
+            </and>
+        </condition>
+    </animation>
+
+    <animation>
+        <type>select</type>
+        <object-name>wingTipLightLeft</object-name>
+        <object-name>wingTipLightRight</object-name>
+        <condition>
+            <or>
+                <not><property>/sim/rendering/shaders/skydome</property></not>
+                <not><property alias="/params/lighting/wing-position"/></not>
+            </or>
+        </condition>
+    </animation>
+
+    <animation>
+        <type>select</type>
+        <object-name>nav-light-tail-dim</object-name>
+        <nopreview/>
+        <condition>
+            <and>
+                <property>/sim/rendering/shaders/skydome</property>
+                <equals>
+                    <property alias="/params/lighting/tail-position"/>
+                    <value>2.0</value><!-- 1 = bright, 2 = dim -->
+                </equals>
+            </and>
+        </condition>
+    </animation>
+
+    <animation>
+        <type>select</type>
+        <object-name>nav-light-tail-bright</object-name>
+        <nopreview/>
+        <condition>
+            <and>
+                <property>/sim/rendering/shaders/skydome</property>
+                <equals>
+                    <property alias="/params/lighting/tail-position"/>
+                    <value>1.0</value><!-- 1 = bright, 2 = dim -->
+                </equals>
+            </and>
+        </condition>
+    </animation>
+
+    <animation>
+        <type>select</type>
+        <object-name>tailLight</object-name>
+        <condition>
+            <or>
+                <not><property>/sim/rendering/shaders/skydome</property></not>
+                <not><property alias="/params/lighting/tail-position"/></not>
+            </or>
+        </condition>
+    </animation>
+
+    <animation>
+        <type>rotate</type>
+        <object-name>nav-light-tail-dim</object-name>
+        <object-name>nav-light-tail-bright</object-name>
+        <property alias="/params/surfaces/rudder"/>
+        <factor>30.0</factor><!-- 30 deg -->
+        <axis>
+            <x1-m>8.32</x1-m>
+            <y1-m>0</y1-m>
+            <z1-m>1</z1-m>
+            <x2-m>8.32</x2-m>
+            <y2-m>0</y2-m>
+            <z2-m>-1</z2-m>
+        </axis>
+    </animation>
+
+    <!-- =============================================================== -->
+    <!-- ALS Landing Light                                               -->
+    <!-- =============================================================== -->
+
+    <model>
+        <name>landing-light</name>
+        <path>Effects/lights/procedural_landing_light.xml</path>
+        <offsets>
+            <x-m> 2.4</x-m>
+            <y-m>-0.88</y-m><!-- 0.01 extra offset away from fuselage -->
+            <z-m>-0.8</z-m>
+        </offsets>
+    </model>
+
+    <animation>
+        <type>select</type>
+        <object-name>landing-light</object-name>
+        <nopreview/>
+        <condition>
+            <and>
+                <property>/sim/rendering/shaders/skydome</property>
+                <property alias="/params/lighting/landing-light"/>
+            </and>
+        </condition>
+    </animation>
+
+    <!-- =============================================================== -->
+    <!-- Securing                                                        -->
+    <!-- =============================================================== -->
+
+    <!-- Pitot tube cover "remove before flight" -->
+    <model>
+        <name>rbf-pitot</name>
+        <path>Exterior/rbf/rbf.xml</path>
+        <offsets>
+            <x-m>2.89226</x-m>
+            <y-m>3.23346</y-m>
+            <z-m>-0.6600</z-m>
+        </offsets>
+    </model>
+
+    <animation>
+        <type>select</type>
+        <object-name>rbf-pitot</object-name>
+        <condition>
+            <property alias="/params/securing/pitot-cover"/>
+        </condition>
+    </animation>
+
+    <animation>
+        <type>pick</type>
+        <object-name>rbf-pitot</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <condition>
+                    <and>
+                        <property>/aircraft/securing/pitot-cover-removable</property>
+                        <not>
+                            <property>/sim/current-view/internal</property>
+                        </not>
+                    </and>
+                </condition>
+                <command>property-assign</command>
+                <property alias="/params/securing/pitot-cover"/>
+                <value>false</value>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <condition>
+                    <and>
+                        <property>/aircraft/securing/pitot-cover-removable</property>
+                        <not>
+                            <property>/sim/current-view/internal</property>
+                        </not>
+                    </and>
+                </condition>
+                <command>set-tooltip</command>
+                <tooltip-id>remove-pitot-tube-cap</tooltip-id>
+                <label>Remove pitot tube cover</label>
+            </binding>
+        </hovered>
+    </animation>
+    <animation>
+        <type>pick</type>
+        <object-name>pitotTube</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <condition>
+                    <and>
+                        <property>/aircraft/securing/pitot-cover-addable</property>
+                        <not>
+                            <property>/sim/current-view/internal</property>
+                        </not>
+                    </and>
+                </condition>
+                <command>property-assign</command>
+                <property alias="/params/securing/pitot-cover"/>
+                <value>true</value>
+            </binding>
+            <binding>
+                <command>property-assign</command>
+                <property>/instrumentation/airspeed-indicator/indicated-speed-kt</property>
+                <value>0.0</value>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <condition>
+                    <and>
+                        <property>/aircraft/securing/pitot-cover-addable</property>
+                        <not>
+                            <property>/sim/current-view/internal</property>
+                        </not>
+                    </and>
+                </condition>
+                <command>set-tooltip</command>
+                <tooltip-id>put-pitot-tube-cap</tooltip-id>
+                <label>Add pitot tube cover</label>
+            </binding>
+        </hovered>
+    </animation>
+
+    <!-- Left Tiedowns -->
+    <model>
+        <name>left-tiedown</name>
+        <path>Exterior/tiedowns/tiedown.xml</path>
+        <offsets>
+            <x-m>2.8000</x-m>
+            <y-m>-4.0000</y-m>
+            <z-m>-0.4500</z-m>
+            <heading-deg>-90.0</heading-deg>
+        </offsets>
+        <overlay>
+            <params>
+                <heading-deg>engines/engine[1]/n1</heading-deg>
+                <pitch-deg>engines/engine[1]/n2</pitch-deg>
+                <length-m>engines/engine[1]/rpm</length-m>
+            </params>
+        </overlay>
+    </model>
+
+    <animation>
+        <type>select</type>
+        <object-name>left-tiedown</object-name>
+        <condition>
+            <property alias="/params/securing/left-tiedown"/>
+        </condition>
+    </animation>
+
+    <animation>
+        <type>pick</type>
+        <object-name>left-tiedown</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <condition>
+                    <not>
+                        <property>/sim/current-view/internal</property>
+                    </not>
+                </condition>
+                <command>property-assign</command>
+                <property alias="/params/securing/left-tiedown"/>
+                <value>false</value>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <condition>
+                    <and>
+                        <property alias="/params/securing/left-tiedown"/>
+                        <not>
+                            <property>/sim/current-view/internal</property>
+                        </not>
+                    </and>
+                </condition>
+                <command>set-tooltip</command>
+                <tooltip-id>remove-left-tiedown</tooltip-id>
+                <label>Remove tie-down</label>
+            </binding>
+        </hovered>
+    </animation>
+
+    <!-- Right Tiedowns -->
+    <model>
+        <name>right-tiedown</name>
+        <path>Exterior/tiedowns/tiedown.xml</path>
+        <offsets>
+            <x-m>2.8000</x-m>
+            <y-m>4.0000</y-m>
+            <z-m>-0.4500</z-m>
+            <heading-deg>90.0</heading-deg>
+        </offsets>
+        <overlay>
+            <params>
+                <heading-deg>engines/engine[2]/n1</heading-deg>
+                <pitch-deg>engines/engine[2]/n2</pitch-deg>
+                <length-m>engines/engine[2]/rpm</length-m>
+            </params>
+        </overlay>
+    </model>
+
+    <animation>
+        <type>select</type>
+        <object-name>right-tiedown</object-name>
+        <condition>
+            <property alias="/params/securing/right-tiedown"/>
+        </condition>
+    </animation>
+
+    <animation>
+        <type>pick</type>
+        <object-name>right-tiedown</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <condition>
+                    <not>
+                        <property>/sim/current-view/internal</property>
+                    </not>
+                </condition>
+                <command>property-assign</command>
+                <property alias="/params/securing/right-tiedown"/>
+                <value>false</value>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <condition>
+                    <and>
+                        <property alias="/params/securing/right-tiedown"/>
+                        <not>
+                            <property>/sim/current-view/internal</property>
+                        </not>
+                    </and>
+                </condition>
+                <command>set-tooltip</command>
+                <tooltip-id>remove-right-tiedown</tooltip-id>
+                <label>Remove tie-down</label>
+            </binding>
+        </hovered>
+    </animation>
+
+    <!-- Tail left tie-down -->
+    <model>
+        <name>tail-left-tiedown</name>
+        <path>Exterior/tiedowns/tiedown.xml</path>
+        <offsets>
+            <x-m>6.4800</x-m>
+            <y-m>-0.2600</y-m>
+            <z-m>-0.4220</z-m>
+            <heading-deg>-90.0</heading-deg>
+        </offsets>
+        <overlay>
+            <params>
+                <heading-deg>engines/engine[3]/n1</heading-deg>
+                <pitch-deg>engines/engine[3]/n2</pitch-deg>
+                <length-m>engines/engine[3]/rpm</length-m>
+            </params>
+        </overlay>
+    </model>
+
+    <animation>
+        <type>select</type>
+        <object-name>tail-left-tiedown</object-name>
+        <condition>
+            <property alias="/params/securing/tail-left-tiedown"/>
+        </condition>
+    </animation>
+
+    <animation>
+        <type>pick</type>
+        <object-name>tail-left-tiedown</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <condition>
+                    <not>
+                        <property>/sim/current-view/internal</property>
+                    </not>
+                </condition>
+                <command>property-assign</command>
+                <property alias="/params/securing/tail-left-tiedown"/>
+                <value>false</value>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <condition>
+                    <and>
+                        <property alias="/params/securing/tail-left-tiedown"/>
+                        <not>
+                            <property>/sim/current-view/internal</property>
+                        </not>
+                    </and>
+                </condition>
+                <command>set-tooltip</command>
+                <tooltip-id>remove-tail-left-tiedown</tooltip-id>
+                <label>Remove tie-down</label>
+            </binding>
+        </hovered>
+    </animation>
+
+    <!-- Tail right tie-down -->
+    <model>
+        <name>tail-right-tiedown</name>
+        <path>Exterior/tiedowns/tiedown.xml</path>
+        <offsets>
+            <x-m>6.4800</x-m>
+            <y-m>0.2600</y-m>
+            <z-m>-0.4220</z-m>
+            <heading-deg>90.0</heading-deg>
+        </offsets>
+        <overlay>
+            <params>
+                <heading-deg>engines/engine[4]/n1</heading-deg>
+                <pitch-deg>engines/engine[4]/n2</pitch-deg>
+                <length-m>engines/engine[4]/rpm</length-m>
+            </params>
+        </overlay>
+    </model>
+
+    <animation>
+        <type>select</type>
+        <object-name>tail-right-tiedown</object-name>
+        <condition>
+            <property alias="/params/securing/tail-right-tiedown"/>
+        </condition>
+    </animation>
+
+    <animation>
+        <type>pick</type>
+        <object-name>tail-right-tiedown</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <condition>
+                    <not>
+                        <property>/sim/current-view/internal</property>
+                    </not>
+                </condition>
+                <command>property-assign</command>
+                <property alias="/params/securing/tail-right-tiedown"/>
+                <value>false</value>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <condition>
+                    <and>
+                        <property alias="/params/securing/tail-right-tiedown"/>
+                        <not>
+                            <property>/sim/current-view/internal</property>
+                        </not>
+                    </and>
+                </condition>
+                <command>set-tooltip</command>
+                <tooltip-id>remove-tail-right-tiedown</tooltip-id>
+                <label>Remove tie-down</label>
+            </binding>
+        </hovered>
+    </animation>
+
+</PropertyList>

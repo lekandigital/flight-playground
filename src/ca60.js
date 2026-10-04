@@ -1,0 +1,85 @@
+import * as THREE from 'three';
+import {find,meshList,flattenVisibility,presetState,clamp,deflect} from './rig-tools.js';
+
+// Work in the original model's coordinates: +Z bow, X span, Y up.
+function worldGeometry(root,mesh){
+ root.updateMatrixWorld(true);
+ const transform=root.matrixWorld.clone().invert().multiply(mesh.matrixWorld);
+ const geometry=mesh.geometry.clone().applyMatrix4(transform);
+ if(transform.determinant()<0){const index=geometry.index?.array;if(index)for(let i=0;i<index.length;i+=3)[index[i+1],index[i+2]]=[index[i+2],index[i+1]];}
+ geometry.computeVertexNormals();geometry.computeBoundingBox();return geometry;
+}
+function subset(geometry,triangles){
+ const names=Object.keys(geometry.attributes),arrays=Object.fromEntries(names.map(n=>[n,[]])),index=geometry.index,remap=new Map(),indices=[];
+ for(const tri of triangles)for(const corner of tri){const id=index?index.getX(corner):corner;if(!remap.has(id)){remap.set(id,remap.size);for(const name of names){const a=geometry.attributes[name];for(let k=0;k<a.itemSize;k++)arrays[name].push(a.getComponent(id,k));}}indices.push(remap.get(id));}
+ const out=new THREE.BufferGeometry();for(const name of names)out.setAttribute(name,new THREE.Float32BufferAttribute(arrays[name],geometry.attributes[name].itemSize));out.setIndex(indices);out.computeVertexNormals();out.computeBoundingBox();out.computeBoundingSphere();return out;
+}
+function fabric(){
+ const size=128,data=new Uint8Array(size*size*4);
+ for(let y=0;y<size;y++)for(let x=0;x<size;x++){const i=(y*size+x)*4,noise=((x*1597+y*5171)^((x+y)*7411))&15,v=124+(x%4===0?15:0)+(y%4===0?12:0)+noise;data[i]=data[i+1]=data[i+2]=v;data[i+3]=255;}
+ const texture=new THREE.DataTexture(data,size,size);texture.name='procedural_ca60_fabric_weave';texture.wrapS=texture.wrapT=THREE.RepeatWrapping;texture.repeat.set(5,5);texture.magFilter=THREE.LinearFilter;texture.minFilter=THREE.LinearMipmapLinearFilter;texture.generateMipmaps=true;texture.needsUpdate=true;return texture;
+}
+function propeller(parent,position,index,wood,metal){
+ const rotor=new THREE.Group();rotor.name=`procedural_ca60_propeller_${index+1}`;rotor.position.copy(position);rotor.rotation.z=index%2?.22:-.22;parent.add(rotor);
+ const shape=new THREE.Shape();shape.moveTo(-.009,.017);shape.bezierCurveTo(-.023,.052,-.021,.12,-.009,.142);shape.quadraticCurveTo(.005,.153,.015,.139);shape.bezierCurveTo(.026,.105,.018,.039,.009,.017);shape.closePath();
+ const bladeGeometry=new THREE.ExtrudeGeometry(shape,{depth:.007,bevelEnabled:true,bevelSegments:1,steps:1,bevelSize:.002,bevelThickness:.002,curveSegments:8});
+ for(let side=0;side<2;side++){const blade=new THREE.Mesh(bladeGeometry,wood);blade.name=`procedural_ca60_propeller_blade_${index+1}_${side+1}`;blade.rotation.z=side*Math.PI;blade.castShadow=true;rotor.add(blade);}
+ const hub=new THREE.Mesh(new THREE.CylinderGeometry(.022,.025,.032,16),metal);hub.rotation.x=Math.PI/2;hub.name=`procedural_ca60_propeller_hub_${index+1}`;hub.castShadow=true;rotor.add(hub);return rotor;
+}
+function exactBounds(root){
+ root.updateMatrixWorld(true);const box=new THREE.Box3(),point=new THREE.Vector3();root.traverseVisible(o=>{if(!o.isMesh)return;const p=o.geometry.attributes.position;for(let i=0;i<p.count;i++)box.expandByPoint(point.fromBufferAttribute(p,i).applyMatrix4(o.matrixWorld));});return box;
+}
+export function prepareCa60(root){
+ const cloth=new THREE.MeshStandardMaterial({color:'#dfd3ac',roughness:.88,metalness:0,bumpMap:fabric(),bumpScale:.002,side:THREE.DoubleSide,envMapIntensity:.25});
+ const wood=new THREE.MeshStandardMaterial({color:'#765137',roughness:.68,metalness:0});
+ const metal=new THREE.MeshStandardMaterial({color:'#47545b',roughness:.58,metalness:.35});
+ const brass=new THREE.MeshStandardMaterial({color:'#a78d55',roughness:.5,metalness:.5});
+ const glass=new THREE.MeshStandardMaterial({color:'#294956',roughness:.28,metalness:.08,side:THREE.DoubleSide});
+ const template=find(root,'Plane002');if(!template?.isMesh)throw new Error('Missing Ca.60 wing template');
+ const wingGeometry=worldGeometry(root,template),position=wingGeometry.attributes.position,index=wingGeometry.index;
+ const fixed=[],moving=Array.from({length:6},()=>[]),v=new THREE.Vector3();
+ for(let k=0;k<(index?.count??position.count);k+=3){v.set(0,0,0);for(let j=0;j<3;j++)v.add(new THREE.Vector3().fromBufferAttribute(position,index?index.getX(k+j):k+j));v.multiplyScalar(1/3);const tier=clamp(Math.round((v.y-.215)/.284),0,2);if(Math.abs(v.x)>.93&&v.z<.665)moving[tier*2+(v.x>0?0:1)].push([k,k+1,k+2]);else fixed.push([k,k+1,k+2]);}
+ const surfaces={},banks=[],aileronSurfaces=[];
+ for(const [bank,offsetZ,offsetY]of [['aft',0,.01],['middle',.985,-.035],['forward',1.975,-.01]]){
+  const group=new THREE.Group();group.name=`repaired_ca60_wing_bank_${bank}`;group.position.set(0,offsetY,offsetZ);root.add(group);banks.push(group);
+  const wing=new THREE.Mesh(subset(wingGeometry,fixed),cloth);wing.name=`repaired_ca60_wings_${bank}`;wing.castShadow=wing.receiveShadow=true;group.add(wing);
+  for(let tier=0;tier<3;tier++)for(let side=0;side<2;side++){
+   const geometry=subset(wingGeometry,moving[tier*2+side]);if(!geometry.attributes.position.count)continue;
+   const box=geometry.boundingBox,origin=box.getCenter(new THREE.Vector3());origin.z=box.max.z;geometry.translate(-origin.x,-origin.y,-origin.z);
+   const pivot=new THREE.Group();pivot.name=`repaired_ca60_${side?'right':'left'}_aileron_${bank}_${tier+1}`;pivot.position.copy(origin);group.add(pivot);
+   const mesh=new THREE.Mesh(geometry,cloth);mesh.name=pivot.name;mesh.castShadow=mesh.receiveShadow=true;pivot.add(mesh);
+   const surface={hinge:pivot,axis:new THREE.Vector3(1,0,0),rest:pivot.quaternion.clone(),angle:0,bank,side:side?-1:1};surfaces[`${side?'right':'left'}Aileron_${bank}_${tier+1}`]=surface;aileronSurfaces.push(surface);
+  }
+ }
+ // The merged object includes repeated parts more than 80 model units away.
+ // Keep originals available in the inspector; don't let them affect normalization.
+ for(const name of ['static_merged','Plane','Plane001','Plane002','Plane003','Plane004','Plane005','Plane006','Plane007']){
+  find(root,name)?.traverse(o=>{if(o.isMesh){o.visible=false;o.name='original_ca60_'+o.name;}});
+ }
+ root.updateMatrixWorld(true);
+ const originalHull=meshList(find(root,'Cube'));
+ const hullColors=[new THREE.Color('#ece4cc'),glass.color,new THREE.Color('#263943'),wood.color,glass.color,new THREE.Color('#4d5556')];
+ for(let i=0;i<originalHull.length;i++){
+  const mesh=originalHull[i];if(i===0){mesh.geometry=mesh.geometry.clone();const p=mesh.geometry.attributes.position,colors=[];const top=hullColors[0],bottom=new THREE.Color('#284959'),point=new THREE.Vector3();for(let j=0;j<p.count;j++){point.fromBufferAttribute(p,j).applyMatrix4(mesh.matrixWorld);const color=point.y<-.03?bottom:top;colors.push(color.r,color.g,color.b);}mesh.geometry.setAttribute('color',new THREE.Float32BufferAttribute(colors,3));mesh.material=new THREE.MeshStandardMaterial({vertexColors:true,roughness:.74,metalness:0,side:THREE.DoubleSide});mesh.name='ca60_hull_cream_and_blue';}
+  else{mesh.material=new THREE.MeshStandardMaterial({color:hullColors[i]??hullColors[0],roughness:i===1||i===4?.3:.74,metalness:0,side:THREE.DoubleSide});mesh.name=`ca60_${i===1||i===4?'window_glass':'hull_detail'}_${i}`;}
+ }
+ for(const mesh of meshList(root)){
+  if(/^Cylinder\d*$/.test(mesh.name)){const n=mesh.name==='Cylinder'?0:Number(mesh.name.slice(8));mesh.material=n<72?wood:metal;mesh.name=n<72?`ca60_bracing_strut_${n+1}`:`ca60_metal_detail_${n}`;}
+  else if(/^NurbsPath/.test(mesh.name)){mesh.material=metal;mesh.name='ca60_bracing_wire_'+mesh.name;}
+  else if(mesh.name==='Cube001'||mesh.name==='Cube002'){mesh.material=metal;mesh.name='ca60_engine_nacelle_'+mesh.name;}
+  else if(mesh.name==='Cube003'){mesh.material=new THREE.MeshStandardMaterial({color:'#284959',roughness:.75});mesh.name='ca60_outrigger_floats';}
+ }
+ const props=[];for(const [i,p]of [[-.354,.43,2.989],[.344,.43,2.989],[-.354,.43,.486],[.344,.43,.486],[0,.37,2.974],[0,.39,2.446],[0,.37,.50],[0,.39,1.02]].entries())props.push(propeller(root,new THREE.Vector3(...p),i,wood,brass));
+ const rudders=[];
+ for(const side of [-1,1]){
+  const pivot=new THREE.Group();pivot.position.set(side*.577,.76,.77);pivot.name=`procedural_ca60_rudder_${side===1?'left':'right'}`;root.add(pivot);
+  const shape=new THREE.Shape();shape.moveTo(0,0);shape.lineTo(.14,0);shape.lineTo(.14,.19);shape.quadraticCurveTo(.11,.235,.025,.20);shape.closePath();const geometry=new THREE.ExtrudeGeometry(shape,{depth:.008,bevelEnabled:false,curveSegments:6});geometry.rotateY(Math.PI/2);const mesh=new THREE.Mesh(geometry,cloth);mesh.name=pivot.name;mesh.castShadow=true;pivot.add(mesh);const surface={hinge:pivot,axis:new THREE.Vector3(0,1,0),rest:pivot.quaternion.clone(),angle:0};rudders.push(surface);surfaces[`rudder_${side===1?'left':'right'}`]=surface;
+ }
+ // Align this +Z-forward export with the other aircraft's -X-forward convention.
+ const native=new THREE.Group();native.name='ca60_axis_correction';for(const child of [...root.children])native.add(child);native.rotation.y=-Math.PI/2;root.add(native);
+ const baseline=flattenVisibility(root);let current=presetState(false);
+ function configure(s){for(const[m,v]of baseline)m.visible=v;const a=clamp(s.aileron??0,-1,1),e=clamp(s.elevator??0,-1,1),r=clamp(s.rudder??0,-1,1);for(const surface of aileronSurfaces){const pitch=surface.bank==='aft'?-e*6:surface.bank==='forward'?e*6:0;deflect(surface,clamp(surface.side*a*10+pitch,-12,12));}for(const surface of rudders)deflect(surface,r*10);}
+ function spin(dt,engine){const throttle=clamp(engine??0,0,1);if(!throttle)return;for(let i=0;i<props.length;i++)props[i].rotation.z=(props[i].rotation.z+dt*(4+70*throttle)*(i<4?1:-1))%(Math.PI*2);}
+ function update(dt,state,active,paused){if(paused)return;for(const key of ['aileron','elevator','rudder']){const target=active?clamp((key==='elevator'?state.pitch/.58:state.roll/.65),-1,1):0;current[key]+=(target-current[key])*(1-Math.exp(-dt*5));}configure(current);spin(dt,active?state.throttle:.05);}
+ configure(current);return{configure,spin,update,surfaces,props,banks,isSeaplane:true,bounds:()=>exactBounds(root),fields:['aileron','elevator','rudder','engine'],report:{limitsDegrees:{aileron:10,elevator:6,rudder:10},combinedSurfaceLimit:12,originalAnimationDisabled:true,wingBanks:3,propellers:8}};
+}

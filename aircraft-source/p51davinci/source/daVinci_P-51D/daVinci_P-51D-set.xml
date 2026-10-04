@@ -1,0 +1,366 @@
+<?xml version="1.0"?>
+<!--
+************************************************************************
+daVinci_P-51D configuration
+************************************************************************
+-->
+
+<PropertyList>
+
+ <sim>
+  <description>daVinci_P-51D</description>
+  <author> Vodoun da Vinci, Detlef Faber, Stuart Cassie, and an AlphaSim Freeware 3D Model!</author>
+  <status>Super VooDoo HooDoo</status>  
+  <flight-model>yasim</flight-model>
+  <aero>daVinci_P-51D-yasim</aero>
+  <fuel-fraction>0.7</fuel-fraction>
+
+<rendering>
+<refl_correction type="string">-0.51</refl_correction>
+<frensel-factor type="string">0.5</frensel-factor>
+</rendering>
+
+  <previews>
+      <preview>
+        <type>exterior</type>
+        <splash type="bool">true</splash>
+        <path>Splashscreen/daVinci_P-51D-1.jpg</path>
+      </preview>
+      <preview>
+        <type>exterior</type>
+        <splash type="bool">true</splash>
+        <path>Splashscreen/daVinci_P-51D-2.jpg</path>
+      </preview>
+      <preview>
+        <type>exterior</type>
+        <splash type="bool">true</splash>
+        <path>Splashscreen/daVinci_P-51D-3.jpg</path>
+      </preview>
+     <preview>
+        <type>exterior</type>
+        <splash type="bool">true</splash>
+        <path>Splashscreen/daVinci_P-51D-4.jpg</path>
+      </preview>
+      <preview>
+        <type>exterior</type>
+        <splash type="bool">true</splash>
+        <path>Splashscreen/daVinci_P-51D-5.jpg</path>
+      </preview>
+      <preview>
+        <type>exterior</type>
+        <splash type="bool">true</splash>
+        <path>Splashscreen/daVinci_P-51D-6.jpg</path>
+      </preview>
+      <preview>
+        <type>exterior</type>
+        <splash type="bool">true</splash>
+        <path>Splashscreen/daVinci_P-51D-7.jpg</path>
+      </preview>
+    </previews>
+
+  <systems>
+   <electrical>
+    <path>Aircraft/Generic/generic-electrical.xml</path>
+	</electrical>
+	<autopilot>
+        <path>Aircraft/daVinci_P-51D/Systems/VooDooPropAP1.xml</path>
+      </autopilot>
+   </systems> 
+ 
+  
+  <sound>
+     <path>Aircraft/daVinci_P-51D/Sounds/daVinci_P-51D-Sound.xml</path>
+  </sound>
+
+<multiplay>
+      <chat_display>1</chat_display>
+      <generic>            	    
+        <int n="0" alias="/controls/switches/nav-lights-switch" />                      
+        <int n="1" alias="/controls/switches/beacon-switch" />                     
+        <int n="2" alias="/controls/switches/landing-lights-switch" />                         
+        <int n="3" alias="/controls/switches/strobe-switch" />                                     
+        <int n="4" alias="/controls/smoke" />                                     
+        <int type="int" n="5">  0 </int>                                     
+        <int type="bool" n="6"> 1 </int>                                     
+        <int n="7" alias="/sim/crashed" />                                  
+        <int n="8" alias="/systems/electrical/outputs/nav-lights">  0 </int>  <!-- 8 nav-lights -->
+        <int n="9" alias="/sim/model/lights/beacon/state">  false </int>      <!-- 9 strobe-lights -->
+        <int n="10" alias="/controls/electric/key-pos">  0 </int>             <!-- 10 key position -->
+        <float n="0" alias="/sim/model/door-positions/crew/position-norm"/>
+        <float n="1" alias="/sim/model/door-positions/passenger/position-norm"/>
+        <float n="2" alias="/position/gear-agl-m"> 0 </float>                         <!-- altitude for MP shadow -->
+        <float n="3" alias="/position/altitude-ft"> 0 </float>                        <!-- altitude for Smoke/Trail -->
+        <float n="4" alias="/engines/engine[0]/rpm"/>
+        <float n="5" alias="/engines/engine[0]/cranking"/>
+        <float n="6" alias="/gear/gear[0]/wow/"/>
+        <float n="7" alias="/gear/gear[1]/wow/"/>
+        <float n="8" alias="/gear/gear[2]/wow/"/>
+        <float n="9" alias="/gear/gear[0]/rollspeed-ms"/>
+        <float n="10" alias="/gear/gear[1]/rollspeed-ms"/>
+        <float n="11" alias="/gear/gear[2]/rollspeed-ms"/>
+        <float n="12" alias="/velocities/airspeed-kt"/>
+        <float n="13" alias="/controls/flight/aileron"/>
+        <float n="14" alias="/gear/gear[0]/compression-norm"/>
+        <float n="15" alias="/gear/gear[1]/compression-norm"/>
+        <float n="16" alias="/gear/gear[2]/caster-angle-deg"/>
+        <float n="17" alias="/environment/relative-humidity"/>
+        <float n="18" alias="/environment/temperature-degc"/>
+        <!-- For Bombable -->
+        <int type="int" n="10" alias="controls/armament/trigger">0</int>
+        <string n="9" type="string" />
+      </generic>
+    </multiplay>
+   
+   <flight-recorder>
+      <replay-config type="int">0</replay-config>
+      <config n="0" include="/Aircraft/Generic/flightrecorder/generic-jet.xml">
+        <name type="string">B-1B Flight Recorder</name>
+         <signal>
+          <type>float</type> <!-- Canopy Position -->
+          <property type="string">/sim/model/door-positions/crew/position-norm</property>
+        </signal>
+        <signal>
+          <type>float</type> <!-- Slider Position -->
+          <property type="string">/sim/model/door-positions/passenger/position-norm</property>
+        </signal>
+                     
+	<signal>
+          <type>float</type>
+          <property type="string">/environment/relative-humidity</property>
+        </signal>
+        <signal>
+          <type>float</type>
+          <property type="string">/environment/temperature-degc</property>
+        </signal>
+       <signal>
+          <type>float</type>
+          <property type="string">/velocities/airspeed-kt</property>
+        </signal>
+          <signal>
+          <type>float</type>
+          <property type="string">/sim/multiplay/generic/int[4]</property>
+        </signal>
+
+        <signal>
+          <type>float</type>
+          <property type="string">/sim/multiplay/generic/float[14]</property>
+        </signal>
+
+        <signal>
+          <type>float</type>
+          <property type="string">/sim/multiplay/generic/float[15]</property>
+        </signal>
+
+         <signal>
+          <type>float</type>
+          <property type="string">/sim/multiplay/generic/float[16]</property>
+        </signal>
+
+       <signal>
+          <type>float</type>
+          <property type="string">/sim/model/surface-positions/rudder-pos-norm</property>
+        </signal>
+       </config>
+    </flight-recorder>	
+
+  <submodels> 
+    <serviceable type="bool">true</serviceable>
+  	 <path>Aircraft/daVinci_P-51D/Models/Effects/guns/submodels.xml</path>
+  </submodels>
+
+  <mp-systems>
+		<combat-enabled type="bool">true</combat-enabled>
+  </mp-systems>
+  
+  <panel>
+  <path>Aircraft/Generic/Panels/generic-vfr-panel.xml</path>
+  <visibility>false</visibility>
+  </panel>
+
+  <model>
+   <path>Aircraft/daVinci_P-51D/Models/daVinci_P-51D.xml</path>
+ </model> 
+	
+  <view n="0">
+   <internal archive="y">true</internal>
+   <config>
+    <x-offset-m archive="y" type="double">0</x-offset-m><!-- Right -->
+    <y-offset-m archive="y" type="double">1.070</y-offset-m><!-- Up    -->
+    <z-offset-m archive="y" type="double">4.250</z-offset-m><!-- Back  -->
+    <default-field-of-view-deg>118.00</default-field-of-view-deg>
+    <pitch-offset-deg>-14.00</pitch-offset-deg>
+   </config>
+  </view>
+
+ <help>
+    <key>
+      <name>l</name>
+      <desc>toggle Tailwheel Lock</desc>
+    </key>
+
+    <key>
+      <name>d</name>
+      <desc>toggle Canopy</desc>
+    </key>
+   
+   <key>
+      <name>n</name>
+      <desc>Propeller Coarse</desc>
+    </key>
+
+   <key>
+      <name>N</name>
+      <desc>Propeller Fine</desc>
+    </key>
+
+   <key>
+      <name>h</name>
+      <desc>Toggle HUD</desc>
+    </key>
+
+<key>
+      <name>M</name>
+      <desc>Leaner Mixture</desc>
+    </key>
+
+<key>
+      <name>m</name>
+      <desc>Richer Mixture</desc>
+    </key>
+
+<key>
+      <name>S</name>
+      <desc>Toggle VooDoo Smoke</desc>
+    </key>
+
+<text>Use the Equipment-Fuel and Payload Dialog to select external Stores. Selecct Livery from F10 Extras!
+
+Some notes on the propeller adjust mechanism:
+
+Propeller pitch affects engine RPM and ATA/Manifold pressure, total speed. You *will* need to adjust it for maximum performance at altitude.
+
+The actual amount of propeller pitch is displayed on the clock shaped Instrument on the right side of the panel. The range counts counter clockwise starting at 12.30 (full fine) to 8.30 (full course). Adjust in Flight for 2600 RPM and
+adjust throttle to maintian correct ATA/Manifold pressure.
+
+---Start up---
+Ensure propeller pitch is set to 11.00. Enable fuel tank selection. Advance throttle to 25%. All magnetos on. Press "s" to start and then reduce throttle and reduce mixture (M) to 70%.
+---Take Off---
+Flaps down 10 degrees, Take off at 1.1 ata Manifold Pressure.Lift Tailwheel at 120-150 km/h. Be prepared to use Aileron against Torque and Rudder to counteract Swing. Lift Off at 190-200 km/h.
+
+---Landing---
+Beware: The engine runs on low rpm  Set propeller pitch to full fine pitch.
+Lower Flaps and Gear under 300 km/h. Approach Speed is 200 km/h. A curved Approach is recommended, because visibility on Final is bad. Speed at Treshold should be 175 km/h. Flare to Threepoint attitude before touchdown. After Touchdown use Rudder to keep the Aircraft straight.
+Don't release Tailwheel lock before taxiing off the Runway as daVinci_Aircraft all feature steerable tail wheels. You can swing the tail around sharply by unlocking the tail wheel and applying left/right braking for parking.</text>
+  </help>
+ 
+  <hud>
+   <enable3d>false</enable3d>
+  </hud>  
+	<menubar>
+		<default>
+			<menu n="10">
+				<label>daVinci_P-51D</label>
+					<enabled type="bool">true</enabled>
+					<item>
+						<label>Select Livery</label>
+              <binding>
+                <command>nasal</command>
+                <script>aircraft.livery.dialog.toggle()</script>
+              </binding>
+					</item>
+		      
+			</menu>
+		</default>
+	</menubar>
+	<multiplay>
+		<generic>
+			<string/>
+		</generic>
+	</multiplay>
+</sim>
+
+<consumables>
+    <fuel>
+      <tank n="0">
+        <tank-num type="int">0</tank-num>
+        <level-gal_us archive="y">250</level-gal_us>
+      </tank>
+     </fuel>
+ </consumables>
+  
+ <engines>
+  <engine n="0">
+  <running>false</running>
+  <magnetos>1</magnetos>
+  <!--
+   <rpm type="double">700</rpm>
+   -->
+   <!-- fake unimplemented settings -->
+   <fuel-pump-psi type="double">18</fuel-pump-psi>
+   <oil-pressure-psi type="double">75</oil-pressure-psi>
+  </engine>
+ </engines>
+
+
+ <!-- set up control properties for YASim -->
+ <controls>
+  <gear>
+      <brake-parking type="double">1.0</brake-parking>
+    </gear>
+	<armament>
+     <trigger type="bool">false</trigger>
+     <master-arm type="bool">true</master-arm>
+     <position-norm type="int">1</position-norm>
+    </armament>
+   <engines>
+      <engine n="0">
+        <magnetos>0</magnetos>
+        <boost type="double">0.45</boost>
+				<blower type="int">0</blower>
+      </engine>
+   </engines>
+	 <flight>
+			<slipstream type="double">1.0</slipstream>
+			<aileron-effectiveness type ="double">0.1</aileron-effectiveness>
+	 </flight>
+   <gear>
+      <tailwheel-lock>true</tailwheel-lock>
+   </gear>
+   <canopy>
+      <canopy-pos-norm type="float">1.0</canopy-pos-norm>
+   </canopy>
+     
+   <smoke alias="/sim/multiplay/generic/int[4]"/>
+    
+ </controls>
+ 
+ <!-- Map Keys -->
+ <input>
+    <keyboard include="Systems/daVinci_P-51D-keyboard.xml"/>
+ </input>
+
+<!-- Nasal files/scripts -->
+  <nasal>
+
+    <spit9>
+      <file>Aircraft/daVinci_P-51D/Nasal/spit9.nas</file>
+       <file>Aircraft/daVinci_P-51D/Nasal/liveries.nas</file>
+    </spit9>
+	<guns>
+      <file>Aircraft/daVinci_P-51D/Nasal/weapons.nas</file>
+      <file>Aircraft/daVinci_P-51D/Nasal/revi.nas</file>
+    </guns>
+    <doors>
+      <file>Aircraft/daVinci_P-51D/Nasal/doors.nas</file>
+    </doors>
+    <lights>
+      <file>Aircraft/daVinci_P-51D/Nasal/Lights.nas</file>
+   </lights>
+   
+  </nasal>
+
+</PropertyList>
+
+
+
+

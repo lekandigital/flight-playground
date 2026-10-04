@@ -1,0 +1,1016 @@
+{
+  "method": "Actual Three.js GLBs and runtime, CPU geometry/texture validation; no WebGL check",
+  "gearMethod": "Every tyre vertex in the actual wing/well/fuselage bounding envelope. Not a watertight solid collision proof.",
+  "results": [
+    {
+      "id": "p51d",
+      "glbSha256": "6e5d5a58f879c07116cc1bd7d592282986cd760c3a22dd1cedc52f57119662f7",
+      "expectedGlbSha256": "6e5d5a58f879c07116cc1bd7d592282986cd760c3a22dd1cedc52f57119662f7",
+      "nativeScale": 1,
+      "dimensions": {
+        "length": {
+          "actualM": 9.867462575435638,
+          "referenceM": 9.83,
+          "errorPercent": 0.38110453139001965,
+          "withinFivePercent": true
+        },
+        "span": {
+          "actualM": 11.334527969360352,
+          "referenceM": 11.278,
+          "errorPercent": 0.5012233495331753,
+          "withinFivePercent": true
+        },
+        "height": {
+          "actualM": 4.264876229948719,
+          "referenceM": 4.077,
+          "errorPercent": 4.608197938403702,
+          "withinFivePercent": true
+        }
+      },
+      "parkedPitchDegrees": 13.69,
+      "fdmPitchDegrees": 13.69,
+      "contactLevelSpreadM": 0.00028841694884462754,
+      "tyreContacts": [
+        {
+          "parts": [
+            "i0_mainWheelLeft"
+          ],
+          "bottomHeightM": -0.00009613898294835721,
+          "fdmContactHeightM": -0.00009613898294835721,
+          "errorM": 0
+        },
+        {
+          "parts": [
+            "i0_mainWheelRight"
+          ],
+          "bottomHeightM": -0.00009613898294835721,
+          "fdmContactHeightM": -0.00009613898294835721,
+          "errorM": 0
+        },
+        {
+          "parts": [
+            "i0_tailWheel"
+          ],
+          "bottomHeightM": 0.00019227796589627033,
+          "fdmContactHeightM": 0.00019227796589627033,
+          "errorM": 0
+        }
+      ],
+      "propeller": {
+        "actualDiameterM": 3.448868557136639,
+        "targetDiameterM": 3.5052,
+        "errorPercent": -1.607082131215365,
+        "withinThreePercent": true,
+        "bladeCount": 4,
+        "procedural": false,
+        "center": [
+          -0.5206999999999999,
+          -0.07235,
+          -0.00015000000000000001
+        ],
+        "axis": [
+          -0.9995476936320387,
+          -0.02999940352399857,
+          -0.0021080661935782776
+        ]
+      },
+      "gearContainment": [
+        {
+          "part": "mainWheelLeft",
+          "bounds": [
+            [
+              1.877623110998574,
+              -0.8343692686974884,
+              0.136003584242266
+            ],
+            [
+              2.583137110429065,
+              -0.5517836848516013,
+              0.8405722269725376
+            ]
+          ],
+          "bayBounds": [
+            [
+              1.737657070159912,
+              -0.9125139713287354,
+              -1.907891035079956
+            ],
+            [
+              2.7535901069641113,
+              -0.3815540075302124,
+              1.91451096534729
+            ]
+          ],
+          "insideBoundingEnvelope": true
+        },
+        {
+          "part": "mainWheelRight",
+          "bounds": [
+            [
+              1.8777563833609225,
+              -0.8353327225102218,
+              -0.8401099978279414
+            ],
+            [
+              2.582447307296285,
+              -0.5508354952539927,
+              -0.1363507614866526
+            ]
+          ],
+          "bayBounds": [
+            [
+              1.737657070159912,
+              -0.9125139713287354,
+              -1.907891035079956
+            ],
+            [
+              2.7535901069641113,
+              -0.3815540075302124,
+              1.91451096534729
+            ]
+          ],
+          "insideBoundingEnvelope": true
+        },
+        {
+          "part": "tailWheel",
+          "bounds": [
+            [
+              6.371136646424937,
+              -0.4885718687101104,
+              -0.04670199751853943
+            ],
+            [
+              6.6195830463784695,
+              -0.240124457804467,
+              0.05382000282406807
+            ]
+          ],
+          "bayBounds": [
+            [
+              1.9259660243988037,
+              -0.5620309710502625,
+              -0.4430449903011322
+            ],
+            [
+              8.29682731628418,
+              0.7842000126838684,
+              0.44335898756980896
+            ]
+          ],
+          "insideBoundingEnvelope": true
+        }
+      ],
+      "controlViolations": [],
+      "animationDrivers": 54,
+      "liveryCount": 4,
+      "notes": [
+        {
+          "type": "referenceFit",
+          "part": "Missing canopy enclosure",
+          "stationsM": [
+            [
+              2.99,
+              0.24,
+              0.54,
+              0.37
+            ],
+            [
+              3.45,
+              0.29,
+              0.65,
+              0.35
+            ],
+            [
+              3.95,
+              0.4,
+              0.49,
+              0.33
+            ],
+            [
+              4.3,
+              0.58,
+              0.18,
+              0.23
+            ],
+            [
+              4.52,
+              0.63,
+              0.004,
+              0.01
+            ]
+          ],
+          "fixedStationsM": [
+            [
+              2.52,
+              0.45,
+              0.31,
+              0.22
+            ],
+            [
+              2.76,
+              0.27,
+              0.46,
+              0.33
+            ],
+            [
+              2.96,
+              0.22,
+              0.56,
+              0.375
+            ]
+          ],
+          "slideM": 0.65,
+          "limitation": "Original enclosure XML/geometry absent. Bubble shell and slide are explicit approximations fitted to original frame meshes and intended-look image."
+        },
+        {
+          "type": "tyreContactFit",
+          "parts": [
+            "i0_mainWheelLeft"
+          ],
+          "verticalOffsetM": 0.07089641079209585,
+          "source": [
+            1.9113,
+            -2.159,
+            1.8288
+          ]
+        },
+        {
+          "type": "tyreContactFit",
+          "parts": [
+            "i0_mainWheelRight"
+          ],
+          "verticalOffsetM": 0.07090400442205755,
+          "source": [
+            1.9113,
+            -2.159,
+            -1.8288
+          ]
+        },
+        {
+          "type": "tyreContactFit",
+          "parts": [
+            "i0_tailWheel"
+          ],
+          "verticalOffsetM": -0.02612197892383475,
+          "source": [
+            6.8631,
+            -0.9525,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "p51davinci",
+      "glbSha256": "7e70423d5c01cad89251dee24caae4eedb1cf3ca470ff3e1f666a195a027c1a6",
+      "expectedGlbSha256": "7e70423d5c01cad89251dee24caae4eedb1cf3ca470ff3e1f666a195a027c1a6",
+      "nativeScale": 1,
+      "dimensions": {
+        "length": {
+          "actualM": 9.619479894638062,
+          "referenceM": 9.83,
+          "errorPercent": -2.141608396357464,
+          "withinFivePercent": true
+        },
+        "span": {
+          "actualM": 11.04060983657837,
+          "referenceM": 11.278,
+          "errorPercent": -2.1048959338679896,
+          "withinFivePercent": true
+        },
+        "height": {
+          "actualM": 4.327239575423551,
+          "referenceM": 4.077,
+          "errorPercent": 6.137836041784439,
+          "withinFivePercent": false
+        }
+      },
+      "parkedPitchDegrees": 14.610000000000001,
+      "fdmPitchDegrees": 14.61,
+      "contactLevelSpreadM": 0.00039190729338622887,
+      "tyreContacts": [
+        {
+          "parts": [
+            "i0_PortTire_node",
+            "i0_PortTire"
+          ],
+          "bottomHeightM": 0.00013063576446192826,
+          "fdmContactHeightM": 0.00013063576446192826,
+          "errorM": 0
+        },
+        {
+          "parts": [
+            "i0_StarTire_node",
+            "i0_StarTire"
+          ],
+          "bottomHeightM": 0.00013063576446192826,
+          "fdmContactHeightM": 0.00013063576446192826,
+          "errorM": 0
+        },
+        {
+          "parts": [
+            "i0_TailWheel_node",
+            "i0_TailWheel"
+          ],
+          "bottomHeightM": -0.0002612715289243006,
+          "fdmContactHeightM": -0.0002612715289243006,
+          "errorM": 0
+        }
+      ],
+      "propeller": {
+        "actualDiameterM": 3.4187175653508093,
+        "targetDiameterM": 3.4,
+        "errorPercent": 0.550516627964992,
+        "withinThreePercent": true,
+        "bladeCount": 4,
+        "procedural": true,
+        "center": [
+          0.579,
+          0.434,
+          0
+        ],
+        "axis": [
+          1,
+          0,
+          0
+        ]
+      },
+      "gearContainment": [
+        {
+          "part": "PortTire",
+          "bounds": [
+            [
+              2.8827323461732424,
+              -0.3120141026461676,
+              0.35944304463293353
+            ],
+            [
+              3.5746707464321235,
+              -0.046933091152080664,
+              1.0556745390506392
+            ]
+          ],
+          "bayBounds": [
+            [
+              2.483405828475952,
+              -0.4402977526187897,
+              -5.513691425323486
+            ],
+            [
+              5.436450004577637,
+              0.24923329800367355,
+              5.514468669891357
+            ]
+          ],
+          "insideBoundingEnvelope": true
+        },
+        {
+          "part": "StarTire",
+          "bounds": [
+            [
+              2.919358077780941,
+              -0.33741195537386126,
+              -1.0483248953337259
+            ],
+            [
+              3.609562562848585,
+              -0.027928322066971045,
+              -0.35100565539593886
+            ]
+          ],
+          "bayBounds": [
+            [
+              2.483405828475952,
+              -0.4402977526187897,
+              -5.513691425323486
+            ],
+            [
+              5.436450004577637,
+              0.24923329800367355,
+              5.514468669891357
+            ]
+          ],
+          "insideBoundingEnvelope": true
+        },
+        {
+          "part": "TailWheel",
+          "bounds": [
+            [
+              7.309503417102423,
+              0.2910101852416993,
+              -0.04069095849990845
+            ],
+            [
+              7.581573586551276,
+              0.5638301811218263,
+              0.06190299987792969
+            ]
+          ],
+          "bayBounds": [
+            [
+              0.7156000137329102,
+              -0.7527877390384674,
+              -1.9457311630249023
+            ],
+            [
+              9.061399459838867,
+              2.0629023015499115,
+              1.9463789463043213
+            ]
+          ],
+          "insideBoundingEnvelope": true
+        }
+      ],
+      "controlViolations": [],
+      "animationDrivers": 31,
+      "liveryCount": 11,
+      "notes": [
+        {
+          "type": "proceduralPropeller",
+          "diameterM": 3.4,
+          "blades": 4,
+          "center": [
+            0.579,
+            0.434,
+            0
+          ],
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "source": "verified spin centre / FDM or documented real-spec conflict"
+        },
+        {
+          "type": "factConflict",
+          "field": "fdm_geometry.propellers[0].radius_m",
+          "fdmDiameterM": 2.8,
+          "chosenDiameterM": 3.4,
+          "source": "real_world_specs.prop_dia_m",
+          "reason": "FDM and original blades are undersized; historical propeller diameter used instead."
+        },
+        {
+          "type": "tyreContactFit",
+          "parts": [
+            "i0_PortTire_node",
+            "i0_PortTire"
+          ],
+          "verticalOffsetM": -0.011719877960162509,
+          "source": [
+            2.804,
+            -1.748,
+            1.84
+          ]
+        },
+        {
+          "type": "tyreContactFit",
+          "parts": [
+            "i0_StarTire_node",
+            "i0_StarTire"
+          ],
+          "verticalOffsetM": -0.012293138324834344,
+          "source": [
+            2.804,
+            -1.748,
+            -1.84
+          ]
+        },
+        {
+          "type": "tyreContactFit",
+          "parts": [
+            "i0_TailWheel_node",
+            "i0_TailWheel"
+          ],
+          "verticalOffsetM": -0.035016631754311925,
+          "source": [
+            7.67,
+            -0.48,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mustangiii",
+      "glbSha256": "6f4a361f4e18fb12bb4c5df38d386614c46140c618b7a9d91934c95b3489d754",
+      "expectedGlbSha256": "6f4a361f4e18fb12bb4c5df38d386614c46140c618b7a9d91934c95b3489d754",
+      "nativeScale": 1,
+      "dimensions": {
+        "length": {
+          "actualM": 9.68060040473938,
+          "referenceM": 9.83,
+          "errorPercent": -1.5198331155709122,
+          "withinFivePercent": true
+        },
+        "span": {
+          "actualM": 11.053299903869629,
+          "referenceM": 11.278,
+          "errorPercent": -1.992375386862666,
+          "withinFivePercent": true
+        },
+        "height": {
+          "actualM": 4.055040431654963,
+          "referenceM": 4.077,
+          "errorPercent": -0.538620759014885,
+          "withinFivePercent": true
+        }
+      },
+      "parkedPitchDegrees": 13.64,
+      "fdmPitchDegrees": 13.64,
+      "contactLevelSpreadM": 0.000015541610724589816,
+      "tyreContacts": [
+        {
+          "parts": [
+            "i0_LeftGearWheel_node",
+            "i0_LeftGearWheel"
+          ],
+          "bottomHeightM": 0.000005180536907456457,
+          "fdmContactHeightM": 0.000005180536907900546,
+          "errorM": -4.440892098500626e-16
+        },
+        {
+          "parts": [
+            "i0_RightGearWheel_node",
+            "i0_RightGearWheel"
+          ],
+          "bottomHeightM": 0.000005180536907456457,
+          "fdmContactHeightM": 0.000005180536907900546,
+          "errorM": -4.440892098500626e-16
+        },
+        {
+          "parts": [
+            "i0_TailGearWheel",
+            "i0_TailGearWheel_node"
+          ],
+          "bottomHeightM": -0.000010361073816245181,
+          "fdmContactHeightM": -0.00001036107381668927,
+          "errorM": 4.440892098500626e-16
+        }
+      ],
+      "propeller": {
+        "actualDiameterM": 3.465781798525301,
+        "targetDiameterM": 3.5,
+        "errorPercent": -0.9776628992771097,
+        "withinThreePercent": true,
+        "bladeCount": 4,
+        "procedural": false,
+        "center": [
+          0.6,
+          -0.3,
+          0
+        ],
+        "axis": [
+          1,
+          0,
+          0
+        ]
+      },
+      "gearContainment": [
+        {
+          "part": "LeftGearWheel",
+          "bounds": [
+            [
+              2.766980316162109,
+              -1.0547798614501953,
+              0.324652253482558
+            ],
+            [
+              3.45031341487915,
+              -0.6938165257424003,
+              1.0295667178035153
+            ]
+          ],
+          "bayBounds": [
+            [
+              2.7649803161621094,
+              -1.0567798614501953,
+              -1.8221800667524803
+            ],
+            [
+              3.611650228500366,
+              -0.6714601516723633,
+              1.823119844746543
+            ]
+          ],
+          "insideBoundingEnvelope": true
+        },
+        {
+          "part": "RightGearWheel",
+          "bounds": [
+            [
+              2.766980316162109,
+              -1.0547798614501953,
+              -1.0295503164160014
+            ],
+            [
+              3.4503228497053984,
+              -0.6938165257424003,
+              -0.3246358520950441
+            ]
+          ],
+          "bayBounds": [
+            [
+              2.7649803161621094,
+              -1.0567798614501953,
+              -1.8221800667524803
+            ],
+            [
+              3.611650228500366,
+              -0.6714601516723633,
+              1.823119844746543
+            ]
+          ],
+          "insideBoundingEnvelope": true
+        },
+        {
+          "part": "TailGearWheel",
+          "bounds": [
+            [
+              7.397578416832498,
+              -0.2647812478641782,
+              -0.06991351072792895
+            ],
+            [
+              7.7261012465191135,
+              0.06375090128880867,
+              0.0708532887219917
+            ]
+          ],
+          "bayBounds": [
+            [
+              0.6520600318908691,
+              -1.2204399108886719,
+              -0.45957211081986316
+            ],
+            [
+              8.979750156402588,
+              1.6888399124145508,
+              0.4605118888139259
+            ]
+          ],
+          "insideBoundingEnvelope": true
+        }
+      ],
+      "controlViolations": [],
+      "animationDrivers": 23,
+      "liveryCount": 0,
+      "notes": [
+        {
+          "type": "factConflict",
+          "field": "fdm_geometry.gear_contacts[2].retracts",
+          "chosen": "retracts per 85° exterior XML animation",
+          "reason": "Visual source XML and retracting P-51 tail-wheel bay disagree with FDM false flag."
+        },
+        {
+          "type": "tyreContactFit",
+          "parts": [
+            "i0_LeftGearWheel_node",
+            "i0_LeftGearWheel"
+          ],
+          "verticalOffsetM": 0.06668516195106744,
+          "source": [
+            2.79,
+            -2.2,
+            1.81
+          ]
+        },
+        {
+          "type": "tyreContactFit",
+          "parts": [
+            "i0_RightGearWheel_node",
+            "i0_RightGearWheel"
+          ],
+          "verticalOffsetM": 0.06668516195106744,
+          "source": [
+            2.79,
+            -2.2,
+            -1.81
+          ]
+        },
+        {
+          "type": "tyreContactFit",
+          "parts": [
+            "i0_TailGearWheel",
+            "i0_TailGearWheel_node"
+          ],
+          "verticalOffsetM": -0.019234923615588758,
+          "source": [
+            7.9,
+            -0.96,
+            0
+          ]
+        },
+        {
+          "type": "stowedWheelMeshFit",
+          "source": "Actual wells mesh bounds",
+          "parts": [
+            "i0_LeftGearWheel_node",
+            "i0_LeftGearWheel"
+          ],
+          "offsetM": [
+            0.03535906078842843,
+            0.05433197482738539,
+            0
+          ],
+          "xmlAnglesUnchanged": true
+        },
+        {
+          "type": "stowedWheelMeshFit",
+          "source": "Actual wells mesh bounds",
+          "parts": [
+            "i0_RightGearWheel_node",
+            "i0_RightGearWheel"
+          ],
+          "offsetM": [
+            0.03513116586003151,
+            0.05342039511379859,
+            0
+          ],
+          "xmlAnglesUnchanged": true
+        }
+      ]
+    },
+    {
+      "id": "mig29",
+      "glbSha256": "4b1647b5ab47923483b098295390dc9581665700ef49ccf1eb00411d82c1908a",
+      "expectedGlbSha256": "4b1647b5ab47923483b098295390dc9581665700ef49ccf1eb00411d82c1908a",
+      "nativeScale": 1,
+      "dimensions": {
+        "length": {
+          "actualM": 17.23901665210724,
+          "referenceM": 17.32,
+          "errorPercent": -0.4675712926833775,
+          "withinFivePercent": true
+        },
+        "span": {
+          "actualM": 11.446084022521973,
+          "referenceM": 11.36,
+          "errorPercent": 0.7577818883976573,
+          "withinFivePercent": true
+        },
+        "height": {
+          "actualM": 4.414386708917735,
+          "referenceM": 4.73,
+          "errorPercent": -6.672585435143041,
+          "withinFivePercent": false
+        }
+      },
+      "parkedPitchDegrees": 0.06,
+      "fdmPitchDegrees": 0.06,
+      "contactLevelSpreadM": 0.00030653271874059307,
+      "tyreContacts": [
+        {
+          "parts": [
+            "i0_nosewheels_1",
+            "i0_nosewheels_2"
+          ],
+          "bottomHeightM": -0.00020435514582684,
+          "fdmContactHeightM": -0.00020435514582684,
+          "errorM": 0
+        },
+        {
+          "parts": [
+            "i0_wheelL_1",
+            "i0_wheelL_2"
+          ],
+          "bottomHeightM": 0.00010217757291375307,
+          "fdmContactHeightM": 0.00010217757291375307,
+          "errorM": 0
+        },
+        {
+          "parts": [
+            "i0_wheelR_1",
+            "i0_wheelR_2"
+          ],
+          "bottomHeightM": 0.00010217757291375307,
+          "fdmContactHeightM": 0.00010217757291375307,
+          "errorM": 0
+        }
+      ],
+      "propeller": null,
+      "gearContainment": [
+        {
+          "part": "wheel.L",
+          "bounds": [
+            [
+              8.354355384452004,
+              0.12014941492538167,
+              0.5482230874596645
+            ],
+            [
+              9.224869725126128,
+              0.5402485032716049,
+              1.425644486648947
+            ]
+          ],
+          "bayBounds": [
+            [
+              8.107772827148438,
+              -0.30397798380183966,
+              0.5232068516095201
+            ],
+            [
+              10.368515014648438,
+              0.56524145084763,
+              1.6520220257123033
+            ]
+          ],
+          "insideBoundingEnvelope": true
+        },
+        {
+          "part": "wheel.R",
+          "bounds": [
+            [
+              8.354355492038385,
+              0.12013334307385437,
+              -1.4256380150445729
+            ],
+            [
+              9.224871328914867,
+              0.5402368504095486,
+              -0.548224993011619
+            ]
+          ],
+          "bayBounds": [
+            [
+              8.107772827148438,
+              -0.303977998960761,
+              -1.652022024398381
+            ],
+            [
+              10.368515014648438,
+              0.5652298004739009,
+              -0.5232087576442306
+            ]
+          ],
+          "insideBoundingEnvelope": true
+        },
+        {
+          "part": "nosewheels",
+          "bounds": [
+            [
+              7.096113701403122,
+              -0.1514708083497709,
+              -0.2074809968471527
+            ],
+            [
+              7.729399741897589,
+              0.4818146442202229,
+              0.2074809968471527
+            ]
+          ],
+          "bayBounds": [
+            [
+              4.797458171844482,
+              -0.22862401392401538,
+              -0.3224070221185684
+            ],
+            [
+              7.855834007263184,
+              0.5068987927204243,
+              0.32240401208400726
+            ]
+          ],
+          "insideBoundingEnvelope": true
+        }
+      ],
+      "controlViolations": [],
+      "animationDrivers": 105,
+      "liveryCount": 0,
+      "notes": [
+        {
+          "type": "proceduralBayInterior",
+          "part": "GearWellL",
+          "wheel": "wheel.L",
+          "originalBounds": [
+            [
+              8.107772827148438,
+              -0.30397799611091614,
+              0.7167760133743286
+            ],
+            [
+              10.368515014648438,
+              0.43430399894714355,
+              1.6520220041275024
+            ]
+          ],
+          "repairedBounds": [
+            [
+              8.107772827148438,
+              -0.30397799611091614,
+              0.5232068731943208
+            ],
+            [
+              10.368515014648438,
+              0.5652414508476299,
+              1.6520220041275024
+            ]
+          ],
+          "clearanceM": 0.025,
+          "xmlAnglesUnchanged": true
+        },
+        {
+          "type": "proceduralBayInterior",
+          "part": "GearWellR",
+          "wheel": "wheel.R",
+          "originalBounds": [
+            [
+              8.107772827148438,
+              -0.30397799611091614,
+              -1.6520220041275024
+            ],
+            [
+              10.368515014648438,
+              0.43430399894714355,
+              -0.7167760133743286
+            ]
+          ],
+          "repairedBounds": [
+            [
+              8.107772827148438,
+              -0.30397799611091614,
+              -1.6520220041275024
+            ],
+            [
+              10.368515014648438,
+              0.565229797624056,
+              -0.523208777915109
+            ]
+          ],
+          "clearanceM": 0.025,
+          "xmlAnglesUnchanged": true
+        },
+        {
+          "type": "proceduralBayInterior",
+          "part": "nosegeaerwell",
+          "wheel": "nosewheels",
+          "originalBounds": [
+            [
+              4.797458171844482,
+              -0.22862400114536285,
+              -0.3224070072174072
+            ],
+            [
+              7.855834007263184,
+              0.16069699823856354,
+              0.32240399718284607
+            ]
+          ],
+          "repairedBounds": [
+            [
+              4.797458171844482,
+              -0.22862400114536285,
+              -0.3224070072174072
+            ],
+            [
+              7.855834007263184,
+              0.5068987799417718,
+              0.32240399718284607
+            ]
+          ],
+          "clearanceM": 0.025,
+          "xmlAnglesUnchanged": true
+        },
+        {
+          "type": "tyreContactFit",
+          "parts": [
+            "i0_nosewheels_1",
+            "i0_nosewheels_2"
+          ],
+          "verticalOffsetM": -0.0004845183098336932,
+          "source": [
+            6.281,
+            -1.739,
+            0
+          ]
+        },
+        {
+          "type": "tyreContactFit",
+          "parts": [
+            "i0_wheelL_1",
+            "i0_wheelL_2"
+          ],
+          "verticalOffsetM": 0.00017533970495940126,
+          "source": [
+            9.808,
+            -1.735,
+            1.57
+          ]
+        },
+        {
+          "type": "tyreContactFit",
+          "parts": [
+            "i0_wheelR_1",
+            "i0_wheelR_2"
+          ],
+          "verticalOffsetM": 0.00017534869313142907,
+          "source": [
+            9.808,
+            -1.735,
+            -1.57
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import {find,meshList,hinge,deflect,groupParts,flattenVisibility,visibleBounds,clamp,RAD,presetState,parkingPitch} from './rig-tools.js';
 import {aircraftPropeller,helicopterRotor,fabricWeave} from './rotors.js';
+import {finishHelicopter} from './helicopter-finish.js';
 
 // Keep hidden import variants independently revealable, without playing mixed clips.
 function hide(node,id,kind='variant'){
@@ -87,9 +88,11 @@ function prepareHelicopter(root,id){
   for(const name of ['fuselage','fuselage_air_in','frontdoorl','backdoorl','doorfr','doorbr','windowl002','windowl003','windscreen_inside','windscreen_inside_shader'])hide(find(root,name),id);
   for(const name of ['basket_left','basket_right','floats_deflated','snowshoes','hoist','hook_lowpart','FLIR','stretcher'])hide(find(root,name),id,'equipment');
   for(const mesh of meshList(root))if(/basket|hoist|hook_|searchlight|slight_|Plane005X/.test(mesh.name))hide(mesh,id,'equipment');
+  for(const name of ['navlight_left','navlight_right','navlight_back','antenna_roof_frontl_tilt'])hide(find(root,name),id);
  }else if(bo){
   for(const mesh of meshList(root)){
-   if(/blade|disc|shadow|star_hub|pitch_link/i.test(mesh.name))hide(mesh,id,'rotor');
+   if(/blade|disc|shadow|star_hub|pitch_link|pitch_horn|rotoraxis|swashplate|coll_ctrl_fork|fake_axis|tailpitchlink|tailsleeve/i.test(mesh.name))hide(mesh,id,'rotor');
+   else if(/halo/i.test(mesh.name))hide(mesh,id);
    else if(/pilot|i0_h[cp]_|ear_[LR]|ear_hole/i.test(mesh.name))hide(mesh,id,'crew');
    else if(/gatling|barrel|rail_[LR]|^i0_hot$|wire_cutter|^i0_shield$/i.test(mesh.name))hide(mesh,id,'equipment');
   }
@@ -97,41 +100,48 @@ function prepareHelicopter(root,id){
   hide(find(root,'i5_all-mainrotor'),id,'rotor');hide(find(root,'i11_all-tailrotor'),id,'rotor');
   hide(find(root,'i0_nez2'),id);for(const mesh of meshList(root)){if(/^i(?:[6-9]|1\d|2[0-3])_(?:blade|rotor|propblur|propdisc)/i.test(mesh.name))hide(mesh,id,'rotor');else if(/HDR|propblur|propdisc/i.test(mesh.name))hide(mesh,id);}
  }
- if(bo)for(const name of ['pivot_043_door_front_R','pivot_044_door_front_L'])find(root,name).quaternion.identity();
- for(const m of meshList(root)){
-  if(m.name.startsWith('original_'))continue;const mats=Array.isArray(m.material)?m.material:[m.material];
-  if(mats.some(mat=>/glass|colored_glas|windscreen/i.test(mat.name))||/glass|vitre|windshield/i.test(m.name))glass(m);
-  else if(bo)for(const mat of mats)if(/^yellow/.test(mat.name)){mat.color.set('#dbb342');mat.roughness=.72;mat.metalness=0;}
- }
+ // FlightGear exported these animation pivots at +/-170 degrees. Identity
+ // restores the authored closed geometry, including the two cargo doors.
+ if(bo)for(const name of ['pivot_043_door_front_R','pivot_044_door_front_L','pivot_049_reardoor_R','pivot_050_reardoor_L'])find(root,name).quaternion.identity();
+ const finish=finishHelicopter(root,id);
  const specs=bo?{main:[2.744,1.65,0],radius:5.0,count:4,tail:[8.642,1.524,.424],tailRadius:.96,tailCount:2}:ec?{main:[-2.80,1.40,0],radius:5.0,count:3,tail:[4.44,.106,.04],tailRadius:.43,tailCount:10}:{main:[-1.785,1.72,0],radius:5.90,count:4,tail:[5.294,-.083,.02],tailRadius:.49,tailCount:11};
- const main=helicopterRotor(root,{name:id+'_main_rotor',position:new THREE.Vector3(...specs.main),radius:specs.radius,count:specs.count});
- const tail=helicopterRotor(root,{name:id+'_tail_rotor',position:new THREE.Vector3(...specs.tail),radius:specs.tailRadius,count:specs.tailCount,tail:true});
- if(ec||!bo){const shaft=new THREE.Mesh(new THREE.CylinderGeometry(.065,.08,ec?.64:.42,16),new THREE.MeshStandardMaterial({color:'#7f919c',metalness:.55,roughness:.42}));shaft.position.set(specs.main[0],specs.main[1]-(ec?.32:.21),0);shaft.name='procedural_'+id+'_rotor_mast';shaft.castShadow=true;root.add(shaft);}
- const doors=[],sliders=[],gear=[];
+ const main=helicopterRotor(root,{name:id+'_main_rotor',position:new THREE.Vector3(...specs.main),radius:specs.radius,count:specs.count,shaftLength:ec?.64:bo?.45:.42});
+ const tail=helicopterRotor(root,{name:id+'_tail_rotor',position:new THREE.Vector3(...specs.tail),radius:specs.tailRadius,count:specs.tailCount,tail:true,enclosed:!bo});
+ if(ec)for(const [name,pos,color]of [['left',[2.9,-.22,1.47],'#ed4b42'],['right',[2.9,-.22,-1.47],'#48d698'],['tail',[5.326,1.85,-.07],'#eff7ff']]){
+  const lens=new THREE.Mesh(new THREE.SphereGeometry(.027,16,10),new THREE.MeshPhysicalMaterial({color,emissive:color,emissiveIntensity:.65,roughness:.15,clearcoat:1}));lens.name='procedural_ec130_nav_light_'+name;lens.position.set(...pos);root.add(lens);
+ }
+ const doors=[],sliders=[],cargoDoors=[],gear=[];
  if(bo){
   for(const [side,sign]of [['L',-1],['R',1]]){
    const n=find(root,`i0_door_front_${side}`)?.parent;if(n)doors.push({surface:hinge(root,[n],'y'),sign});
    const back=find(root,`i0_door_back_${side}`)?.parent;if(back)sliders.push(restRotation(back));
   }
+  for(const [name,sign]of [['pivot_049_reardoor_R',1],['pivot_050_reardoor_L',-1]]){
+   const node=find(root,name);cargoDoors.push({rest:restRotation(node),axis:new THREE.Vector3(.535215,.841932,sign*.068522).normalize(),sign});
+  }
  }else if(ec){
   for(const [name,sign]of [['doorfl',-1],['doorfr_t2',1],['doorbl',-1],['doorbr_t2',1]]){const n=find(root,name);if(n)doors.push({surface:hinge(root,[n],'y'),sign});}
  }else{
+  // Crew glazing was exported outside the animated door pivots.
+  root.updateMatrixWorld(true);
+  for(const side of ['G','D'])find(root,side==='G'?'pivot_013_portecrewG':'pivot_014_portecrewD').attach(find(root,'i0_vitrescrew'+side));
   for(const [name,sign]of [['pivot_013_portecrewG',-1],['pivot_014_portecrewD',1],['pivot_015_porteAG',-1],['pivot_016_porteAD',1]]){const n=find(root,name);if(n)doors.push({rest:restRotation(n),sign});}
   for(const name of ['pivot_017_porteBG','pivot_020_porteBD']){const n=find(root,name);if(n)sliders.push(restRotation(n));}
   for(const [names,anchor]of [[['i0_axeAB','i0_axeAH','i0_roueA','i0_verinA'],[-4.88,-1.31,0]],[['i0_axeG1','i0_axeG2','i0_axeG3','i0_axeGB','i0_axeGH','i0_roueG'],[-.85,-1.17,.76]],[['i0_axeD1','i0_axeD2','i0_axeD3','i0_axeDB','i0_axeDH','i0_roueD'],[-.85,-1.17,-.76]]])gear.push(groupParts(root,names,new THREE.Vector3(...anchor),'repaired_dauphin_gear_'+gear.length));
  }
  const gearDoors=!ec&&!bo?['pivot_000_porteG','pivot_001_porteD'].map(n=>restRotation(find(root,n))):[];
- const baseline=flattenVisibility(root),defaults={...presetState(false),collective:0,cyclicPitch:0,cyclicRoll:0,doors:0};
+ const baseline=flattenVisibility(root),defaults={...presetState(false),collective:0,cyclicPitch:0,cyclicRoll:0,doors:0,cargoDoors:0};
  function configure(s){s={...defaults,...s};resetVisibility(baseline);main.configure(s.collective,s.cyclicPitch,s.cyclicRoll);tail.configure(clamp((s.rudder+1)/2,0,1));
   for(const d of doors){const angle=d.sign*clamp(s.doors,0,1)*35;if(d.surface)deflect(d.surface,angle);else turn(d.rest,Y,angle);}
   for(const r of sliders)r.node.position.copy(r.p).addScaledVector(X,clamp(s.doors,0,1)*.55);
+  for(const d of cargoDoors)turn(d.rest,d.axis,d.sign*clamp(s.cargoDoors,0,1)*55);
   gear.forEach((g,i)=>{g.rotation.z=(i===0?-1:1)*(1-clamp(s.gear,0,1))*75*RAD;for(const m of meshList(g))m.visible=s.gear>.015;});
   gearDoors.forEach((r,i)=>turn(r,X,(i===0?-1:1)*65*clamp(s.gear,0,1)));
  }
  const spin=(dt,engine)=>{main.spin(dt,engine);tail.spin(dt,engine);};
- const update=flightUpdate(configure,spin,defaults,(s,active)=>({collective:active?clamp(s.throttle,0,1):0,cyclicPitch:active?clamp(s.pitch/.58,-1,1):0,cyclicRoll:active?clamp(s.roll/.65,-1,1):0,rudder:active?clamp(s.roll/.65,-1,1):0}));
+ const update=flightUpdate(configure,spin,defaults,(s,active)=>({doors:0,cargoDoors:0,collective:active?clamp(s.throttle,0,1):0,cyclicPitch:active?clamp(s.pitch/.58,-1,1):0,cyclicRoll:active?clamp(s.roll/.65,-1,1):0,rudder:active?clamp(s.roll/.65,-1,1):0}));
  configure({...defaults,gear:1});const groundPitch=!ec&&!bo?parkingPitch(root,['i0_roueA'],['i0_roueG','i0_roueD']):0;configure(defaults);
- return{configure,spin,update,mainRotor:main,tailRotor:tail,gear,doors,groundPitch,bounds:()=>visibleBounds(root),labels:{rudder:'Tail rotor pitch'},fields:[...(!ec&&!bo?['gear']:[]),'doors','collective','cyclicPitch','cyclicRoll','rudder','engine'],report:{originalAnimationDisabled:true,mainRotorBlades:specs.count,tailRotorBlades:specs.tailCount,limitsDegrees:{doors:35,collective:12,cyclicPitch:6,cyclicRoll:6,rudder:9}}};
+ return{configure,spin,update,mainRotor:main,tailRotor:tail,gear,doors,cargoDoors,groundPitch,bounds:()=>visibleBounds(root),labels:{rudder:'Tail rotor pitch',cargoDoors:'Rear clamshell doors'},fields:[...(!ec&&!bo?['gear']:[]),'doors',...(bo?['cargoDoors']:[]),'collective','cyclicPitch','cyclicRoll','rudder','engine'],report:{originalAnimationDisabled:true,mainRotorBlades:specs.count,tailRotorBlades:specs.tailCount,finish,rearDoorsClosed:bo,limitsDegrees:{doors:35,cargoDoors:55,collective:12,cyclicPitch:6,cyclicRoll:6,rudder:9}}};
 }
 
 export function prepareAdditionalAircraft(root,id){

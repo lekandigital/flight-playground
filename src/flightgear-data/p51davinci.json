@@ -1,0 +1,4156 @@
+{
+  "aircraft": "p51davinci",
+  "title": "daVinci_P-51D",
+  "animations": [
+    {
+      "type": "rotate",
+      "objects": [
+        "PilotHead"
+      ],
+      "glb_nodes": [
+        "i0_PilotHead"
+      ],
+      "property": "surface-positions/rudder-pos-norm",
+      "channel": "rudder",
+      "factor": 40.0,
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      },
+      "fg_center_m": [
+        4.337,
+        0.0,
+        0.98
+      ],
+      "travel": [
+        -40.0,
+        40.0
+      ],
+      "travel_source": "factor x property range (-1..1)",
+      "glb_center": [
+        4.337,
+        0.98,
+        -0.0
+      ],
+      "glb_axis_dir": [
+        0.0,
+        -1.0,
+        -0.0
+      ],
+      "fact_index": 0,
+      "source_xml": "daVinci_P-51D/Models/daVinci_P-51D.xml",
+      "offset": 0.0
+    },
+    {
+      "type": "rotate",
+      "objects": [
+        "PilotHead"
+      ],
+      "glb_nodes": [
+        "i0_PilotHead"
+      ],
+      "property": "sim/multiplay/generic/float[13]",
+      "channel": null,
+      "factor": -10.0,
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          1.0,
+          0.0,
+          0.0
+        ]
+      },
+      "fg_center_m": [
+        4.337,
+        0.0,
+        0.98
+      ],
+      "travel": null,
+      "travel_source": "not bounded in the XML (direct property, e.g. caster angle or rpm)",
+      "glb_center": [
+        4.337,
+        0.98,
+        -0.0
+      ],
+      "glb_axis_dir": [
+        1.0,
+        0.0,
+        -0.0
+      ],
+      "fact_index": 1,
+      "source_xml": "daVinci_P-51D/Models/daVinci_P-51D.xml",
+      "offset": 0.0
+    },
+    {
+      "type": "rotate",
+      "objects": [
+        "PilotHead"
+      ],
+      "glb_nodes": [
+        "i0_PilotHead"
+      ],
+      "property": "surface-positions/elevator-pos-norm",
+      "channel": "elevator",
+      "factor": -10.0,
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          0.0,
+          1.0,
+          0.0
+        ]
+      },
+      "fg_center_m": [
+        4.337,
+        0.0,
+        0.98
+      ],
+      "travel": [
+        -10.0,
+        10.0
+      ],
+      "travel_source": "factor x property range (-1..1)",
+      "glb_center": [
+        4.337,
+        0.98,
+        -0.0
+      ],
+      "glb_axis_dir": [
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "fact_index": 2,
+      "source_xml": "daVinci_P-51D/Models/daVinci_P-51D.xml",
+      "offset": 0.0
+    },
+    {
+      "type": "spin",
+      "objects": [
+        "Prop"
+      ],
+      "glb_nodes": [
+        "i0_Prop",
+        "pivot_000_Prop"
+      ],
+      "property": "engines/engine[0]/rpm",
+      "channel": "prop",
+      "factor": -0.479,
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          1.0,
+          0.0,
+          0.0
+        ]
+      },
+      "fg_center_m": [
+        0.579,
+        0.0,
+        0.43399999999999994
+      ],
+      "travel": null,
+      "travel_source": "spin",
+      "glb_center": [
+        0.579,
+        0.434,
+        -0.0
+      ],
+      "glb_axis_dir": [
+        1.0,
+        0.0,
+        -0.0
+      ],
+      "fact_index": 3,
+      "source_xml": "daVinci_P-51D/Models/daVinci_P-51D.xml",
+      "offset": 0.0
+    },
+    {
+      "type": "spin",
+      "objects": [
+        "Spinner"
+      ],
+      "glb_nodes": [
+        "i0_Spinner",
+        "pivot_001_Spinner"
+      ],
+      "property": "engines/engine[0]/rpm",
+      "channel": "prop",
+      "factor": 0.579,
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          1.0,
+          0.0,
+          0.0
+        ]
+      },
+      "fg_center_m": [
+        -3.018,
+        0.0,
+        0.43399999999999994
+      ],
+      "travel": null,
+      "travel_source": "spin",
+      "glb_center": [
+        -3.018,
+        0.434,
+        -0.0
+      ],
+      "glb_axis_dir": [
+        1.0,
+        0.0,
+        -0.0
+      ],
+      "fact_index": 4,
+      "source_xml": "daVinci_P-51D/Models/daVinci_P-51D.xml",
+      "offset": 0.0
+    },
+    {
+      "type": "rotate",
+      "objects": [
+        "PortStrutCover",
+        "PortWheel",
+        "PortTire",
+        "PortUpperSpring",
+        "PortLowerSpring",
+        "PortUpperStrut",
+        "PortLowerStrut"
+      ],
+      "glb_nodes": [
+        "i0_PortLowerSpring",
+        "i0_PortLowerStrut",
+        "i0_PortStrutCover",
+        "i0_PortTire",
+        "i0_PortUpperSpring",
+        "i0_PortUpperStrut",
+        "i0_PortWheel",
+        "pivot_002_PortStrutCover",
+        "pivot_018_PortWheel",
+        "pivot_020_PortWheel"
+      ],
+      "property": "gear/gear[1]/position-norm",
+      "channel": "gear",
+      "factor": 1.0,
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          1.0,
+          -0.125,
+          -0.233
+        ]
+      },
+      "fg_center_m": [
+        2.5,
+        -1.83,
+        -0.08000000000000002
+      ],
+      "travel": [
+        0.0,
+        90.3
+      ],
+      "travel_source": "interpolation table",
+      "interpolation": [
+        [
+          0.0,
+          90.3
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "glb_center": [
+        2.5,
+        -0.08,
+        1.83
+      ],
+      "glb_axis_dir": [
+        1.0,
+        -0.233,
+        0.125
+      ],
+      "fact_index": 5,
+      "source_xml": "daVinci_P-51D/Models/daVinci_P-51D.xml",
+      "offset": 0.0
+    },
+    {
+      "type": "rotate",
+      "objects": [
+        "PortInnerGearDoor",
+        "PortInnerGearDoor2"
+      ],
+      "glb_nodes": [
+        "i0_PortInnerGearDoor",
+        "i0_PortInnerGearDoor2",
+        "pivot_003_PortInnerGearDoor"
+      ],
+      "property": "gear/gear[1]/position-norm",
+      "channel": "gear",
+      "factor": 1.0,
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          -1.0,
+          0.0,
+          0.05
+        ]
+      },
+      "fg_center_m": [
+        3.173,
+        -0.024,
+        -0.42900000000000005
+      ],
+      "travel": [
+        0.0,
+        90.5
+      ],
+      "travel_source": "interpolation table",
+      "interpolation": [
+        [
+          0.0,
+          90.5
+        ],
+        [
+          0.11,
+          0.0
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "glb_center": [
+        3.173,
+        -0.429,
+        0.024
+      ],
+      "glb_axis_dir": [
+        -1.0,
+        0.05,
+        -0.0
+      ],
+      "fact_index": 6,
+      "source_xml": "daVinci_P-51D/Models/daVinci_P-51D.xml",
+      "offset": 0.0
+    },
+    {
+      "type": "rotate",
+      "objects": [
+        "StarStrutCover",
+        "StarWheel",
+        "StarTire",
+        "StarUpperSpring",
+        "StarLowerSpring",
+        "StarUpperStrut",
+        "StarLowerStrut"
+      ],
+      "glb_nodes": [
+        "i0_StarLowerSpring",
+        "i0_StarLowerStrut",
+        "i0_StarStrutCover",
+        "i0_StarTire",
+        "i0_StarUpperSpring",
+        "i0_StarUpperStrut",
+        "i0_StarWheel",
+        "pivot_004_StarStrutCover",
+        "pivot_019_StarWheel",
+        "pivot_021_StarWheel"
+      ],
+      "property": "gear/gear[2]/position-norm",
+      "channel": "gear",
+      "factor": 1.0,
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          1.0,
+          0.085,
+          -0.3
+        ]
+      },
+      "fg_center_m": [
+        2.799,
+        1.87,
+        -0.125
+      ],
+      "travel": [
+        -90.5,
+        0.0
+      ],
+      "travel_source": "interpolation table",
+      "interpolation": [
+        [
+          0.0,
+          -90.5
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "glb_center": [
+        2.799,
+        -0.125,
+        -1.87
+      ],
+      "glb_axis_dir": [
+        1.0,
+        -0.3,
+        -0.085
+      ],
+      "fact_index": 7,
+      "source_xml": "daVinci_P-51D/Models/daVinci_P-51D.xml",
+      "offset": 0.0
+    },
+    {
+      "type": "rotate",
+      "objects": [
+        "StarInnerGearDoor",
+        "StarInnerGearDoor2"
+      ],
+      "glb_nodes": [
+        "i0_StarInnerGearDoor",
+        "i0_StarInnerGearDoor2",
+        "pivot_005_StarInnerGearDoor"
+      ],
+      "property": "gear/gear[2]/position-norm",
+      "channel": "gear",
+      "factor": 1.0,
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          1.0,
+          0.0,
+          -0.05
+        ]
+      },
+      "fg_center_m": [
+        3.173,
+        0.024,
+        -0.42900000000000005
+      ],
+      "travel": [
+        0.0,
+        90.5
+      ],
+      "travel_source": "interpolation table",
+      "interpolation": [
+        [
+          0.0,
+          90.5
+        ],
+        [
+          0.11,
+          0.0
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "glb_center": [
+        3.173,
+        -0.429,
+        -0.024
+      ],
+      "glb_axis_dir": [
+        1.0,
+        -0.05,
+        -0.0
+      ],
+      "fact_index": 8,
+      "source_xml": "daVinci_P-51D/Models/daVinci_P-51D.xml",
+      "offset": 0.0
+    },
+    {
+      "type": "rotate",
+      "objects": [
+        "TailLowerStrut",
+        "TailWheel"
+      ],
+      "glb_nodes": [
+        "i0_TailLowerStrut",
+        "i0_TailWheel",
+        "pivot_006_TailLowerStrut",
+        "pivot_007_TailLowerStrut",
+        "pivot_022_TailWheel"
+      ],
+      "property": "sim/multiplay/generic/float[16]",
+      "channel": "gear",
+      "factor": 1.0,
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "fg_center_m": [
+        7.573,
+        0.0,
+        -0.127
+      ],
+      "travel": null,
+      "travel_source": "not bounded in the XML (direct property, e.g. caster angle or rpm)",
+      "glb_center": [
+        7.573,
+        -0.127,
+        -0.0
+      ],
+      "glb_axis_dir": [
+        0.0,
+        1.0,
+        -0.0
+      ],
+      "fact_index": 9,
+      "source_xml": "daVinci_P-51D/Models/daVinci_P-51D.xml",
+      "offset": 0.0
+    },
+    {
+      "type": "rotate",
+      "objects": [
+        "TailLowerStrut",
+        "TailWheel"
+      ],
+      "glb_nodes": [
+        "i0_TailLowerStrut",
+        "i0_TailWheel",
+        "pivot_006_TailLowerStrut",
+        "pivot_007_TailLowerStrut",
+        "pivot_022_TailWheel"
+      ],
+      "property": "surface-positions/rudder-pos-norm",
+      "channel": "gear",
+      "factor": 30.0,
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "fg_center_m": [
+        7.573,
+        0.0,
+        -0.127
+      ],
+      "travel": [
+        -30.0,
+        30.0
+      ],
+      "travel_source": "factor x property range (-1..1)",
+      "glb_center": [
+        7.573,
+        -0.127,
+        -0.0
+      ],
+      "glb_axis_dir": [
+        0.0,
+        1.0,
+        -0.0
+      ],
+      "fact_index": 10,
+      "source_xml": "daVinci_P-51D/Models/daVinci_P-51D.xml",
+      "offset": 0.0
+    },
+    {
+      "type": "rotate",
+      "objects": [
+        "TailGearStrut",
+        "TailLowerStrut",
+        "TailWheel"
+      ],
+      "glb_nodes": [
+        "i0_TailGearStrut",
+        "i0_TailLowerStrut",
+        "i0_TailWheel",
+        "pivot_006_TailLowerStrut",
+        "pivot_007_TailLowerStrut",
+        "pivot_008_TailGearStrut",
+        "pivot_022_TailWheel"
+      ],
+      "property": "gear/gear[2]/position-norm",
+      "channel": "gear",
+      "factor": 1.0,
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          0.0,
+          1.0,
+          0.0
+        ]
+      },
+      "fg_center_m": [
+        7.941,
+        0.0,
+        0.15499999999999997
+      ],
+      "travel": [
+        0.0,
+        90.0
+      ],
+      "travel_source": "interpolation table",
+      "interpolation": [
+        [
+          0.0,
+          90.0
+        ],
+        [
+          0.5,
+          90.0
+        ],
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      "glb_center": [
+        7.941,
+        0.155,
+        -0.0
+      ],
+      "glb_axis_dir": [
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "fact_index": 11,
+      "source_xml": "daVinci_P-51D/Models/daVinci_P-51D.xml",
+      "offset": 0.0
+    },
+    {
+      "type": "rotate",
+      "objects": [
+        "PortTailGearDoor"
+      ],
+      "glb_nodes": [
+        "i0_PortTailGearDoor",
+        "pivot_009_PortTailGearDoor"
+      ],
+      "property": "gear/gear[2]/position-norm",
+      "channel": "gear",
+      "factor": 1.0,
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "points_m": [
+          [
+            7.881,
+            -0.119,
+            0.032999999999999974
+          ],
+          [
+            7.295,
+            -0.119,
+            -0.052000000000000046
+          ]
+        ]
+      },
+      "fg_center_m": null,
+      "travel": [
+        0.0,
+        90.0
+      ],
+      "travel_source": "interpolation table",
+      "interpolation": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.3,
+          80.0
+        ],
+        [
+          1.0,
+          90.0
+        ]
+      ],
+      "glb_axis_points": [
+        [
+          7.881,
+          0.033,
+          0.119
+        ],
+        [
+          7.295,
+          -0.052,
+          0.119
+        ]
+      ],
+      "fact_index": 12,
+      "source_xml": "daVinci_P-51D/Models/daVinci_P-51D.xml",
+      "offset": 0.0
+    },
+    {
+      "type": "rotate",
+      "objects": [
+        "StarTailGearDoor"
+      ],
+      "glb_nodes": [
+        "i0_StarTailGearDoor",
+        "pivot_010_StarTailGearDoor"
+      ],
+      "property": "gear/gear[2]/position-norm",
+      "channel": "gear",
+      "factor": 1.0,
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "points_m": [
+          [
+            7.881,
+            0.119,
+            0.032999999999999974
+          ],
+          [
+            7.295,
+            0.119,
+            -0.052000000000000046
+          ]
+        ]
+      },
+      "fg_center_m": null,
+      "travel": [
+        -90.0,
+        0.0
+      ],
+      "travel_source": "interpolation table",
+      "interpolation": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.3,
+          -80.0
+        ],
+        [
+          1.0,
+          -90.0
+        ]
+      ],
+      "glb_axis_points": [
+        [
+          7.881,
+          0.033,
+          -0.119
+        ],
+        [
+          7.295,
+          -0.052,
+          -0.119
+        ]
+      ],
+      "fact_index": 13,
+      "source_xml": "daVinci_P-51D/Models/daVinci_P-51D.xml",
+      "offset": 0.0
+    },
+    {
+      "type": "rotate",
+      "objects": [
+        "StarFlap",
+        "StarFlapBottom"
+      ],
+      "glb_nodes": [
+        "i0_StarFlap",
+        "i0_StarFlapBottom",
+        "pivot_011_StarFlap"
+      ],
+      "property": "surface-positions/flap-pos-norm",
+      "channel": "flaps",
+      "factor": 40.0,
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          -0.125779,
+          1.3,
+          0.092485
+        ]
+      },
+      "fg_center_m": [
+        4.393,
+        1.849,
+        -0.127
+      ],
+      "travel": [
+        0.0,
+        40.0
+      ],
+      "travel_source": "factor x property range (0..1)",
+      "glb_center": [
+        4.393,
+        -0.127,
+        -1.849
+      ],
+      "glb_axis_dir": [
+        -0.1258,
+        0.0925,
+        -1.3
+      ],
+      "fact_index": 14,
+      "source_xml": "daVinci_P-51D/Models/daVinci_P-51D.xml",
+      "offset": 0.0
+    },
+    {
+      "type": "rotate",
+      "objects": [
+        "PortFlap",
+        "PortFlapBottom"
+      ],
+      "glb_nodes": [
+        "i0_PortFlap",
+        "i0_PortFlapBottom",
+        "pivot_012_PortFlap"
+      ],
+      "property": "surface-positions/flap-pos-norm",
+      "channel": "flaps",
+      "factor": 40.0,
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          0.125779,
+          1.3,
+          -0.092485
+        ]
+      },
+      "fg_center_m": [
+        4.393,
+        -1.849,
+        -0.127
+      ],
+      "travel": [
+        0.0,
+        40.0
+      ],
+      "travel_source": "factor x property range (0..1)",
+      "glb_center": [
+        4.393,
+        -0.127,
+        1.849
+      ],
+      "glb_axis_dir": [
+        0.1258,
+        -0.0925,
+        -1.3
+      ],
+      "fact_index": 15,
+      "source_xml": "daVinci_P-51D/Models/daVinci_P-51D.xml",
+      "offset": 0.0
+    },
+    {
+      "type": "rotate",
+      "objects": [
+        "PortAileron",
+        "PortAileronBottom"
+      ],
+      "glb_nodes": [
+        "i0_PortAileron",
+        "i0_PortAileronBottom",
+        "pivot_013_PortAileron"
+      ],
+      "property": "sim/multiplay/generic/float[13]",
+      "channel": "aileron",
+      "factor": -12.0,
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "points_m": [
+          [
+            0.5,
+            -5.347,
+            0.10399999999999998
+          ],
+          [
+            0.719,
+            -3.34,
+            -0.03300000000000003
+          ]
+        ]
+      },
+      "fg_center_m": [
+        4.214,
+        -4.364,
+        0.09899999999999998
+      ],
+      "travel": null,
+      "travel_source": "not bounded in the XML (direct property, e.g. caster angle or rpm)",
+      "glb_center": [
+        4.214,
+        0.099,
+        4.364
+      ],
+      "glb_axis_points": [
+        [
+          0.5,
+          0.104,
+          5.347
+        ],
+        [
+          0.719,
+          -0.033,
+          3.34
+        ]
+      ],
+      "fact_index": 16,
+      "source_xml": "daVinci_P-51D/Models/daVinci_P-51D.xml",
+      "offset": 0.0
+    },
+    {
+      "type": "rotate",
+      "objects": [
+        "StarAileron",
+        "StarAileronBottom"
+      ],
+      "glb_nodes": [
+        "i0_StarAileron",
+        "i0_StarAileronBottom",
+        "pivot_014_StarAileron"
+      ],
+      "property": "sim/multiplay/generic/float[13]",
+      "channel": "aileron",
+      "factor": -12.0,
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "points_m": [
+          [
+            0.5,
+            5.347,
+            0.10399999999999998
+          ],
+          [
+            0.719,
+            3.34,
+            -0.03300000000000003
+          ]
+        ]
+      },
+      "fg_center_m": [
+        4.214,
+        4.364,
+        0.09899999999999998
+      ],
+      "travel": null,
+      "travel_source": "not bounded in the XML (direct property, e.g. caster angle or rpm)",
+      "glb_center": [
+        4.214,
+        0.099,
+        -4.364
+      ],
+      "glb_axis_points": [
+        [
+          0.5,
+          0.104,
+          -5.347
+        ],
+        [
+          0.719,
+          -0.033,
+          -3.34
+        ]
+      ],
+      "fact_index": 17,
+      "source_xml": "daVinci_P-51D/Models/daVinci_P-51D.xml",
+      "offset": 0.0
+    },
+    {
+      "type": "rotate",
+      "objects": [
+        "Rudder",
+        "RudderLight"
+      ],
+      "glb_nodes": [
+        "i0_Rudder",
+        "i0_RudderLight",
+        "pivot_015_Rudder"
+      ],
+      "property": "surface-positions/rudder-pos-norm",
+      "channel": "rudder",
+      "factor": 20.0,
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "fg_center_m": [
+        9.054,
+        0.0,
+        1.029
+      ],
+      "travel": [
+        -20.0,
+        20.0
+      ],
+      "travel_source": "factor x property range (-1..1)",
+      "glb_center": [
+        9.054,
+        1.029,
+        -0.0
+      ],
+      "glb_axis_dir": [
+        0.0,
+        1.0,
+        -0.0
+      ],
+      "fact_index": 18,
+      "source_xml": "daVinci_P-51D/Models/daVinci_P-51D.xml",
+      "offset": 0.0
+    },
+    {
+      "type": "rotate",
+      "objects": [
+        "Elevators",
+        "ElevatorBottoms"
+      ],
+      "glb_nodes": [
+        "i0_ElevatorBottoms",
+        "i0_Elevators",
+        "pivot_016_Elevators"
+      ],
+      "property": "surface-positions/elevator-pos-norm",
+      "channel": "elevator",
+      "factor": 1.0,
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          0.0,
+          1.0,
+          0.0
+        ]
+      },
+      "fg_center_m": [
+        8.442,
+        0.0,
+        0.6459999999999999
+      ],
+      "travel": [
+        -20.0,
+        20.0
+      ],
+      "travel_source": "interpolation table",
+      "interpolation": [
+        [
+          -1.0,
+          -20.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          1.0,
+          20.0
+        ]
+      ],
+      "glb_center": [
+        8.442,
+        0.646,
+        -0.0
+      ],
+      "glb_axis_dir": [
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "fact_index": 19,
+      "source_xml": "daVinci_P-51D/Models/daVinci_P-51D.xml",
+      "offset": 0.0
+    },
+    {
+      "type": "translate",
+      "objects": [
+        "CanopyFrame",
+        "InnerCanopyFrame",
+        "CanopyGlass"
+      ],
+      "glb_nodes": [
+        "i0_CanopyFrame",
+        "i0_CanopyGlass",
+        "i0_InnerCanopyFrame",
+        "pivot_017_CanopyFrame"
+      ],
+      "property": "sim/multiplay/generic/float[0]",
+      "channel": "canopy",
+      "factor": 0.65,
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          0.46,
+          0.0,
+          0.0
+        ]
+      },
+      "fg_center_m": [
+        0.051,
+        0.0,
+        -0.14700000000000002
+      ],
+      "travel": null,
+      "travel_source": "not bounded in the XML (direct property, e.g. caster angle or rpm)",
+      "glb_center": [
+        0.051,
+        -0.147,
+        -0.0
+      ],
+      "glb_axis_dir": [
+        0.46,
+        0.0,
+        -0.0
+      ],
+      "fact_index": 20,
+      "source_xml": "daVinci_P-51D/Models/daVinci_P-51D.xml",
+      "offset": 0.0
+    },
+    {
+      "type": "rotate",
+      "objects": [
+        "PortUpperSpring"
+      ],
+      "glb_nodes": [
+        "i0_PortUpperSpring"
+      ],
+      "property": "sim/multiplay/generic/float[14]",
+      "channel": null,
+      "factor": 1.0,
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          0.0,
+          1.0,
+          0.0
+        ]
+      },
+      "fg_center_m": [
+        3.155,
+        -2.513,
+        -0.817
+      ],
+      "travel": [
+        0.0,
+        35.0
+      ],
+      "travel_source": "interpolation table",
+      "interpolation": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.235,
+          0.0
+        ],
+        [
+          1.0,
+          35.0
+        ]
+      ],
+      "glb_center": [
+        3.155,
+        -0.817,
+        2.513
+      ],
+      "glb_axis_dir": [
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "fact_index": 21,
+      "source_xml": "daVinci_P-51D/Models/daVinci_P-51D.xml",
+      "offset": 0.0
+    },
+    {
+      "type": "translate",
+      "objects": [
+        "PortGearAssy"
+      ],
+      "glb_nodes": [],
+      "property": "sim/multiplay/generic/float[14]",
+      "channel": "gear",
+      "factor": 1.0,
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "fg_center_m": null,
+      "travel": [
+        -0.02,
+        0.1
+      ],
+      "travel_source": "interpolation table",
+      "interpolation": [
+        [
+          0.0,
+          -0.02
+        ],
+        [
+          0.235,
+          0.0
+        ],
+        [
+          1.0,
+          0.1
+        ]
+      ],
+      "glb_axis_dir": [
+        0.0,
+        1.0,
+        -0.0
+      ],
+      "fact_index": 22,
+      "source_xml": "daVinci_P-51D/Models/daVinci_P-51D.xml",
+      "offset": 0.0
+    },
+    {
+      "type": "rotate",
+      "objects": [
+        "PortLowerSpring"
+      ],
+      "glb_nodes": [
+        "i0_PortLowerSpring"
+      ],
+      "property": "sim/multiplay/generic/float[14]",
+      "channel": null,
+      "factor": 1.0,
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          0.0,
+          -1.0,
+          0.0
+        ]
+      },
+      "fg_center_m": [
+        3.126,
+        -2.522,
+        -0.9910000000000001
+      ],
+      "travel": [
+        -35.0,
+        0.0
+      ],
+      "travel_source": "interpolation table",
+      "interpolation": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.235,
+          0.0
+        ],
+        [
+          1.0,
+          -35.0
+        ]
+      ],
+      "glb_center": [
+        3.126,
+        -0.991,
+        2.522
+      ],
+      "glb_axis_dir": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "fact_index": 23,
+      "source_xml": "daVinci_P-51D/Models/daVinci_P-51D.xml",
+      "offset": 0.0
+    },
+    {
+      "type": "rotate",
+      "objects": [
+        "StarUpperSpring"
+      ],
+      "glb_nodes": [
+        "i0_StarUpperSpring"
+      ],
+      "property": "sim/multiplay/generic/float[15]",
+      "channel": null,
+      "factor": 1.0,
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          0.0,
+          1.0,
+          0.0
+        ]
+      },
+      "fg_center_m": [
+        3.162,
+        2.483,
+        -0.841
+      ],
+      "travel": [
+        0.0,
+        35.0
+      ],
+      "travel_source": "interpolation table",
+      "interpolation": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.235,
+          0.0
+        ],
+        [
+          1.0,
+          35.0
+        ]
+      ],
+      "glb_center": [
+        3.162,
+        -0.841,
+        -2.483
+      ],
+      "glb_axis_dir": [
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "fact_index": 24,
+      "source_xml": "daVinci_P-51D/Models/daVinci_P-51D.xml",
+      "offset": 0.0
+    },
+    {
+      "type": "translate",
+      "objects": [
+        "StarGearAssy"
+      ],
+      "glb_nodes": [],
+      "property": "sim/multiplay/generic/float[15]",
+      "channel": "gear",
+      "factor": 1.0,
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "fg_center_m": null,
+      "travel": [
+        -0.02,
+        0.1
+      ],
+      "travel_source": "interpolation table",
+      "interpolation": [
+        [
+          0.0,
+          -0.02
+        ],
+        [
+          0.235,
+          0.0
+        ],
+        [
+          1.0,
+          0.1
+        ]
+      ],
+      "glb_axis_dir": [
+        0.0,
+        1.0,
+        -0.0
+      ],
+      "fact_index": 25,
+      "source_xml": "daVinci_P-51D/Models/daVinci_P-51D.xml",
+      "offset": 0.0
+    },
+    {
+      "type": "rotate",
+      "objects": [
+        "StarLowerSpring"
+      ],
+      "glb_nodes": [
+        "i0_StarLowerSpring"
+      ],
+      "property": "sim/multiplay/generic/float[15]",
+      "channel": null,
+      "factor": 1.0,
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          0.0,
+          1.0,
+          0.0
+        ]
+      },
+      "fg_center_m": [
+        3.136,
+        2.494,
+        -1.014
+      ],
+      "travel": [
+        -35.0,
+        0.0
+      ],
+      "travel_source": "interpolation table",
+      "interpolation": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.235,
+          0.0
+        ],
+        [
+          1.0,
+          -35.0
+        ]
+      ],
+      "glb_center": [
+        3.136,
+        -1.014,
+        -2.494
+      ],
+      "glb_axis_dir": [
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "fact_index": 26,
+      "source_xml": "daVinci_P-51D/Models/daVinci_P-51D.xml",
+      "offset": 0.0
+    },
+    {
+      "type": "spin",
+      "objects": [
+        "PortWheel",
+        "PortTire"
+      ],
+      "glb_nodes": [
+        "i0_PortTire",
+        "i0_PortWheel",
+        "pivot_018_PortWheel",
+        "pivot_020_PortWheel"
+      ],
+      "property": "sim/multiplay/generic/float[10]",
+      "channel": "gear",
+      "factor": 30.0,
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          0.0,
+          -1.0,
+          0.0
+        ]
+      },
+      "fg_center_m": [
+        2.806,
+        -1.843,
+        -1.375
+      ],
+      "travel": null,
+      "travel_source": "spin",
+      "glb_center": [
+        2.806,
+        -1.375,
+        1.843
+      ],
+      "glb_axis_dir": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "fact_index": 27,
+      "source_xml": "daVinci_P-51D/Models/daVinci_P-51D.xml",
+      "offset": 0.0
+    },
+    {
+      "type": "spin",
+      "objects": [
+        "StarWheel",
+        "StarTire"
+      ],
+      "glb_nodes": [
+        "i0_StarTire",
+        "i0_StarWheel",
+        "pivot_019_StarWheel",
+        "pivot_021_StarWheel"
+      ],
+      "property": "sim/multiplay/generic/float[9]",
+      "channel": "gear",
+      "factor": 30.0,
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          0.0,
+          -1.0,
+          0.0
+        ]
+      },
+      "fg_center_m": [
+        2.807,
+        1.838,
+        -1.373
+      ],
+      "travel": null,
+      "travel_source": "spin",
+      "glb_center": [
+        2.807,
+        -1.373,
+        -1.838
+      ],
+      "glb_axis_dir": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "fact_index": 28,
+      "source_xml": "daVinci_P-51D/Models/daVinci_P-51D.xml",
+      "offset": 0.0
+    },
+    {
+      "type": "spin",
+      "objects": [
+        "TailWheel"
+      ],
+      "glb_nodes": [
+        "i0_TailWheel",
+        "pivot_022_TailWheel"
+      ],
+      "property": "sim/multiplay/generic/float[11]",
+      "channel": "gear",
+      "factor": 30.0,
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          0.0,
+          -1.0,
+          0.0
+        ]
+      },
+      "fg_center_m": [
+        7.669,
+        0.0,
+        -0.30600000000000005
+      ],
+      "travel": null,
+      "travel_source": "spin",
+      "glb_center": [
+        7.669,
+        -0.306,
+        -0.0
+      ],
+      "glb_axis_dir": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "fact_index": 29,
+      "source_xml": "daVinci_P-51D/Models/daVinci_P-51D.xml",
+      "offset": 0.0
+    },
+    {
+      "type": "spin",
+      "objects": [
+        "slowpdisk"
+      ],
+      "glb_nodes": [
+        "i16_slowpdisk"
+      ],
+      "property": "engines/engine[0]/rpm",
+      "channel": "prop",
+      "factor": 0.479,
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          -1.0,
+          0.0,
+          0.0
+        ]
+      },
+      "fg_center_m": [
+        0.579,
+        0.0,
+        0.43399999999999994
+      ],
+      "travel": null,
+      "travel_source": "spin",
+      "glb_center": [
+        0.579,
+        0.434,
+        -0.0
+      ],
+      "glb_axis_dir": [
+        -1.0,
+        0.0,
+        -0.0
+      ],
+      "fact_index": 30,
+      "source_xml": "daVinci_P-51D/Models/pdisk.xml",
+      "offset": 0.0
+    },
+    {
+      "type": "spin",
+      "objects": [
+        "fastpdisk"
+      ],
+      "glb_nodes": [
+        "i16_fastpdisk"
+      ],
+      "property": "engines/engine[0]/rpm",
+      "channel": "prop",
+      "factor": 0.01,
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          -1.0,
+          0.0,
+          0.0
+        ]
+      },
+      "fg_center_m": [
+        0.579,
+        0.0,
+        0.43399999999999994
+      ],
+      "travel": null,
+      "travel_source": "spin",
+      "glb_center": [
+        0.579,
+        0.434,
+        -0.0
+      ],
+      "glb_axis_dir": [
+        -1.0,
+        0.0,
+        -0.0
+      ],
+      "fact_index": 31,
+      "source_xml": "daVinci_P-51D/Models/pdisk.xml",
+      "offset": 0.0
+    },
+    {
+      "type": "rotate",
+      "objects": [
+        "ThrottleHandle"
+      ],
+      "glb_nodes": [],
+      "property": "controls/engines/engine[0]/throttle",
+      "channel": null,
+      "factor": 75.0,
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          0.0,
+          -1.0,
+          0.0
+        ]
+      },
+      "fg_center_m": [
+        3.907,
+        0.0,
+        0.649
+      ],
+      "travel": null,
+      "travel_source": "not bounded in the XML (direct property, e.g. caster angle or rpm)",
+      "glb_center": [
+        3.907,
+        0.649,
+        -0.0
+      ],
+      "glb_axis_dir": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "fact_index": 32,
+      "source_xml": "daVinci_P-51D/Models/throttleblock.xml",
+      "offset": 0.0
+    },
+    {
+      "type": "rotate",
+      "objects": [
+        "PitchKnob"
+      ],
+      "glb_nodes": [],
+      "property": "controls/engines/engine[0]/propeller-pitch",
+      "channel": "prop",
+      "factor": 75.0,
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          0.0,
+          -1.0,
+          0.0
+        ]
+      },
+      "fg_center_m": [
+        3.907,
+        0.0,
+        0.649
+      ],
+      "travel": null,
+      "travel_source": "not bounded in the XML (direct property, e.g. caster angle or rpm)",
+      "glb_center": [
+        3.907,
+        0.649,
+        -0.0
+      ],
+      "glb_axis_dir": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "fact_index": 33,
+      "source_xml": "daVinci_P-51D/Models/throttleblock.xml",
+      "offset": 0.0
+    },
+    {
+      "type": "rotate",
+      "objects": [
+        "MixtureKnob"
+      ],
+      "glb_nodes": [],
+      "property": "controls/engines/engine[0]/mixture",
+      "channel": null,
+      "factor": -45.0,
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          0.0,
+          -1.0,
+          0.0
+        ]
+      },
+      "fg_center_m": [
+        3.9,
+        0.0,
+        0.607
+      ],
+      "travel": null,
+      "travel_source": "not bounded in the XML (direct property, e.g. caster angle or rpm)",
+      "glb_center": [
+        3.9,
+        0.607,
+        -0.0
+      ],
+      "glb_axis_dir": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "fact_index": 34,
+      "source_xml": "daVinci_P-51D/Models/throttleblock.xml",
+      "offset": 0.0
+    }
+  ],
+  "conditions": [
+    {
+      "xml": "daVinci_P-51D/Models/daVinci_P-51D.xml",
+      "type": "select",
+      "objects": [
+        "Prop"
+      ],
+      "condition_properties": [
+        "engines/engine[0]/rpm"
+      ],
+      "condition_values": "engines/engine[0]/rpm 1000",
+      "range_m": null,
+      "condition": {
+        "op": "condition",
+        "value": "",
+        "attrs": {},
+        "children": [
+          {
+            "op": "less-than",
+            "value": "",
+            "attrs": {},
+            "children": [
+              {
+                "op": "property",
+                "value": "engines/engine[0]/rpm",
+                "attrs": {},
+                "children": []
+              },
+              {
+                "op": "value",
+                "value": "1000",
+                "attrs": {},
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "xml": "daVinci_P-51D/Models/daVinci_P-51D.xml",
+      "type": "select",
+      "objects": [
+        "StarWheel",
+        "PortWheel",
+        "PortTire",
+        "StarTire",
+        "PortLowerStrut",
+        "StarLowerStrut"
+      ],
+      "condition_properties": [
+        "gear/gear[1]/position-norm"
+      ],
+      "condition_values": "gear/gear[1]/position-norm 0.05",
+      "range_m": null,
+      "condition": {
+        "op": "condition",
+        "value": "",
+        "attrs": {},
+        "children": [
+          {
+            "op": "greater-than",
+            "value": "",
+            "attrs": {},
+            "children": [
+              {
+                "op": "property",
+                "value": "gear/gear[1]/position-norm",
+                "attrs": {},
+                "children": []
+              },
+              {
+                "op": "value",
+                "value": "0.05",
+                "attrs": {},
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "xml": "daVinci_P-51D/Models/pdisk.xml",
+      "type": "select",
+      "objects": [
+        "slowpdisk"
+      ],
+      "condition_properties": [
+        "engines/engine[0]/rpm",
+        "engines/engine[0]/rpm"
+      ],
+      "condition_values": "engines/engine[0]/rpm 1800 engines/engine[0]/rpm 550",
+      "range_m": null,
+      "condition": {
+        "op": "condition",
+        "value": "",
+        "attrs": {},
+        "children": [
+          {
+            "op": "less-than",
+            "value": "",
+            "attrs": {},
+            "children": [
+              {
+                "op": "property",
+                "value": "engines/engine[0]/rpm",
+                "attrs": {},
+                "children": []
+              },
+              {
+                "op": "value",
+                "value": "1800",
+                "attrs": {},
+                "children": []
+              }
+            ]
+          },
+          {
+            "op": "greater-than",
+            "value": "",
+            "attrs": {},
+            "children": [
+              {
+                "op": "property",
+                "value": "engines/engine[0]/rpm",
+                "attrs": {},
+                "children": []
+              },
+              {
+                "op": "value",
+                "value": "550",
+                "attrs": {},
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "xml": "daVinci_P-51D/Models/pdisk.xml",
+      "type": "select",
+      "objects": [
+        "fastpdisk"
+      ],
+      "condition_properties": [
+        "engines/engine[0]/rpm"
+      ],
+      "condition_values": "engines/engine[0]/rpm 1800",
+      "range_m": null,
+      "condition": {
+        "op": "condition",
+        "value": "",
+        "attrs": {},
+        "children": [
+          {
+            "op": "greater-than",
+            "value": "",
+            "attrs": {},
+            "children": [
+              {
+                "op": "property",
+                "value": "engines/engine[0]/rpm",
+                "attrs": {},
+                "children": []
+              },
+              {
+                "op": "value",
+                "value": "1800",
+                "attrs": {},
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "aliases": {
+    "sim/multiplay/generic/int[0]": "controls/switches/nav-lights-switch",
+    "sim/multiplay/generic/int[1]": "controls/switches/beacon-switch",
+    "sim/multiplay/generic/int[2]": "controls/switches/landing-lights-switch",
+    "sim/multiplay/generic/int[3]": "controls/switches/strobe-switch",
+    "sim/multiplay/generic/int[4]": "controls/smoke",
+    "sim/multiplay/generic/int[7]": "sim/crashed",
+    "sim/multiplay/generic/int[8]": "systems/electrical/outputs/nav-lights",
+    "sim/multiplay/generic/int[9]": "sim/model/lights/beacon/state",
+    "sim/multiplay/generic/int[10]": "controls/armament/trigger",
+    "sim/multiplay/generic/float[0]": "sim/model/door-positions/crew/position-norm",
+    "sim/multiplay/generic/float[1]": "sim/model/door-positions/passenger/position-norm",
+    "sim/multiplay/generic/float[2]": "position/gear-agl-m",
+    "sim/multiplay/generic/float[3]": "position/altitude-ft",
+    "sim/multiplay/generic/float[4]": "engines/engine[0]/rpm",
+    "sim/multiplay/generic/float[5]": "engines/engine[0]/cranking",
+    "sim/multiplay/generic/float[6]": "gear/gear[0]/wow",
+    "sim/multiplay/generic/float[7]": "gear/gear[1]/wow",
+    "sim/multiplay/generic/float[8]": "gear/gear[2]/wow",
+    "sim/multiplay/generic/float[9]": "gear/gear[0]/rollspeed-ms",
+    "sim/multiplay/generic/float[10]": "gear/gear[1]/rollspeed-ms",
+    "sim/multiplay/generic/float[11]": "gear/gear[2]/rollspeed-ms",
+    "sim/multiplay/generic/float[12]": "velocities/airspeed-kt",
+    "sim/multiplay/generic/float[13]": "controls/flight/aileron",
+    "sim/multiplay/generic/float[14]": "gear/gear[0]/compression-norm",
+    "sim/multiplay/generic/float[15]": "gear/gear[1]/compression-norm",
+    "sim/multiplay/generic/float[16]": "gear/gear[2]/caster-angle-deg",
+    "sim/multiplay/generic/float[17]": "environment/relative-humidity",
+    "sim/multiplay/generic/float[18]": "environment/temperature-degc",
+    "controls/smoke": "sim/multiplay/generic/int[4]"
+  },
+  "defaults": {
+    "sim/model/livery/name": "CrazyHorse",
+    "sim/model/livery/Fuselage": "Liveries/CrazyHorse/Mustang_1_t.png",
+    "sim/model/livery/WingTops": "Liveries/CrazyHorse/Mustang_2_t.png",
+    "sim/model/livery/WingBottoms": "Liveries/CrazyHorse/Mustang_3_t.png",
+    "sim/model/livery/HorizStabs": "Liveries/CrazyHorse/Mustang_4_t.png",
+    "path": "daVinci_P-51D.ac",
+    "offsets/z-m": "0.345",
+    "offsets/pitch-deg": "0",
+    "sound/path": "Aircraft/daVinci_P-51D/Sounds/mp-sound.xml",
+    "nasal/load": "var livery_update = aircraft.livery_update.new(\"Aircraft/daVinci_P-51D/Models/liveries\", 30);\n\t\t\t\n\t\t\tvar self = cmdarg();\n\t\t\t\n\t\t\tvar aliases = [];\n\t\t\tfor (var i = 0; i < 6; i += 1) {\n\t\t\t\tvar door = self.getNode(\"sim/model/bo105/doors/door[\" ~ i ~ \"]/position-norm\", 1);\n\t\t\t\tvar generic = self.getNode(\"sim/multiplay/generic/float[\" ~ i ~ \"]\", 1);\n\t\t\t\tdoor.alias(generic);\n\t\t\t\tappend(aliases, door);\n\t\t\t\n\t\t\t}\n\n\t\t\t\n    \nvar root = cmdarg();\nvar rootindex = root.getIndex();\nvar mpPath = \"/ai/models/multiplayer[\"~ rootindex ~\"]/\";\n\nvar lightsPath = mpPath~\"lightpack/\"; #path to the property node, where all internal values are placed\n\nprops.globals.initNode(mpPath~\"sim/is-MP-Aircraft\", 1, \"BOOL\");\n      \nsrand();\n#wherever you want to add randomization of time, use something like:  + rand()*0.05-0.025 (included by default where appropriate)\n\n\n#list of switches for lights - if you don't intend to use some light, assign it nil value instead, like whateverSwitch = nil; and you don't need to care about anything else\n#IMPORTANT: don't put / on the start of the string, it's already included in the mpPath property\nvar navSwitch = mpPath~\"controls/lighting/nav-lights-switch\";\nvar beaconSwitch = mpPath~\"controls/lighting/beacon-switch\";\nvar strobeSwitch = mpPath~\"controls/lighting/strobe-switch\";\nvar landingSwitch = mpPath~\"controls/lighting/landing-lights-switch\";\nvar taxiSwitch = mpPath~\"controls/lighting/taxi-light-switch\";\nvar probeSwitch = mpPath~\"controls/lighting/probe-light-switch\";\nvar whiteSwitch = mpPath~\"controls/lighting/white-light-switch\";\nvar searchSwitch = mpPath~\"controls/lighting/search-light-switch\";\n#switch this from 1 to 0 if you want to use advanced cyclical fading animation of the the nav lights instead of being stable on when the switch is on\nnavStillOn = 1;\n\n\n#I need to set listener on some MP transferred properties; this doesn't seem to work well sometimes, so I mirror them to the original location on any change\n#This also simplifies work as I can use almost the same code for MP as is the local Nasal. Furthermore, I can use meaningful property names in the model XML files instead of referencing the MP properties. \nvar mpVar = {\n\tnew: func(propIn, propOut) {\n\t\tvar m = { parents: [mpVar] };\n\t\tm.propIn = propIn;\n\t\tm.propOut = propOut;\n\t\tif(propIn==nil or propOut==nil) return m;\n\t\tm.value = getprop(propIn);\n\t\tsetprop(propOut, m.value);\n\t\treturn m;\n\t},\n\tcheck: func {\n\t\tif(me.propIn==nil or me.propOut==nil) return;\n\t\tvar newValue = getprop(me.propIn);\n\t\tif(newValue != me.value) {\n\t\t\tsetprop(me.propOut, newValue);\n\t\t\tme.value = newValue;\n\t\t\t#print(\"value of \"~me.propOut~\" changed: \"~newValue);\n\t\t}\n\t},\n};\n#init any property copy object needed in this array (anything you need to transfer over MP, but you are using the original paths in your xmls)\n#also used for properties you are using a listener on, or properties which you maybe want to manipulate during the <unload> \n#if you're just using the pack, change the values according to the MP bindings in the -set.xml file\n#you don't need to delete the entries if the path is nil - it gets skipped automatically and the MP path is just ignored\nvar mirrorValues = [\n\tmpVar.new(mpPath~\"sim/multiplay/generic/int[7]\", mpPath~\"sim/crashed\"),\n\tmpVar.new(mpPath~\"sim/multiplay/generic/int[0]\", navSwitch),\n\tmpVar.new(mpPath~\"sim/multiplay/generic/int[1]\", beaconSwitch),\n\tmpVar.new(mpPath~\"sim/multiplay/generic/int[1]\", strobeSwitch),\n\tmpVar.new(mpPath~\"sim/multiplay/generic/int[2]\", landingSwitch),\n\tmpVar.new(mpPath~\"sim/multiplay/generic/int[3]\", taxiSwitch),\n\tmpVar.new(mpPath~\"sim/multiplay/generic/int[3]\", probeSwitch),\n\tmpVar.new(mpPath~\"sim/multiplay/generic/int[0]\", whiteSwitch),\n\tmpVar.new(mpPath~\"sim/multiplay/generic/int[8]\", searchSwitch),\n];\n#loop at the default MP transfer frequency (10Hz)\nvar mirrorTimer = maketimer(0.1, func {\n\tforeach(var mir; mirrorValues) {\n\t\tmir.check();\n\t}\n});\nmirrorTimer.start();\n\n\n\n#### NAV LIGHTS ####\n\n#class for a periodic fade in/out animation - for flashing, use rather standard aircraft.light.new(), as in Beacon and Strobe section\nvar lightCycle = {\n\t#constructor\n\tnew: func(propSwitch, propOut) {\n\t\tm = { parents: [lightCycle] };\n\t\tprops.globals.initNode(propOut, 0, \"DOUBLE\");\n\t\tprops.globals.initNode(propSwitch, 1, \"BOOL\");\n\t\tm.fadeIn = 0.4 + rand()*0.05-0.025; #fade in time\n\t\tm.fadeOut = 0.4 + rand()*0.05-0.025; #fade out time\n\t\tm.stayOn = 1.5 + rand()*0.05-0.025; #stable on period\n\t\tm.stayOff = 1 + rand()*0.05-0.025; #stable off period\n\t\tm.turnOff = 0.12; #fade out time when turned off\n\t\tm.phase = 0; #phase to be run on next timer call: 0 -> fade in, 1 -> stay on, 2 -> fade out, 3 -> stay off\n\t\tm.cycleTimer = maketimer(0.1, func {\n\t\t\tif(getprop(propSwitch)) {\n\t\t\t\tif(m.phase == 0) {\n\t\t\t\t\tinterpolate(propOut, 1, m.fadeIn);\n\t\t\t\t\tm.phase = 1;\n\t\t\t\t\tm.cycleTimer.restart(m.fadeIn);\n\t\t\t\t}\n\t\t\t\telse if(m.phase == 1){\n\t\t\t\t\tm.phase = 2;\n\t\t\t\t\tm.cycleTimer.restart(m.stayOn);\n\t\t\t\t}\n\t\t\t\telse if(m.phase == 2){\n\t\t\t\t\tinterpolate(propOut, 0, m.fadeOut);\n\t\t\t\t\tm.phase = 3;\n\t\t\t\t\tm.cycleTimer.restart(m.fadeOut);\n\t\t\t\t}\n\t\t\t\telse if(m.phase == 3){\n\t\t\t\t\tm.phase = 0;\n\t\t\t\t\tm.cycleTimer.restart(m.stayOff);\n\t\t\t\t}\n\t\t\t}\n\t\t\telse {\n\t\t\t\tinterpolate(propOut, 0, m.turnOff); #kills any currently ongoing interpolation\n\t\t\t\tm.phase = 0;\n\t\t\t}\n\t\t});\n\t\tm.cycleTimer.singleShot = 1;\n\t\tif(propSwitch==nil) {\n\t\t\tm.listen = nil;\n\t\t\treturn m;\n\t\t}\n\t\tm.listen = setlistener(propSwitch, func{m.cycleTimer.restart(0);}); #handle switch changes\n\t\tm.cycleTimer.restart(0); #start the looping\n\t\treturn m;\n\t},\n\t#destructor\n\tdel: func {\n\t\tif(me.listen!=nil) removelistener(me.listen);\n\t\tme.cycleTimer.stop();\n\t},\n};\n\n#By default, the switch property is initialized to 1 (only if no value is already assigned). Don't change the class implementation! To override this, set the property manually. You don't need to care if any other code already does it for you. \nvar navLights = nil;\nif(!navStillOn) {\n\tnavLights = lightCycle.new(navSwitch, lightsPath~\"nav-lights-intensity\");\n\t### Uncomment and tune those to customize times ###\n\t#navLights.fadeIn = 0.4; #fade in time \n\t#navLights.fadeOut = 0.4; #fade out time\n\t#navLights.stayOn = 3 + rand()*0.05-0.025; #stable on period\n\t#navLights.stayOff = 0.6; #stable off period\n\t#navLights.turnOff = 0.12; #fade out time when turned off\n}\n\n\n### BEACON ###\nvar beacon = nil;\nif(beaconSwitch!=nil) {\n\tprops.globals.initNode(beaconSwitch, 1, \"BOOL\");\n\tbeacon = aircraft.light.new(lightsPath~\"beacon-state\", \n\t\t[0.0, 1.0 + rand()*0.05-0.025], beaconSwitch);\n}\n\t\n\t\n### STROBE ###\nvar strobe = nil;\nif(strobeSwitch!=nil) {\n\tprops.globals.initNode(strobeSwitch, 1, \"BOOL\");\n\tstrobe = aircraft.light.new(lightsPath~\"strobe-state\", \n\t\t[0.0, 0.87 + rand()*0.05-0.025], strobeSwitch);\n}\n\n\n### LIGHT FADING ###\n\n#class for controlling fade in/out behavior - propIn is a control property (handled as a boolean) and propOut is interpolated\n#all light brightness animations in xmls depend on propOut (Rembrandt brightness, material emission, flares transparency, ...)\nvar lightFadeInOut = {\n\t#constructor\n\tnew: func(propSwitch, propOut) {\n\t\tm = { parents: [lightFadeInOut] };\n\t\tm.fadeIn = 0.3; #some sane defaults\n\t\tm.fadeOut = 0.4;\n\t\tif(propSwitch==nil) {\n\t\t\tm.listen = nil;\n\t\t\treturn m;\n\t\t}\n\t\tprops.globals.initNode(propSwitch, 1, \"BOOL\");\n\t\tm.isOn = getprop(propSwitch);\n\t\tprops.globals.initNode(propOut, m.isOn, \"DOUBLE\");\n\t\tm.listen = setlistener(propSwitch, \n\t\t\tfunc {\n\t\t\t\tif(m.isOn and !getprop(propSwitch)) {\n\t\t\t\t\tinterpolate(propOut, 0, m.fadeOut);\n\t\t\t\t\tm.isOn = 0;\n\t\t\t\t}\n\t\t\t\tif(!m.isOn and getprop(propSwitch)) {\n\t\t\t\t\tinterpolate(propOut, 1, m.fadeIn);\n\t\t\t\t\tm.isOn = 1;\n\t\t\t\t}\n\t\t\t}\n\t\t);\n\t\treturn m;\n\t},\n\t#destructor\n\tdel: func {\n\t\tif(me.listen!=nil) removelistener(me.listen);\n\t},\n};\n\nfadeLanding = lightFadeInOut.new(landingSwitch, lightsPath~\"landing-lights-intensity\");\nfadeLanding = lightFadeInOut.new(searchSwitch, lightsPath~\"search-lights-intensity\");\nfadeTaxi = lightFadeInOut.new(taxiSwitch, lightsPath~\"taxi-light-intensity\");\nfadeProbe = lightFadeInOut.new(probeSwitch, lightsPath~\"probe-light-intensity\");\nfadeWhite = lightFadeInOut.new(whiteSwitch, lightsPath~\"white-light-intensity\");\nif(navStillOn) {\n\tnavLights = lightFadeInOut.new(navSwitch, lightsPath~\"nav-lights-intensity\");\n\tnavLights.fadeIn = 0.1;\n\tnavLights.fadeOut = 0.12;\n}\n#manipulate times if defaults don't fit your needs:\n#fadeLanding.fadeIn = 0.5;\n#fadeLanding.fadeOut = 0.8;\n\n\n### the rest of your model load embedded Nasal code ###",
+    "nasal/unload": "#prevent multiple timers and listeners from running and fighting on next connect\n      #cleanly destroy MP property mirroring\n      mirrorTimer.stop();\n      mirrorTimer = nil;\n      mirrorValues = nil;\n      \n      #cleanly destroy nav lights\n      if(navStillOn) {\n      \tnavLights.del();\n      }\n      else {\n      \tif(navSwitch!=nil) setprop(navSwitch, 0);\n      \tnavLights.del();\n      \tif(navSwitch!=nil) navLights.cycleTimer = nil;\n      \tnavLights = nil;\n      }\n      \n      #cleanly destroy beacon\n      if(beaconSwitch!=nil) setprop(beaconSwitch, 0);\n      beacon.del();\n      beacon = nil;\n      \n      #cleanly destroy strobe\n      if(strobeSwitch!=nil) setprop(strobeSwitch, 0);\n      strobe.del();\n      strobe = nil;\n      \n      #cleanly destroy light fade in/out animation objects\n      fadeLanding.del();\n      fadeTaxi.del();\n      fadeProbe.del();\n      fadeWhite.del();\n      \n      ### the rest of your model unload embedded Nasal code ###\n            livery_update.stop();",
+    "animation/type": "material",
+    "animation/object-name": "Fuselage",
+    "animation/property-base": "sim/model/livery",
+    "animation/texture-prop": "Fuselage",
+    "animation/texture": "Mustang_1_t.png",
+    "model/name": "panel",
+    "model/path": "Aircraft/daVinci_P-51D/Models/Panel/panel.xml",
+    "model/offsets/x-m": "3.838",
+    "model/offsets/y-m": "0.0",
+    "model/offsets/z-m": "0.450",
+    "animation/shader": "chrome",
+    "effect/inherits-from": "Effects/model-transparent",
+    "effect/condition/property": "sim/rendering/rembrandt/enabled",
+    "effect/object-name": "glass",
+    "animation/property": "surface-positions/rudder-pos-norm",
+    "animation/factor": "40",
+    "animation/center/x-m": "4.337",
+    "animation/center/y-m": "0.000",
+    "animation/center/z-m": "0.635",
+    "animation/axis/x": "0.000000",
+    "animation/axis/y": "0.000000",
+    "animation/axis/z": "-1.000000",
+    "model/offsets/pitch-deg": "45",
+    "animation/condition/less-than/property": "engines/engine[0]/rpm",
+    "animation/condition/less-than/value": "1000",
+    "animation/condition/greater-than/property": "gear/gear[1]/position-norm",
+    "animation/condition/greater-than/value": "0.05",
+    "animation/interpolation/entry/ind": "0",
+    "animation/interpolation/entry/dep": "90.30",
+    "animation/axis/x1-m": "7.881",
+    "animation/axis/y1-m": "-0.119",
+    "animation/axis/z1-m": "-0.312",
+    "animation/axis/x2-m": "7.295",
+    "animation/axis/y2-m": "-0.119",
+    "animation/axis/z2-m": "-0.397",
+    "animation/name": "PortGearAssy",
+    "fx/crank/name": "engstart",
+    "fx/crank/path": "Aircraft/daVinci_P-51D/Sounds/Xstartup.wav",
+    "fx/crank/condition/property": "/engines/engine[0]/cranking",
+    "fx/crank/condition/not/property": "/engines/engine[0]/running",
+    "fx/crank/volume/property": "/orientation/alpha-deg",
+    "fx/crank/volume/type": "log",
+    "fx/crank/volume/min": "0.6",
+    "fx/crank/volume/max": "2.0",
+    "fx/crank/volume/factor": "2.5",
+    "fx/crank/reference-dist": "100",
+    "fx/crank/max-dist": "1000",
+    "fx/crank/property": "/engines/engine/running",
+    "fx/crank/mode": "looped",
+    "fx/engine/name": "engine idle rpm",
+    "fx/engine/mode": "looped",
+    "fx/engine/path": "Aircraft/daVinci_P-51D/Sounds/Xrpm1.wav",
+    "fx/engine/condition/property": "/engines/engine/running",
+    "fx/engine/condition/less-than/property": "/engines/engine/rpm",
+    "fx/engine/condition/less-than/value": "1500",
+    "fx/engine/condition/greater-than/property": "/engines/engine/rpm",
+    "fx/engine/condition/greater-than/value": "100",
+    "fx/engine/volume/property": "/orientation/alpha-deg",
+    "fx/engine/volume/type": "log",
+    "fx/engine/volume/min": "0.5",
+    "fx/engine/volume/max": "2.5",
+    "fx/engine/volume/offset": "1.0",
+    "fx/engine/volume/factor": "-0.2",
+    "fx/engine/pitch/property": "/engines/engine/rpm",
+    "fx/engine/pitch/factor": "0.001",
+    "fx/engine/pitch/min": "1",
+    "fx/engine/pitch/max": "3",
+    "fx/engine/pitch/offset": "0",
+    "fx/engine/reference-dist": "100",
+    "fx/engine/max-dist": "1000",
+    "fx/engine-4/name": "engine high rpm",
+    "fx/engine-4/mode": "looped",
+    "fx/engine-4/path": "Aircraft/daVinci_P-51D/Sounds/Xrpm3.wav",
+    "fx/engine-4/condition/property": "/engines/engine/running",
+    "fx/engine-4/condition/greater-than-equals/property": "/engines/engine/rpm",
+    "fx/engine-4/condition/greater-than-equals/value": "1500",
+    "fx/engine-4/volume/property": "/orientation/alpha-deg",
+    "fx/engine-4/volume/type": "log",
+    "fx/engine-4/volume/factor": "2.0",
+    "fx/engine-4/volume/min": "1.5",
+    "fx/engine-4/volume/max": "2.5",
+    "fx/engine-4/volume/offset": "1.0",
+    "fx/engine-4/pitch/property": "/engines/engine/rpm",
+    "fx/engine-4/pitch/factor": "0.000462",
+    "fx/engine-4/pitch/min": "0.7",
+    "fx/engine-4/pitch/max": "3.0",
+    "fx/engine-4/pitch/offset": "0",
+    "fx/engine-4/reference-dist": "100",
+    "fx/engine-4/max-dist": "1000",
+    "fx/shutdown/name": "shutdown2",
+    "fx/shutdown/path": "Aircraft/daVinci_P-51D/Sounds/Xshutdown.wav",
+    "fx/shutdown/condition/equals/property": "controls/engines/engine[0]/magnetos",
+    "fx/shutdown/condition/equals/value": "0",
+    "fx/shutdown/condition/greater-than/property": "/engines/engine/rpm",
+    "fx/shutdown/condition/greater-than/value": "300",
+    "fx/shutdown/condition/volume/property": "engines/engine/rpm",
+    "fx/shutdown/condition/volume/factor": "-0.0005",
+    "fx/shutdown/condition/volume/min": "0.2",
+    "fx/shutdown/condition/volume/max": "1",
+    "fx/shutdown/condition/volume/offset": "1.0",
+    "fx/rumble/name": "rumble",
+    "fx/rumble/mode": "looped",
+    "fx/rumble/path": "Sounds/rumble.wav",
+    "fx/rumble/condition/or/property": "/gear/gear[0]/wow",
+    "fx/rumble/condition/property": "/sim/current-view/internal",
+    "fx/rumble/volume/property": "/velocities/airspeed-kt",
+    "fx/rumble/volume/type": "log",
+    "fx/rumble/volume/factor": "0.10",
+    "fx/rumble/reference-dist": "100",
+    "fx/rumble/max-dist": "1000",
+    "fx/gear/name": "gear",
+    "fx/gear/mode": "in-transit",
+    "fx/gear/path": "Aircraft/daVinci_P-51D/Sounds/Gears.wav",
+    "fx/gear/property": "/gear/gear[0]/position-norm",
+    "fx/gear/reference-dist": "100",
+    "fx/gear/max-dist": "1000",
+    "fx/squeal/name": "squeal",
+    "fx/squeal/path": "Sounds/squeal.wav",
+    "fx/squeal/condition/or/property": "/gear/gear[0]/wow",
+    "fx/squeal/volume/property": "/velocities/speed-down-fps",
+    "fx/squeal/volume/factor": "0.3",
+    "fx/squeal/volume/max": "1.0",
+    "fx/squeal/volume/internal": "dt_stop",
+    "fx/squeal/pitch/property": "/velocities/airspeed-kt",
+    "fx/squeal/pitch/factor": "0.0025",
+    "fx/squeal/pitch/offset": "1.2",
+    "fx/squeal/reference-dist": "100",
+    "fx/squeal/max-dist": "1000",
+    "fx/flap/name": "flaps",
+    "fx/flap/mode": "in-transit",
+    "fx/flap/path": "Aircraft/daVinci_P-51D/Sounds/flaps.wav",
+    "fx/flap/property": "/surface-positions/flap-pos-norm",
+    "fx/flap/volume/factor": "0.4",
+    "fx/flap/reference-dist": "10.0",
+    "fx/flap/max-dist": "20.0",
+    "fx/canopy/name": "canopy slide",
+    "fx/canopy/mode": "in-transit",
+    "fx/canopy/path": "Aircraft/daVinci_P-51D/Sounds/Canopy.wav",
+    "fx/canopy/property": "sim/multiplay/generic/float[0]",
+    "fx/canopy/volume/factor": "0.9",
+    "fx/canopy/reference-dist": "10.0",
+    "fx/canopy/max-dist": "20.0",
+    "fx/wind-canopy-closed/name": "wind",
+    "fx/wind-canopy-closed/mode": "looped",
+    "fx/wind-canopy-closed/path": "Sounds/wind.wav",
+    "fx/wind-canopy-closed/condition/equals/property": "/instrumentation/doors/crew/position-norm",
+    "fx/wind-canopy-closed/condition/equals/value": "0",
+    "fx/wind-canopy-closed/property": "/velocities/airspeed-kt",
+    "fx/wind-canopy-closed/volume/property": "/position/altitude-ft",
+    "fx/wind-canopy-closed/volume/factor": "-0.001",
+    "fx/wind-canopy-closed/volume/offset": "1.0",
+    "fx/wind-canopy-closed/volume/min": "0.01",
+    "fx/wind-canopy-closed/volume/max": "0.7",
+    "fx/wind-canopy-closed/pitch/property": "/velocities/airspeed-kt",
+    "fx/wind-canopy-closed/pitch/factor": "0.01",
+    "fx/wind-canopy-closed/pitch/offset": "1.25",
+    "fx/wind-canopy-closed/reference-dist": "100",
+    "fx/wind-canopy-closed/max-dist": "1000",
+    "fx/wind-canopy-open/name": "wind-loud",
+    "fx/wind-canopy-open/mode": "looped",
+    "fx/wind-canopy-open/path": "Aircraft/daVinci_P-51D/Sounds/birdsong.wav",
+    "fx/wind-canopy-open/condition/greater-than/property": "sim/multiplay/generic/float[0]",
+    "fx/wind-canopy-open/condition/greater-than/value": "0.01",
+    "fx/wind-canopy-open/property": "/velocities/airspeed-kt",
+    "fx/wind-canopy-open/volume/property": "/position/altitude-ft",
+    "fx/wind-canopy-open/volume/factor": "1.8",
+    "fx/wind-canopy-open/volume/offset": "1.0",
+    "fx/wind-canopy-open/volume/min": "1",
+    "fx/wind-canopy-open/volume/max": "5",
+    "fx/wind-canopy-open/pitch/property": "/velocities/airspeed-kt",
+    "fx/wind-canopy-open/pitch/factor": "0.003",
+    "fx/wind-canopy-open/pitch/offset": "1.25",
+    "fx/wind-canopy-open/reference-dist": "100",
+    "fx/wind-canopy-open/max-dist": "1000",
+    "fx/stall/name": "gear up warn",
+    "fx/stall/mode": "looped",
+    "fx/stall/path": "Sounds/gear-hrn.wav",
+    "fx/stall/condition/and/less-than-equals/property": "controls/engines/engine/throttle",
+    "fx/stall/condition/and/less-than-equals/value": "0.05",
+    "fx/stall/condition/and/equals/property": "controls/gear/gear-down",
+    "fx/stall/condition/and/equals/value": "0",
+    "fx/stall/property": "/sim/alarms/gear-warn",
+    "fx/stall/volume/factor": "0.7",
+    "fx/stall/reference-dist": "10.0",
+    "fx/stall/max-dist": "20.0",
+    "fx/click/name": "mag left click down",
+    "fx/click/path": "Sounds/click.wav",
+    "fx/click/condition/property": "controls/engines/engine/mag-switch-left",
+    "fx/click/volume/factor": "1.0",
+    "fx/click/condition/not/property": "controls/engines/engine/mag-switch-left",
+    "fx/click/volume/min": "0.1",
+    "fx/click/volume/max": "0.9",
+    "fx/low-fuel/name": "low-fuel",
+    "fx/low-fuel/mode": "looped",
+    "fx/low-fuel/path": "Aircraft/daVinci_P-51D/Sounds/WindDown.wav",
+    "fx/low-fuel/condition/less-than/property": "/consumables/fuel/total-fuel-gals",
+    "fx/low-fuel/condition/less-than/value": "2.0",
+    "fx/low-fuel/condition/greater-than/property": "/consumables/fuel/total-fuel-gals",
+    "fx/low-fuel/condition/greater-than/value": "0.1",
+    "fx/no-fuel/name": "no-fuel",
+    "fx/no-fuel/path": "Aircraft/daVinci_P-51D/Sounds/WindDown.wav",
+    "fx/no-fuel/condition/less-than/property": "/consumables/fuel/total-fuel-gals",
+    "fx/no-fuel/condition/less-than/value": "0.1",
+    "fx/flyby/name": "fly-by",
+    "fx/flyby/mode": "once",
+    "fx/flyby/path": "Aircraft/daVinci_P-51D/Sounds/flyby.wav",
+    "fx/flyby/condition/and/greater-than/property": "velocities/airspeed-kt",
+    "fx/flyby/condition/and/greater-than/value": "50",
+    "fx/flyby/condition/and/equals/property": "sim/current-view/view-number",
+    "fx/flyby/condition/and/equals/value": "6",
+    "fx/flyby/condition/not/property": "/sim/current-view/internal",
+    "fx/flyby/volume/property": "velocities/airspeed-kt",
+    "fx/flyby/volume/factor": "0.001",
+    "sim/description": "daVinci_P-51D",
+    "sim/author": "Vodoun da Vinci, Detlef Faber, Stuart Cassie, and an AlphaSim Freeware 3D Model!",
+    "sim/status": "Super VooDoo HooDoo",
+    "sim/flight-model": "yasim",
+    "sim/aero": "daVinci_P-51D-yasim",
+    "sim/fuel-fraction": "0.7",
+    "sim/rendering/refl_correction": "-0.51",
+    "sim/rendering/frensel-factor": "0.5",
+    "sim/previews/preview/type": "exterior",
+    "sim/previews/preview/splash": "true",
+    "sim/previews/preview/path": "Splashscreen/daVinci_P-51D-1.jpg",
+    "sim/systems/electrical/path": "Aircraft/Generic/generic-electrical.xml",
+    "sim/systems/autopilot/path": "Aircraft/daVinci_P-51D/Systems/VooDooPropAP1.xml",
+    "sim/sound/path": "Aircraft/daVinci_P-51D/Sounds/daVinci_P-51D-Sound.xml",
+    "sim/multiplay/chat_display": "1",
+    "sim/multiplay/generic/int[5]": "0",
+    "sim/multiplay/generic/int[6]": "1",
+    "sim/flight-recorder/replay-config": "0",
+    "sim/flight-recorder/config[0]/name": "B-1B Flight Recorder",
+    "sim/flight-recorder/config[0]/signal/type": "float",
+    "sim/flight-recorder/config[0]/signal/property": "/sim/model/door-positions/crew/position-norm",
+    "sim/submodels/serviceable": "true",
+    "sim/submodels/path": "Aircraft/daVinci_P-51D/Models/Effects/guns/submodels.xml",
+    "sim/mp-systems/combat-enabled": "true",
+    "sim/panel/path": "Aircraft/Generic/Panels/generic-vfr-panel.xml",
+    "sim/panel/visibility": "false",
+    "sim/model/path": "Aircraft/daVinci_P-51D/Models/daVinci_P-51D.xml",
+    "sim/view[0]/internal": "true",
+    "sim/view[0]/config/x-offset-m": "0",
+    "sim/view[0]/config/y-offset-m": "1.070",
+    "sim/view[0]/config/z-offset-m": "4.250",
+    "sim/view[0]/config/default-field-of-view-deg": "118.00",
+    "sim/view[0]/config/pitch-offset-deg": "-14.00",
+    "sim/help/key/name": "l",
+    "sim/help/key/desc": "toggle Tailwheel Lock",
+    "sim/help/text": "Use the Equipment-Fuel and Payload Dialog to select external Stores. Selecct Livery from F10 Extras!\n\nSome notes on the propeller adjust mechanism:\n\nPropeller pitch affects engine RPM and ATA/Manifold pressure, total speed. You *will* need to adjust it for maximum performance at altitude.\n\nThe actual amount of propeller pitch is displayed on the clock shaped Instrument on the right side of the panel. The range counts counter clockwise starting at 12.30 (full fine) to 8.30 (full course). Adjust in Flight for 2600 RPM and\nadjust throttle to maintian correct ATA/Manifold pressure.\n\n---Start up---\nEnsure propeller pitch is set to 11.00. Enable fuel tank selection. Advance throttle to 25%. All magnetos on. Press \"s\" to start and then reduce throttle and reduce mixture (M) to 70%.\n---Take Off---\nFlaps down 10 degrees, Take off at 1.1 ata Manifold Pressure.Lift Tailwheel at 120-150 km/h. Be prepared to use Aileron against Torque and Rudder to counteract Swing. Lift Off at 190-200 km/h.\n\n---Landing---\nBeware: The engine runs on low rpm  Set propeller pitch to full fine pitch.\nLower Flaps and Gear under 300 km/h. Approach Speed is 200 km/h. A curved Approach is recommended, because visibility on Final is bad. Speed at Treshold should be 175 km/h. Flare to Threepoint attitude before touchdown. After Touchdown use Rudder to keep the Aircraft straight.\nDon't release Tailwheel lock before taxiing off the Runway as daVinci_Aircraft all feature steerable tail wheels. You can swing the tail around sharply by unlocking the tail wheel and applying left/right braking for parking.",
+    "sim/hud/enable3d": "false",
+    "sim/menubar/default/menu[10]/label": "daVinci_P-51D",
+    "sim/menubar/default/menu[10]/enabled": "true",
+    "sim/menubar/default/menu[10]/item/label": "Select Livery",
+    "sim/menubar/default/menu[10]/item/binding/command": "nasal",
+    "sim/menubar/default/menu[10]/item/binding/script": "aircraft.livery.dialog.toggle()",
+    "consumables/fuel/tank[0]/tank-num": "0",
+    "consumables/fuel/tank[0]/level-gal_us": "250",
+    "engines/engine[0]/running": "false",
+    "engines/engine[0]/magnetos": "1",
+    "engines/engine[0]/fuel-pump-psi": "18",
+    "engines/engine[0]/oil-pressure-psi": "75",
+    "controls/gear/brake-parking": "1.0",
+    "controls/armament/trigger": "false",
+    "controls/armament/master-arm": "true",
+    "controls/armament/position-norm": "1",
+    "controls/engines/engine[0]/magnetos": "0",
+    "controls/engines/engine[0]/boost": "0.45",
+    "controls/engines/engine[0]/blower": "0",
+    "controls/flight/slipstream": "1.0",
+    "controls/flight/aileron-effectiveness": "0.1",
+    "controls/gear/tailwheel-lock": "true",
+    "controls/canopy/canopy-pos-norm": "1.0",
+    "nasal/spit9/file": "Aircraft/daVinci_P-51D/Nasal/spit9.nas",
+    "nasal/guns/file": "Aircraft/daVinci_P-51D/Nasal/weapons.nas",
+    "nasal/doors/file": "Aircraft/daVinci_P-51D/Nasal/doors.nas",
+    "nasal/lights/file": "Aircraft/daVinci_P-51D/Nasal/Lights.nas"
+  },
+  "materialSwitches": [
+    {
+      "objects": [
+        "Fuselage",
+        "Rudder",
+        "Spinner",
+        "Elevators",
+        "CanopyFrame",
+        "RearCoolerDoor"
+      ],
+      "property": "Fuselage",
+      "texture": "Mustang_1_t.png",
+      "source": "daVinci_P-51D/Models/daVinci_P-51D.xml"
+    },
+    {
+      "objects": [
+        "Wings",
+        "PortFlap",
+        "StarFlap",
+        "PortAileron",
+        "StarAileron"
+      ],
+      "property": "WingTops",
+      "texture": "Mustang_2_t.png",
+      "source": "daVinci_P-51D/Models/daVinci_P-51D.xml"
+    },
+    {
+      "objects": [
+        "WingBottoms",
+        "PortFlapBottom",
+        "StarFlapBottom",
+        "PortAileronBottom",
+        "StarAileronBottom",
+        "PortStrutCover",
+        "StarStrutCover",
+        "PortInnerGearDoor",
+        "StarInnerGearDoor"
+      ],
+      "property": "WingBottoms",
+      "texture": "Mustang_3_t.png",
+      "source": "daVinci_P-51D/Models/daVinci_P-51D.xml"
+    },
+    {
+      "objects": [
+        "HorizStabs",
+        "ElevatorBottoms"
+      ],
+      "property": "HorizStabs",
+      "texture": "Mustang_4_t.png",
+      "source": "daVinci_P-51D/Models/daVinci_P-51D.xml"
+    }
+  ],
+  "textureParts": [
+    {
+      "ac_object": "PortTailGearDoor",
+      "glb_nodes": [
+        "i0_PortTailGearDoor"
+      ],
+      "texture": "daVinci_P-51D/Models/Mustang_1_t.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": "textures/Models/Mustang_1_t.png"
+    },
+    {
+      "ac_object": "PortTailGearDoor",
+      "glb_nodes": [
+        "i0_PortTailGearDoor"
+      ],
+      "texture": "daVinci_P-51D/Models/Mustang_1_t.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": "textures/Models/Mustang_1_t.png"
+    },
+    {
+      "ac_object": "StarTailGearDoor",
+      "glb_nodes": [
+        "i0_StarTailGearDoor"
+      ],
+      "texture": "daVinci_P-51D/Models/Mustang_1_t.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": "textures/Models/Mustang_1_t.png"
+    },
+    {
+      "ac_object": "TailWheel",
+      "glb_nodes": [
+        "i0_TailWheel"
+      ],
+      "texture": "daVinci_P-51D/Models/wheels.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": "textures/Models/wheels.png"
+    },
+    {
+      "ac_object": "StarStrutCover",
+      "glb_nodes": [
+        "i0_StarStrutCover"
+      ],
+      "texture": "daVinci_P-51D/Models/Mustang_3_t.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": "textures/Models/Mustang_3_t.png"
+    },
+    {
+      "ac_object": "PortStrutCover",
+      "glb_nodes": [
+        "i0_PortStrutCover"
+      ],
+      "texture": "daVinci_P-51D/Models/Mustang_3_t.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": "textures/Models/Mustang_3_t.png"
+    },
+    {
+      "ac_object": "StarWheel",
+      "glb_nodes": [
+        "i0_StarWheel"
+      ],
+      "texture": "daVinci_P-51D/Models/Hub_2.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": "textures/Models/Hub_2.png"
+    },
+    {
+      "ac_object": "StarWheel",
+      "glb_nodes": [
+        "i0_StarWheel"
+      ],
+      "texture": "daVinci_P-51D/Models/Wheels.png",
+      "has_uv": true,
+      "texture_in_glb": null,
+      "file": "textures/Models/wheels.png"
+    },
+    {
+      "ac_object": "StarWheel",
+      "glb_nodes": [
+        "i0_StarWheel"
+      ],
+      "texture": "daVinci_P-51D/Models/Hub_2.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": "textures/Models/Hub_2.png"
+    },
+    {
+      "ac_object": "StarWheel",
+      "glb_nodes": [
+        "i0_StarWheel"
+      ],
+      "texture": "daVinci_P-51D/Models/Hub_1.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": "textures/Models/Hub_1.png"
+    },
+    {
+      "ac_object": "StarLowerStrut",
+      "glb_nodes": [
+        "i0_StarLowerStrut"
+      ],
+      "texture": "daVinci_P-51D/Models/Oleo.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": "textures/Models/Oleo.png"
+    },
+    {
+      "ac_object": "StarTire",
+      "glb_nodes": [
+        "i0_StarTire"
+      ],
+      "texture": "daVinci_P-51D/Models/Tread.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": "textures/Models/Tread.png"
+    },
+    {
+      "ac_object": "PortWheel",
+      "glb_nodes": [
+        "i0_PortWheel"
+      ],
+      "texture": "daVinci_P-51D/Models/Hub_2.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": "textures/Models/Hub_2.png"
+    },
+    {
+      "ac_object": "PortWheel",
+      "glb_nodes": [
+        "i0_PortWheel"
+      ],
+      "texture": "daVinci_P-51D/Models/Wheels.png",
+      "has_uv": true,
+      "texture_in_glb": null,
+      "file": "textures/Models/wheels.png"
+    },
+    {
+      "ac_object": "PortWheel",
+      "glb_nodes": [
+        "i0_PortWheel"
+      ],
+      "texture": "daVinci_P-51D/Models/Hub_2.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": "textures/Models/Hub_2.png"
+    },
+    {
+      "ac_object": "PortWheel",
+      "glb_nodes": [
+        "i0_PortWheel"
+      ],
+      "texture": "daVinci_P-51D/Models/Hub_1.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": "textures/Models/Hub_1.png"
+    },
+    {
+      "ac_object": "PortLowerStrut",
+      "glb_nodes": [
+        "i0_PortLowerStrut"
+      ],
+      "texture": "daVinci_P-51D/Models/Oleo.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": "textures/Models/Oleo.png"
+    },
+    {
+      "ac_object": "PortTire",
+      "glb_nodes": [
+        "i0_PortTire"
+      ],
+      "texture": "daVinci_P-51D/Models/Tread.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": "textures/Models/Tread.png"
+    },
+    {
+      "ac_object": "CockpitBits",
+      "glb_nodes": [
+        "i0_CockpitBits"
+      ],
+      "texture": "daVinci_P-51D/Models/Cockpit_1.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": null
+    },
+    {
+      "ac_object": "StarInnerGearDoor2",
+      "glb_nodes": [
+        "i0_StarInnerGearDoor2"
+      ],
+      "texture": "daVinci_P-51D/Models/MainDoor.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": "textures/Models/MainDoor.png"
+    },
+    {
+      "ac_object": "StarInnerGearDoor",
+      "glb_nodes": [
+        "i0_StarInnerGearDoor"
+      ],
+      "texture": "daVinci_P-51D/Models/Mustang_3_t.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": "textures/Models/Mustang_3_t.png"
+    },
+    {
+      "ac_object": "PortInnerGearDoor2",
+      "glb_nodes": [
+        "i0_PortInnerGearDoor2"
+      ],
+      "texture": "daVinci_P-51D/Models/MainDoor.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": "textures/Models/MainDoor.png"
+    },
+    {
+      "ac_object": "PortInnerGearDoor",
+      "glb_nodes": [
+        "i0_PortInnerGearDoor"
+      ],
+      "texture": "daVinci_P-51D/Models/Mustang_3_t.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": "textures/Models/Mustang_3_t.png"
+    },
+    {
+      "ac_object": "CanopyFrame",
+      "glb_nodes": [
+        "i0_CanopyFrame"
+      ],
+      "texture": "daVinci_P-51D/Models/Mustang_1_t.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": "textures/Models/Mustang_1_t.png"
+    },
+    {
+      "ac_object": "3DSMesh_13",
+      "glb_nodes": [
+        "i0_3DSMesh_13"
+      ],
+      "texture": "daVinci_P-51D/Models/Cockpit_2.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": null
+    },
+    {
+      "ac_object": "3DSMesh_14",
+      "glb_nodes": [
+        "i0_3DSMesh_14"
+      ],
+      "texture": "daVinci_P-51D/Models/Cockpit_3.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": null
+    },
+    {
+      "ac_object": "3DSMesh_15",
+      "glb_nodes": [
+        "i0_3DSMesh_15"
+      ],
+      "texture": "daVinci_P-51D/Models/Cockpit_4.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": null
+    },
+    {
+      "ac_object": "3DSMesh_16",
+      "glb_nodes": [
+        "i0_3DSMesh_16"
+      ],
+      "texture": "daVinci_P-51D/Models/Gunsight.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": "textures/Models/Gunsight.png"
+    },
+    {
+      "ac_object": "3DSMesh_17",
+      "glb_nodes": [
+        "i0_3DSMesh_17"
+      ],
+      "texture": "daVinci_P-51D/Models/Leather.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": "textures/Models/Leather.png"
+    },
+    {
+      "ac_object": "Fuselage",
+      "glb_nodes": [
+        "i0_Fuselage"
+      ],
+      "texture": "daVinci_P-51D/Models/Mustang_1_t.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": "textures/Models/Mustang_1_t.png"
+    },
+    {
+      "ac_object": "Wings",
+      "glb_nodes": [
+        "i0_Wings"
+      ],
+      "texture": "daVinci_P-51D/Models/Mustang_2_t.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": "textures/Models/Mustang_2_t.png"
+    },
+    {
+      "ac_object": "WingBottoms",
+      "glb_nodes": [
+        "i0_WingBottoms"
+      ],
+      "texture": "daVinci_P-51D/Models/Mustang_3_t.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": "textures/Models/Mustang_3_t.png"
+    },
+    {
+      "ac_object": "HorizStabs",
+      "glb_nodes": [
+        "i0_HorizStabs"
+      ],
+      "texture": "daVinci_P-51D/Models/Mustang_4_t.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": "textures/Models/Mustang_4_t.png"
+    },
+    {
+      "ac_object": "Pylons",
+      "glb_nodes": [
+        "i0_Pylons"
+      ],
+      "texture": "daVinci_P-51D/Models/Pylon_t.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": "textures/Models/Pylon_t.png"
+    },
+    {
+      "ac_object": "3DSMesh_23",
+      "glb_nodes": [
+        "i0_3DSMesh_23"
+      ],
+      "texture": "daVinci_P-51D/Models/Scale.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": "textures/Models/Scale.png"
+    },
+    {
+      "ac_object": "3DSMesh_24",
+      "glb_nodes": [
+        "i0_3DSMesh_24"
+      ],
+      "texture": "daVinci_P-51D/Models/Seat.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": "textures/Models/Seat.png"
+    },
+    {
+      "ac_object": "3DSMesh_25",
+      "glb_nodes": [
+        "i0_3DSMesh_25"
+      ],
+      "texture": "daVinci_P-51D/Models/TrimWhl.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": "textures/Models/TrimWhl.png"
+    },
+    {
+      "ac_object": "3DSMesh_26",
+      "glb_nodes": [
+        "i0_3DSMesh_26"
+      ],
+      "texture": "daVinci_P-51D/Models/Wrap.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": "textures/Models/Wrap.png"
+    },
+    {
+      "ac_object": "PilotHead",
+      "glb_nodes": [
+        "i0_PilotHead"
+      ],
+      "texture": "daVinci_P-51D/Models/Crew face.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": "textures/Models/Crew_face.png"
+    },
+    {
+      "ac_object": "PilotHead",
+      "glb_nodes": [
+        "i0_PilotHead"
+      ],
+      "texture": "daVinci_P-51D/Models/TrimWhl.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": "textures/Models/TrimWhl.png"
+    },
+    {
+      "ac_object": "3DSMesh_71",
+      "glb_nodes": [
+        "i0_3DSMesh_71"
+      ],
+      "texture": "daVinci_P-51D/Models/TrimWhl.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": "textures/Models/TrimWhl.png"
+    },
+    {
+      "ac_object": "3DSMesh_74",
+      "glb_nodes": [
+        "i0_3DSMesh_74"
+      ],
+      "texture": "daVinci_P-51D/Models/TrimWhl.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": "textures/Models/TrimWhl.png"
+    },
+    {
+      "ac_object": "RearCoolerDoor",
+      "glb_nodes": [
+        "i0_RearCoolerDoor"
+      ],
+      "texture": "daVinci_P-51D/Models/Mustang_1_t.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": "textures/Models/Mustang_1_t.png"
+    },
+    {
+      "ac_object": "3DSMesh_99",
+      "glb_nodes": [
+        "i0_3DSMesh_99"
+      ],
+      "texture": "daVinci_P-51D/Models/Cockpit_1.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": null
+    },
+    {
+      "ac_object": "Elevators",
+      "glb_nodes": [
+        "i0_Elevators"
+      ],
+      "texture": "daVinci_P-51D/Models/Mustang_1_t.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": "textures/Models/Mustang_1_t.png"
+    },
+    {
+      "ac_object": "ElevatorBottoms",
+      "glb_nodes": [
+        "i0_ElevatorBottoms"
+      ],
+      "texture": "daVinci_P-51D/Models/Mustang_4_t.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": "textures/Models/Mustang_4_t.png"
+    },
+    {
+      "ac_object": "Prop",
+      "glb_nodes": [
+        "i0_Prop"
+      ],
+      "texture": "daVinci_P-51D/Models/Mustang_4_t.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": "textures/Models/Mustang_4_t.png"
+    },
+    {
+      "ac_object": "Spinner",
+      "glb_nodes": [
+        "i0_Spinner"
+      ],
+      "texture": "daVinci_P-51D/Models/Mustang_1_t.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": "textures/Models/Mustang_1_t.png"
+    },
+    {
+      "ac_object": "PortFlap",
+      "glb_nodes": [
+        "i0_PortFlap"
+      ],
+      "texture": "daVinci_P-51D/Models/Mustang_2_t.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": "textures/Models/Mustang_2_t.png"
+    },
+    {
+      "ac_object": "PortFlapBottom",
+      "glb_nodes": [
+        "i0_PortFlapBottom"
+      ],
+      "texture": "daVinci_P-51D/Models/Mustang_3_t.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": "textures/Models/Mustang_3_t.png"
+    },
+    {
+      "ac_object": "PortAileronBottom",
+      "glb_nodes": [
+        "i0_PortAileronBottom"
+      ],
+      "texture": "daVinci_P-51D/Models/Mustang_3_t.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": "textures/Models/Mustang_3_t.png"
+    },
+    {
+      "ac_object": "PortAileron",
+      "glb_nodes": [
+        "i0_PortAileron"
+      ],
+      "texture": "daVinci_P-51D/Models/Mustang_2_t.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": "textures/Models/Mustang_2_t.png"
+    },
+    {
+      "ac_object": "StarAileronBottom",
+      "glb_nodes": [
+        "i0_StarAileronBottom"
+      ],
+      "texture": "daVinci_P-51D/Models/Mustang_3_t.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": "textures/Models/Mustang_3_t.png"
+    },
+    {
+      "ac_object": "StarAileron",
+      "glb_nodes": [
+        "i0_StarAileron"
+      ],
+      "texture": "daVinci_P-51D/Models/Mustang_2_t.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": "textures/Models/Mustang_2_t.png"
+    },
+    {
+      "ac_object": "StarFlap",
+      "glb_nodes": [
+        "i0_StarFlap"
+      ],
+      "texture": "daVinci_P-51D/Models/Mustang_2_t.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": "textures/Models/Mustang_2_t.png"
+    },
+    {
+      "ac_object": "StarFlapBottom",
+      "glb_nodes": [
+        "i0_StarFlapBottom"
+      ],
+      "texture": "daVinci_P-51D/Models/Mustang_3_t.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": "textures/Models/Mustang_3_t.png"
+    },
+    {
+      "ac_object": "Rudder",
+      "glb_nodes": [
+        "i0_Rudder"
+      ],
+      "texture": "daVinci_P-51D/Models/Mustang_1_t.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": "textures/Models/Mustang_1_t.png"
+    },
+    {
+      "ac_object": "fastpdisk",
+      "glb_nodes": [
+        "i16_fastpdisk"
+      ],
+      "texture": "daVinci_P-51D/Models/fastdisc.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": "textures/Models/fastdisc.png"
+    },
+    {
+      "ac_object": "slowpdisk",
+      "glb_nodes": [
+        "i16_slowpdisk"
+      ],
+      "texture": "daVinci_P-51D/Models/3blade.png",
+      "has_uv": true,
+      "texture_in_glb": true,
+      "file": "textures/Models/3blade.png"
+    }
+  ],
+  "textures": [
+    {
+      "file": "textures/Models/3blade.png",
+      "original": "daVinci_P-51D/Models/3blade.png",
+      "role": "base",
+      "size": [
+        256,
+        256
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/Models/Crew_face.png",
+      "original": "daVinci_P-51D/Models/Crew face.png",
+      "role": "base",
+      "size": [
+        1024,
+        1024
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/Models/Effects/contrailSmoke.png",
+      "original": "daVinci_P-51D/Models/Effects/contrailSmoke.png",
+      "role": "base",
+      "size": [
+        128,
+        128
+      ],
+      "cutout_alpha": false,
+      "in_glb": false
+    },
+    {
+      "file": "textures/Models/Effects/cranking/smoke.png",
+      "original": "daVinci_P-51D/Models/Effects/cranking/smoke.png",
+      "role": "base",
+      "size": [
+        128,
+        128
+      ],
+      "cutout_alpha": false,
+      "in_glb": false
+    },
+    {
+      "file": "textures/Models/Effects/exhaustsmoke.png",
+      "original": "daVinci_P-51D/Models/Effects/exhaustsmoke.png",
+      "role": "base",
+      "size": [
+        64,
+        64
+      ],
+      "cutout_alpha": false,
+      "in_glb": false
+    },
+    {
+      "file": "textures/Models/Effects/ground/smoke.png",
+      "original": "daVinci_P-51D/Models/Effects/ground/smoke.png",
+      "role": "base",
+      "size": [
+        128,
+        128
+      ],
+      "cutout_alpha": false,
+      "in_glb": false
+    },
+    {
+      "file": "textures/Models/Effects/smoke.png",
+      "original": "daVinci_P-51D/Models/Effects/smoke.png",
+      "role": "base",
+      "size": [
+        128,
+        128
+      ],
+      "cutout_alpha": false,
+      "in_glb": false
+    },
+    {
+      "file": "textures/Models/Gunsight.png",
+      "original": "daVinci_P-51D/Models/Gunsight.png",
+      "role": "base",
+      "size": [
+        1024,
+        512
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/Models/Hub_1.png",
+      "original": "daVinci_P-51D/Models/Hub_1.png",
+      "role": "base",
+      "size": [
+        512,
+        512
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/Models/Hub_2.png",
+      "original": "daVinci_P-51D/Models/Hub_2.png",
+      "role": "base",
+      "size": [
+        512,
+        512
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/Models/Leather.png",
+      "original": "daVinci_P-51D/Models/Leather.png",
+      "role": "base",
+      "size": [
+        512,
+        512
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/Models/MainDoor.png",
+      "original": "daVinci_P-51D/Models/MainDoor.png",
+      "role": "base",
+      "size": [
+        1024,
+        1024
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/Models/Mustang_1_t.png",
+      "original": "daVinci_P-51D/Models/Mustang_1_t.png",
+      "role": "base",
+      "size": [
+        2048,
+        2048
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/Models/Mustang_2_t.png",
+      "original": "daVinci_P-51D/Models/Mustang_2_t.png",
+      "role": "base",
+      "size": [
+        2048,
+        2048
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/Models/Mustang_3_t.png",
+      "original": "daVinci_P-51D/Models/Mustang_3_t.png",
+      "role": "base",
+      "size": [
+        2048,
+        2048
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/Models/Mustang_4_t.png",
+      "original": "daVinci_P-51D/Models/Mustang_4_t.png",
+      "role": "base",
+      "size": [
+        2048,
+        2048
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/Models/Oleo.png",
+      "original": "daVinci_P-51D/Models/Oleo.png",
+      "role": "base",
+      "size": [
+        256,
+        256
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/Models/Pylon_t.png",
+      "original": "daVinci_P-51D/Models/Pylon_t.png",
+      "role": "base",
+      "size": [
+        256,
+        512
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/Models/Scale.png",
+      "original": "daVinci_P-51D/Models/Scale.png",
+      "role": "base",
+      "size": [
+        1024,
+        256
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/Models/Seat.png",
+      "original": "daVinci_P-51D/Models/Seat.png",
+      "role": "base",
+      "size": [
+        1024,
+        1024
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/Models/Tread.png",
+      "original": "daVinci_P-51D/Models/Tread.png",
+      "role": "base",
+      "size": [
+        256,
+        256
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/Models/TrimWhl.png",
+      "original": "daVinci_P-51D/Models/TrimWhl.png",
+      "role": "base",
+      "size": [
+        256,
+        64
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/Models/Wrap.png",
+      "original": "daVinci_P-51D/Models/Wrap.png",
+      "role": "base",
+      "size": [
+        512,
+        512
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/Models/fastdisc.png",
+      "original": "daVinci_P-51D/Models/fastdisc.png",
+      "role": "propeller",
+      "size": [
+        256,
+        256
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/Models/lights/Flares/lights.png",
+      "original": "daVinci_P-51D/Models/lights/Flares/lights.png",
+      "role": "emissive",
+      "size": [
+        256,
+        256
+      ],
+      "cutout_alpha": false,
+      "in_glb": false
+    },
+    {
+      "file": "textures/Models/lights/LightCone/light-gradient-lamp.png",
+      "original": "daVinci_P-51D/Models/lights/LightCone/light-gradient-lamp.png",
+      "role": "base",
+      "size": [
+        128,
+        128
+      ],
+      "cutout_alpha": false,
+      "in_glb": false
+    },
+    {
+      "file": "textures/Models/wheels.png",
+      "original": "daVinci_P-51D/Models/wheels.png",
+      "role": "base",
+      "size": [
+        256,
+        256
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/Particles/smoke.png",
+      "original": "daVinci_P-51D/Particles/smoke.png",
+      "role": "base",
+      "size": [
+        128,
+        128
+      ],
+      "cutout_alpha": false,
+      "in_glb": false
+    },
+    {
+      "file": "textures/liveries/Models/Liveries/CrazyHorse/Mustang_1_t.png",
+      "original": "daVinci_P-51D/Models/Liveries/CrazyHorse/Mustang_1_t.png",
+      "role": "livery",
+      "size": [
+        2048,
+        2048
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/liveries/Models/Liveries/CrazyHorse/Mustang_2_t.png",
+      "original": "daVinci_P-51D/Models/Liveries/CrazyHorse/Mustang_2_t.png",
+      "role": "livery",
+      "size": [
+        2048,
+        2048
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/liveries/Models/Liveries/CrazyHorse/Mustang_3_t.png",
+      "original": "daVinci_P-51D/Models/Liveries/CrazyHorse/Mustang_3_t.png",
+      "role": "livery",
+      "size": [
+        2048,
+        2048
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/liveries/Models/Liveries/CrazyHorse/Mustang_4_t.png",
+      "original": "daVinci_P-51D/Models/Liveries/CrazyHorse/Mustang_4_t.png",
+      "role": "livery",
+      "size": [
+        2048,
+        2048
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/liveries/Models/Liveries/Default/Mustang_1_t.png",
+      "original": "daVinci_P-51D/Models/Liveries/Default/Mustang_1_t.png",
+      "role": "livery",
+      "size": [
+        2048,
+        2048
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/liveries/Models/Liveries/Default/Mustang_2_t.png",
+      "original": "daVinci_P-51D/Models/Liveries/Default/Mustang_2_t.png",
+      "role": "livery",
+      "size": [
+        2048,
+        2048
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/liveries/Models/Liveries/Default/Mustang_3_t.png",
+      "original": "daVinci_P-51D/Models/Liveries/Default/Mustang_3_t.png",
+      "role": "livery",
+      "size": [
+        2048,
+        2048
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/liveries/Models/Liveries/Default/Mustang_4_t.png",
+      "original": "daVinci_P-51D/Models/Liveries/Default/Mustang_4_t.png",
+      "role": "livery",
+      "size": [
+        2048,
+        2048
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/liveries/Models/Liveries/DetroitMiss/Mustang_1_t.png",
+      "original": "daVinci_P-51D/Models/Liveries/DetroitMiss/Mustang_1_t.png",
+      "role": "livery",
+      "size": [
+        2048,
+        2048
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/liveries/Models/Liveries/DetroitMiss/Mustang_2_t.png",
+      "original": "daVinci_P-51D/Models/Liveries/DetroitMiss/Mustang_2_t.png",
+      "role": "livery",
+      "size": [
+        2048,
+        2048
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/liveries/Models/Liveries/DetroitMiss/Mustang_3_t.png",
+      "original": "daVinci_P-51D/Models/Liveries/DetroitMiss/Mustang_3_t.png",
+      "role": "livery",
+      "size": [
+        2048,
+        2048
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/liveries/Models/Liveries/DetroitMiss/Mustang_4_t.png",
+      "original": "daVinci_P-51D/Models/Liveries/DetroitMiss/Mustang_4_t.png",
+      "role": "livery",
+      "size": [
+        2048,
+        2048
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/liveries/Models/Liveries/DonaldDuck/Mustang_1_t.png",
+      "original": "daVinci_P-51D/Models/Liveries/DonaldDuck/Mustang_1_t.png",
+      "role": "livery",
+      "size": [
+        2048,
+        2048
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/liveries/Models/Liveries/DonaldDuck/Mustang_2_t.png",
+      "original": "daVinci_P-51D/Models/Liveries/DonaldDuck/Mustang_2_t.png",
+      "role": "livery",
+      "size": [
+        2048,
+        2048
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/liveries/Models/Liveries/DonaldDuck/Mustang_3_t.png",
+      "original": "daVinci_P-51D/Models/Liveries/DonaldDuck/Mustang_3_t.png",
+      "role": "livery",
+      "size": [
+        2048,
+        2048
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/liveries/Models/Liveries/DonaldDuck/Mustang_4_t.png",
+      "original": "daVinci_P-51D/Models/Liveries/DonaldDuck/Mustang_4_t.png",
+      "role": "livery",
+      "size": [
+        2048,
+        2048
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/liveries/Models/Liveries/EleenandJerry/Mustang_1_t.png",
+      "original": "daVinci_P-51D/Models/Liveries/EleenandJerry/Mustang_1_t.png",
+      "role": "livery",
+      "size": [
+        2048,
+        2048
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/liveries/Models/Liveries/EleenandJerry/Mustang_2_t.png",
+      "original": "daVinci_P-51D/Models/Liveries/EleenandJerry/Mustang_2_t.png",
+      "role": "livery",
+      "size": [
+        2048,
+        2048
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/liveries/Models/Liveries/EleenandJerry/Mustang_3_t.png",
+      "original": "daVinci_P-51D/Models/Liveries/EleenandJerry/Mustang_3_t.png",
+      "role": "livery",
+      "size": [
+        2048,
+        2048
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/liveries/Models/Liveries/EleenandJerry/Mustang_4_t.png",
+      "original": "daVinci_P-51D/Models/Liveries/EleenandJerry/Mustang_4_t.png",
+      "role": "livery",
+      "size": [
+        2048,
+        2048
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/liveries/Models/Liveries/JumpinJacques/Mustang_1_t.png",
+      "original": "daVinci_P-51D/Models/Liveries/JumpinJacques/Mustang_1_t.png",
+      "role": "livery",
+      "size": [
+        2048,
+        2048
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/liveries/Models/Liveries/JumpinJacques/Mustang_2_t.png",
+      "original": "daVinci_P-51D/Models/Liveries/JumpinJacques/Mustang_2_t.png",
+      "role": "livery",
+      "size": [
+        2048,
+        2048
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/liveries/Models/Liveries/JumpinJacques/Mustang_3_t.png",
+      "original": "daVinci_P-51D/Models/Liveries/JumpinJacques/Mustang_3_t.png",
+      "role": "livery",
+      "size": [
+        2048,
+        2048
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/liveries/Models/Liveries/JumpinJacques/Mustang_4_t.png",
+      "original": "daVinci_P-51D/Models/Liveries/JumpinJacques/Mustang_4_t.png",
+      "role": "livery",
+      "size": [
+        2048,
+        2048
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/liveries/Models/Liveries/Marie/Mustang_1_t.png",
+      "original": "daVinci_P-51D/Models/Liveries/Marie/Mustang_1_t.png",
+      "role": "livery",
+      "size": [
+        2048,
+        2048
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/liveries/Models/Liveries/Marie/Mustang_2_t.png",
+      "original": "daVinci_P-51D/Models/Liveries/Marie/Mustang_2_t.png",
+      "role": "livery",
+      "size": [
+        2048,
+        2048
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/liveries/Models/Liveries/Marie/Mustang_3_t.png",
+      "original": "daVinci_P-51D/Models/Liveries/Marie/Mustang_3_t.png",
+      "role": "livery",
+      "size": [
+        2048,
+        2048
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/liveries/Models/Liveries/Marie/Mustang_4_t.png",
+      "original": "daVinci_P-51D/Models/Liveries/Marie/Mustang_4_t.png",
+      "role": "livery",
+      "size": [
+        2048,
+        2048
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/liveries/Models/Liveries/PlasteredBastard/Mustang_1_t.png",
+      "original": "daVinci_P-51D/Models/Liveries/PlasteredBastard/Mustang_1_t.png",
+      "role": "livery",
+      "size": [
+        2048,
+        2048
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/liveries/Models/Liveries/PlasteredBastard/Mustang_2_t.png",
+      "original": "daVinci_P-51D/Models/Liveries/PlasteredBastard/Mustang_2_t.png",
+      "role": "livery",
+      "size": [
+        2048,
+        2048
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/liveries/Models/Liveries/PlasteredBastard/Mustang_3_t.png",
+      "original": "daVinci_P-51D/Models/Liveries/PlasteredBastard/Mustang_3_t.png",
+      "role": "livery",
+      "size": [
+        2048,
+        2048
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/liveries/Models/Liveries/PlasteredBastard/Mustang_4_t.png",
+      "original": "daVinci_P-51D/Models/Liveries/PlasteredBastard/Mustang_4_t.png",
+      "role": "livery",
+      "size": [
+        2048,
+        2048
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/liveries/Models/Liveries/RAF_KH-774/Mustang_1_t.png",
+      "original": "daVinci_P-51D/Models/Liveries/RAF_KH-774/Mustang_1_t.png",
+      "role": "livery",
+      "size": [
+        2048,
+        2048
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/liveries/Models/Liveries/RAF_KH-774/Mustang_2_t.png",
+      "original": "daVinci_P-51D/Models/Liveries/RAF_KH-774/Mustang_2_t.png",
+      "role": "livery",
+      "size": [
+        2048,
+        2048
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/liveries/Models/Liveries/RAF_KH-774/Mustang_3_t.png",
+      "original": "daVinci_P-51D/Models/Liveries/RAF_KH-774/Mustang_3_t.png",
+      "role": "livery",
+      "size": [
+        2048,
+        2048
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/liveries/Models/Liveries/RAF_KH-774/Mustang_4_t.png",
+      "original": "daVinci_P-51D/Models/Liveries/RAF_KH-774/Mustang_4_t.png",
+      "role": "livery",
+      "size": [
+        2048,
+        2048
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/liveries/Models/Liveries/SizzlinLiz/Mustang_1_t.png",
+      "original": "daVinci_P-51D/Models/Liveries/SizzlinLiz/Mustang_1_t.png",
+      "role": "livery",
+      "size": [
+        2048,
+        2048
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/liveries/Models/Liveries/SizzlinLiz/Mustang_2_t.png",
+      "original": "daVinci_P-51D/Models/Liveries/SizzlinLiz/Mustang_2_t.png",
+      "role": "livery",
+      "size": [
+        2048,
+        2048
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/liveries/Models/Liveries/SizzlinLiz/Mustang_3_t.png",
+      "original": "daVinci_P-51D/Models/Liveries/SizzlinLiz/Mustang_3_t.png",
+      "role": "livery",
+      "size": [
+        2048,
+        2048
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/liveries/Models/Liveries/SizzlinLiz/Mustang_4_t.png",
+      "original": "daVinci_P-51D/Models/Liveries/SizzlinLiz/Mustang_4_t.png",
+      "role": "livery",
+      "size": [
+        2048,
+        2048
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/liveries/Models/Liveries/VooDoosBitch/Mustang_1_t.png",
+      "original": "daVinci_P-51D/Models/Liveries/VooDoosBitch/Mustang_1_t.png",
+      "role": "livery",
+      "size": [
+        2048,
+        2048
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/liveries/Models/Liveries/VooDoosBitch/Mustang_2_t.png",
+      "original": "daVinci_P-51D/Models/Liveries/VooDoosBitch/Mustang_2_t.png",
+      "role": "livery",
+      "size": [
+        2048,
+        2048
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/liveries/Models/Liveries/VooDoosBitch/Mustang_3_t.png",
+      "original": "daVinci_P-51D/Models/Liveries/VooDoosBitch/Mustang_3_t.png",
+      "role": "livery",
+      "size": [
+        2048,
+        2048
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    },
+    {
+      "file": "textures/liveries/Models/Liveries/VooDoosBitch/Mustang_4_t.png",
+      "original": "daVinci_P-51D/Models/Liveries/VooDoosBitch/Mustang_4_t.png",
+      "role": "livery",
+      "size": [
+        2048,
+        2048
+      ],
+      "cutout_alpha": false,
+      "in_glb": true
+    }
+  ],
+  "liveries": [
+    {
+      "file": "daVinci_P-51D/Models/Liveries/CrazyHorse.xml",
+      "name": "CrazyHorse",
+      "textures": [
+        "Liveries/CrazyHorse/Mustang_1_t.png",
+        "Liveries/CrazyHorse/Mustang_2_t.png",
+        "Liveries/CrazyHorse/Mustang_3_t.png",
+        "Liveries/CrazyHorse/Mustang_4_t.png"
+      ]
+    },
+    {
+      "file": "daVinci_P-51D/Models/Liveries/Default.xml",
+      "name": "Default",
+      "textures": [
+        "Liveries/Default/Mustang_1_t.png",
+        "Liveries/Default/Mustang_2_t.png",
+        "Liveries/Default/Mustang_3_t.png",
+        "Liveries/Default/Mustang_4_t.png"
+      ]
+    },
+    {
+      "file": "daVinci_P-51D/Models/Liveries/DetroitMiss.xml",
+      "name": "DetroitMiss",
+      "textures": [
+        "Liveries/DetroitMiss/Mustang_1_t.png",
+        "Liveries/DetroitMiss/Mustang_2_t.png",
+        "Liveries/DetroitMiss/Mustang_3_t.png",
+        "Liveries/DetroitMiss/Mustang_4_t.png"
+      ]
+    },
+    {
+      "file": "daVinci_P-51D/Models/Liveries/DonaldDuck.xml",
+      "name": "DonaldDuck",
+      "textures": [
+        "Liveries/DonaldDuck/Mustang_1_t.png",
+        "Liveries/DonaldDuck/Mustang_2_t.png",
+        "Liveries/DonaldDuck/Mustang_3_t.png",
+        "Liveries/DonaldDuck/Mustang_4_t.png"
+      ]
+    },
+    {
+      "file": "daVinci_P-51D/Models/Liveries/EleenandJerry.xml",
+      "name": "EleenandJerry",
+      "textures": [
+        "Liveries/EleenandJerry/Mustang_1_t.png",
+        "Liveries/EleenandJerry/Mustang_2_t.png",
+        "Liveries/EleenandJerry/Mustang_3_t.png",
+        "Liveries/EleenandJerry/Mustang_4_t.png"
+      ]
+    },
+    {
+      "file": "daVinci_P-51D/Models/Liveries/JumpinJacques.xml",
+      "name": "JumpinJacques",
+      "textures": [
+        "Liveries/JumpinJacques/Mustang_1_t.png",
+        "Liveries/JumpinJacques/Mustang_2_t.png",
+        "Liveries/JumpinJacques/Mustang_3_t.png",
+        "Liveries/JumpinJacques/Mustang_4_t.png"
+      ]
+    },
+    {
+      "file": "daVinci_P-51D/Models/Liveries/Marie.xml",
+      "name": "Marie",
+      "textures": [
+        "Liveries/Marie/Mustang_1_t.png",
+        "Liveries/Marie/Mustang_2_t.png",
+        "Liveries/Marie/Mustang_3_t.png",
+        "Liveries/Marie/Mustang_4_t.png"
+      ]
+    },
+    {
+      "file": "daVinci_P-51D/Models/Liveries/PlasteredBastard.xml",
+      "name": "PlasteredBastard",
+      "textures": [
+        "Liveries/PlasteredBastard/Mustang_1_t.png",
+        "Liveries/PlasteredBastard/Mustang_2_t.png",
+        "Liveries/PlasteredBastard/Mustang_3_t.png",
+        "Liveries/PlasteredBastard/Mustang_4_t.png"
+      ]
+    },
+    {
+      "file": "daVinci_P-51D/Models/Liveries/RAF_KH-774.xml",
+      "name": "RAF_KH-774",
+      "textures": [
+        "Liveries/RAF_KH-774/Mustang_1_t.png",
+        "Liveries/RAF_KH-774/Mustang_2_t.png",
+        "Liveries/RAF_KH-774/Mustang_3_t.png",
+        "Liveries/RAF_KH-774/Mustang_4_t.png"
+      ]
+    },
+    {
+      "file": "daVinci_P-51D/Models/Liveries/SizzlinLiz.xml",
+      "name": "SizzlinLiz",
+      "textures": [
+        "Liveries/SizzlinLiz/Mustang_1_t.png",
+        "Liveries/SizzlinLiz/Mustang_2_t.png",
+        "Liveries/SizzlinLiz/Mustang_3_t.png",
+        "Liveries/SizzlinLiz/Mustang_4_t.png"
+      ]
+    },
+    {
+      "file": "daVinci_P-51D/Models/Liveries/VooDoosBitch.xml",
+      "name": "VooDoosBitch",
+      "textures": [
+        "Liveries/VooDoosBitch/Mustang_1_t.png",
+        "Liveries/VooDoosBitch/Mustang_2_t.png",
+        "Liveries/VooDoosBitch/Mustang_3_t.png",
+        "Liveries/VooDoosBitch/Mustang_4_t.png"
+      ]
+    }
+  ],
+  "geometry": {
+    "flight_model": "yasim",
+    "file": "daVinci_P-51D-yasim.xml",
+    "gear_contacts": [
+      {
+        "name": "",
+        "fg_m": [
+          2.804,
+          -1.84,
+          -1.748
+        ],
+        "compression_m": 0.15,
+        "retracts": true,
+        "steers": false,
+        "glb": [
+          2.804,
+          -1.748,
+          1.84
+        ],
+        "nearest_gear_node": "i0_PortTire",
+        "distance_m": 0.024,
+        "node_bottom_y": -1.724,
+        "is_wheel": true
+      },
+      {
+        "name": "",
+        "fg_m": [
+          2.804,
+          1.84,
+          -1.748
+        ],
+        "compression_m": 0.15,
+        "retracts": true,
+        "steers": false,
+        "glb": [
+          2.804,
+          -1.748,
+          -1.84
+        ],
+        "nearest_gear_node": "i0_StarTire",
+        "distance_m": 0.025,
+        "node_bottom_y": -1.723,
+        "is_wheel": true
+      },
+      {
+        "name": "",
+        "fg_m": [
+          7.67,
+          -0.0,
+          -0.48
+        ],
+        "compression_m": 0.2,
+        "retracts": true,
+        "steers": true,
+        "glb": [
+          7.67,
+          -0.48,
+          0.0
+        ],
+        "nearest_gear_node": "i0_TailWheel_node",
+        "distance_m": 0.038,
+        "node_bottom_y": -0.442,
+        "is_wheel": true
+      }
+    ],
+    "propellers": [
+      {
+        "fg_m": [
+          0.729,
+          -0.0,
+          -0.043
+        ],
+        "radius_m": 1.4,
+        "cruise_rpm": 1257.0,
+        "takeoff_rpm": null,
+        "contra": null,
+        "glb": [
+          0.729,
+          -0.043,
+          0.0
+        ]
+      }
+    ],
+    "rotors": [],
+    "files": [
+      "daVinci_P-51D/daVinci_P-51D-yasim.xml"
+    ],
+    "gear_contacts_trusted": true,
+    "parked_pitch_deg_nose_up": 14.61
+  },
+  "frame": {
+    "glb_axes": "glTF: +y up, metres",
+    "flightgear_axes": "x aft, y right, z up (metres)",
+    "fg_to_glb": {
+      "map": "x=fgX, y=fgZ, z=-fgY",
+      "median_error_m": 0.0,
+      "samples": 27,
+      "trusted": true,
+      "left_right_check": [],
+      "note": "z of parts named L/R under this map; FlightGear's left is -y (so +z here when z=-fgY)"
+    },
+    "nose_points": "-x",
+    "note": "verified by matching XML hinge centres to the GLB's pivot_ nodes"
+  },
+  "specs": {
+    "article": "https://en.wikipedia.org/wiki/North_American_P-51_Mustang",
+    "variant": "P-51D Mustang",
+    "length ft": "32",
+    "length in": "3",
+    "span ft": "37",
+    "span in": "0",
+    "height ft": "13",
+    "height in": "4.5",
+    "wing area sqft": "235",
+    "empty weight lb": "7,635",
+    "gross weight lb": "9,200",
+    "max speed mph": "440",
+    "cruise speed mph": "362",
+    "eng1 hp": "1,490",
+    "prop dia ft": "11",
+    "prop dia in": "2",
+    "prop dia m": "3.40",
+    "max takeoff weight kg": "5,490",
+    "crew": "1",
+    "eng1 name": "[[Packard V-1650 Merlin",
+    "eng1 number": "1",
+    "eng1 type": "12-cylinder liquid cooled engine",
+    "prop blade number": "4",
+    "prop name": "Hamilton Standard [[constant-speed propeller",
+    "length_m": 9.83,
+    "span_m": 11.278,
+    "height_m": 4.077,
+    "prop_dia_m": 3.4
+  },
+  "eyePoint": {
+    "fg_m": [
+      4.25,
+      0.0,
+      1.07
+    ],
+    "pitch_offset_deg": -14.0,
+    "fov_deg": 118.0,
+    "glb": [
+      4.25,
+      1.07,
+      -0.0
+    ]
+  },
+  "categories": {
+    "cockpit": [
+      "i0_CockpitBits",
+      "i0_SeatandHousings",
+      "i0_StickandCockpitBits",
+      "i17_throttleblock",
+      "i1_panel"
+    ],
+    "engine": [
+      "i0_Exhaust",
+      "i10_exhaustsmoke",
+      "i11_exhaustsmoke"
+    ],
+    "canopy/glass": [
+      "i0_GunsightGlass",
+      "i0_WindscreenGlass",
+      "i0_CanopyFrame",
+      "i0_CanopyGlass",
+      "i0_InnerCanopyFrame",
+      "pivot_017_CanopyFrame"
+    ],
+    "control surface": [
+      "i0_HorizStabs",
+      "i0_StarFlap",
+      "i0_StarFlapBottom",
+      "pivot_011_StarFlap",
+      "i0_PortFlap",
+      "i0_PortFlapBottom",
+      "pivot_012_PortFlap",
+      "i0_PortAileron",
+      "i0_PortAileronBottom",
+      "pivot_013_PortAileron",
+      "i0_StarAileron",
+      "i0_StarAileronBottom",
+      "pivot_014_StarAileron",
+      "i0_Rudder",
+      "i0_RudderLight",
+      "pivot_015_Rudder",
+      "i0_ElevatorBottoms",
+      "i0_Elevators",
+      "pivot_016_Elevators"
+    ],
+    "crew": [
+      "i0_PilotBody",
+      "i0_PilotHead",
+      "i0_PilotHead_node",
+      "i0_PilotHead_node_0",
+      "i0_PilotHead_node_1",
+      "i0_PilotHead_node_2",
+      "i0_PilotHead_node_3"
+    ],
+    "landing gear": [
+      "i0_PortLowerStrut_node",
+      "i0_PortTailGearDoor_node",
+      "i0_PortTire_node",
+      "i0_PortWheel_node",
+      "i0_PortWheel_node_0",
+      "i0_PortWheel_node_1",
+      "i0_StarLowerStrut_node",
+      "i0_StarTailGearDoor_node",
+      "i0_StarTire_node",
+      "i0_StarWheel_node",
+      "i0_StarWheel_node_0",
+      "i0_StarWheel_node_1",
+      "i0_TailWheel_node",
+      "i0_PortInnerGearDoor",
+      "i0_PortInnerGearDoor2",
+      "pivot_003_PortInnerGearDoor",
+      "i0_StarInnerGearDoor",
+      "i0_StarInnerGearDoor2",
+      "pivot_005_StarInnerGearDoor",
+      "i0_PortTailGearDoor",
+      "pivot_009_PortTailGearDoor",
+      "i0_StarTailGearDoor",
+      "pivot_010_StarTailGearDoor",
+      "i0_PortLowerStrut",
+      "i0_PortTire",
+      "i0_PortUpperStrut",
+      "i0_PortWheel",
+      "pivot_018_PortWheel",
+      "pivot_020_PortWheel",
+      "i0_StarLowerStrut",
+      "i0_StarTire",
+      "i0_StarUpperStrut",
+      "i0_StarWheel",
+      "pivot_019_StarWheel",
+      "pivot_021_StarWheel",
+      "i0_TailGearStrut",
+      "i0_TailLowerStrut",
+      "i0_TailWheel",
+      "pivot_006_TailLowerStrut",
+      "pivot_007_TailLowerStrut",
+      "pivot_008_TailGearStrut",
+      "pivot_022_TailWheel"
+    ],
+    "ground equipment": [
+      "i0_PortStrutCover_node",
+      "i0_StarStrutCover_node",
+      "i0_PortStrutCover",
+      "pivot_002_PortStrutCover",
+      "i0_StarStrutCover",
+      "pivot_004_StarStrutCover"
+    ],
+    "external stores": [
+      "i0_Pylons",
+      "i0_Tanks"
+    ],
+    "propeller/rotor": [
+      "i0_Prop",
+      "pivot_000_Prop",
+      "i0_Spinner",
+      "pivot_001_Spinner"
+    ],
+    "blur disc": [
+      "i16_fastpdisk",
+      "i16_slowpdisk",
+      "i16_pdisk"
+    ],
+    "lights": [
+      "i2_LightPack"
+    ]
+  },
+  "skipped": [
+    {
+      "name": "panel",
+      "file": "daVinci_P-51D/Models/Panel/panel.xml",
+      "why": "interior/effects sub-model"
+    },
+    {
+      "name": "LightPack",
+      "file": "daVinci_P-51D/Models/lights/LightPack.xml",
+      "why": "interior/effects sub-model"
+    },
+    {
+      "name": "cranking",
+      "file": "daVinci_P-51D/Models/Effects/cranking/cranking.xml",
+      "why": "interior/effects sub-model"
+    },
+    {
+      "name": "cranking",
+      "file": "daVinci_P-51D/Models/Effects/cranking/cranking.xml",
+      "why": "interior/effects sub-model"
+    },
+    {
+      "name": "cranking",
+      "file": "daVinci_P-51D/Models/Effects/cranking/cranking.xml",
+      "why": "interior/effects sub-model"
+    },
+    {
+      "name": "cranking",
+      "file": "daVinci_P-51D/Models/Effects/cranking/cranking.xml",
+      "why": "interior/effects sub-model"
+    },
+    {
+      "name": "ground2",
+      "file": "daVinci_P-51D/Models/Effects/ground/ground2.xml",
+      "why": "interior/effects sub-model"
+    },
+    {
+      "name": "ground1",
+      "file": "daVinci_P-51D/Models/Effects/ground/ground1.xml",
+      "why": "interior/effects sub-model"
+    },
+    {
+      "name": "ground0",
+      "file": "daVinci_P-51D/Models/Effects/ground/ground0.xml",
+      "why": "interior/effects sub-model"
+    },
+    {
+      "name": "exhaustsmoke",
+      "file": "daVinci_P-51D/Models/Effects/exhaustsmoke.xml",
+      "why": "interior/effects sub-model"
+    },
+    {
+      "name": "exhaustsmoke",
+      "file": "daVinci_P-51D/Models/Effects/exhaustsmoke.xml",
+      "why": "interior/effects sub-model"
+    },
+    {
+      "name": "contrail",
+      "file": "daVinci_P-51D/Models/Effects/contrail.xml",
+      "why": "interior/effects sub-model"
+    },
+    {
+      "name": "contrail",
+      "file": "daVinci_P-51D/Models/Effects/contrail.xml",
+      "why": "interior/effects sub-model"
+    },
+    {
+      "name": "Condensation-Left",
+      "file": "daVinci_P-51D/Models/Effects/Condensation-Left.xml",
+      "why": "interior/effects sub-model"
+    },
+    {
+      "name": "Condensation-Right",
+      "file": "daVinci_P-51D/Models/Effects/Condensation-Right.xml",
+      "why": "interior/effects sub-model"
+    },
+    {
+      "name": "smoke",
+      "file": "daVinci_P-51D/Particles/smoke.xml",
+      "why": "interior/effects sub-model"
+    }
+  ],
+  "glbSha256": "7e70423d5c01cad89251dee24caae4eedb1cf3ca470ff3e1f666a195a027c1a6"
+}

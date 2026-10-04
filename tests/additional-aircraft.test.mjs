@@ -33,6 +33,25 @@ for(const [id,file]of fixtures){
   const center=rig.mainRotor.mount.position.clone();rig.configure({...neutral,cyclicPitch:1,cyclicRoll:-1,collective:1});assert(rig.mainRotor.mount.position.equals(center));
   assert(rig.mainRotor.blades.every(b=>Math.abs(b.rotation.z-12*Math.PI/180)<1e-8));
   assert(!meshes.some(m=>m.visible&&/shadow|propblur|propdisc|HDR/.test(m.name)));
+  assert(rig.report.finish.smoothedMeshes>0);
+  const blade=find(root,`procedural_${id}_main_rotor_blade_1`),section=blade.geometry.attributes.position;
+  assert(section.count>700,'Rotor has a closed airfoil, not a box');
+  for(let i=0;i<section.count;i++)assert(Number.isFinite(section.getX(i))&&Number.isFinite(section.getY(i))&&Number.isFinite(section.getZ(i)));
+  assert(meshes.some(m=>m.name.includes('swashplate')&&m.visible));
+  assert(meshes.some(m=>m.name.startsWith('procedural_door_seal_')));
+  root.updateMatrixWorld(true);const shaft=rig.mainRotor.shaft.matrixWorld.clone();rig.configure({...neutral,cyclicPitch:1,cyclicRoll:1});root.updateMatrixWorld(true);assert(rig.mainRotor.shaft.matrixWorld.equals(shaft),'Main mast stays stationary during cyclic input');
+ }
+ if(id==='dauphin'){
+  for(const [side,pivot]of [['G','pivot_013_portecrewG'],['D','pivot_014_portecrewD']])assert.equal(find(root,'i0_vitrescrew'+side).parent,find(root,pivot),'Crew glazing follows its door');
+ }
+ if(id==='bo105'){
+  rig.configure(neutral);root.updateMatrixWorld(true);
+  const closed=rig.cargoDoors.map(d=>d.rest.node.quaternion.clone());
+  for(const name of ['i0_reardoor_L','i0_reardoor_R']){const box=new THREE.Box3().setFromObject(find(root,name));assert(box.min.z>-.81&&box.max.z<.81,'Closed cargo doors fit the fuselage');assert(box.min.x>3.5&&box.max.x<4.6);}
+  assert(!meshes.some(m=>m.visible&&/halo/.test(m.name)));
+  assert(!meshes.some(m=>m.visible&&(Array.isArray(m.material)?m.material:[m.material]).some(mat=>mat.map?.name==='livery')));
+  rig.configure({...neutral,cargoDoors:1});assert(rig.cargoDoors.every((d,i)=>d.rest.node.quaternion.angleTo(closed[i])>.9));
+  rig.configure(presetState(false));assert(rig.cargoDoors.every((d,i)=>d.rest.node.quaternion.angleTo(closed[i])<1e-7),'Flight preset closes cargo doors');
  }
  if(id==='eflash'){
   assert(rig.report.sailHeightCorrection>2);root.updateMatrixWorld(true);const sail=new THREE.Box3().setFromObject(find(root,'i0_Sail'));assert(sail.min.y>1.8&&sail.max.y<2.5);

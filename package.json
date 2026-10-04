@@ -5,8 +5,10 @@
   "type": "module",
   "scripts": {
     "build": "esbuild src/main.js --bundle --minify --format=esm --outfile=dist/game.js",
+    "predev": "npm run build",
     "dev": "node scripts/dev-server.mjs",
-    "test": "node tests/corsair.test.mjs && node tests/aircraft.test.mjs && node tests/caproni.test.mjs && node tests/additional-aircraft.test.mjs"
+    "test": "node --test tests/*.test.mjs",
+    "audit:flightgear": "node scripts/validate-flightgear.mjs"
   },
   "dependencies": {
     "three": "0.180.0"
