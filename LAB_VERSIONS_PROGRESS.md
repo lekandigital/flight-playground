@@ -22,7 +22,7 @@ For each aircraft: audit → pack/source/images → candidates/proportions → r
 | 6 | EC130 | Implemented; tests pass; final live evidence pending |
 | 7 | Bo 105 | Implemented; tests pass; live evidence pending |
 | 8 | E-Flash | Implemented; tests pass; live evidence pending |
-| 9 | Macchi M.33 | Pending |
+| 9 | Macchi M.33 | Implemented; tests pass; live evidence pending |
 | 10 | Supermarine S.6B | Pending |
 | 11 | Macchi M.C.72 | Pending |
 | 12 | Caproni Ca.60 | Pending |
@@ -586,3 +586,27 @@ Span exact FDM34.61 **FT** =10.549128m, actual10.54236m within0.1%. Original raw
 7. Category guesses misclassify Wing NoseCone as ground equipment.
 8. Source archive lacks referenced magnetoswitch texture; omitted cockpit-node texture bindings should be distinguished from visible exterior misses.
 9. Author RPM not supplied for electric model; do not fabricate a cruise RPM.
+
+### Macchi M.33 implementation and verification
+
+- [x] Guess audit, protected module, own source XML/FDM and intended images reviewed; actual GLB tests pass.
+- [x] Own clamped travel/signs/hinges, original propeller dimensions/RPM/source selectors, paint/default livery, fixed floats and pause tested.
+- [ ] Live presets/control endpoints/default livery and artifacts `artifacts/lab/m33-inspector.jpg`, `m33-compare.jpg` pending browser recovery.
+- [ ] Matching-camera supplied alternate render and final donor suitability decision.
+## M33 — ready
+
+Biggest corrections: individual ±15° ailerons/elevators and ±20° rudder replace shared16/12/10; source visual shaft hub−2.579/.789/0 and2500rpm replace baked speed multiplier; original red Default paint plus source1.7° water-contact pose replace generic material/pose behavior. Source XML `Models/m33.xml` exact point-axis hinges and spin group HeliceComplete rebuilt from bol/helice/propblur/propdisc. Keep original two blades: measuredØ1.74450 vsFDM1.74 (+0.26%). FDM thrust point−1.605m is not the visual hub. Source RPM selectors correctly transition to intermediate blur300–900rpm and disc above900rpm. All hidden meshes have reasons and remain independently revealable. M33 has no retractable gear and no invented cockpit-door control.
+
+Author intent inspected: `reference/flightgear/Macchi-M33_thumbnail.jpg`, red racing boat/tricolour fin; period photograph `reference/web/04_Macchi_M.33_on_ground.jpg`, correct high engine/strut/wing/hull and two-blade arrangement. Photo is monochrome, so exact red shade is not established; source download paint retained. [Period Macchi M.33 on ground](https://commons.wikimedia.org/wiki/File:Macchi_M.33_on_ground.jpg), public domain, uncredited. Pack references01/02/06 show different aircraft and must not be used as this plane's comparison. Prefer04 for side camera, or03/05 periodM33.
+
+Measurements in level flight:8.256398×9.983220×2.671694m vs8.55×9.74×2.68 (length−3.43%, span+2.50%, height−0.31%, all within5%). Source water contacts have unequal compression and are not verified static contact points; source1.7° is a water datum, not a tyre/trolley pose. No visual rescaling.
+
+Alternate: one supplied `man-macchi-m-33-e380e6ee`. Licence cleared by user's blanket instruction; no off-by-default restriction. Its overall dimensions8.256398×9.983221×2.671697 match base to micrometres, anonymous merged Object_8 family vs the base's source-separated exterior; no clearly better separate part found in geometry inventory. ROOT: render candidate from same camera before recording final no-borrow decision. Keep base sound geometry unless render exposes useful improved part.
+
+Remaining / lab requests: missing `m33-yasim-cnf.xml` and cockpit/pilot imported texture bindings; wind-driven dynamo's spin requires indicated airspeed (kept static; its source8×IAS animation is recorded, not replaced with engine spin). Verify water-contact datum against actual hull immersion. No exact historical red-shade claim.
+
+Suggested README row:
+`| Macchi M.33 · Lab | Own XML15/15/20° controls, exact point-axis hinges; original two-bladeØ1.744m shaft at−2.579/.789/0, source2500rpm and RPM blur selectors; original red Default sourcepaint and1.7° water datum. Level8.256×9.983×2.672m is within5% of8.55×9.74×2.68. [Period M.33](https://commons.wikimedia.org/wiki/File:Macchi_M.33_on_ground.jpg) and author thumbnail checked; source red retained because period photo is monochrome. [Compare](artifacts/lab/m33-compare.jpg). | Supplied manual M33 candidate matches base dimensions/outline; licence cleared by user, borrowing unnecessary if root visual confirms. Missing set include/indicative airspeed for dynamo, untrusted water contacts; no invented wheels/door. |`
+
+Progress completion text (live/candidate ticks only after root verifies): source XML and original named groups restored; initial default texture21 sourceobjects plus sanitized extra wing object recovered,27 binding applications; exact FDM source shaft diameter/RPM tests; all source controls bounded; separate surface signs tested;1.7° source pitch with water-datum caveat; original and alternative candidate compared; source Default option and pause verified.
+
