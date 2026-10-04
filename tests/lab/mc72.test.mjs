@@ -1,0 +1,8 @@
+import assert from 'node:assert/strict';import * as THREE from 'three';
+import {fixture} from './fixture.mjs';import {prepareMC72Lab} from '../../src/lab/mc72.js';import {checkSeaplane,near} from './seaplane-checks.mjs';import {labFind} from '../../src/lab/lab-tools.js';
+const f=await fixture('man-macchi-castoldi-mc72-6fa2f786');f.facts.runtimeTextureLoader=async url=>{const t=new THREE.Texture();t.name=url;t.flipY=false;t.colorSpace=THREE.SRGBColorSpace;return t;};
+const rig=await prepareMC72Lab(f.root,f.animations,f.facts);
+await checkSeaplane({...f,rig},{props:2,textures:24,float:'i0_floteurs',bladeNames:['i0_helice1','i0_helice2'],discNames:['i0_propdisc1','i0_propdisc2'],angle:a=>a.objects[0]==='tourvitre'?-162:a.channel==='rudder'?-15:a.channel==='aileron'&&/right-aileron/.test(a.property)?-15:15});
+near(rig.spins[0].origin.x,-3.285);near(rig.spins[1].origin.x,-3.583);assert(rig.spins[0].axis.dot(rig.spins[1].axis)<-.999999,'Contra-rotating source shaft axes');near(rig.spins[0].hinge.quaternion.x,-rig.spins[1].hinge.quaternion.x);assert.equal(rig.report.propellerBlades.reduce((s,n)=>s+n,0),4,'Fourtotalblades, notfourperprop');
+rig.configure({doors:1,engine:0});near(rig.bindings.find(b=>b.anim.objects[0]==='tourvitre').angle*180/Math.PI,-162);assert(labFind(f.root,'i0_vitres').visible&&!labFind(f.root,'i0_HDRvitres').visible);assert(rig.report.remaining.some(s=>s.includes('height')));
+console.log('MC72 Lab: source ±15° controls/162° cover, opposite two-blade source shafts/RPM/diameters, original red/brasspaint/glass, fixedfloats, qualifiedwaterpose/height,clamps/pause passed.');

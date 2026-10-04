@@ -632,3 +632,27 @@ Suggested README row:
 
 Progress completion text (live only after root verifies): exact XML hinges/signs, recovered factor×normalizedlimits,45° cover, original2-blade visualshaft/RPM/diameter, named Default sourcepaint and HDRglassselector, measuredproportions and4.99° qualifiedsourcefloatpose; no alternate files available.
 
+
+### Macchi-Castoldi M.C.72 implementation and verification
+
+- [x] Guess audit, protected module, own source XML/FDM and intended images reviewed; actual GLB tests pass.
+- [x] Own clamped travel/signs/hinges, original propeller dimensions/RPM/source selectors, paint/default livery, fixed floats and pause tested.
+- [ ] Live presets/control endpoints/default livery and artifacts `artifacts/lab/mc72-inspector.jpg`, `mc72-compare.jpg` pending browser recovery.
+- [x] No alternates supplied; licensing did not prevent borrowing.
+## MC72 — ready
+
+Biggest corrections: own±15° controls replace shared16/12/10; two individually rebuilt source shafts at−3.285/.53/0 and−3.583/.53/0, opposite+X/−X axes and1780rpm replace shared baked spin multiplier; source red/brass/silver Default paint,−162° cover and2.04° float-contact pose now supported. Four historical blades means two per propeller, not four on each. Actual original vertex diameters2.81105/2.75643 vs2.76 (+1.85%/−0.13%; both within3%). Keep source spinner/blade geometry. Source engine-index RPM thresholds select independent discs above1500rpm. Standardpane retained, HDRduplicate inactive/revealable.
+
+Canopy: provided `Models/mc72.xml` uses MPfloat0×−162; provided `Nasal/doors.nas` defines normalized crew door0..1. Missing `Systems/mc72-base.xml` prevents confirming multiplayer alias. Inspector deliberately supplies normalized0..1; use exact source factor and explicitqualification, never claim reconstructedNasal/MPFDMlogic.
+
+Author intent inspected: `reference/flightgear/Macchi-Castoldi-MC72_thumbnail.jpg`; museum `reference/web/03_2024-06-01-Museo-Vigna-di-Valle-Macchi-Castoldi-MC-72.jpg` agrees red finish, brass radiator panels and silverpropellers/floatlowerfinish. [Preserved M.C.72 museum photograph](https://commons.wikimedia.org/wiki/File:2024-06-01-Museo-Vigna-di-Valle-Macchi-Castoldi-MC-72.jpg), CC BY-SA4.0, Gunnar Klack. Prefer03 frontperspective or02 full side photo for compare. Other pack references05/06 are broad museum scenes, not usefulpaintauthority. No alternate models supplied; licensing did not prevent borrowing.
+
+Measured level8.252148×9.468851×3.520206m; supported historiclength8.32/span9.48 gives−0.82%/−0.12%, bothwithin1%. Height has no matchingpackhistoricalvalue; noheightwithin5%claim. Source2.04° waterdatumuntrusted, no inventedwheels/retraction.
+
+Remaining / lab requests: missing base include plusnormalizedMPdooralias andHDRstartupstate; export correctdoorchannelandbounddomain. Verifyfloat/waterdatum. Historicalheightmissing. SourceRPM mathmodelsvisualspin, not enginesounds/FSsystems.
+
+Suggested README row:
+`| Macchi-Castoldi M.C.72 · Lab | Own XML±15° controls; two original two-blade props with exact sourcehubs/opposite+X/−X axes/1780rpm; measuredØ2.811/2.756m vs2.76within3%. Original red/brass/silver Default paint and source−162° cover/standardglass. Length8.252/span9.469m within1% of8.32/9.48. [Preserved M.C.72](https://commons.wikimedia.org/wiki/File:2024-06-01-Museo-Vigna-di-Valle-Macchi-Castoldi-MC-72.jpg) and authorthumbnail checked. [Compare](artifacts/lab/mc72-compare.jpg). | No candidates supplied. Missing base/MPdooralias startup; inspector normalizeddoor0..1 qualification. Source2.04° is untrustedwaterdatum; historicalheightabsent, noheightaccuracyclaim. |`
+
+Progress completion text (live onlyafterroot): XML15°controls exacthinges/signs, separatecontra2-bladeshafts sourcehubs/RPM/diameter,162°canopy withnormalizedaliascaveat,sourceDefaultpaint/glassselectors, fixedfloats, length/spanspectests,2.04°qualifiedwaterpose.
+
