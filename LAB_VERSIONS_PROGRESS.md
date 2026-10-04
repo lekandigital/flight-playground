@@ -16,7 +16,7 @@ For each aircraft: audit → pack/source/images → candidates/proportions → r
 | --- | --- | --- |
 | 1 | Spitfire Mk Vb | Done; pose-qualified height reference requested |
 | 2 | Seafire Mk III | Done; source door/height review requested |
-| 3 | Corsair F4U-1 | Audit in progress |
+| 3 | Corsair F4U-1 | Done; source contact/taxi-spin defects recorded |
 | 4 | F-16 | Pending |
 | 5 | Dauphin | Pending |
 | 6 | EC130 | Pending |
@@ -437,3 +437,16 @@ The earlier read-only writeup above predates the user's licensing clearance and 
 - [x] README row and local per-aircraft commit
 
 Lab requests: identify a pose-qualified height reference; check exact source gear-door axis/lower edge, source-material UV projection near borrowed blade roots and supply exact donor licence metadata for archival provenance. These are recorded limitations, not licensing blockers.
+
+### Corsair completion
+
+- [x] Guess audit, source XML/set/FDM, intended thumbnail, museum F4U-1D photograph and F4U-1 three-view
+- [x] Base and alternate rendered; alternate is unrelated A-7E Corsair II jet. No accurate donor parts to borrow; licence clearance honored
+- [x] Original three-blade geometry, exact compound XML gear motions and independent source part hierarchy
+- [x] Real hook, source navy/marine textures and livery slots, three wheel contacts (exclude emergency belly contacts)
+- [x] Clamps, true wheel-bay containment, mirrored gear, asymmetric elevator travel, propeller radius, ground pitch, same-family proportions and hidden reasons
+- [x] Live controls at both extremes, gear cycling, parked/flight poses and both named liveries
+- [x] Inspector and matching model-camera/reference comparison images
+- [x] README and per-aircraft local commit; no push
+
+Primary dimension cross-check: Smithsonian F4U-1D record gives length10.2 m, span12.5 m and height4.6 m; pack describes F4U-4 and cannot be used as exact-variant evidence. The museum photo is a later F4U-1D family member, so canopy/markings are not copied blindly. Three blades and gull-wing layout agree. Source typo hook lateral coordinate is corrected to FDM/mesh centreline. Source right wheel spin centre/property and wheel contact-to-mesh discrepancies are recorded; static gear rig does not animate taxi spin or compression. Glass and RPM blur remain explicitly documented rendering adaptations.
