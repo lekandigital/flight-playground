@@ -26,7 +26,7 @@ The original package/lockfile pins Three.js 0.180.0 and esbuild 0.25.10. Three.j
 
 ## Deploy independently
 
-Run `npm install` and `npm run build`, then publish the contents of `dist/` on any static-site host. Serve `dist/` as the website root: the page uses root-relative `/game.js`, `/style.css`, and `/models/` paths. No ChatGPT service, API credentials, or third-party asset CDN is needed.
+Run `npm install` and `npm run build`, then publish the contents of `dist/` on any static-site host. Serve `dist/` at a site root or under any subpath (such as `/flight-playground/`): the page loads `game.js`, `style.css`, `models/`, `lab/` and `flightgear/` with relative URLs. No ChatGPT service, API credentials, or third-party asset CDN is needed.
 
 ## Aircraft
 

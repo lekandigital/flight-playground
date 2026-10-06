@@ -6,7 +6,7 @@ import {quarantine} from './lab-tools.js';
 // its shaft, spinner, diameter, RPM, visibility rules and paint atlas.
 export async function borrowFourBladePropeller(root,facts,original){
  const file='parts/rotol-four-blade.json';
- const data=facts.runtimeGeometryLoader?await facts.runtimeGeometryLoader(file):await fetch(`/lab/${facts.asset_id}/${file}`).then(r=>{if(!r.ok)throw Error('Missing cleared donor propeller');return r.json();});
+ const data=facts.runtimeGeometryLoader?await facts.runtimeGeometryLoader(file):await fetch(`lab/${facts.asset_id}/${file}`).then(r=>{if(!r.ok)throw Error('Missing cleared donor propeller');return r.json();});
  const geometry=new THREE.BufferGeometryLoader().parse(data.geometry),position=geometry.attributes.position;
  const bounds=new THREE.Box3().setFromBufferAttribute(position),diameter=facts.fdm_geometry.propellers[0].radius_m*2;
  const center=new THREE.Vector3(0,0,(bounds.min.z+bounds.max.z)/2),scale=diameter/(2*Math.max(Math.abs(bounds.min.x),Math.abs(bounds.max.x),Math.abs(bounds.min.y),Math.abs(bounds.max.y)));

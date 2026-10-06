@@ -4,7 +4,7 @@ import {aircraftPropeller,helicopterRotor} from '../rotors.js';
 
 const factCache=new Map(),textureCache=new Map();
 export async function loadFacts(assetId){
- if(!factCache.has(assetId))factCache.set(assetId,fetch(`/lab/${assetId}/facts.json`).then(r=>{if(!r.ok)throw new Error(`Missing Lab facts: ${assetId}`);return r.json();}));
+ if(!factCache.has(assetId))factCache.set(assetId,fetch(`lab/${assetId}/facts.json`).then(r=>{if(!r.ok)throw new Error(`Missing Lab facts: ${assetId}`);return r.json();}));
  return factCache.get(assetId);
 }
 export function interp(table,x){
@@ -215,9 +215,9 @@ export async function makeXmlRig(root,animations,facts,options={}){
  function update(dt,state,active,paused){if(paused)return;const targets=options.flightTargets?.(state,active)??Object.fromEntries(['aileron','elevator','rudder'].map(key=>[key,active?clamp((key==='elevator'?state.pitch/.58:state.roll/.65),-1,1):0]));for(const[key,target]of Object.entries(targets))current[key]=(current[key]??0)+(target-(current[key]??0))*(1-Math.exp(-dt*7));current.engine=active?clamp(state.throttle,0,1):0;configure(current);spin(dt,current.engine);}
  configure(current);
  const testLoader=facts.runtimeTextureLoader?{loader:facts.runtimeTextureLoader}:{};
- const textures=await applyTextures(root,facts,`/lab/${facts.asset_id}`,{...options.textureOptions,...testLoader});
+ const textures=await applyTextures(root,facts,`lab/${facts.asset_id}`,{...options.textureOptions,...testLoader});
  options.finishMaterials?.(root);
- const liveries=liverySwitch(root,facts,`/lab/${facts.asset_id}`,{...options.liveryOptions,...testLoader});
+ const liveries=liverySwitch(root,facts,`lab/${facts.asset_id}`,{...options.liveryOptions,...testLoader});
  const fields=options.fields??['gear','canopy','flaps','aileron','elevator','rudder','engine'];
  const report={originalAnimationDisabled:true,lab:true,frameError,bindings,skipped,textures,eyePoint:facts.eye_point,sounds:facts.sounds_copied,nasalFiles:facts.nasal_files,limitsDegrees:options.limits??{},summary:options.summary??'Lab: original-download XML rig and paint; see progress notes.'};
  return{configure,spin,update,bindings,spins,fields,liveries,report,groundRoot:root,groundContacts:facts.fdm_geometry?.gear_contacts?.filter(c=>c.glb&&c.is_wheel!==false),groundPitch:options.groundPitch??contactsPitch(facts),bounds:()=>visibleBounds(root),isSeaplane:!!options.isSeaplane,...options.rigExtras};

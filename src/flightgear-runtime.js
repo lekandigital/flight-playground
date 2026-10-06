@@ -148,8 +148,8 @@ export function prepareFlightGear(root,data,options={}) {
  // exactly the same external files without a browser or GPU.
  const textureCache=new Map(),loadTexture=options.loadTexture||((url)=>new T.TextureLoader().loadAsync(url));
  async function texture(file){
-  if(!textureCache.has(file))textureCache.set(file,loadTexture('/flightgear/'+options.id+'/'+file).then(t=>{
-   t.name=file;t.userData.sourceFile='/flightgear/'+options.id+'/'+file;t.colorSpace=T.SRGBColorSpace;t.flipY=false;t.anisotropy=8;return t;
+  if(!textureCache.has(file))textureCache.set(file,loadTexture('flightgear/'+options.id+'/'+file).then(t=>{
+   t.name=file;t.userData.sourceFile='flightgear/'+options.id+'/'+file;t.colorSpace=T.SRGBColorSpace;t.flipY=false;t.anisotropy=8;return t;
   }).catch(e=>{textureCache.delete(file);throw e;}));
   return textureCache.get(file);
  }

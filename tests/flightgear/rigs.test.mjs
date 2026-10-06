@@ -123,7 +123,7 @@ test('A slow earlier paint request cannot replace the latest daVinci livery',asy
  hold=true;
  const first=rig.setLivery(1),latest=rig.setLivery(2);
  const complete=index=>{
-  const files=new Set(Object.values(rig.liveries[index].files).map(f=>'/flightgear/p51davinci/'+f));
+  const files=new Set(Object.values(rig.liveries[index].files).map(f=>'flightgear/p51davinci/'+f));
   for(const [url,resolve] of held)if(files.has(url)){resolve();held.delete(url);}
  };
  complete(2);await latest;assert.equal(rig.getLivery(),2);
