@@ -1,0 +1,8019 @@
+{
+  "asset_id": "fg-e-flash-c73b47ce",
+  "title": "e-flash",
+  "frame": {
+    "glb_axes": "glTF: +y up, metres",
+    "flightgear_axes": "x aft, y right, z up (metres)",
+    "fg_to_glb": {
+      "map": "x=fgX, y=fgZ, z=-fgY",
+      "median_error_m": 0.08,
+      "samples": 5,
+      "trusted": false,
+      "left_right_check": [],
+      "note": "z of parts named L/R under this map; FlightGear's left is -y (so +z here when z=-fgY)"
+    },
+    "nose_points": "-x",
+    "note": "verified by matching XML hinge centres to the GLB's pivot_ nodes"
+  },
+  "size_m": {
+    "min": [
+      -0.99,
+      -1.601,
+      -5.271
+    ],
+    "max": [
+      12.028,
+      3.977,
+      5.271
+    ],
+    "size": [
+      13.018,
+      5.578,
+      10.542
+    ]
+  },
+  "real_world_specs": {
+    "article": "https://en.wikipedia.org/wiki/Ultralight_trike",
+    "note": "no dimensions in this article; take them from the type's own article or a reference"
+  },
+  "fdm_geometry": {
+    "flight_model": "jsb",
+    "file": "e-flash.xml",
+    "gear_contacts": [
+      {
+        "name": "NOSE",
+        "fg_m": [
+          0.272034,
+          0,
+          -0.38988999999999996
+        ],
+        "retracts": false,
+        "steers": true,
+        "glb": [
+          0.272,
+          -0.3899,
+          0
+        ],
+        "nearest_gear_node": "i0_NoseWheel",
+        "distance_m": 0.228,
+        "node_bottom_y": -0.343,
+        "is_wheel": true
+      },
+      {
+        "name": "LEFT_MAIN",
+        "fg_m": [
+          2.54,
+          -0.85725,
+          -0.43815
+        ],
+        "retracts": false,
+        "steers": false,
+        "glb": [
+          2.54,
+          -0.4381,
+          0.8572
+        ],
+        "nearest_gear_node": "i0_NoseWheel",
+        "distance_m": 1.968,
+        "node_bottom_y": -0.343,
+        "is_wheel": false
+      },
+      {
+        "name": "RIGHT_MAIN",
+        "fg_m": [
+          2.54,
+          0.85725,
+          -0.43815
+        ],
+        "retracts": false,
+        "steers": false,
+        "glb": [
+          2.54,
+          -0.4381,
+          -0.8572
+        ],
+        "nearest_gear_node": "i0_NoseWheel",
+        "distance_m": 1.969,
+        "node_bottom_y": -0.343,
+        "is_wheel": false
+      }
+    ],
+    "propellers": [
+      {
+        "fg_m": [
+          2.44475,
+          0,
+          0.635
+        ],
+        "file": "my_propeller",
+        "diameter_m": 1.5697,
+        "blades": 3,
+        "glb": [
+          2.4447,
+          0.635,
+          0
+        ]
+      }
+    ],
+    "rotors": [],
+    "files": [
+      "e-flash/e-flash.xml",
+      "e-flash/Engines/my_propeller.xml"
+    ],
+    "gear_contacts_trusted": false,
+    "parked_pitch_deg_nose_up": -1.22
+  },
+  "animations_from_xml": [
+    {
+      "type": "rotate",
+      "objects": [
+        "NoseWheel",
+        "NoseStrut"
+      ],
+      "glb_nodes": [
+        "i0_NoseStrut",
+        "i0_NoseWheel",
+        "pivot_001_NoseWheel"
+      ],
+      "property": "surface-positions/rudder-pos-norm",
+      "channel": "gear",
+      "factor": "20",
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          -0.2,
+          0,
+          1
+        ]
+      },
+      "fg_center_m": [
+        0.24,
+        0,
+        -0.22
+      ],
+      "travel": [
+        -20,
+        20
+      ],
+      "travel_source": "factor x property range (-1..1)",
+      "glb_center": [
+        0.24,
+        -0.22,
+        0
+      ],
+      "glb_axis_dir": [
+        -0.2,
+        1,
+        0
+      ],
+      "source_xml": "e-flash/Models/e-flash.xml",
+      "offsetUnits": null,
+      "sourceIndex": 0
+    },
+    {
+      "type": "spin",
+      "objects": [
+        "NoseWheel"
+      ],
+      "glb_nodes": [
+        "i0_NoseWheel",
+        "pivot_001_NoseWheel"
+      ],
+      "property": "gear/gear[0]/rollspeed-ms",
+      "channel": "gear",
+      "factor": "-75.548",
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          0,
+          1,
+          0
+        ]
+      },
+      "fg_center_m": [
+        0.2443,
+        0,
+        -0.2161
+      ],
+      "travel": null,
+      "travel_source": "spin",
+      "glb_center": [
+        0.2443,
+        -0.2161,
+        0
+      ],
+      "glb_axis_dir": [
+        0,
+        0,
+        -1
+      ],
+      "source_xml": "e-flash/Models/e-flash.xml",
+      "offsetUnits": null,
+      "sourceIndex": 1
+    },
+    {
+      "type": "spin",
+      "objects": [
+        "Prop"
+      ],
+      "glb_nodes": [
+        "i0_Prop",
+        "pivot_002_Prop"
+      ],
+      "property": "engines/engine[0]/rpm",
+      "channel": "prop",
+      "factor": "-1",
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          1,
+          0,
+          0
+        ]
+      },
+      "fg_center_m": [
+        2.4,
+        0,
+        0.55
+      ],
+      "travel": null,
+      "travel_source": "spin",
+      "glb_center": [
+        2.4,
+        0.55,
+        0
+      ],
+      "glb_axis_dir": [
+        1,
+        0,
+        0
+      ],
+      "source_xml": "e-flash/Models/e-flash.xml",
+      "offsetUnits": null,
+      "sourceIndex": 2
+    },
+    {
+      "type": "rotate",
+      "objects": [
+        "Wing",
+        "ControlBar",
+        "ControlBar2",
+        "Rudder",
+        "KingPost",
+        "WingKeel",
+        "ControlBarStrap",
+        "ControlBarBolt1",
+        "ControlBarBolt2",
+        "HangStrap",
+        "Trike",
+        "asi",
+        "alt",
+        "gps",
+        "fcu",
+        "Pilot",
+        "Passenger"
+      ],
+      "glb_nodes": [
+        "i0_ControlBar",
+        "i0_ControlBar2",
+        "i0_ControlBarBolt1",
+        "i0_ControlBarBolt2",
+        "i0_ControlBarStrap",
+        "i0_HangStrap",
+        "i0_KingPost",
+        "i0_Passenger",
+        "i0_Pilot",
+        "i0_Rudder",
+        "i0_Trike",
+        "i0_Wing"
+      ],
+      "property": "",
+      "channel": "rudder",
+      "factor": null,
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          1,
+          0,
+          0
+        ]
+      },
+      "fg_center_m": [
+        1.55,
+        0,
+        2.04
+      ],
+      "travel": null,
+      "travel_source": "expression: read the XML in source/",
+      "glb_center": [
+        1.55,
+        2.04,
+        0
+      ],
+      "glb_axis_dir": [
+        1,
+        0,
+        0
+      ],
+      "source_xml": "e-flash/Models/e-flash.xml",
+      "expression": {
+        "op": "expression",
+        "text": "",
+        "children": [
+          {
+            "op": "product",
+            "text": "",
+            "children": [
+              {
+                "op": "property",
+                "text": "surface-positions/left-aileron-pos-norm",
+                "children": []
+              },
+              {
+                "op": "property",
+                "text": "sim/model/flash2a/on_ground",
+                "children": []
+              },
+              {
+                "op": "value",
+                "text": "-15",
+                "children": []
+              },
+              {
+                "op": "value",
+                "text": "1",
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      "offsetUnits": null,
+      "sourceIndex": 3
+    },
+    {
+      "type": "rotate",
+      "objects": [
+        "HangStrap",
+        "Trike",
+        "asi",
+        "alt",
+        "gps",
+        "fcu",
+        "Pilot",
+        "Passenger"
+      ],
+      "glb_nodes": [
+        "i0_HangStrap",
+        "i0_Passenger",
+        "i0_Pilot",
+        "i0_Trike",
+        "i1_asi",
+        "i2_alt",
+        "i3_fcu"
+      ],
+      "property": "surface-positions/left-aileron-pos-norm",
+      "channel": "aileron",
+      "factor": "15",
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          1,
+          0,
+          0
+        ]
+      },
+      "fg_center_m": [
+        1.55,
+        0,
+        2.04
+      ],
+      "travel": [
+        -15,
+        15
+      ],
+      "travel_source": "factor x property range (-1..1)",
+      "glb_center": [
+        1.55,
+        2.04,
+        0
+      ],
+      "glb_axis_dir": [
+        1,
+        0,
+        0
+      ],
+      "source_xml": "e-flash/Models/e-flash.xml",
+      "offsetUnits": null,
+      "sourceIndex": 4
+    },
+    {
+      "type": "rotate",
+      "objects": [
+        "Wing",
+        "ControlBar",
+        "ControlBar2",
+        "Rudder",
+        "KingPost",
+        "WingKeel",
+        "ControlBarStrap",
+        "ControlBarBolt1",
+        "ControlBarBolt2",
+        "HangStrap",
+        "Trike",
+        "asi",
+        "alt",
+        "gps",
+        "fcu",
+        "Pilot",
+        "Passenger"
+      ],
+      "glb_nodes": [
+        "i0_ControlBar",
+        "i0_ControlBar2",
+        "i0_ControlBarBolt1",
+        "i0_ControlBarBolt2",
+        "i0_ControlBarStrap",
+        "i0_HangStrap",
+        "i0_KingPost",
+        "i0_Passenger",
+        "i0_Pilot",
+        "i0_Rudder",
+        "i0_Trike",
+        "i0_Wing"
+      ],
+      "property": "",
+      "channel": "rudder",
+      "factor": null,
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          0,
+          1,
+          0
+        ]
+      },
+      "fg_center_m": [
+        1.55,
+        0,
+        1.96
+      ],
+      "travel": null,
+      "travel_source": "expression: read the XML in source/",
+      "glb_center": [
+        1.55,
+        1.96,
+        0
+      ],
+      "glb_axis_dir": [
+        0,
+        0,
+        -1
+      ],
+      "source_xml": "e-flash/Models/e-flash.xml",
+      "expression": {
+        "op": "expression",
+        "text": "",
+        "children": [
+          {
+            "op": "table",
+            "text": "",
+            "children": [
+              {
+                "op": "product",
+                "text": "",
+                "children": [
+                  {
+                    "op": "property",
+                    "text": "surface-positions/elevator-pos-norm",
+                    "children": []
+                  },
+                  {
+                    "op": "property",
+                    "text": "sim/model/flash2a/on_ground",
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "op": "entry",
+                "text": "",
+                "children": [
+                  {
+                    "op": "ind",
+                    "text": "-1.0",
+                    "children": []
+                  },
+                  {
+                    "op": "dep",
+                    "text": "-6",
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "op": "entry",
+                "text": "",
+                "children": [
+                  {
+                    "op": "ind",
+                    "text": "0.0",
+                    "children": []
+                  },
+                  {
+                    "op": "dep",
+                    "text": "3",
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "op": "entry",
+                "text": "",
+                "children": [
+                  {
+                    "op": "ind",
+                    "text": "1.0",
+                    "children": []
+                  },
+                  {
+                    "op": "dep",
+                    "text": "12",
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "offsetUnits": null,
+      "sourceIndex": 5
+    },
+    {
+      "type": "rotate",
+      "objects": [
+        "Trike",
+        "asi",
+        "alt",
+        "gps",
+        "fcu",
+        "Pilot",
+        "Passenger"
+      ],
+      "glb_nodes": [
+        "i0_Passenger",
+        "i0_Pilot",
+        "i0_Trike",
+        "i1_asi",
+        "i2_alt",
+        "i3_fcu"
+      ],
+      "property": "surface-positions/elevator-pos-norm",
+      "channel": "elevator",
+      "factor": null,
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          0,
+          1,
+          0
+        ]
+      },
+      "fg_center_m": [
+        1.55,
+        0,
+        1.96
+      ],
+      "travel": [
+        -12,
+        6
+      ],
+      "travel_source": "interpolation table",
+      "interpolation": [
+        [
+          -1,
+          6
+        ],
+        [
+          0,
+          -3
+        ],
+        [
+          1,
+          -12
+        ]
+      ],
+      "glb_center": [
+        1.55,
+        1.96,
+        0
+      ],
+      "glb_axis_dir": [
+        0,
+        0,
+        -1
+      ],
+      "source_xml": "e-flash/Models/e-flash.xml",
+      "offsetUnits": null,
+      "sourceIndex": 6
+    },
+    {
+      "type": "rotate",
+      "objects": [
+        "Larm",
+        "Lforearm",
+        "Lhand"
+      ],
+      "glb_nodes": [
+        "i0_Larm",
+        "i0_Lforearm",
+        "i0_Lhand"
+      ],
+      "property": "surface-positions/elevator-pos-norm",
+      "channel": "elevator",
+      "factor": null,
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          -0.1,
+          1,
+          -0.5
+        ]
+      },
+      "fg_center_m": [
+        1.306,
+        -0.1698,
+        0.6302
+      ],
+      "travel": [
+        -40,
+        70
+      ],
+      "travel_source": "interpolation table",
+      "interpolation": [
+        [
+          -1,
+          -40
+        ],
+        [
+          0,
+          15
+        ],
+        [
+          1,
+          70
+        ]
+      ],
+      "glb_center": [
+        1.306,
+        0.6302,
+        0.1698
+      ],
+      "glb_axis_dir": [
+        -0.1,
+        -0.5,
+        -1
+      ],
+      "source_xml": "e-flash/Models/e-flash.xml",
+      "offsetUnits": null,
+      "sourceIndex": 7
+    },
+    {
+      "type": "rotate",
+      "objects": [
+        "Larm",
+        "Lforearm",
+        "Lhand"
+      ],
+      "glb_nodes": [
+        "i0_Larm",
+        "i0_Lforearm",
+        "i0_Lhand"
+      ],
+      "property": "surface-positions/left-aileron-pos-norm",
+      "channel": "aileron",
+      "factor": null,
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          1,
+          0,
+          0
+        ]
+      },
+      "fg_center_m": [
+        1.306,
+        -0.1698,
+        0.6302
+      ],
+      "travel": [
+        -30,
+        40
+      ],
+      "travel_source": "interpolation table",
+      "interpolation": [
+        [
+          -1,
+          40
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          -30
+        ]
+      ],
+      "glb_center": [
+        1.306,
+        0.6302,
+        0.1698
+      ],
+      "glb_axis_dir": [
+        1,
+        0,
+        0
+      ],
+      "source_xml": "e-flash/Models/e-flash.xml",
+      "offsetUnits": null,
+      "sourceIndex": 8
+    },
+    {
+      "type": "rotate",
+      "objects": [
+        "Larm",
+        "Lforearm",
+        "Lhand"
+      ],
+      "glb_nodes": [
+        "i0_Larm",
+        "i0_Lforearm",
+        "i0_Lhand"
+      ],
+      "property": "surface-positions/left-aileron-pos-norm",
+      "channel": "aileron",
+      "factor": null,
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          0,
+          1,
+          -0.5
+        ]
+      },
+      "fg_center_m": [
+        1.306,
+        -0.1698,
+        0.6302
+      ],
+      "travel": [
+        0,
+        10
+      ],
+      "travel_source": "interpolation table",
+      "interpolation": [
+        [
+          -1,
+          10
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          8
+        ]
+      ],
+      "glb_center": [
+        1.306,
+        0.6302,
+        0.1698
+      ],
+      "glb_axis_dir": [
+        0,
+        -0.5,
+        -1
+      ],
+      "source_xml": "e-flash/Models/e-flash.xml",
+      "offsetUnits": null,
+      "sourceIndex": 9
+    },
+    {
+      "type": "rotate",
+      "objects": [
+        "Larm",
+        "Lforearm",
+        "Lhand"
+      ],
+      "glb_nodes": [
+        "i0_Larm",
+        "i0_Lforearm",
+        "i0_Lhand"
+      ],
+      "property": "surface-positions/left-aileron-pos-norm",
+      "channel": "aileron",
+      "factor": null,
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          0,
+          0.5,
+          1
+        ]
+      },
+      "fg_center_m": [
+        1.306,
+        -0.1698,
+        0.6302
+      ],
+      "travel": [
+        0,
+        30
+      ],
+      "travel_source": "interpolation table",
+      "interpolation": [
+        [
+          -1,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          30
+        ]
+      ],
+      "glb_center": [
+        1.306,
+        0.6302,
+        0.1698
+      ],
+      "glb_axis_dir": [
+        0,
+        1,
+        -0.5
+      ],
+      "source_xml": "e-flash/Models/e-flash.xml",
+      "offsetUnits": null,
+      "sourceIndex": 10
+    },
+    {
+      "type": "rotate",
+      "objects": [
+        "Lforearm",
+        "Lhand"
+      ],
+      "glb_nodes": [
+        "i0_Lforearm",
+        "i0_Lhand"
+      ],
+      "property": "surface-positions/left-aileron-pos-norm",
+      "channel": "aileron",
+      "factor": null,
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          0,
+          1,
+          -0.5
+        ]
+      },
+      "fg_center_m": [
+        1.3617,
+        -0.3298,
+        0.389
+      ],
+      "travel": [
+        -30,
+        0
+      ],
+      "travel_source": "interpolation table",
+      "interpolation": [
+        [
+          -1,
+          -10
+        ],
+        [
+          -0.5,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          -30
+        ]
+      ],
+      "glb_center": [
+        1.3617,
+        0.389,
+        0.3298
+      ],
+      "glb_axis_dir": [
+        0,
+        -0.5,
+        -1
+      ],
+      "source_xml": "e-flash/Models/e-flash.xml",
+      "offsetUnits": null,
+      "sourceIndex": 11
+    },
+    {
+      "type": "rotate",
+      "objects": [
+        "Lforearm",
+        "Lhand"
+      ],
+      "glb_nodes": [
+        "i0_Lforearm",
+        "i0_Lhand"
+      ],
+      "property": "surface-positions/elevator-pos-norm",
+      "channel": "elevator",
+      "factor": null,
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          0,
+          1,
+          -0.5
+        ]
+      },
+      "fg_center_m": [
+        1.3617,
+        -0.3298,
+        0.389
+      ],
+      "travel": [
+        -70,
+        16
+      ],
+      "travel_source": "interpolation table",
+      "interpolation": [
+        [
+          -1,
+          16
+        ],
+        [
+          0,
+          -7
+        ],
+        [
+          0.5,
+          -28
+        ],
+        [
+          1,
+          -70
+        ]
+      ],
+      "glb_center": [
+        1.3617,
+        0.389,
+        0.3298
+      ],
+      "glb_axis_dir": [
+        0,
+        -0.5,
+        -1
+      ],
+      "source_xml": "e-flash/Models/e-flash.xml",
+      "offsetUnits": null,
+      "sourceIndex": 12
+    },
+    {
+      "type": "rotate",
+      "objects": [
+        "Lhand"
+      ],
+      "glb_nodes": [
+        "i0_Lhand"
+      ],
+      "property": "surface-positions/left-aileron-pos-norm",
+      "channel": "aileron",
+      "factor": null,
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          1,
+          0,
+          0
+        ]
+      },
+      "fg_center_m": [
+        1.1624,
+        -0.3226,
+        0.4232
+      ],
+      "travel": [
+        -20,
+        0
+      ],
+      "travel_source": "interpolation table",
+      "interpolation": [
+        [
+          -1,
+          -20
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          -10
+        ]
+      ],
+      "glb_center": [
+        1.1624,
+        0.4232,
+        0.3226
+      ],
+      "glb_axis_dir": [
+        1,
+        0,
+        0
+      ],
+      "source_xml": "e-flash/Models/e-flash.xml",
+      "offsetUnits": null,
+      "sourceIndex": 13
+    },
+    {
+      "type": "rotate",
+      "objects": [
+        "Rarm",
+        "Rforearm",
+        "Rhand"
+      ],
+      "glb_nodes": [
+        "i0_Rarm",
+        "i0_Rforearm",
+        "i0_Rhand"
+      ],
+      "property": "surface-positions/elevator-pos-norm",
+      "channel": "elevator",
+      "factor": null,
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          -0.1,
+          -1,
+          -0.5
+        ]
+      },
+      "fg_center_m": [
+        1.306,
+        0.1698,
+        0.6302
+      ],
+      "travel": [
+        -70,
+        40
+      ],
+      "travel_source": "interpolation table",
+      "interpolation": [
+        [
+          -1,
+          40
+        ],
+        [
+          0,
+          -15
+        ],
+        [
+          1,
+          -70
+        ]
+      ],
+      "glb_center": [
+        1.306,
+        0.6302,
+        -0.1698
+      ],
+      "glb_axis_dir": [
+        -0.1,
+        -0.5,
+        1
+      ],
+      "source_xml": "e-flash/Models/e-flash.xml",
+      "offsetUnits": null,
+      "sourceIndex": 14
+    },
+    {
+      "type": "rotate",
+      "objects": [
+        "Rarm",
+        "Rforearm",
+        "Rhand"
+      ],
+      "glb_nodes": [
+        "i0_Rarm",
+        "i0_Rforearm",
+        "i0_Rhand"
+      ],
+      "property": "surface-positions/left-aileron-pos-norm",
+      "channel": "aileron",
+      "factor": null,
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          1,
+          0,
+          0
+        ]
+      },
+      "fg_center_m": [
+        1.306,
+        0.1698,
+        0.6302
+      ],
+      "travel": [
+        -40,
+        30
+      ],
+      "travel_source": "interpolation table",
+      "interpolation": [
+        [
+          -1,
+          30
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          -40
+        ]
+      ],
+      "glb_center": [
+        1.306,
+        0.6302,
+        -0.1698
+      ],
+      "glb_axis_dir": [
+        1,
+        0,
+        0
+      ],
+      "source_xml": "e-flash/Models/e-flash.xml",
+      "offsetUnits": null,
+      "sourceIndex": 15
+    },
+    {
+      "type": "rotate",
+      "objects": [
+        "Rarm",
+        "Rforearm",
+        "Rhand"
+      ],
+      "glb_nodes": [
+        "i0_Rarm",
+        "i0_Rforearm",
+        "i0_Rhand"
+      ],
+      "property": "surface-positions/left-aileron-pos-norm",
+      "channel": "aileron",
+      "factor": null,
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          0,
+          -1,
+          -0.5
+        ]
+      },
+      "fg_center_m": [
+        1.306,
+        0.1698,
+        0.6302
+      ],
+      "travel": [
+        -10,
+        0
+      ],
+      "travel_source": "interpolation table",
+      "interpolation": [
+        [
+          -1,
+          -8
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          -10
+        ]
+      ],
+      "glb_center": [
+        1.306,
+        0.6302,
+        -0.1698
+      ],
+      "glb_axis_dir": [
+        0,
+        -0.5,
+        1
+      ],
+      "source_xml": "e-flash/Models/e-flash.xml",
+      "offsetUnits": null,
+      "sourceIndex": 16
+    },
+    {
+      "type": "rotate",
+      "objects": [
+        "Rarm",
+        "Rforearm",
+        "Rhand"
+      ],
+      "glb_nodes": [
+        "i0_Rarm",
+        "i0_Rforearm",
+        "i0_Rhand"
+      ],
+      "property": "surface-positions/left-aileron-pos-norm",
+      "channel": "aileron",
+      "factor": null,
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          0,
+          -0.5,
+          1
+        ]
+      },
+      "fg_center_m": [
+        1.306,
+        0.1698,
+        0.6302
+      ],
+      "travel": [
+        -30,
+        0
+      ],
+      "travel_source": "interpolation table",
+      "interpolation": [
+        [
+          -1,
+          -30
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "glb_center": [
+        1.306,
+        0.6302,
+        -0.1698
+      ],
+      "glb_axis_dir": [
+        0,
+        1,
+        0.5
+      ],
+      "source_xml": "e-flash/Models/e-flash.xml",
+      "offsetUnits": null,
+      "sourceIndex": 17
+    },
+    {
+      "type": "rotate",
+      "objects": [
+        "Rforearm",
+        "Rhand"
+      ],
+      "glb_nodes": [
+        "i0_Rforearm",
+        "i0_Rhand"
+      ],
+      "property": "surface-positions/left-aileron-pos-norm",
+      "channel": "aileron",
+      "factor": null,
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          0,
+          -1,
+          -0.5
+        ]
+      },
+      "fg_center_m": [
+        1.3617,
+        0.3298,
+        0.389
+      ],
+      "travel": [
+        0,
+        30
+      ],
+      "travel_source": "interpolation table",
+      "interpolation": [
+        [
+          -1,
+          30
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0.5,
+          0
+        ],
+        [
+          1,
+          10
+        ]
+      ],
+      "glb_center": [
+        1.3617,
+        0.389,
+        -0.3298
+      ],
+      "glb_axis_dir": [
+        0,
+        -0.5,
+        1
+      ],
+      "source_xml": "e-flash/Models/e-flash.xml",
+      "offsetUnits": null,
+      "sourceIndex": 18
+    },
+    {
+      "type": "rotate",
+      "objects": [
+        "Rforearm",
+        "Rhand"
+      ],
+      "glb_nodes": [
+        "i0_Rforearm",
+        "i0_Rhand"
+      ],
+      "property": "surface-positions/elevator-pos-norm",
+      "channel": "elevator",
+      "factor": null,
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          0,
+          -1,
+          -0.5
+        ]
+      },
+      "fg_center_m": [
+        1.3617,
+        0.3298,
+        0.389
+      ],
+      "travel": [
+        -16,
+        70
+      ],
+      "travel_source": "interpolation table",
+      "interpolation": [
+        [
+          -1,
+          -16
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          0.5,
+          28
+        ],
+        [
+          1,
+          70
+        ]
+      ],
+      "glb_center": [
+        1.3617,
+        0.389,
+        -0.3298
+      ],
+      "glb_axis_dir": [
+        0,
+        -0.5,
+        1
+      ],
+      "source_xml": "e-flash/Models/e-flash.xml",
+      "offsetUnits": null,
+      "sourceIndex": 19
+    },
+    {
+      "type": "rotate",
+      "objects": [
+        "Rhand"
+      ],
+      "glb_nodes": [
+        "i0_Rhand"
+      ],
+      "property": "surface-positions/left-aileron-pos-norm",
+      "channel": "aileron",
+      "factor": null,
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          1,
+          0,
+          0
+        ]
+      },
+      "fg_center_m": [
+        1.1624,
+        0.3226,
+        0.4232
+      ],
+      "travel": [
+        0,
+        20
+      ],
+      "travel_source": "interpolation table",
+      "interpolation": [
+        [
+          -1,
+          10
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          20
+        ]
+      ],
+      "glb_center": [
+        1.1624,
+        0.4232,
+        -0.3226
+      ],
+      "glb_axis_dir": [
+        1,
+        0,
+        0
+      ],
+      "source_xml": "e-flash/Models/e-flash.xml",
+      "offsetUnits": null,
+      "sourceIndex": 20
+    },
+    {
+      "type": "rotate",
+      "objects": [
+        "Parachute"
+      ],
+      "glb_nodes": [
+        "i4_Parachute"
+      ],
+      "property": "fdm/jsbsim/aero/alpha-deg",
+      "channel": null,
+      "factor": null,
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          0,
+          -1,
+          0
+        ]
+      },
+      "fg_center_m": [
+        1.55,
+        0,
+        1.96
+      ],
+      "travel": null,
+      "travel_source": "not bounded in the XML (direct property, e.g. caster angle or rpm)",
+      "glb_center": [
+        1.55,
+        1.96,
+        0
+      ],
+      "glb_axis_dir": [
+        0,
+        0,
+        1
+      ],
+      "source_xml": "e-flash/Models/parachute/parachute.xml",
+      "offsetUnits": null
+    },
+    {
+      "type": "rotate",
+      "objects": [
+        "Parachute"
+      ],
+      "glb_nodes": [
+        "i4_Parachute"
+      ],
+      "property": "fdm/jsbsim/aero/beta-deg",
+      "channel": null,
+      "factor": null,
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          6.123233995736766e-17,
+          0,
+          -1
+        ]
+      },
+      "fg_center_m": [
+        1.55,
+        0,
+        1.96
+      ],
+      "travel": null,
+      "travel_source": "not bounded in the XML (direct property, e.g. caster angle or rpm)",
+      "glb_center": [
+        1.55,
+        1.96,
+        0
+      ],
+      "glb_axis_dir": [
+        0,
+        -1,
+        0
+      ],
+      "source_xml": "e-flash/Models/parachute/parachute.xml",
+      "offsetUnits": null
+    }
+  ],
+  "source_conditions": [
+    {
+      "source_xml": "e-flash/Models/e-flash.xml",
+      "objects": [
+        "Prop"
+      ],
+      "type": "select",
+      "property": "",
+      "offsetUnits": null,
+      "condition": {
+        "op": "condition",
+        "text": "",
+        "children": [
+          {
+            "op": "less-than",
+            "text": "",
+            "children": [
+              {
+                "op": "property",
+                "text": "engines/engine[0]/rpm",
+                "children": []
+              },
+              {
+                "op": "value",
+                "text": "500",
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      "range_m": [
+        null,
+        null
+      ]
+    },
+    {
+      "source_xml": "e-flash/Models/e-flash.xml",
+      "objects": [
+        "Pilot"
+      ],
+      "type": "select",
+      "property": "",
+      "offsetUnits": null,
+      "condition": {
+        "op": "condition",
+        "text": "",
+        "children": [
+          {
+            "op": "property",
+            "text": "sim/model/flash2a/pilot",
+            "children": []
+          }
+        ]
+      },
+      "range_m": [
+        null,
+        null
+      ]
+    },
+    {
+      "source_xml": "e-flash/Models/e-flash.xml",
+      "objects": [
+        "Helmet",
+        "Vizor"
+      ],
+      "type": "select",
+      "property": "",
+      "offsetUnits": null,
+      "condition": {
+        "op": "condition",
+        "text": "",
+        "children": [
+          {
+            "op": "not",
+            "text": "",
+            "children": [
+              {
+                "op": "equals",
+                "text": "",
+                "children": [
+                  {
+                    "op": "property",
+                    "text": "sim/current-view/view-number",
+                    "children": []
+                  },
+                  {
+                    "op": "value",
+                    "text": "0",
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "op": "not",
+            "text": "",
+            "children": [
+              {
+                "op": "equals",
+                "text": "",
+                "children": [
+                  {
+                    "op": "property",
+                    "text": "sim/current-view/view-number",
+                    "children": []
+                  },
+                  {
+                    "op": "value",
+                    "text": "11",
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "range_m": [
+        null,
+        null
+      ]
+    },
+    {
+      "source_xml": "e-flash/Models/e-flash.xml",
+      "objects": [
+        "Passenger"
+      ],
+      "type": "select",
+      "property": "",
+      "offsetUnits": null,
+      "condition": {
+        "op": "condition",
+        "text": "",
+        "children": [
+          {
+            "op": "property",
+            "text": "sim/model/flash2a/passenger",
+            "children": []
+          }
+        ]
+      },
+      "range_m": [
+        null,
+        null
+      ]
+    },
+    {
+      "source_xml": "e-flash/Models/parachute/parachute.xml",
+      "objects": [
+        "Parachute"
+      ],
+      "type": "select",
+      "property": "",
+      "offsetUnits": null,
+      "condition": {
+        "op": "condition",
+        "text": "",
+        "children": [
+          {
+            "op": "greater-than",
+            "text": "",
+            "children": [
+              {
+                "op": "property",
+                "text": "fdm/jsbsim/fcs/parachute-pos-norm",
+                "children": []
+              },
+              {
+                "op": "value",
+                "text": "0.01",
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      "range_m": [
+        null,
+        null
+      ]
+    }
+  ],
+  "default_properties": {
+    "sim/description": "EchoAir E-Flash",
+    "sim/long-description": "This is a fictional electric microlight based on the Flash2a.",
+    "sim/author": "D-ECHO based on flash2a by Stuart Buchanan, D-NXKT",
+    "sim/aircraft-version": 201906,
+    "sim/tags/tag": "1-engine",
+    "sim/status": "beta",
+    "sim/rating/FDM": 3,
+    "sim/rating/systems": 4,
+    "sim/rating/cockpit": 4,
+    "sim/rating/model": 4,
+    "sim/previews/preview/type": "panel",
+    "sim/previews/preview/splash": false,
+    "sim/previews/preview/path": "Splash/cockpit2.jpg",
+    "sim/flight-model": "jsb",
+    "sim/aero": "e-flash",
+    "sim/model/path": "Aircraft/e-flash/Models/e-flash.xml",
+    "sim/model/eflash/on_ground": false,
+    "sim/model/eflash/pilot": true,
+    "sim/model/eflash/passenger": false,
+    "sim/model/eflash/parachute": false,
+    "sim/model/eflash/custom-control": "normal",
+    "sim/help/title": "EchoAir E-Flash (based on flash2a)",
+    "sim/help/key/name": "O",
+    "sim/help/key/desc": "opens aerotow-hook",
+    "sim/help/line": "out at 20ft, while cutting power. Flare by pushing the bar out.",
+    "sim/menubar/default/menu[10]/label": "E-Flash",
+    "sim/menubar/default/menu[10]/enabled": true,
+    "sim/menubar/default/menu[10]/item/label": "Aerotow Settings",
+    "sim/menubar/default/menu[10]/item/binding/command": "nasal",
+    "sim/menubar/default/menu[10]/item/binding/script": "eflash.aerotow_dialog.open()",
+    "sim/menubar/default/menu[10]/item/binding/property": "sim/model/eflash/passenger",
+    "sim/menubar/default/menu[10]/item/binding/value": 0,
+    "sim/panel/visibility": false,
+    "sim/view/internal": true,
+    "sim/view/config/x-offset-m": 0,
+    "sim/view/config/y-offset-m": 0.8526,
+    "sim/view/config/z-offset-m": 1.188,
+    "sim/view/config/pitch-offset-deg": -20,
+    "sim/view[1]/config/target-y-offset-m": 0.5,
+    "sim/view[1]/config/target-z-offset-m": 1.57,
+    "sim/view[2]/config/target-y-offset-m": 0.5,
+    "sim/view[2]/config/target-z-offset-m": 1.57,
+    "sim/view[3]/config/target-y-offset-m": 0.5,
+    "sim/view[3]/config/target-z-offset-m": 1.57,
+    "sim/view[4]/config/target-y-offset-m": 0.5,
+    "sim/view[4]/config/target-z-offset-m": 1.57,
+    "sim/view[5]/config/target-y-offset-m": 0.5,
+    "sim/view[5]/config/target-z-offset-m": 1.57,
+    "sim/view[6]/config/target-y-offset-m": 0.5,
+    "sim/view[6]/config/target-z-offset-m": 1.57,
+    "sim/view[100]/name": "Keel View",
+    "sim/view[100]/type": "lookfrom",
+    "sim/view[100]/internal": true,
+    "sim/view[100]/config/from-model": true,
+    "sim/view[100]/config/from-model-idx": 0,
+    "sim/view[100]/config/x-offset-m": 0,
+    "sim/view[100]/config/y-offset-m": 1.6,
+    "sim/view[100]/config/z-offset-m": 5,
+    "sim/view[100]/config/pitch-offset-deg": -14,
+    "sim/view[101]/name": "Right Wing View",
+    "sim/view[101]/enabled": true,
+    "sim/view[101]/type": "lookfrom",
+    "sim/view[101]/internal": true,
+    "sim/view[101]/config/from-model": true,
+    "sim/view[101]/config/from-model-idx": 0,
+    "sim/view[101]/config/x-offset-m": 5.5,
+    "sim/view[101]/config/y-offset-m": 2,
+    "sim/view[101]/config/z-offset-m": 1.4,
+    "sim/view[101]/config/pitch-offset-deg": -8,
+    "sim/view[101]/config/roll-offset-deg": 0,
+    "sim/view[101]/config/heading-offset-deg": 85,
+    "sim/view[102]/name": "Left Wing View",
+    "sim/view[102]/enabled": true,
+    "sim/view[102]/type": "lookfrom",
+    "sim/view[102]/internal": true,
+    "sim/view[102]/config/from-model": true,
+    "sim/view[102]/config/from-model-idx": 0,
+    "sim/view[102]/config/x-offset-m": -5.5,
+    "sim/view[102]/config/y-offset-m": 2,
+    "sim/view[102]/config/z-offset-m": 1.4,
+    "sim/view[102]/config/pitch-offset-deg": -8,
+    "sim/view[102]/config/roll-offset-deg": 0,
+    "sim/view[102]/config/heading-offset-deg": -85,
+    "sim/view[103]/name": "Pilot View Animated",
+    "sim/view[103]/enabled": true,
+    "sim/view[103]/internal": true,
+    "sim/view[103]/type": "lookfrom",
+    "sim/view[103]/config/from-model": true,
+    "sim/view[103]/config/from-model-idx": 0,
+    "sim/view[103]/config/x-offset-m": 0,
+    "sim/view[103]/config/y-offset-m": 0.8526,
+    "sim/view[103]/config/z-offset-m": 1.188,
+    "sim/view[103]/config/pitch-offset-deg": -20,
+    "sim/view[103]/config/heading-offset-deg": 0,
+    "sim/systems/autopilot/path": "Aircraft/Generic/generic-autopilot.xml",
+    "sim/sound/path": "Aircraft/e-flash/e-flash-sound.xml",
+    "sim/hitches/aerotow/force_name_jsbsim": "hitch",
+    "sim/hitches/aerotow/force-is-calculated-by-other": true,
+    "sim/hitches/aerotow/mp-auto-connect-period": 1,
+    "sim/hitches/aerotow/tow/brake-force": 10000,
+    "sim/hitches/aerotow/rope/rope-diameter-mm": 8,
+    "sim/aircraft-data/path": "/sim/hitches/aerotow/rope/rope-diameter-mm",
+    "input/keyboard/key[79]/name": "O",
+    "input/keyboard/key[79]/desc": "Open aerotow-hook",
+    "input/keyboard/key[79]/binding/command": "nasal",
+    "input/keyboard/key[79]/binding/script": "towing.releaseHitch(\"aerotow\")",
+    "input/keyboard/key[93]/name": "]",
+    "input/keyboard/key[93]/desc": "Deploy parachute",
+    "input/keyboard/key[93]/binding/command": "property-assign",
+    "input/keyboard/key[93]/binding/property": "controls/engines/engine/magnetos",
+    "input/keyboard/key[93]/binding/value": 0,
+    "input/keyboard/key[91]/name": "[",
+    "input/keyboard/key[91]/desc": "Retract parachute",
+    "input/keyboard/key[91]/binding/command": "property-assign",
+    "input/keyboard/key[91]/binding/property": "sim/model/eflash/parachute",
+    "input/keyboard/key[91]/binding/value": 0,
+    "controls/flight/aileron-trim": 0,
+    "controls/flight/rudder-trim": 0,
+    "controls/flight/elevator-trim": 0,
+    "controls/circuit-breakers/fes-master": true,
+    "autopilot/config/min-climb-speed-kt": 70,
+    "autopilot/config/best-climb-speed-kt": 75,
+    "autopilot/config/target-climb-rate-fpm": 500,
+    "autopilot/config/target-descent-rate-fpm": 1000,
+    "autopilot/config/elevator-adj-factor": 4000,
+    "autopilot/config/integral-contribution": 0.01,
+    "autopilot/config/zero-pitch-throttle": 0.45,
+    "autopilot/config/zero-pitch-trim-full-throttle": 0.14,
+    "instrumentation/attitude-indicator/config/tumble-flag": true,
+    "instrumentation/encoder/serviceable": true,
+    "engines/engine/rpm": 0,
+    "systems/FES/fcu-switch": true,
+    "systems/FES/fes-master-switch": true,
+    "systems/FES/engine-output-volts": 0,
+    "systems/FES/throttle": 0,
+    "systems/FES/serviceable": true,
+    "systems/FES/battery-charge-pct": 0,
+    "systems/FES/FCU/start": 0,
+    "systems/FES/temperatures/motor-degc": 20,
+    "systems/FES/temperatures/controller-degc": 20,
+    "systems/FES/temperatures/battery1-degc": 20,
+    "systems/FES/temperatures/battery2-degc": 20,
+    "systems/electrical/outputs/fcu": 0,
+    "fdm/jsbsim/inertia/pointmass-weight-kg": 15,
+    "nasal/updateloop/file": "Aircraft/Generic/updateloop.nas",
+    "nasal/eflash/file": "Aircraft/Instruments-3d/GPSmap196/gpsmap196.nas",
+    "nasal/fes/file": "Models/Instruments/FCU/FCU_display.nas",
+    "sim/model/flash2a/pilot": true,
+    "sim/model/flash2a/passenger": false,
+    "fdm/jsbsim/fcs/parachute-pos-norm": 0
+  },
+  "selected_set": "e-flash-set.xml",
+  "propellers_rotors": [
+    {
+      "type": "spin",
+      "objects": [
+        "NoseWheel"
+      ],
+      "glb_nodes": [
+        "i0_NoseWheel",
+        "pivot_001_NoseWheel"
+      ],
+      "property": "gear/gear[0]/rollspeed-ms",
+      "channel": "gear",
+      "factor": "-75.548",
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          0,
+          1,
+          0
+        ]
+      },
+      "fg_center_m": [
+        0.2443,
+        0,
+        -0.2161
+      ],
+      "travel": null,
+      "travel_source": "spin",
+      "glb_center": [
+        0.2443,
+        -0.2161,
+        0
+      ],
+      "glb_axis_dir": [
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "type": "spin",
+      "objects": [
+        "Prop"
+      ],
+      "glb_nodes": [
+        "i0_Prop",
+        "pivot_002_Prop"
+      ],
+      "property": "engines/engine[0]/rpm",
+      "channel": "prop",
+      "factor": "-1",
+      "range_deg_or_m": null,
+      "fg_axis": {
+        "dir": [
+          1,
+          0,
+          0
+        ]
+      },
+      "fg_center_m": [
+        2.4,
+        0,
+        0.55
+      ],
+      "travel": null,
+      "travel_source": "spin",
+      "glb_center": [
+        2.4,
+        0.55,
+        0
+      ],
+      "glb_axis_dir": [
+        1,
+        0,
+        0
+      ]
+    }
+  ],
+  "node_categories": {
+    "crew": [
+      "i0_Helmet.001",
+      "i0_Head",
+      "i0_Helmet",
+      "i0_Pilot"
+    ],
+    "control surface": [
+      "i0_Rudder"
+    ],
+    "engine": [
+      "i0_engine"
+    ],
+    "cockpit": [
+      "i0_HandThrottle",
+      "i0_HandThrottleMount",
+      "i0_SeatFrame"
+    ],
+    "landing gear": [
+      "i0_NoseStrut",
+      "i0_StarterWheel",
+      "i0_NoseWheel",
+      "pivot_001_NoseWheel"
+    ],
+    "propeller/rotor": [
+      "i0_Prop",
+      "pivot_002_Prop"
+    ],
+    "ground equipment": [
+      "i0_NoseCone"
+    ],
+    "canopy/glass": [
+      "i4_Canopy"
+    ]
+  },
+  "nodes": [
+    {
+      "name": "i0_avantbrasD",
+      "parent": "i0_Passenger",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          -0.1595,
+          0,
+          -0.2821
+        ],
+        [
+          0.0513,
+          0.1604,
+          -0.1485
+        ]
+      ],
+      "has_uv": true,
+      "category": null
+    },
+    {
+      "name": "i0_avantbrasG",
+      "parent": "i0_Passenger",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          -0.2994,
+          -0.051,
+          0.1779
+        ],
+        [
+          0.0718,
+          0.2154,
+          0.2865
+        ]
+      ],
+      "has_uv": true,
+      "category": null
+    },
+    {
+      "name": "i0_brasD",
+      "parent": "i0_Passenger",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          -0.0106,
+          0.0776,
+          -0.2459
+        ],
+        [
+          0.2169,
+          0.4617,
+          -0.1429
+        ]
+      ],
+      "has_uv": true,
+      "category": null
+    },
+    {
+      "name": "i0_brasG",
+      "parent": "i0_Passenger",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          -0.0553,
+          0.0544,
+          0.1549
+        ],
+        [
+          0.2025,
+          0.4558,
+          0.2644
+        ]
+      ],
+      "has_uv": true,
+      "category": null
+    },
+    {
+      "name": "i0_corps",
+      "parent": "i0_Passenger",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          -0.0972,
+          -0.0539,
+          -0.1831
+        ],
+        [
+          0.2228,
+          0.5187,
+          0.1825
+        ]
+      ],
+      "has_uv": true,
+      "category": null
+    },
+    {
+      "name": "i0_cuisseD",
+      "parent": "i0_Passenger",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          -0.4101,
+          -0.2444,
+          -0.3098
+        ],
+        [
+          0.1196,
+          0.0775,
+          -0.0003
+        ]
+      ],
+      "has_uv": true,
+      "category": null
+    },
+    {
+      "name": "i0_cuisseG",
+      "parent": "i0_Passenger",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          -0.4253,
+          -0.2304,
+          0.0511
+        ],
+        [
+          0.1213,
+          0.0909,
+          0.3057
+        ]
+      ],
+      "has_uv": true,
+      "category": null
+    },
+    {
+      "name": "i0_Helmet.001",
+      "parent": "i0_Passenger",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          -0.1061,
+          0.4761,
+          -0.1231
+        ],
+        [
+          0.1893,
+          0.7876,
+          0.1256
+        ]
+      ],
+      "has_uv": false,
+      "category": "crew"
+    },
+    {
+      "name": "i0_jambeD",
+      "parent": "i0_Passenger",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          -0.5927,
+          -0.4393,
+          -0.3043
+        ],
+        [
+          -0.2041,
+          -0.063,
+          -0.1631
+        ]
+      ],
+      "has_uv": true,
+      "category": null
+    },
+    {
+      "name": "i0_jambeG",
+      "parent": "i0_Passenger",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          -0.6151,
+          -0.4247,
+          0.173
+        ],
+        [
+          -0.2058,
+          -0.0611,
+          0.3171
+        ]
+      ],
+      "has_uv": true,
+      "category": null
+    },
+    {
+      "name": "i0_manche",
+      "parent": "i0_Passenger",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          -0.2688,
+          -0.0581,
+          -0.2953
+        ],
+        [
+          -0.1129,
+          0.0694,
+          -0.2145
+        ]
+      ],
+      "has_uv": true,
+      "category": null
+    },
+    {
+      "name": "i0_piedD",
+      "parent": "i0_Passenger",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          -0.7249,
+          -0.4692,
+          -0.2892
+        ],
+        [
+          -0.5393,
+          -0.2923,
+          -0.1894
+        ]
+      ],
+      "has_uv": true,
+      "category": null
+    },
+    {
+      "name": "i0_piedG",
+      "parent": "i0_Passenger",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          -0.7339,
+          -0.4668,
+          0.2216
+        ],
+        [
+          -0.549,
+          -0.2876,
+          0.3132
+        ]
+      ],
+      "has_uv": true,
+      "category": null
+    },
+    {
+      "name": "i0_tete",
+      "parent": "i0_Passenger",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          -0.076,
+          0.4136,
+          -0.096
+        ],
+        [
+          0.1756,
+          0.7399,
+          0.0881
+        ]
+      ],
+      "has_uv": true,
+      "category": null
+    },
+    {
+      "name": "i0_Vizor.001",
+      "parent": "i0_Passenger",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          -0.1054,
+          0.5275,
+          -0.1232
+        ],
+        [
+          0.0673,
+          0.6617,
+          0.1255
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_Passenger",
+      "parent": "i0_Blender_export__e-flash.ac",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          1.5052,
+          0.4054,
+          -0.0182
+        ],
+        [
+          1.5416,
+          0.4418,
+          0.0182
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_Head",
+      "parent": "i0_Pilot",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          -0.1082,
+          0.5599,
+          -0.0795
+        ],
+        [
+          0.1073,
+          0.8324,
+          0.0805
+        ]
+      ],
+      "has_uv": true,
+      "category": "crew"
+    },
+    {
+      "name": "i0_Helmet",
+      "parent": "i0_Pilot",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          -0.1705,
+          0.5881,
+          -0.1165
+        ],
+        [
+          0.1751,
+          0.8699,
+          0.1169
+        ]
+      ],
+      "has_uv": false,
+      "category": "crew"
+    },
+    {
+      "name": "i0_Larm",
+      "parent": "i0_Pilot",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          -0.0186,
+          0.2282,
+          0.0873
+        ],
+        [
+          0.1581,
+          0.5633,
+          0.3669
+        ]
+      ],
+      "has_uv": true,
+      "category": null
+    },
+    {
+      "name": "i0_Lcalf.001",
+      "parent": "i0_Pilot",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          -0.7765,
+          -0.1246,
+          0.0588
+        ],
+        [
+          -0.3503,
+          0.1633,
+          0.1703
+        ]
+      ],
+      "has_uv": true,
+      "category": null
+    },
+    {
+      "name": "i0_Lfoot",
+      "parent": "i0_Pilot",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          -0.9902,
+          -0.1849,
+          0.0832
+        ],
+        [
+          -0.7038,
+          0.0341,
+          0.1754
+        ]
+      ],
+      "has_uv": true,
+      "category": null
+    },
+    {
+      "name": "i0_Lforearm",
+      "parent": "i0_Pilot",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          -0.0946,
+          0.2224,
+          0.2888
+        ],
+        [
+          0.1488,
+          0.3282,
+          0.371
+        ]
+      ],
+      "has_uv": true,
+      "category": null
+    },
+    {
+      "name": "i0_Lhand",
+      "parent": "i0_Pilot",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          -0.2386,
+          0.2811,
+          0.2567
+        ],
+        [
+          -0.0666,
+          0.3469,
+          0.3555
+        ]
+      ],
+      "has_uv": true,
+      "category": null
+    },
+    {
+      "name": "i0_Lthigh.001",
+      "parent": "i0_Pilot",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          -0.4457,
+          -0.0394,
+          0.0024
+        ],
+        [
+          0.0458,
+          0.1877,
+          0.1629
+        ]
+      ],
+      "has_uv": true,
+      "category": null
+    },
+    {
+      "name": "i0_Pelvis.001",
+      "parent": "i0_Pilot",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          -0.1147,
+          -0.0625,
+          -0.1374
+        ],
+        [
+          0.1033,
+          0.1848,
+          0.1432
+        ]
+      ],
+      "has_uv": true,
+      "category": null
+    },
+    {
+      "name": "i0_Rarm",
+      "parent": "i0_Pilot",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          -0.0186,
+          0.2282,
+          -0.3669
+        ],
+        [
+          0.1581,
+          0.5633,
+          -0.0873
+        ]
+      ],
+      "has_uv": true,
+      "category": null
+    },
+    {
+      "name": "i0_Rcalf.001",
+      "parent": "i0_Pilot",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          -0.7753,
+          -0.1284,
+          -0.1771
+        ],
+        [
+          -0.3499,
+          0.1601,
+          -0.0634
+        ]
+      ],
+      "has_uv": true,
+      "category": null
+    },
+    {
+      "name": "i0_Rfoot",
+      "parent": "i0_Pilot",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          -0.9888,
+          -0.1888,
+          -0.1917
+        ],
+        [
+          -0.7028,
+          0.0298,
+          -0.0952
+        ]
+      ],
+      "has_uv": true,
+      "category": null
+    },
+    {
+      "name": "i0_Rforearm",
+      "parent": "i0_Pilot",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          -0.0946,
+          0.2224,
+          -0.371
+        ],
+        [
+          0.1488,
+          0.3282,
+          -0.2888
+        ]
+      ],
+      "has_uv": true,
+      "category": null
+    },
+    {
+      "name": "i0_Rhand",
+      "parent": "i0_Pilot",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          -0.2303,
+          0.2796,
+          -0.3566
+        ],
+        [
+          -0.0583,
+          0.3454,
+          -0.2579
+        ]
+      ],
+      "has_uv": true,
+      "category": null
+    },
+    {
+      "name": "i0_Rthigh.001",
+      "parent": "i0_Pilot",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          -0.4452,
+          -0.0431,
+          -0.1669
+        ],
+        [
+          0.0465,
+          0.185,
+          -0.0076
+        ]
+      ],
+      "has_uv": true,
+      "category": null
+    },
+    {
+      "name": "i0_Torso.001",
+      "parent": "i0_Pilot",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          -0.1147,
+          0.0673,
+          -0.1732
+        ],
+        [
+          0.1408,
+          0.6234,
+          0.179
+        ]
+      ],
+      "has_uv": true,
+      "category": null
+    },
+    {
+      "name": "i0_Vizor",
+      "parent": "i0_Pilot",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          -0.1611,
+          0.6548,
+          -0.1105
+        ],
+        [
+          -0.016,
+          0.7852,
+          0.1089
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_Pilot",
+      "parent": "i0_Blender_export__e-flash.ac",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          1.2408,
+          0.1085,
+          -0.0154
+        ],
+        [
+          1.2715,
+          0.1392,
+          0.0154
+        ]
+      ],
+      "has_uv": false,
+      "category": "crew"
+    },
+    {
+      "name": "i0_ControlBar",
+      "parent": "pivot_003_Wing",
+      "translation": [
+        -1.55,
+        -2.04,
+        0
+      ],
+      "bounds_local": [
+        [
+          1.0521,
+          0.4192,
+          -0.8036
+        ],
+        [
+          1.4982,
+          2.0013,
+          0.8049
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_ControlBar2",
+      "parent": "pivot_003_Wing",
+      "translation": [
+        -1.55,
+        -2.04,
+        0
+      ],
+      "bounds_local": [
+        [
+          1.0536,
+          0.4192,
+          -0.8101
+        ],
+        [
+          1.1022,
+          0.47,
+          0.8113
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_ControlBarBolt1",
+      "parent": "pivot_003_Wing",
+      "translation": [
+        -1.55,
+        -2.04,
+        0
+      ],
+      "bounds_local": [
+        [
+          1.4371,
+          1.9737,
+          -0.08
+        ],
+        [
+          1.5306,
+          1.9937,
+          -0.06
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_ControlBarBolt2",
+      "parent": "pivot_003_Wing",
+      "translation": [
+        -1.55,
+        -2.04,
+        0
+      ],
+      "bounds_local": [
+        [
+          1.4371,
+          1.9737,
+          0.0631
+        ],
+        [
+          1.5306,
+          1.9937,
+          0.0831
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_ControlBarStrap",
+      "parent": "pivot_003_Wing",
+      "translation": [
+        -1.55,
+        -2.04,
+        0
+      ],
+      "bounds_local": [
+        [
+          1.4419,
+          1.9628,
+          -0.0906
+        ],
+        [
+          1.5212,
+          2.0918,
+          0.0906
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_Cylinder.029",
+      "parent": "i0_HangStrap",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          1.5392,
+          1.9882,
+          -0.0634
+        ],
+        [
+          1.5592,
+          2.0082,
+          0.061
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_Cylinder.030",
+      "parent": "i0_HangStrap",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          1.5807,
+          1.9882,
+          -0.0634
+        ],
+        [
+          1.6007,
+          2.0082,
+          0.061
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_HangStrap",
+      "parent": "pivot_003_Wing",
+      "translation": [
+        -1.55,
+        -2.04,
+        0
+      ],
+      "bounds_local": [
+        [
+          1.5301,
+          1.944,
+          -0.05
+        ],
+        [
+          1.6301,
+          2.0918,
+          0.05
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_KingPost",
+      "parent": "pivot_003_Wing",
+      "translation": [
+        -1.55,
+        -2.04,
+        0
+      ],
+      "bounds_local": [
+        [
+          1.4516,
+          2.0587,
+          -0.0178
+        ],
+        [
+          1.7597,
+          3.3084,
+          0.0178
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_Rudder",
+      "parent": "pivot_003_Wing",
+      "translation": [
+        -1.55,
+        -2.04,
+        0
+      ],
+      "bounds_local": [
+        [
+          1.6525,
+          2.056,
+          -0.0178
+        ],
+        [
+          3.195,
+          2.4864,
+          0.0178
+        ]
+      ],
+      "has_uv": false,
+      "category": "control surface"
+    },
+    {
+      "name": "i0_batteries",
+      "parent": "i0_Trike",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          2.2262,
+          0.2113,
+          -0.1559
+        ],
+        [
+          2.4927,
+          0.6945,
+          0.1559
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_Bolt3",
+      "parent": "i0_Trike",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          1.9201,
+          1.9524,
+          -0.0621
+        ],
+        [
+          1.9401,
+          1.9724,
+          0.0615
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_Cube",
+      "parent": "i0_Trike",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          1.9145,
+          1.8016,
+          -0.0244
+        ],
+        [
+          1.9515,
+          1.8821,
+          0.0238
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_Cube.001",
+      "parent": "i0_Trike",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          1.4203,
+          0.0437,
+          -0.2674
+        ],
+        [
+          1.6716,
+          0.1216,
+          0.2758
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_Cube.002",
+      "parent": "i0_Trike",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          1.6594,
+          0.0266,
+          -0.2674
+        ],
+        [
+          1.7594,
+          0.2804,
+          0.2758
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_Cube.003",
+      "parent": "i0_Trike",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          1.7397,
+          0.2142,
+          -0.2674
+        ],
+        [
+          1.991,
+          0.292,
+          0.2758
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_Cube.004",
+      "parent": "i0_Trike",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          1.9873,
+          0.2596,
+          -0.2263
+        ],
+        [
+          2.1667,
+          0.7503,
+          0.2263
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_Cube.005",
+      "parent": "i0_Trike",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          0.5781,
+          -0.2248,
+          0.04
+        ],
+        [
+          0.6649,
+          -0.2074,
+          0.0467
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_Cylinder",
+      "parent": "i0_Trike",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          2.1835,
+          0.5223,
+          -0.1944
+        ],
+        [
+          2.2277,
+          0.5664,
+          0.1944
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_Cylinder.001",
+      "parent": "i0_Trike",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          2.2076,
+          0.5227,
+          -0.1912
+        ],
+        [
+          2.5176,
+          0.5661,
+          0.1912
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_Cylinder.002",
+      "parent": "i0_Trike",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          0.6115,
+          -0.2255,
+          -0.0681
+        ],
+        [
+          0.6315,
+          -0.2055,
+          0.0716
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_Cylinder.003",
+      "parent": "i0_Trike",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          2.4679,
+          0.5246,
+          -0.1736
+        ],
+        [
+          2.5073,
+          0.5641,
+          0.1736
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_Cylinder.004",
+      "parent": "i0_Trike",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          1.6874,
+          0.2092,
+          -0.3026
+        ],
+        [
+          1.7211,
+          0.2429,
+          -0.2769
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_Cylinder.005",
+      "parent": "i0_Trike",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          0.6123,
+          -0.0081,
+          0.0191
+        ],
+        [
+          0.6273,
+          0.0069,
+          0.052
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_Cylinder.011",
+      "parent": "i0_Trike",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          2.2001,
+          -0.2614,
+          -0.7774
+        ],
+        [
+          2.5668,
+          0.4649,
+          -0.1082
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_Cylinder.012",
+      "parent": "i0_Trike",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          2.5202,
+          -0.2954,
+          -0.8096
+        ],
+        [
+          2.5885,
+          0.0204,
+          0.006
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_Cylinder.013",
+      "parent": "i0_Trike",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          2.4073,
+          -0.3917,
+          -0.8744
+        ],
+        [
+          2.6601,
+          -0.1389,
+          -0.7741
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_Cylinder.014",
+      "parent": "i0_Trike",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          2.4705,
+          -0.3285,
+          -0.8729
+        ],
+        [
+          2.5969,
+          -0.2021,
+          -0.7756
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_Cylinder.015",
+      "parent": "i0_Trike",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          2.4705,
+          -0.3285,
+          0.7545
+        ],
+        [
+          2.5969,
+          -0.2021,
+          0.8518
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_Cylinder.016",
+      "parent": "i0_Trike",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          2.4073,
+          -0.3917,
+          0.753
+        ],
+        [
+          2.6601,
+          -0.1389,
+          0.8533
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_Cylinder.017",
+      "parent": "i0_Trike",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          2.5202,
+          -0.2954,
+          -0.004
+        ],
+        [
+          2.5885,
+          0.0204,
+          0.8116
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_Cylinder.018",
+      "parent": "i0_Trike",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          2.2001,
+          -0.2614,
+          0.1036
+        ],
+        [
+          2.5668,
+          0.4649,
+          0.7729
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_Cylinder.019",
+      "parent": "i0_Trike",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          1.4685,
+          -0.2601,
+          -0.7478
+        ],
+        [
+          2.5323,
+          0.0101,
+          -0.0289
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_Cylinder.020",
+      "parent": "i0_Trike",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          1.4685,
+          -0.2601,
+          0.0308
+        ],
+        [
+          2.5323,
+          0.0101,
+          0.7497
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_Cylinder.025",
+      "parent": "i0_Trike",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          1.9246,
+          1.8082,
+          -0.0383
+        ],
+        [
+          1.9355,
+          1.8191,
+          0.0383
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_Cylinder.026",
+      "parent": "i0_Trike",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          1.8915,
+          1.8838,
+          -0.0395
+        ],
+        [
+          2.0055,
+          1.9978,
+          0.0395
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_Cylinder.027",
+      "parent": "i0_Trike",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          1.9482,
+          1.8975,
+          -0.0488
+        ],
+        [
+          1.9682,
+          1.9175,
+          0.0512
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_DriveShaft",
+      "parent": "i0_Trike",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          2.5535,
+          0.5423,
+          -0.01
+        ],
+        [
+          2.6535,
+          0.5623,
+          0.01
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_engine",
+      "parent": "i0_Trike",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          2.4447,
+          0.4521,
+          -0.0998
+        ],
+        [
+          2.6663,
+          0.6517,
+          0.0998
+        ]
+      ],
+      "has_uv": false,
+      "category": "engine"
+    },
+    {
+      "name": "i0_Fairing",
+      "parent": "i0_Trike",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          0.3625,
+          -0.1345,
+          -0.3358
+        ],
+        [
+          1.5019,
+          0.387,
+          0.3354
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_FrontPost",
+      "parent": "i0_Trike",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          1.4993,
+          1.1708,
+          -0.0147
+        ],
+        [
+          1.9474,
+          1.8281,
+          0.0147
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_FrontPost.001",
+      "parent": "i0_Trike",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          0.9009,
+          0.175,
+          -0.2633
+        ],
+        [
+          1.5284,
+          1.1985,
+          0.2633
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_HandThrottle",
+      "parent": "i0_Trike",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          1.6964,
+          0.1739,
+          0.3195
+        ],
+        [
+          1.7445,
+          0.2374,
+          0.3408
+        ]
+      ],
+      "has_uv": false,
+      "category": "cockpit"
+    },
+    {
+      "name": "i0_HandThrottleMount",
+      "parent": "i0_Trike",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          1.6864,
+          0.209,
+          0.279
+        ],
+        [
+          1.7223,
+          0.2427,
+          0.3275
+        ]
+      ],
+      "has_uv": false,
+      "category": "cockpit"
+    },
+    {
+      "name": "i0_MagnetoSwitch",
+      "parent": "i0_Trike",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          1.6957,
+          0.2203,
+          -0.3181
+        ],
+        [
+          1.7056,
+          0.2397,
+          -0.3084
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_MagnetoSwitch2",
+      "parent": "i0_Trike",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          1.6908,
+          0.2297,
+          -0.321
+        ],
+        [
+          1.708,
+          0.2443,
+          -0.305
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_MagnetoSwitch_Off",
+      "parent": "i0_Trike",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          1.674,
+          0.2271,
+          -0.3277
+        ],
+        [
+          1.6967,
+          0.2419,
+          -0.3006
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_MagnetoSwitch_On",
+      "parent": "i0_Trike",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          1.6947,
+          0.2407,
+          -0.3255
+        ],
+        [
+          1.7175,
+          0.2556,
+          -0.2983
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_MagnetoSwitchMount_0",
+      "parent": "i0_Trike",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          1.674,
+          0.2043,
+          -0.3277
+        ],
+        [
+          1.7324,
+          0.2556,
+          -0.2982
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_NoseStrut",
+      "parent": "i0_Trike",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          0.5445,
+          -0.2607,
+          -0.0647
+        ],
+        [
+          0.7042,
+          -0.0728,
+          0.068
+        ]
+      ],
+      "has_uv": false,
+      "category": "landing gear"
+    },
+    {
+      "name": "i0_Pitot",
+      "parent": "i0_Trike",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          1.0208,
+          0.2004,
+          0.2807
+        ],
+        [
+          1.0879,
+          0.2204,
+          0.3241
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_SeatFrame",
+      "parent": "i0_Trike",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          1.3906,
+          0.0048,
+          -0.3328
+        ],
+        [
+          2.1679,
+          0.5533,
+          0.3328
+        ]
+      ],
+      "has_uv": false,
+      "category": "cockpit"
+    },
+    {
+      "name": "i0_Sphere.001",
+      "parent": "i0_Trike",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          1.4907,
+          -0.1375,
+          -0.3397
+        ],
+        [
+          2.5082,
+          0.5256,
+          0.3397
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_Sphere.002",
+      "parent": "i0_Trike",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          2.3542,
+          -0.285,
+          -0.9012
+        ],
+        [
+          2.8035,
+          -0.0951,
+          -0.7439
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_Sphere.003",
+      "parent": "i0_Trike",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          2.3542,
+          -0.285,
+          0.7261
+        ],
+        [
+          2.8035,
+          -0.0951,
+          0.8833
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_StarterRope",
+      "parent": "i0_Trike",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          0.5911,
+          -0.0293,
+          0.0393
+        ],
+        [
+          2.4034,
+          0.028,
+          0.0468
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_StarterWheel",
+      "parent": "i0_Trike",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          0.5962,
+          -0.0256,
+          0.0385
+        ],
+        [
+          0.6462,
+          0.0244,
+          0.0476
+        ]
+      ],
+      "has_uv": false,
+      "category": "landing gear"
+    },
+    {
+      "name": "i0_TrikeKeel",
+      "parent": "i0_Trike",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          0.4993,
+          -0.0387,
+          -0.0387
+        ],
+        [
+          2.5966,
+          0.0387,
+          0.0387
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_TrikeKingPost",
+      "parent": "i0_Trike",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          1.921,
+          0.001,
+          -0.0252
+        ],
+        [
+          2.3282,
+          1.9803,
+          0.0246
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_Visor",
+      "parent": "i0_Trike",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          0.8045,
+          0.2172,
+          -0.2508
+        ],
+        [
+          1.3711,
+          1.1517,
+          0.2504
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_NoseWheel",
+      "parent": "pivot_001_NoseWheel",
+      "translation": [
+        -0.6215,
+        0.2161,
+        -0.0022
+      ],
+      "bounds_local": [
+        [
+          0.4951,
+          -0.3425,
+          -0.046
+        ],
+        [
+          0.7479,
+          -0.0897,
+          0.0504
+        ]
+      ],
+      "has_uv": false,
+      "category": "landing gear"
+    },
+    {
+      "name": "pivot_001_NoseWheel",
+      "parent": "i0_Trike",
+      "translation": [
+        0.6215,
+        -0.2161,
+        0.0022
+      ],
+      "category": "landing gear"
+    },
+    {
+      "name": "i0_Prop",
+      "parent": "pivot_002_Prop",
+      "translation": [
+        -2.4,
+        -0.55,
+        0
+      ],
+      "bounds_local": [
+        [
+          2.6226,
+          -0.1364,
+          -0.4394
+        ],
+        [
+          2.6415,
+          1.2584,
+          0.7836
+        ]
+      ],
+      "has_uv": false,
+      "category": "propeller/rotor"
+    },
+    {
+      "name": "pivot_002_Prop",
+      "parent": "i0_Trike",
+      "translation": [
+        2.4,
+        0.55,
+        0
+      ],
+      "category": "propeller/rotor"
+    },
+    {
+      "name": "i0_Trike",
+      "parent": "pivot_003_Wing",
+      "translation": [
+        -1.55,
+        -2.04,
+        0
+      ],
+      "bounds_local": [
+        [
+          0.1257,
+          0.0149,
+          -0.0056
+        ],
+        [
+          0.137,
+          0.0261,
+          0.0056
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_Battens",
+      "parent": "i0_Wing",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          0.1591,
+          -0.0273,
+          0.3182
+        ],
+        [
+          3.2112,
+          0.2765,
+          5.0641
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_Battens.001",
+      "parent": "i0_Wing",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          0.1591,
+          -0.0273,
+          -5.0641
+        ],
+        [
+          3.2112,
+          0.2765,
+          -0.3182
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_Circle",
+      "parent": "i0_Wing",
+      "translation": [
+        -0.016,
+        -2.0388,
+        0
+      ],
+      "category": null
+    },
+    {
+      "name": "i0_Circle.002",
+      "parent": "i0_Wing",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          1.9259,
+          1.036,
+          -0.005
+        ],
+        [
+          1.9843,
+          1.0836,
+          0.005
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_ControlBar.001",
+      "parent": "i0_Wing",
+      "translation": [
+        -0.016,
+        -2.0388,
+        0
+      ],
+      "category": null
+    },
+    {
+      "name": "i0_ControlBar.002",
+      "parent": "i0_Wing",
+      "translation": [
+        -0.016,
+        -2.0388,
+        0
+      ],
+      "category": null
+    },
+    {
+      "name": "i0_Crossbar",
+      "parent": "i0_Wing",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          0.9893,
+          0.0514,
+          -0.0012
+        ],
+        [
+          1.2615,
+          0.1108,
+          2.6
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_Crossbar.001",
+      "parent": "i0_Wing",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          0.9893,
+          0.0514,
+          -2.6
+        ],
+        [
+          1.2615,
+          0.1108,
+          0.0012
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_Cube.006",
+      "parent": "i0_Wing",
+      "translation": [
+        -0.016,
+        -2.0388,
+        0
+      ],
+      "category": null
+    },
+    {
+      "name": "i0_D.002",
+      "parent": "i0_Wing",
+      "translation": [
+        -0.016,
+        -2.0388,
+        0
+      ],
+      "category": null
+    },
+    {
+      "name": "i0_Fin",
+      "parent": "i0_Wing",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          1.6572,
+          -0.0333,
+          -0.0374
+        ],
+        [
+          3.2572,
+          0.4399,
+          0.0384
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_KeelPocket",
+      "parent": "i0_Wing",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          1.6053,
+          -0.0333,
+          -0.0374
+        ],
+        [
+          2.5404,
+          0.1281,
+          0.0384
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_LowerFrontWireLeft",
+      "parent": "i0_Wing",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          -0.0023,
+          -1.5679,
+          0.0036
+        ],
+        [
+          1.0694,
+          -0.0037,
+          0.7479
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_LowerFrontWireRight",
+      "parent": "i0_Wing",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          -0.0023,
+          -1.5679,
+          -0.7479
+        ],
+        [
+          1.0694,
+          -0.0037,
+          -0.0036
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_LowerRearWireLeft",
+      "parent": "i0_Wing",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          1.0628,
+          -1.5461,
+          -0.0021
+        ],
+        [
+          2.7134,
+          0.0204,
+          0.7995
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_LowerRearWireRight",
+      "parent": "i0_Wing",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          1.0628,
+          -1.5461,
+          -0.7995
+        ],
+        [
+          2.7135,
+          0.0205,
+          -0.0179
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_LowerSideWire",
+      "parent": "i0_Wing",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          1.0336,
+          -1.6015,
+          0.7855
+        ],
+        [
+          1.2533,
+          0.0864,
+          2.3639
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_LowerSideWire.001",
+      "parent": "i0_Wing",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          1.0336,
+          -1.6015,
+          -2.3639
+        ],
+        [
+          1.2533,
+          0.0864,
+          -0.7855
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_Luffline1",
+      "parent": "i0_Wing",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          1.96,
+          0.1814,
+          -0.0003
+        ],
+        [
+          2.5115,
+          1.0573,
+          1.0376
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_Luffline1.001",
+      "parent": "i0_Wing",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          1.96,
+          0.1814,
+          -1.0376
+        ],
+        [
+          2.5115,
+          1.0573,
+          0.0003
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_Luffline2",
+      "parent": "i0_Wing",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          1.9497,
+          0.2557,
+          -0.0012
+        ],
+        [
+          2.6246,
+          1.0649,
+          2.371
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_Luffline2.001",
+      "parent": "i0_Wing",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          1.9497,
+          0.2557,
+          -2.371
+        ],
+        [
+          2.6246,
+          1.0649,
+          0.0012
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_Luffline3",
+      "parent": "i0_Wing",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          1.9369,
+          0.2781,
+          -0.0015
+        ],
+        [
+          2.8741,
+          1.0744,
+          3.5752
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_Luffline3.001",
+      "parent": "i0_Wing",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          1.9369,
+          0.2781,
+          -3.5752
+        ],
+        [
+          2.8741,
+          1.0744,
+          0.0015
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_NoseCone",
+      "parent": "i0_Wing",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          -0.0408,
+          -0.0861,
+          -0.1911
+        ],
+        [
+          0.3623,
+          0.2007,
+          0.1911
+        ]
+      ],
+      "has_uv": false,
+      "category": "ground equipment"
+    },
+    {
+      "name": "i0_Sail",
+      "parent": "i0_Wing",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          -0.035,
+          -0.0818,
+          0
+        ],
+        [
+          3.2112,
+          0.2815,
+          5.2512
+        ]
+      ],
+      "has_uv": true,
+      "category": null
+    },
+    {
+      "name": "i0_Sail.002",
+      "parent": "i0_Wing",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          -0.035,
+          -0.0818,
+          -5.2512
+        ],
+        [
+          3.2112,
+          0.2815,
+          0.0002
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_Sidetube",
+      "parent": "i0_Wing",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          -0.0341,
+          -0.027,
+          -0.0003
+        ],
+        [
+          2.9779,
+          0.1046,
+          5.2712
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_Sidetube.001",
+      "parent": "i0_Wing",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          -0.0341,
+          -0.027,
+          -5.2712
+        ],
+        [
+          2.9779,
+          0.1046,
+          0.0003
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_Sphere.005",
+      "parent": "i0_Wing",
+      "translation": [
+        -0.016,
+        -2.0388,
+        0
+      ],
+      "category": null
+    },
+    {
+      "name": "i0_UpperFrontWire",
+      "parent": "i0_Wing",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          0.0031,
+          -0.0004,
+          -0.002
+        ],
+        [
+          1.715,
+          1.2446,
+          0.002
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_UpperRearWire1",
+      "parent": "i0_Wing",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          1.7194,
+          1.0363,
+          -0.002
+        ],
+        [
+          1.9837,
+          1.2475,
+          0.002
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_UpperRearWire2",
+      "parent": "i0_Wing",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          1.9786,
+          0.0139,
+          -0.002
+        ],
+        [
+          2.717,
+          1.0412,
+          0.002
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_UpperRearWire3",
+      "parent": "i0_Wing",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          1.9815,
+          0.4241,
+          -0.002
+        ],
+        [
+          3.1346,
+          1.0406,
+          0.002
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_UpperSideWire",
+      "parent": "i0_Wing",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          1.2509,
+          0.0818,
+          -0.0004
+        ],
+        [
+          1.7195,
+          1.2492,
+          2.361
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_UpperSideWire.001",
+      "parent": "i0_Wing",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          1.2509,
+          0.0818,
+          -2.361
+        ],
+        [
+          1.7195,
+          1.2492,
+          0.0004
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_Wing",
+      "parent": "pivot_003_Wing",
+      "translation": [
+        -1.55,
+        -2.04,
+        0
+      ],
+      "bounds_local": [
+        [
+          0.0079,
+          2.0308,
+          -0.008
+        ],
+        [
+          0.024,
+          2.0469,
+          0.008
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i0_WingKeel",
+      "parent": "pivot_003_Wing",
+      "translation": [
+        -1.55,
+        -2.04,
+        0
+      ],
+      "bounds_local": [
+        [
+          0.0496,
+          2.0099,
+          -0.0355
+        ],
+        [
+          3.345,
+          2.0819,
+          0.0365
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "pivot_003_Wing",
+      "parent": "pivot_004_Wing",
+      "translation": [
+        0,
+        0.08,
+        0
+      ],
+      "category": null
+    },
+    {
+      "name": "pivot_004_Wing",
+      "parent": "i0_Blender_export__e-flash.ac",
+      "translation": [
+        1.55,
+        1.96,
+        0
+      ],
+      "category": null
+    },
+    {
+      "name": "i0_Blender_export__e-flash.ac",
+      "parent": "i0_e-flash",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "category": null
+    },
+    {
+      "name": "i1_asi",
+      "parent": "i0_e-flash",
+      "translation": [
+        0.67,
+        0.32,
+        0.14
+      ],
+      "category": null
+    },
+    {
+      "name": "i2_alt",
+      "parent": "i0_e-flash",
+      "translation": [
+        0.64,
+        0.345,
+        0.06
+      ],
+      "category": null
+    },
+    {
+      "name": "i3_fcu",
+      "parent": "i0_e-flash",
+      "translation": [
+        0.665,
+        0.33,
+        -0.14
+      ],
+      "category": null
+    },
+    {
+      "name": "i4_Bridle",
+      "parent": "i4_Parachute.001",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          -0.0173,
+          0,
+          -0.013
+        ],
+        [
+          0.0173,
+          5,
+          0.0134
+        ]
+      ],
+      "has_uv": false,
+      "category": null
+    },
+    {
+      "name": "i4_Canopy",
+      "parent": "i4_Parachute.001",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "bounds_local": [
+        [
+          -2.0169,
+          8.8515,
+          -2.0254
+        ],
+        [
+          2.0169,
+          10.4782,
+          1.988
+        ]
+      ],
+      "has_uv": false,
+      "category": "canopy/glass"
+    },
+    {
+      "name": "i4_Lines",
+      "parent": "i4_Parachute.001",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "category": null
+    },
+    {
+      "name": "i4_Parachute_node",
+      "parent": "i4_Parachute.001",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "category": null
+    },
+    {
+      "name": "i4_Parachute.001",
+      "parent": "i4_ACWorld_0",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "category": null
+    },
+    {
+      "name": "i4_ACWorld_0",
+      "parent": "i4_Parachute",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "category": null
+    },
+    {
+      "name": "i4_Parachute",
+      "parent": "i0_e-flash",
+      "translation": [
+        1.55,
+        1.96,
+        0
+      ],
+      "category": null
+    },
+    {
+      "name": "i0_e-flash",
+      "parent": null,
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "category": null
+    }
+  ],
+  "material_warnings": {
+    "ior_too_high": [
+      "DefaultWhite.001: ior 1000",
+      "Helmet: ior 1000",
+      "Vizor: ior 1000",
+      "DefaultWhite: ior 1000",
+      "skin.001: ior 1000",
+      "Helmet_White: ior 1000",
+      "cloth.001: ior 1000",
+      "Vizor_Brown_Transpare: ior 1000",
+      "AluTubing.002: ior 1000",
+      "BlackPlastic: ior 1000",
+      "Material.003: ior 1000",
+      "Batteries: ior 1000",
+      "... 27 total"
+    ],
+    "alpha_blend": [
+      "WhiteWing.000"
+    ],
+    "mirror_smooth_untextured": [
+      "white",
+      "red"
+    ]
+  },
+  "known_defects": {
+    "glb_has_geometry": true,
+    "primitives_without_uv": 103,
+    "exterior_textures_missing_from_glb": 0,
+    "animations_in_glb": [
+      "control_surfaces",
+      "spin"
+    ],
+    "note": "The GLB's baked animations play each part's full range; drive parts from channels within the XML limits instead."
+  },
+  "texture_by_part": [
+    {
+      "ac_object": "fcu.base",
+      "glb_nodes": [],
+      "texture": "e-flash/Models/Instruments/FCU/FCU.png",
+      "has_uv": true,
+      "texture_in_glb": false
+    },
+    {
+      "ac_object": "FCU.display",
+      "glb_nodes": [],
+      "texture": "e-flash/Models/Instruments/FCU/FCU.screen.png",
+      "has_uv": true,
+      "texture_in_glb": false
+    },
+    {
+      "ac_object": "fcu.switch",
+      "glb_nodes": [],
+      "texture": "e-flash/Models/Instruments/FCU/FCU.png",
+      "has_uv": true,
+      "texture_in_glb": false
+    },
+    {
+      "ac_object": "light.alarm",
+      "glb_nodes": [],
+      "texture": "e-flash/Models/Instruments/FCU/FCU.png",
+      "has_uv": true,
+      "texture_in_glb": false
+    },
+    {
+      "ac_object": "light.error",
+      "glb_nodes": [],
+      "texture": "e-flash/Models/Instruments/FCU/FCU.png",
+      "has_uv": true,
+      "texture_in_glb": false
+    },
+    {
+      "ac_object": "light.ok",
+      "glb_nodes": [],
+      "texture": "e-flash/Models/Instruments/FCU/FCU.png",
+      "has_uv": true,
+      "texture_in_glb": false
+    },
+    {
+      "ac_object": "throttle.knob",
+      "glb_nodes": [],
+      "texture": "e-flash/Models/Instruments/FCU/FCU.png",
+      "has_uv": true,
+      "texture_in_glb": false
+    },
+    {
+      "ac_object": "ring",
+      "glb_nodes": [],
+      "texture": "e-flash/Models/Instruments/alti-4110/winter-4110-bg.png",
+      "has_uv": true,
+      "texture_in_glb": false
+    },
+    {
+      "ac_object": "screws",
+      "glb_nodes": [],
+      "texture": "e-flash/Models/Instruments/alti-4110/winter-4110-fg.png",
+      "has_uv": true,
+      "texture_in_glb": false
+    },
+    {
+      "ac_object": "alt-face",
+      "glb_nodes": [],
+      "texture": "e-flash/Models/Instruments/alti-4110/winter-4110-fg.png",
+      "has_uv": true,
+      "texture_in_glb": false
+    },
+    {
+      "ac_object": "alt-face-press",
+      "glb_nodes": [],
+      "texture": "e-flash/Models/Instruments/alti-4110/winter-4110-bg.png",
+      "has_uv": true,
+      "texture_in_glb": false
+    },
+    {
+      "ac_object": "knob",
+      "glb_nodes": [],
+      "texture": "e-flash/Models/Instruments/alti-4110/winter-4110-bg.png",
+      "has_uv": true,
+      "texture_in_glb": false
+    },
+    {
+      "ac_object": "needle.001-km",
+      "glb_nodes": [],
+      "texture": "e-flash/Models/Instruments/alti-4110/winter-4110-fg.png",
+      "has_uv": true,
+      "texture_in_glb": false
+    },
+    {
+      "ac_object": "needle.001-m",
+      "glb_nodes": [],
+      "texture": "e-flash/Models/Instruments/alti-4110/winter-4110-fg.png",
+      "has_uv": true,
+      "texture_in_glb": false
+    },
+    {
+      "ac_object": "shadow",
+      "glb_nodes": [],
+      "texture": "e-flash/Models/Instruments/alti-4110/winter-4110-shadow.png",
+      "has_uv": true,
+      "texture_in_glb": false
+    },
+    {
+      "ac_object": "avantbrasD",
+      "glb_nodes": [
+        "i0_avantbrasD"
+      ],
+      "texture": "e-flash/Models/general_pilot.png",
+      "has_uv": true,
+      "texture_in_glb": true
+    },
+    {
+      "ac_object": "avantbrasG",
+      "glb_nodes": [
+        "i0_avantbrasG"
+      ],
+      "texture": "e-flash/Models/general_pilot.png",
+      "has_uv": true,
+      "texture_in_glb": true
+    },
+    {
+      "ac_object": "brasD",
+      "glb_nodes": [
+        "i0_brasD"
+      ],
+      "texture": "e-flash/Models/general_pilot.png",
+      "has_uv": true,
+      "texture_in_glb": true
+    },
+    {
+      "ac_object": "brasG",
+      "glb_nodes": [
+        "i0_brasG"
+      ],
+      "texture": "e-flash/Models/general_pilot.png",
+      "has_uv": true,
+      "texture_in_glb": true
+    },
+    {
+      "ac_object": "corps",
+      "glb_nodes": [
+        "i0_corps"
+      ],
+      "texture": "e-flash/Models/general_pilot.png",
+      "has_uv": true,
+      "texture_in_glb": true
+    },
+    {
+      "ac_object": "cuisseD",
+      "glb_nodes": [
+        "i0_cuisseD"
+      ],
+      "texture": "e-flash/Models/general_pilot.png",
+      "has_uv": true,
+      "texture_in_glb": true
+    },
+    {
+      "ac_object": "cuisseG",
+      "glb_nodes": [
+        "i0_cuisseG"
+      ],
+      "texture": "e-flash/Models/general_pilot.png",
+      "has_uv": true,
+      "texture_in_glb": true
+    },
+    {
+      "ac_object": "jambeD",
+      "glb_nodes": [
+        "i0_jambeD"
+      ],
+      "texture": "e-flash/Models/general_pilot.png",
+      "has_uv": true,
+      "texture_in_glb": true
+    },
+    {
+      "ac_object": "jambeG",
+      "glb_nodes": [
+        "i0_jambeG"
+      ],
+      "texture": "e-flash/Models/general_pilot.png",
+      "has_uv": true,
+      "texture_in_glb": true
+    },
+    {
+      "ac_object": "manche",
+      "glb_nodes": [
+        "i0_manche"
+      ],
+      "texture": "e-flash/Models/general_pilot.png",
+      "has_uv": true,
+      "texture_in_glb": true
+    },
+    {
+      "ac_object": "piedD",
+      "glb_nodes": [
+        "i0_piedD"
+      ],
+      "texture": "e-flash/Models/general_pilot.png",
+      "has_uv": true,
+      "texture_in_glb": true
+    },
+    {
+      "ac_object": "piedG",
+      "glb_nodes": [
+        "i0_piedG"
+      ],
+      "texture": "e-flash/Models/general_pilot.png",
+      "has_uv": true,
+      "texture_in_glb": true
+    },
+    {
+      "ac_object": "tete",
+      "glb_nodes": [
+        "i0_tete"
+      ],
+      "texture": "e-flash/Models/general_pilot.png",
+      "has_uv": true,
+      "texture_in_glb": true
+    },
+    {
+      "ac_object": "Head",
+      "glb_nodes": [
+        "i0_Head"
+      ],
+      "texture": "e-flash/Models/testpilot.png",
+      "has_uv": true,
+      "texture_in_glb": true
+    },
+    {
+      "ac_object": "Larm",
+      "glb_nodes": [
+        "i0_Larm"
+      ],
+      "texture": "e-flash/Models/testpilot.png",
+      "has_uv": true,
+      "texture_in_glb": true
+    },
+    {
+      "ac_object": "Lcalf.001",
+      "glb_nodes": [
+        "i0_Lcalf.001"
+      ],
+      "texture": "e-flash/Models/testpilot.png",
+      "has_uv": true,
+      "texture_in_glb": true
+    },
+    {
+      "ac_object": "Lfoot",
+      "glb_nodes": [
+        "i0_Lfoot"
+      ],
+      "texture": "e-flash/Models/testpilot.png",
+      "has_uv": true,
+      "texture_in_glb": true
+    },
+    {
+      "ac_object": "Lforearm",
+      "glb_nodes": [
+        "i0_Lforearm"
+      ],
+      "texture": "e-flash/Models/testpilot.png",
+      "has_uv": true,
+      "texture_in_glb": true
+    },
+    {
+      "ac_object": "Lhand",
+      "glb_nodes": [
+        "i0_Lhand"
+      ],
+      "texture": "e-flash/Models/testpilot.png",
+      "has_uv": true,
+      "texture_in_glb": true
+    },
+    {
+      "ac_object": "Lthigh.001",
+      "glb_nodes": [
+        "i0_Lthigh.001"
+      ],
+      "texture": "e-flash/Models/testpilot.png",
+      "has_uv": true,
+      "texture_in_glb": true
+    },
+    {
+      "ac_object": "Pelvis.001",
+      "glb_nodes": [
+        "i0_Pelvis.001"
+      ],
+      "texture": "e-flash/Models/testpilot.png",
+      "has_uv": true,
+      "texture_in_glb": true
+    },
+    {
+      "ac_object": "Rarm",
+      "glb_nodes": [
+        "i0_Rarm"
+      ],
+      "texture": "e-flash/Models/testpilot.png",
+      "has_uv": true,
+      "texture_in_glb": true
+    },
+    {
+      "ac_object": "Rcalf.001",
+      "glb_nodes": [
+        "i0_Rcalf.001"
+      ],
+      "texture": "e-flash/Models/testpilot.png",
+      "has_uv": true,
+      "texture_in_glb": true
+    },
+    {
+      "ac_object": "Rfoot",
+      "glb_nodes": [
+        "i0_Rfoot"
+      ],
+      "texture": "e-flash/Models/testpilot.png",
+      "has_uv": true,
+      "texture_in_glb": true
+    },
+    {
+      "ac_object": "Rforearm",
+      "glb_nodes": [
+        "i0_Rforearm"
+      ],
+      "texture": "e-flash/Models/testpilot.png",
+      "has_uv": true,
+      "texture_in_glb": true
+    },
+    {
+      "ac_object": "Rhand",
+      "glb_nodes": [
+        "i0_Rhand"
+      ],
+      "texture": "e-flash/Models/testpilot.png",
+      "has_uv": true,
+      "texture_in_glb": true
+    },
+    {
+      "ac_object": "Rthigh.001",
+      "glb_nodes": [
+        "i0_Rthigh.001"
+      ],
+      "texture": "e-flash/Models/testpilot.png",
+      "has_uv": true,
+      "texture_in_glb": true
+    },
+    {
+      "ac_object": "Torso.001",
+      "glb_nodes": [
+        "i0_Torso.001"
+      ],
+      "texture": "e-flash/Models/testpilot.png",
+      "has_uv": true,
+      "texture_in_glb": true
+    },
+    {
+      "ac_object": "MagnetoSwitch_Off",
+      "glb_nodes": [
+        "i0_MagnetoSwitch_Off"
+      ],
+      "texture": "e-flash/Models/magnetoswitch.rgb",
+      "has_uv": true,
+      "texture_in_glb": null
+    },
+    {
+      "ac_object": "MagnetoSwitch_On",
+      "glb_nodes": [
+        "i0_MagnetoSwitch_On"
+      ],
+      "texture": "e-flash/Models/magnetoswitch.rgb",
+      "has_uv": true,
+      "texture_in_glb": null
+    },
+    {
+      "ac_object": "Sail",
+      "glb_nodes": [
+        "i0_Sail"
+      ],
+      "texture": "e-flash/Models/reg.rgb",
+      "has_uv": true,
+      "texture_in_glb": true
+    }
+  ],
+  "textures": [
+    {
+      "file": "textures/Models/general_pilot.png",
+      "original": "e-flash/Models/general_pilot.png",
+      "role": "base",
+      "size": [
+        512,
+        512
+      ],
+      "cutout_alpha": null,
+      "in_glb": true
+    },
+    {
+      "file": "textures/Models/reg.png",
+      "original": "e-flash/Models/reg.rgb",
+      "role": "base",
+      "size": [
+        256,
+        128
+      ],
+      "cutout_alpha": null,
+      "in_glb": true
+    },
+    {
+      "file": "textures/Models/testpilot.png",
+      "original": "e-flash/Models/testpilot.png",
+      "role": "base",
+      "size": [
+        512,
+        512
+      ],
+      "cutout_alpha": null,
+      "in_glb": true
+    }
+  ],
+  "livery_names": [],
+  "eye_point": {
+    "fg_m": [
+      1.188,
+      0,
+      0.8526
+    ],
+    "pitch_offset_deg": -20,
+    "fov_deg": null,
+    "glb": [
+      1.188,
+      0.8526,
+      0
+    ]
+  },
+  "sounds_copied": [
+    "sounds/FES-running.wav",
+    "sounds/FES-stop.wav"
+  ],
+  "nasal_files": [
+    "e-flash/Models/Instruments/FCU/FCU_display.nas",
+    "e-flash/Nasal/Animations.nas",
+    "e-flash/Nasal/CustomControls.nas",
+    "e-flash/Nasal/FES.nas",
+    "e-flash/Nasal/SetDefaults.nas",
+    "e-flash/Nasal/dialogs.nas",
+    "e-flash/Nasal/electrical.nas",
+    "e-flash/Nasal/weight_and_balance.nas"
+  ],
+  "runtime_notes": [
+    "GLB already uses the mapped frame; do not apply the map twice.",
+    "Source conditions retain Boolean operators; categories are advisory."
+  ],
+  "source_supplement": {
+    "url": "https://mirrors.ibiblio.org/flightgear/ftp/Aircraft-trunk/e-flash.zip",
+    "geometry_file": "e-flash/Models/e-flash.ac",
+    "sha256": "db48f2423844fa46a86ca64ff9b327e617178a03c517582f409f2bf796d128f2",
+    "model_xml_sha256": "a7fdad9617454edef60502cbce2d51980d84b4851ba8621838dca1c956ac653b",
+    "set_xml_byte_identical_to_pack": true,
+    "model_xml_byte_identical_to_pack": true,
+    "note": "Exact original archive recovered; parent AC loc transforms were omitted from GLB child geometry. Only constant translations and bounds are retained; no source geometry copy.",
+    "archive_sha256": "210ee9fa9dfbf7a3588d1430613ba321515302f8b6c7d0da6971316122bb729c"
+  },
+  "flight_model": {
+    "wingspan": 34.61,
+    "wingspan_unit": "FT",
+    "wingspan_m": 10.549128,
+    "variant": "Fictional electric Flash2a derivative, EchoAir E-Flash"
+  },
+  "source_geometry_restore": {
+    "transforms": [
+      {
+        "glb_node": "i0_avantbrasD",
+        "translation": [
+          1.5233746,
+          0.4235906,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            1.3638366,
+            0.42355119999999996,
+            -0.2821159
+          ],
+          "max": [
+            1.5747149999999999,
+            0.5840211,
+            -0.1485435
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_avantbrasG",
+        "translation": [
+          1.5233746,
+          0.4235906,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            1.2239289,
+            0.3726376,
+            0.1778797
+          ],
+          "max": [
+            1.5951604,
+            0.6389990999999999,
+            0.2864793
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_brasD",
+        "translation": [
+          1.5233746,
+          0.4235906,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            1.5127627,
+            0.5011809,
+            -0.245915
+          ],
+          "max": [
+            1.7402826,
+            0.8852666,
+            -0.142943
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_brasG",
+        "translation": [
+          1.5233746,
+          0.4235906,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            1.4680379,
+            0.4779839,
+            0.154935
+          ],
+          "max": [
+            1.7258627,
+            0.8793806,
+            0.2644439
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_corps",
+        "translation": [
+          1.5233746,
+          0.4235906,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            1.4262027,
+            0.3697203,
+            -0.183071
+          ],
+          "max": [
+            1.7461745999999998,
+            0.9423268,
+            0.182529
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_cuisseD",
+        "translation": [
+          1.5233746,
+          0.4235906,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            1.1133043,
+            0.17921639999999994,
+            -0.30981380000000003
+          ],
+          "max": [
+            1.6429401,
+            0.5010757,
+            -0.00030670000000000697
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_cuisseG",
+        "translation": [
+          1.5233746,
+          0.4235906,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            1.0980254999999999,
+            0.1932107,
+            0.051082400000000014
+          ],
+          "max": [
+            1.6446285,
+            0.5144894,
+            0.3056599
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Helmet001",
+        "translation": [
+          1.5233746,
+          0.4235906,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            1.4173103,
+            0.8996604,
+            -0.12306990000000001
+          ],
+          "max": [
+            1.7126502,
+            1.211157,
+            0.1256456
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_jambeD",
+        "translation": [
+          1.5233746,
+          0.4235906,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            0.9306774999999998,
+            -0.01573410000000003,
+            -0.3043496
+          ],
+          "max": [
+            1.3192667999999999,
+            0.36057459999999997,
+            -0.1630907
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_jambeG",
+        "translation": [
+          1.5233746,
+          0.4235906,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            0.9082506999999997,
+            -0.0011317000000000133,
+            0.17300120000000002
+          ],
+          "max": [
+            1.3176218999999998,
+            0.3624416,
+            0.3170885
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_manche",
+        "translation": [
+          1.5233746,
+          0.4235906,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            1.2545351999999999,
+            0.36548529999999996,
+            -0.2953132
+          ],
+          "max": [
+            1.410451,
+            0.49295539999999993,
+            -0.21447760000000002
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_piedD",
+        "translation": [
+          1.5233746,
+          0.4235906,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            0.7985028,
+            -0.04559040000000003,
+            -0.28915650000000004
+          ],
+          "max": [
+            0.9840549,
+            0.13127959999999997,
+            -0.1894415
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_piedG",
+        "translation": [
+          1.5233746,
+          0.4235906,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            0.7894799999999998,
+            -0.04321269999999999,
+            0.2215791
+          ],
+          "max": [
+            0.9744091999999999,
+            0.13596589999999997,
+            0.31315099999999996
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_tete",
+        "translation": [
+          1.5233746,
+          0.4235906,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            1.4474082999999998,
+            0.8372382,
+            -0.095971
+          ],
+          "max": [
+            1.6990178999999999,
+            1.1635360000000001,
+            0.088129
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Vizor001",
+        "translation": [
+          1.5233746,
+          0.4235906,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            1.4179705,
+            0.9511247,
+            -0.12318300000000001
+          ],
+          "max": [
+            1.5906573,
+            1.0852915,
+            0.1255325
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Head",
+        "translation": [
+          1.2561522,
+          0.1238351,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            1.1479232000000001,
+            0.6837623,
+            -0.07953
+          ],
+          "max": [
+            1.3634952000000002,
+            0.9562733,
+            0.080527
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Helmet",
+        "translation": [
+          1.2561522,
+          0.1238351,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            1.0856111,
+            0.7119059999999999,
+            -0.1165
+          ],
+          "max": [
+            1.4312658,
+            0.9937655999999999,
+            0.1169388
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Larm",
+        "translation": [
+          1.2561522,
+          0.1238351,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            1.2375283000000001,
+            0.3520270999999999,
+            0.08730589999999999
+          ],
+          "max": [
+            1.4142952000000002,
+            0.6871765999999999,
+            0.3668796
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Lcalf001",
+        "translation": [
+          1.2561522,
+          0.1238351,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            0.4796067,
+            -0.0007615999999999734,
+            0.0587915
+          ],
+          "max": [
+            0.9058961999999999,
+            0.28713900000000003,
+            0.1703076
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Lfoot",
+        "translation": [
+          1.2561522,
+          0.1238351,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            0.2659814000000001,
+            -0.061081399999999994,
+            0.0832116
+          ],
+          "max": [
+            0.5523579000000001,
+            0.1579342,
+            0.1754137
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Lforearm",
+        "translation": [
+          1.2561522,
+          0.1238351,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            1.1615412,
+            0.34620629999999997,
+            0.2887565
+          ],
+          "max": [
+            1.40491,
+            0.4520318,
+            0.3709826
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Lhand",
+        "translation": [
+          1.2561522,
+          0.1238351,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            1.0175747,
+            0.4049464,
+            0.2567379
+          ],
+          "max": [
+            1.1895661,
+            0.4707625,
+            0.3554862
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Lthigh001",
+        "translation": [
+          1.2561522,
+          0.1238351,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            0.8104611000000002,
+            0.0844281,
+            0.002360000000000001
+          ],
+          "max": [
+            1.301979,
+            0.3115616,
+            0.1629235
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Pelvis001",
+        "translation": [
+          1.2561522,
+          0.1238351,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            1.1414442000000002,
+            0.061324699999999996,
+            -0.137444
+          ],
+          "max": [
+            1.3594212,
+            0.30866669999999996,
+            0.14321
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Rarm",
+        "translation": [
+          1.2561522,
+          0.1238351,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            1.2375283000000001,
+            0.352028,
+            -0.3668798
+          ],
+          "max": [
+            1.4142952,
+            0.6871767,
+            -0.0873061
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Rcalf001",
+        "translation": [
+          1.2561522,
+          0.1238351,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            0.4808493,
+            -0.0045943999999999985,
+            -0.17714180000000002
+          ],
+          "max": [
+            0.9062623,
+            0.2839134,
+            -0.0634352
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Rfoot",
+        "translation": [
+          1.2561522,
+          0.1238351,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            0.26732340000000004,
+            -0.0650015,
+            -0.1916568
+          ],
+          "max": [
+            0.5533927000000001,
+            0.1536817,
+            -0.0952092
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Rforearm",
+        "translation": [
+          1.2561522,
+          0.1238351,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            1.1615412,
+            0.34620629999999997,
+            -0.3709828
+          ],
+          "max": [
+            1.4049108000000001,
+            0.45203129999999997,
+            -0.28875690000000004
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Rhand",
+        "translation": [
+          1.2561522,
+          0.1238351,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            1.0258468,
+            0.40341530000000003,
+            -0.3566309
+          ],
+          "max": [
+            1.1978387000000001,
+            0.4692318,
+            -0.25788239999999996
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Rthigh001",
+        "translation": [
+          1.2561522,
+          0.1238351,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            0.8109196,
+            0.0807671,
+            -0.1668525
+          ],
+          "max": [
+            1.3026096999999999,
+            0.30880019999999997,
+            -0.007649600000000006
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Torso001",
+        "translation": [
+          1.2561522,
+          0.1238351,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            1.1414172000000002,
+            0.1911752,
+            -0.173221
+          ],
+          "max": [
+            1.3969282,
+            0.7472622,
+            0.178988
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Vizor",
+        "translation": [
+          1.2561522,
+          0.1238351,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            1.0950881,
+            0.7786371,
+            -0.1105039
+          ],
+          "max": [
+            1.2401472999999998,
+            0.9090322999999999,
+            0.1088687
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_batteries",
+        "translation": [
+          -0.3772432,
+          0,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            1.8489993,
+            0.2112963,
+            -0.1559267
+          ],
+          "max": [
+            2.1154521,
+            0.6944886,
+            0.1559267
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Bolt3",
+        "translation": [
+          -0.3772431,
+          1e-07,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            1.5428379,
+            1.9524029,
+            -0.0620532
+          ],
+          "max": [
+            1.5628378,
+            1.972403,
+            0.0614636
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Cube",
+        "translation": [
+          -0.3772432,
+          0,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            1.5372969,
+            1.8016191,
+            -0.024369
+          ],
+          "max": [
+            1.5742168,
+            1.882107,
+            0.023842
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Cube001",
+        "translation": [
+          -0.3772432,
+          0,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            1.0430288,
+            0.04373,
+            -0.267351
+          ],
+          "max": [
+            1.2943659,
+            0.121572,
+            0.27584
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Cube002",
+        "translation": [
+          -0.3772431,
+          0,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            1.2821559,
+            0.026606,
+            -0.267351
+          ],
+          "max": [
+            1.3821939,
+            0.280415,
+            0.27584
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Cube003",
+        "translation": [
+          -0.3772431,
+          0,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            1.3624679,
+            0.214198,
+            -0.267351
+          ],
+          "max": [
+            1.6138049,
+            0.29204,
+            0.27584
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Cube004",
+        "translation": [
+          -0.3772431,
+          0,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            1.6100119,
+            0.259573,
+            -0.2263101
+          ],
+          "max": [
+            1.7894899,
+            0.750303,
+            0.2263108
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Cube005",
+        "translation": [
+          -0.3772432,
+          0,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            0.200855,
+            -0.224785,
+            0.040008
+          ],
+          "max": [
+            0.287669,
+            -0.207423,
+            0.046657
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Cylinder",
+        "translation": [
+          -0.3772432,
+          0,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            1.8062725999999998,
+            0.5222865999999999,
+            -0.1944192
+          ],
+          "max": [
+            1.8504243999999996,
+            0.5664384,
+            0.1944192
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Cylinder001",
+        "translation": [
+          -0.3772431,
+          0,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            1.8303657999999998,
+            0.5226744999999999,
+            -0.1912035
+          ],
+          "max": [
+            2.1403084999999997,
+            0.5660505,
+            0.1912035
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Cylinder002",
+        "translation": [
+          -0.3772432,
+          0,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            0.234262,
+            -0.225469,
+            -0.068098
+          ],
+          "max": [
+            0.254262,
+            -0.205469,
+            0.071598
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Cylinder003",
+        "translation": [
+          -0.3772433,
+          0,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            2.0906253,
+            0.5246462,
+            -0.1736389
+          ],
+          "max": [
+            2.1300578999999997,
+            0.5640788,
+            0.1736389
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Cylinder004",
+        "translation": [
+          -0.3772432,
+          0,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            1.3101909,
+            0.209248,
+            -0.3026
+          ],
+          "max": [
+            1.3438159,
+            0.24286,
+            -0.276925
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Cylinder005",
+        "translation": [
+          -0.3772432,
+          0,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            0.235058,
+            -0.008093,
+            0.019087
+          ],
+          "max": [
+            0.250058,
+            0.006907,
+            0.05196
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Cylinder011",
+        "translation": [
+          -0.3772432,
+          0,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            1.8228918,
+            -0.261384,
+            -0.777417
+          ],
+          "max": [
+            2.1895618,
+            0.464919,
+            -0.108161
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Cylinder012",
+        "translation": [
+          -0.3772433,
+          0,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            2.1429937,
+            -0.295363,
+            -0.809564
+          ],
+          "max": [
+            2.2112157,
+            0.020445,
+            0.006012
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Cylinder013",
+        "translation": [
+          -0.3772433,
+          0,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            2.0300937,
+            -0.391668,
+            -0.874358
+          ],
+          "max": [
+            2.2828207,
+            -0.138941,
+            -0.774087
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Cylinder014",
+        "translation": [
+          -0.3772433,
+          0,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            2.0932758,
+            -0.328487,
+            -0.872872
+          ],
+          "max": [
+            2.2196398,
+            -0.202123,
+            -0.775573
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Cylinder015",
+        "translation": [
+          -0.3772433,
+          0,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            2.0932758,
+            -0.328487,
+            0.754509
+          ],
+          "max": [
+            2.2196398,
+            -0.202123,
+            0.851809
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Cylinder016",
+        "translation": [
+          -0.3772433,
+          0,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            2.0300937,
+            -0.391668,
+            0.753023
+          ],
+          "max": [
+            2.2828207,
+            -0.138941,
+            0.853295
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Cylinder017",
+        "translation": [
+          -0.3772433,
+          0,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            2.1429937,
+            -0.295364,
+            -0.003999
+          ],
+          "max": [
+            2.2112157,
+            0.020445,
+            0.811577
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Cylinder018",
+        "translation": [
+          -0.3772431,
+          0,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            1.8228909,
+            -0.261385,
+            0.103641
+          ],
+          "max": [
+            2.1895607,
+            0.464918,
+            0.772897
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Cylinder019",
+        "translation": [
+          -0.3772432,
+          0,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            1.0912548,
+            -0.260079,
+            -0.747823
+          ],
+          "max": [
+            2.1550329,
+            0.010148,
+            -0.028933
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Cylinder020",
+        "translation": [
+          -0.3772432,
+          0,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            1.0912548,
+            -0.260079,
+            0.030793
+          ],
+          "max": [
+            2.1550329,
+            0.010148,
+            0.749682
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Cylinder025",
+        "translation": [
+          -0.3772431,
+          0,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            1.5473669,
+            1.808185,
+            -0.038269
+          ],
+          "max": [
+            1.5582799,
+            1.8190989,
+            0.038269
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Cylinder026",
+        "translation": [
+          -0.3772431,
+          0,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            1.5142599,
+            1.88376,
+            -0.03954
+          ],
+          "max": [
+            1.6282688,
+            1.997769,
+            0.03954
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Cylinder027",
+        "translation": [
+          -0.3772432,
+          1e-07,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            1.5709819,
+            1.897523,
+            -0.048778
+          ],
+          "max": [
+            1.5909818,
+            1.917523,
+            0.051222
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_DriveShaft",
+        "translation": [
+          -0.3772431,
+          0,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            2.1762894999999998,
+            0.542306,
+            -0.01
+          ],
+          "max": [
+            2.2762895999999997,
+            0.562306,
+            0.01
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_engine",
+        "translation": [
+          -0.3772432,
+          0,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            2.067489,
+            0.45205080000000003,
+            -0.0998446
+          ],
+          "max": [
+            2.2890543,
+            0.65174,
+            0.0998446
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Fairing",
+        "translation": [
+          -0.3772432,
+          0,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            -0.014694,
+            -0.134452,
+            -0.335773
+          ],
+          "max": [
+            1.1246849,
+            0.387023,
+            0.335368
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_FrontPost",
+        "translation": [
+          -0.3772432,
+          0,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            1.1220896,
+            1.1708219,
+            -0.014737
+          ],
+          "max": [
+            1.5702059,
+            1.828119,
+            0.014663
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_FrontPost001",
+        "translation": [
+          -0.3772431,
+          0,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            0.5236825,
+            0.1749875,
+            -0.2633413
+          ],
+          "max": [
+            1.1511869,
+            1.1984724,
+            0.2633413
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_HandThrottle",
+        "translation": [
+          -0.3772432,
+          0,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            1.3191168,
+            0.173883,
+            0.319506
+          ],
+          "max": [
+            1.3672999,
+            0.237357,
+            0.340845
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_HandThrottleMount",
+        "translation": [
+          -0.3772431,
+          0,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            1.3091699,
+            0.20904,
+            0.278968
+          ],
+          "max": [
+            1.3450999,
+            0.242675,
+            0.327506
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_MagnetoSwitch",
+        "translation": [
+          -0.3772432,
+          0,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            1.3185018,
+            0.220306,
+            -0.318112
+          ],
+          "max": [
+            1.3283268,
+            0.239676,
+            -0.308361
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_MagnetoSwitch2",
+        "translation": [
+          -0.3772432,
+          0,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            1.3135949,
+            0.229688,
+            -0.320981
+          ],
+          "max": [
+            1.3307478,
+            0.244298,
+            -0.30501
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_MagnetoSwitch_Off",
+        "translation": [
+          -0.3772432,
+          0,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            1.2967088,
+            0.22705,
+            -0.327734
+          ],
+          "max": [
+            1.3194638,
+            0.241879,
+            -0.300574
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_MagnetoSwitch_On",
+        "translation": [
+          -0.3772432,
+          0,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            1.3175008,
+            0.2407455,
+            -0.325471
+          ],
+          "max": [
+            1.3402559,
+            0.255575,
+            -0.298311
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_MagnetoSwitchMount_0",
+        "translation": [
+          -0.3772432,
+          0,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            1.2967088,
+            0.204333,
+            -0.327734
+          ],
+          "max": [
+            1.3551499,
+            0.255575,
+            -0.29817
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_NoseStrut",
+        "translation": [
+          -0.3772432,
+          0,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            0.167276,
+            -0.260693,
+            -0.064659
+          ],
+          "max": [
+            0.326928,
+            -0.072788,
+            0.067968
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_NoseWheel",
+        "translation": [
+          -0.3772432,
+          0,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            0.117898,
+            -0.342468,
+            -0.045962
+          ],
+          "max": [
+            0.370625,
+            -0.089741,
+            0.050417
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Pitot",
+        "translation": [
+          -0.3772432,
+          0,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            0.643567,
+            0.200375,
+            0.280665
+          ],
+          "max": [
+            0.7106639,
+            0.220376,
+            0.324128
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Prop",
+        "translation": [
+          -0.3772431,
+          0,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            2.2453385999999997,
+            -0.136417,
+            -0.4394
+          ],
+          "max": [
+            2.2642176,
+            1.2583801,
+            0.783555
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_SeatFrame",
+        "translation": [
+          -0.3772432,
+          0,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            1.0133679,
+            0.004816,
+            -0.332781
+          ],
+          "max": [
+            1.7906779,
+            0.553332,
+            0.332816
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Sphere001",
+        "translation": [
+          -0.3772432,
+          0,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            1.1134698,
+            -0.137473,
+            -0.339672
+          ],
+          "max": [
+            2.1309173,
+            0.525606,
+            0.339672
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Sphere002",
+        "translation": [
+          -0.3772433,
+          0,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            1.9769809,
+            -0.285013,
+            -0.901233
+          ],
+          "max": [
+            2.4262948,
+            -0.095101,
+            -0.743946
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Sphere003",
+        "translation": [
+          -0.3772433,
+          0,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            1.9769809,
+            -0.285013,
+            0.72605
+          ],
+          "max": [
+            2.4262948,
+            -0.095101,
+            0.883337
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_StarterRope",
+        "translation": [
+          -0.3772432,
+          0,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            0.213879,
+            -0.029273,
+            0.039262
+          ],
+          "max": [
+            2.0261517,
+            0.028047,
+            0.046762
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_StarterWheel",
+        "translation": [
+          -0.3772432,
+          0,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            0.218968,
+            -0.025593,
+            0.038531
+          ],
+          "max": [
+            0.268968,
+            0.024407,
+            0.047582
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_TrikeKeel",
+        "translation": [
+          -0.3772432,
+          0,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            0.12208,
+            -0.03872,
+            -0.038719
+          ],
+          "max": [
+            2.2194026,
+            0.038719,
+            0.03872
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_TrikeKingPost",
+        "translation": [
+          -0.3772431,
+          0,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            1.5437689,
+            0.0010047,
+            -0.0252221
+          ],
+          "max": [
+            1.9509718,
+            1.980341,
+            0.024638
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Visor",
+        "translation": [
+          -0.3772432,
+          0,
+          0
+        ],
+        "source_bounds": {
+          "min": [
+            0.42727649999999995,
+            0.2172171,
+            -0.2508
+          ],
+          "max": [
+            0.9938524999999999,
+            1.1517156,
+            0.250423
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Battens",
+        "translation": [
+          0.0159598,
+          2.0388253,
+          3e-07
+        ],
+        "source_bounds": {
+          "min": [
+            0.17506190000000021,
+            2.0115666,
+            0.3181959999999999
+          ],
+          "max": [
+            3.2271677,
+            2.3153395,
+            5.064097
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Battens001",
+        "translation": [
+          0.0159598,
+          2.0388253,
+          5e-07
+        ],
+        "source_bounds": {
+          "min": [
+            0.17506190000000021,
+            2.0115666,
+            -5.0640969
+          ],
+          "max": [
+            3.2271677,
+            2.3153395,
+            -0.3181959000000001
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Circle002",
+        "translation": [
+          0.0159599,
+          2.0388253,
+          3e-07
+        ],
+        "source_bounds": {
+          "min": [
+            1.9418272,
+            3.0747814000000004,
+            -0.0050145
+          ],
+          "max": [
+            2.0002245000000003,
+            3.1224105000000004,
+            0.0049855
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Crossbar",
+        "translation": [
+          0.0159598,
+          2.0388253,
+          3e-07
+        ],
+        "source_bounds": {
+          "min": [
+            1.0052772,
+            2.0902085,
+            -0.0012124000000000024
+          ],
+          "max": [
+            1.2774416000000002,
+            2.1496419,
+            2.6000109
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Crossbar001",
+        "translation": [
+          0.0159598,
+          2.0388253,
+          3e-07
+        ],
+        "source_bounds": {
+          "min": [
+            1.0052771000000003,
+            2.0902085,
+            -2.6000106
+          ],
+          "max": [
+            1.2774415000000001,
+            2.149642,
+            0.0012126999999999555
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Fin",
+        "translation": [
+          0.0159598,
+          2.0388253,
+          3e-07
+        ],
+        "source_bounds": {
+          "min": [
+            1.6731432000000002,
+            2.0055431,
+            -0.0374389
+          ],
+          "max": [
+            3.2731455,
+            2.4787039,
+            0.0383739
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_KeelPocket",
+        "translation": [
+          0.0159598,
+          2.0388253,
+          3e-07
+        ],
+        "source_bounds": {
+          "min": [
+            1.6212325,
+            2.0055431,
+            -0.0374389
+          ],
+          "max": [
+            2.5563794,
+            2.1669035,
+            0.0383739
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_LowerFrontWireLeft",
+        "translation": [
+          0.0159598,
+          2.0388253,
+          3e-07
+        ],
+        "source_bounds": {
+          "min": [
+            0.013684699999999994,
+            0.47094670000000005,
+            0.0035593999999999903
+          ],
+          "max": [
+            1.085363,
+            2.0351097,
+            0.7479224
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_LowerFrontWireRight",
+        "translation": [
+          0.0159598,
+          2.0388253,
+          3e-07
+        ],
+        "source_bounds": {
+          "min": [
+            0.013684800000000052,
+            0.47094670000000005,
+            -0.7479225
+          ],
+          "max": [
+            1.0853632,
+            2.0351097,
+            -0.003559600000000107
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_LowerRearWireLeft",
+        "translation": [
+          0.0159597,
+          2.0388254,
+          3e-07
+        ],
+        "source_bounds": {
+          "min": [
+            1.0787506000000002,
+            0.49269450000000004,
+            -0.002082700000000104
+          ],
+          "max": [
+            2.7293886,
+            2.0592598,
+            0.7994863999999999
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_LowerRearWireRight",
+        "translation": [
+          0.0159597,
+          2.0388253,
+          3e-07
+        ],
+        "source_bounds": {
+          "min": [
+            1.0787507,
+            0.49269420000000014,
+            -0.7994866
+          ],
+          "max": [
+            2.7294425,
+            2.0593172,
+            -0.01786120000000002
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_LowerSideWire",
+        "translation": [
+          0.0159598,
+          2.0388253,
+          3e-07
+        ],
+        "source_bounds": {
+          "min": [
+            1.0495375,
+            0.43736160000000013,
+            0.7854543
+          ],
+          "max": [
+            1.2692368,
+            2.1252292,
+            2.3639076
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_LowerSideWire001",
+        "translation": [
+          0.0159598,
+          2.0388253,
+          3e-07
+        ],
+        "source_bounds": {
+          "min": [
+            1.0495375,
+            0.43736160000000013,
+            -2.3639075
+          ],
+          "max": [
+            1.2692369000000001,
+            2.1252292,
+            -0.7854541999999998
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Luffline1",
+        "translation": [
+          0.0159599,
+          2.0388253,
+          3e-07
+        ],
+        "source_bounds": {
+          "min": [
+            1.9759492,
+            2.2202106,
+            -0.0002571000000000101
+          ],
+          "max": [
+            2.5274305999999997,
+            3.096109,
+            1.0375661999999999
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Luffline1001",
+        "translation": [
+          0.0159599,
+          2.0388253,
+          3e-07
+        ],
+        "source_bounds": {
+          "min": [
+            1.9759492,
+            2.2202108000000003,
+            -1.0375664000000002
+          ],
+          "max": [
+            2.5274308,
+            3.0961094000000005,
+            0.0002568999999998933
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Luffline2",
+        "translation": [
+          0.0159598,
+          2.0388253,
+          3e-07
+        ],
+        "source_bounds": {
+          "min": [
+            1.9656517,
+            2.2944904,
+            -0.0011926999999998245
+          ],
+          "max": [
+            2.6405851,
+            3.1037480000000004,
+            2.3710129
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Luffline2001",
+        "translation": [
+          0.0159598,
+          2.0388253,
+          3e-07
+        ],
+        "source_bounds": {
+          "min": [
+            1.9656513,
+            2.2944899000000003,
+            -2.3710123999999997
+          ],
+          "max": [
+            2.6405849,
+            3.1037477,
+            0.0011928999999999412
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Luffline3",
+        "translation": [
+          0.0159598,
+          2.0388253,
+          3e-07
+        ],
+        "source_bounds": {
+          "min": [
+            1.9528309,
+            2.3169678,
+            -0.0015288999999998332
+          ],
+          "max": [
+            2.8901065,
+            3.1132210000000002,
+            3.5752195
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Luffline3001",
+        "translation": [
+          0.0159599,
+          2.0388253,
+          3e-07
+        ],
+        "source_bounds": {
+          "min": [
+            1.9528306999999998,
+            2.3169678,
+            -3.5752181000000003
+          ],
+          "max": [
+            2.8901064,
+            3.1132209,
+            0.0015295000000001835
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_NoseCone",
+        "translation": [
+          0.0159598,
+          2.0388253,
+          3e-07
+        ],
+        "source_bounds": {
+          "min": [
+            -0.02486350000000001,
+            1.9527750000000001,
+            -0.191149
+          ],
+          "max": [
+            0.3782354,
+            2.2395601000000003,
+            0.191149
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Sail",
+        "translation": [
+          0.0159598,
+          2.0388253,
+          3e-07
+        ],
+        "source_bounds": {
+          "min": [
+            -0.019006399999999868,
+            1.9570698,
+            1.0000000005838672e-07
+          ],
+          "max": [
+            3.2271674,
+            2.3203392,
+            5.2512122
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Sail002",
+        "translation": [
+          0.0159598,
+          2.0388253,
+          1e-07
+        ],
+        "source_bounds": {
+          "min": [
+            -0.019006399999999868,
+            1.9570698,
+            -5.251212
+          ],
+          "max": [
+            3.2271675,
+            2.3203392,
+            0.00018530000000005487
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Sidetube",
+        "translation": [
+          0.0159599,
+          2.0388253,
+          3e-07
+        ],
+        "source_bounds": {
+          "min": [
+            -0.01811490000000049,
+            2.0118677,
+            -0.00025190000000030466
+          ],
+          "max": [
+            2.9938612,
+            2.1434257,
+            5.2711787999999995
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_Sidetube001",
+        "translation": [
+          0.0159599,
+          2.0388253,
+          3e-07
+        ],
+        "source_bounds": {
+          "min": [
+            -0.018115400000000115,
+            2.0118675,
+            -5.2711799
+          ],
+          "max": [
+            2.9938605,
+            2.1434254,
+            0.00025159999999946336
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_UpperFrontWire",
+        "translation": [
+          0.0159598,
+          2.0388253,
+          3e-07
+        ],
+        "source_bounds": {
+          "min": [
+            0.01906859999999999,
+            2.0384176,
+            -0.0019998999999999998
+          ],
+          "max": [
+            1.730972,
+            3.2834635,
+            0.0020003
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_UpperRearWire1",
+        "translation": [
+          0.0159598,
+          2.0388253,
+          3e-07
+        ],
+        "source_bounds": {
+          "min": [
+            1.7353906000000001,
+            3.0751503000000002,
+            -0.002
+          ],
+          "max": [
+            1.9996493000000002,
+            3.2863599000000003,
+            0.0020001
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_UpperRearWire2",
+        "translation": [
+          0.0159598,
+          2.0388253,
+          3e-07
+        ],
+        "source_bounds": {
+          "min": [
+            1.9945367,
+            2.0526947,
+            -0.002
+          ],
+          "max": [
+            2.7329145,
+            3.0799847,
+            0.0020001
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_UpperRearWire3",
+        "translation": [
+          0.0159598,
+          2.0388253,
+          3e-07
+        ],
+        "source_bounds": {
+          "min": [
+            1.997425,
+            2.4628832000000003,
+            -0.002
+          ],
+          "max": [
+            3.1505946000000002,
+            3.0794351000000004,
+            0.0020001
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_UpperSideWire",
+        "translation": [
+          0.0159597,
+          2.0388253,
+          3e-07
+        ],
+        "source_bounds": {
+          "min": [
+            1.2668134,
+            2.1206612,
+            -0.0003937999999998887
+          ],
+          "max": [
+            1.7354959,
+            3.2879869,
+            2.3609512
+          ]
+        }
+      },
+      {
+        "glb_node": "i0_UpperSideWire001",
+        "translation": [
+          0.0159598,
+          2.0388253,
+          3e-07
+        ],
+        "source_bounds": {
+          "min": [
+            1.2668133,
+            2.1206617,
+            -2.3609514
+          ],
+          "max": [
+            1.735496,
+            3.2879872,
+            0.0003939000000001691
+          ]
+        }
+      }
+    ],
+    "unmatched": [],
+    "source_wing_loc": [
+      0.0159598,
+      2.0388253,
+      3e-07
+    ],
+    "source_trike_loc": [
+      -0.3772432,
+      0,
+      0
+    ],
+    "max_shape_error_m": 0.0001
+  }
+}

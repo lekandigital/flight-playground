@@ -1,0 +1,1307 @@
+<?xml version="1.0"?>
+
+<!--  daVinci_P-51D -->
+
+<PropertyList>
+
+ <path>daVinci_P-51D.ac</path>
+
+<offsets>
+    <z-m>0.345</z-m>
+    <pitch-deg>0</pitch-deg>
+  </offsets>
+ 
+ <sound><path>Aircraft/daVinci_P-51D/Sounds/mp-sound.xml</path></sound>
+
+  <nasal>
+        <load>
+            var livery_update = aircraft.livery_update.new("Aircraft/daVinci_P-51D/Models/liveries", 30);
+			
+			var self = cmdarg();
+			
+			var aliases = [];
+			for (var i = 0; i &lt; 6; i += 1) {
+				var door = self.getNode("sim/model/bo105/doors/door[" ~ i ~ "]/position-norm", 1);
+				var generic = self.getNode("sim/multiplay/generic/float[" ~ i ~ "]", 1);
+				door.alias(generic);
+				append(aliases, door);
+			
+			}
+
+			
+    <![CDATA[
+var root = cmdarg();
+var rootindex = root.getIndex();
+var mpPath = "/ai/models/multiplayer["~ rootindex ~"]/";
+
+var lightsPath = mpPath~"lightpack/"; #path to the property node, where all internal values are placed
+
+props.globals.initNode(mpPath~"sim/is-MP-Aircraft", 1, "BOOL");
+      
+srand();
+#wherever you want to add randomization of time, use something like:  + rand()*0.05-0.025 (included by default where appropriate)
+
+
+#list of switches for lights - if you don't intend to use some light, assign it nil value instead, like whateverSwitch = nil; and you don't need to care about anything else
+#IMPORTANT: don't put / on the start of the string, it's already included in the mpPath property
+var navSwitch = mpPath~"controls/lighting/nav-lights-switch";
+var beaconSwitch = mpPath~"controls/lighting/beacon-switch";
+var strobeSwitch = mpPath~"controls/lighting/strobe-switch";
+var landingSwitch = mpPath~"controls/lighting/landing-lights-switch";
+var taxiSwitch = mpPath~"controls/lighting/taxi-light-switch";
+var probeSwitch = mpPath~"controls/lighting/probe-light-switch";
+var whiteSwitch = mpPath~"controls/lighting/white-light-switch";
+var searchSwitch = mpPath~"controls/lighting/search-light-switch";
+#switch this from 1 to 0 if you want to use advanced cyclical fading animation of the the nav lights instead of being stable on when the switch is on
+navStillOn = 1;
+
+
+#I need to set listener on some MP transferred properties; this doesn't seem to work well sometimes, so I mirror them to the original location on any change
+#This also simplifies work as I can use almost the same code for MP as is the local Nasal. Furthermore, I can use meaningful property names in the model XML files instead of referencing the MP properties. 
+var mpVar = {
+	new: func(propIn, propOut) {
+		var m = { parents: [mpVar] };
+		m.propIn = propIn;
+		m.propOut = propOut;
+		if(propIn==nil or propOut==nil) return m;
+		m.value = getprop(propIn);
+		setprop(propOut, m.value);
+		return m;
+	},
+	check: func {
+		if(me.propIn==nil or me.propOut==nil) return;
+		var newValue = getprop(me.propIn);
+		if(newValue != me.value) {
+			setprop(me.propOut, newValue);
+			me.value = newValue;
+			#print("value of "~me.propOut~" changed: "~newValue);
+		}
+	},
+};
+#init any property copy object needed in this array (anything you need to transfer over MP, but you are using the original paths in your xmls)
+#also used for properties you are using a listener on, or properties which you maybe want to manipulate during the <unload> 
+#if you're just using the pack, change the values according to the MP bindings in the -set.xml file
+#you don't need to delete the entries if the path is nil - it gets skipped automatically and the MP path is just ignored
+var mirrorValues = [
+	mpVar.new(mpPath~"sim/multiplay/generic/int[7]", mpPath~"sim/crashed"),
+	mpVar.new(mpPath~"sim/multiplay/generic/int[0]", navSwitch),
+	mpVar.new(mpPath~"sim/multiplay/generic/int[1]", beaconSwitch),
+	mpVar.new(mpPath~"sim/multiplay/generic/int[1]", strobeSwitch),
+	mpVar.new(mpPath~"sim/multiplay/generic/int[2]", landingSwitch),
+	mpVar.new(mpPath~"sim/multiplay/generic/int[3]", taxiSwitch),
+	mpVar.new(mpPath~"sim/multiplay/generic/int[3]", probeSwitch),
+	mpVar.new(mpPath~"sim/multiplay/generic/int[0]", whiteSwitch),
+	mpVar.new(mpPath~"sim/multiplay/generic/int[8]", searchSwitch),
+];
+#loop at the default MP transfer frequency (10Hz)
+var mirrorTimer = maketimer(0.1, func {
+	foreach(var mir; mirrorValues) {
+		mir.check();
+	}
+});
+mirrorTimer.start();
+
+
+
+#### NAV LIGHTS ####
+
+#class for a periodic fade in/out animation - for flashing, use rather standard aircraft.light.new(), as in Beacon and Strobe section
+var lightCycle = {
+	#constructor
+	new: func(propSwitch, propOut) {
+		m = { parents: [lightCycle] };
+		props.globals.initNode(propOut, 0, "DOUBLE");
+		props.globals.initNode(propSwitch, 1, "BOOL");
+		m.fadeIn = 0.4 + rand()*0.05-0.025; #fade in time
+		m.fadeOut = 0.4 + rand()*0.05-0.025; #fade out time
+		m.stayOn = 1.5 + rand()*0.05-0.025; #stable on period
+		m.stayOff = 1 + rand()*0.05-0.025; #stable off period
+		m.turnOff = 0.12; #fade out time when turned off
+		m.phase = 0; #phase to be run on next timer call: 0 -> fade in, 1 -> stay on, 2 -> fade out, 3 -> stay off
+		m.cycleTimer = maketimer(0.1, func {
+			if(getprop(propSwitch)) {
+				if(m.phase == 0) {
+					interpolate(propOut, 1, m.fadeIn);
+					m.phase = 1;
+					m.cycleTimer.restart(m.fadeIn);
+				}
+				else if(m.phase == 1){
+					m.phase = 2;
+					m.cycleTimer.restart(m.stayOn);
+				}
+				else if(m.phase == 2){
+					interpolate(propOut, 0, m.fadeOut);
+					m.phase = 3;
+					m.cycleTimer.restart(m.fadeOut);
+				}
+				else if(m.phase == 3){
+					m.phase = 0;
+					m.cycleTimer.restart(m.stayOff);
+				}
+			}
+			else {
+				interpolate(propOut, 0, m.turnOff); #kills any currently ongoing interpolation
+				m.phase = 0;
+			}
+		});
+		m.cycleTimer.singleShot = 1;
+		if(propSwitch==nil) {
+			m.listen = nil;
+			return m;
+		}
+		m.listen = setlistener(propSwitch, func{m.cycleTimer.restart(0);}); #handle switch changes
+		m.cycleTimer.restart(0); #start the looping
+		return m;
+	},
+	#destructor
+	del: func {
+		if(me.listen!=nil) removelistener(me.listen);
+		me.cycleTimer.stop();
+	},
+};
+
+#By default, the switch property is initialized to 1 (only if no value is already assigned). Don't change the class implementation! To override this, set the property manually. You don't need to care if any other code already does it for you. 
+var navLights = nil;
+if(!navStillOn) {
+	navLights = lightCycle.new(navSwitch, lightsPath~"nav-lights-intensity");
+	### Uncomment and tune those to customize times ###
+	#navLights.fadeIn = 0.4; #fade in time 
+	#navLights.fadeOut = 0.4; #fade out time
+	#navLights.stayOn = 3 + rand()*0.05-0.025; #stable on period
+	#navLights.stayOff = 0.6; #stable off period
+	#navLights.turnOff = 0.12; #fade out time when turned off
+}
+
+
+### BEACON ###
+var beacon = nil;
+if(beaconSwitch!=nil) {
+	props.globals.initNode(beaconSwitch, 1, "BOOL");
+	beacon = aircraft.light.new(lightsPath~"beacon-state", 
+		[0.0, 1.0 + rand()*0.05-0.025], beaconSwitch);
+}
+	
+	
+### STROBE ###
+var strobe = nil;
+if(strobeSwitch!=nil) {
+	props.globals.initNode(strobeSwitch, 1, "BOOL");
+	strobe = aircraft.light.new(lightsPath~"strobe-state", 
+		[0.0, 0.87 + rand()*0.05-0.025], strobeSwitch);
+}
+
+
+### LIGHT FADING ###
+
+#class for controlling fade in/out behavior - propIn is a control property (handled as a boolean) and propOut is interpolated
+#all light brightness animations in xmls depend on propOut (Rembrandt brightness, material emission, flares transparency, ...)
+var lightFadeInOut = {
+	#constructor
+	new: func(propSwitch, propOut) {
+		m = { parents: [lightFadeInOut] };
+		m.fadeIn = 0.3; #some sane defaults
+		m.fadeOut = 0.4;
+		if(propSwitch==nil) {
+			m.listen = nil;
+			return m;
+		}
+		props.globals.initNode(propSwitch, 1, "BOOL");
+		m.isOn = getprop(propSwitch);
+		props.globals.initNode(propOut, m.isOn, "DOUBLE");
+		m.listen = setlistener(propSwitch, 
+			func {
+				if(m.isOn and !getprop(propSwitch)) {
+					interpolate(propOut, 0, m.fadeOut);
+					m.isOn = 0;
+				}
+				if(!m.isOn and getprop(propSwitch)) {
+					interpolate(propOut, 1, m.fadeIn);
+					m.isOn = 1;
+				}
+			}
+		);
+		return m;
+	},
+	#destructor
+	del: func {
+		if(me.listen!=nil) removelistener(me.listen);
+	},
+};
+
+fadeLanding = lightFadeInOut.new(landingSwitch, lightsPath~"landing-lights-intensity");
+fadeLanding = lightFadeInOut.new(searchSwitch, lightsPath~"search-lights-intensity");
+fadeTaxi = lightFadeInOut.new(taxiSwitch, lightsPath~"taxi-light-intensity");
+fadeProbe = lightFadeInOut.new(probeSwitch, lightsPath~"probe-light-intensity");
+fadeWhite = lightFadeInOut.new(whiteSwitch, lightsPath~"white-light-intensity");
+if(navStillOn) {
+	navLights = lightFadeInOut.new(navSwitch, lightsPath~"nav-lights-intensity");
+	navLights.fadeIn = 0.1;
+	navLights.fadeOut = 0.12;
+}
+#manipulate times if defaults don't fit your needs:
+#fadeLanding.fadeIn = 0.5;
+#fadeLanding.fadeOut = 0.8;
+
+
+### the rest of your model load embedded Nasal code ###
+
+    ]]>
+		
+        </load>
+
+        <unload>
+			  #prevent multiple timers and listeners from running and fighting on next connect
+      #cleanly destroy MP property mirroring
+      mirrorTimer.stop();
+      mirrorTimer = nil;
+      mirrorValues = nil;
+      
+      #cleanly destroy nav lights
+      if(navStillOn) {
+      	navLights.del();
+      }
+      else {
+      	if(navSwitch!=nil) setprop(navSwitch, 0);
+      	navLights.del();
+      	if(navSwitch!=nil) navLights.cycleTimer = nil;
+      	navLights = nil;
+      }
+      
+      #cleanly destroy beacon
+      if(beaconSwitch!=nil) setprop(beaconSwitch, 0);
+      beacon.del();
+      beacon = nil;
+      
+      #cleanly destroy strobe
+      if(strobeSwitch!=nil) setprop(strobeSwitch, 0);
+      strobe.del();
+      strobe = nil;
+      
+      #cleanly destroy light fade in/out animation objects
+      fadeLanding.del();
+      fadeTaxi.del();
+      fadeProbe.del();
+      fadeWhite.del();
+      
+      ### the rest of your model unload embedded Nasal code ###
+            livery_update.stop();
+			
+        </unload>
+    </nasal>
+
+<!-- livery selection -->
+
+ <!-- Fuselage -->
+ <animation>
+ <type>material</type>
+  <object-name>Fuselage</object-name>
+  <object-name>Rudder</object-name>
+  <object-name>Spinner</object-name>
+  <object-name>Elevators</object-name>
+  <object-name>CanopyFrame</object-name>
+  <object-name>RearCoolerDoor</object-name>
+  <property-base>sim/model/livery</property-base>
+  <texture-prop>Fuselage</texture-prop>
+  <texture>Mustang_1_t.png</texture>
+ </animation>
+
+<!-- WingTops -->
+ <animation>
+ <type>material</type>
+  <object-name>Wings</object-name>
+  <object-name>PortFlap</object-name>
+  <object-name>StarFlap</object-name>
+  <object-name>PortAileron</object-name>
+  <object-name>StarAileron</object-name>
+  <property-base>sim/model/livery</property-base>
+  <texture-prop>WingTops</texture-prop>
+  <texture>Mustang_2_t.png</texture>
+ </animation>
+
+<!-- WingBottoms -->
+ <animation>
+ <type>material</type>
+  <object-name>WingBottoms</object-name>
+  <object-name>PortFlapBottom</object-name>
+  <object-name>StarFlapBottom</object-name>
+  <object-name>PortAileronBottom</object-name>
+  <object-name>StarAileronBottom</object-name>
+  <object-name>PortStrutCover</object-name>
+  <object-name>StarStrutCover</object-name>
+  <object-name>PortInnerGearDoor</object-name>
+  <object-name>StarInnerGearDoor</object-name>
+  <property-base>sim/model/livery</property-base>
+  <texture-prop>WingBottoms</texture-prop>
+  <texture>Mustang_3_t.png</texture>
+ </animation>
+
+
+<!-- HorizStabs -->
+ <animation>
+ <type>material</type>
+  <object-name>HorizStabs</object-name>
+  <object-name>ElevatorBottoms</object-name>
+  <property-base>sim/model/livery</property-base>
+  <texture-prop>HorizStabs</texture-prop>
+  <texture>Mustang_4_t.png</texture>
+ </animation>
+
+    
+<model>
+	<name>panel</name>
+  <path>Aircraft/daVinci_P-51D/Models/Panel/panel.xml</path>
+  <offsets>
+        <x-m>3.838</x-m>
+        <y-m>0.0</y-m>
+        <z-m>0.450</z-m>
+  </offsets>
+ </model>
+	
+	
+<!--shader -->
+<animation>
+<type>shader</type>
+<shader>chrome</shader>
+<texture>Aircraft/Generic/Effects/glass_shader.png</texture>
+<object-name>NewGlass</object-name>
+<object-name>NewGlass.001</object-name>
+<object-name>noshadowspdisk</object-name>
+<object-name>noshadowfpdisk</object-name>
+		
+</animation>
+
+ <!--  REMBRANDT support for transparent objects-->
+  <effect>
+    <inherits-from>Effects/model-transparent</inherits-from>
+    <condition>
+      <property>sim/rendering/rembrandt/enabled</property>
+    </condition>
+  <object-name>glass</object-name>
+		<object-name>NewGlass</object-name>
+		<object-name>NewGlass.001</object-name>
+		<object-name>noshadowspdisk</object-name>
+		<object-name>noshadowfpdisk</object-name>
+  </effect>
+
+<!-- light pack -->
+	
+  <model>
+    <path>Aircraft/daVinci_P-51D/Models/lights/LightPack.xml</path>
+    <offsets>
+      <x-m>0</x-m>
+      <y-m>0</y-m>
+      <z-m>0</z-m>
+    </offsets>
+  </model>
+
+
+<!-- Pilot Head -->
+
+<animation>
+  <type>rotate</type>
+  <object-name>PilotHead</object-name>
+  <property>surface-positions/rudder-pos-norm</property>
+  <factor>40</factor>
+ <center>
+   <x-m>4.337</x-m>
+   <y-m>0.000</y-m>
+   <z-m>0.635</z-m>
+  </center>
+  <axis>
+   <x>0.000000</x>
+   <y>0.000000</y>
+   <z>-1.000000</z>
+  </axis>
+ </animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>PilotHead</object-name>
+  <property>sim/multiplay/generic/float[13]</property>
+  <factor>-10</factor>
+  <center>
+   <x-m>4.337</x-m>
+   <y-m>0.000</y-m>
+   <z-m>0.635</z-m>
+  </center>
+  <axis>
+   <x>1.000000</x>
+   <y>0.000000</y>
+   <z>0.000000</z>
+  </axis>
+ </animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>PilotHead</object-name>
+  <property>surface-positions/elevator-pos-norm</property>
+  <factor>-10</factor>
+  <center>
+   <x-m>4.337</x-m>
+   <y-m>0.000</y-m>
+   <z-m>0.635</z-m>
+  </center>
+  <axis>
+   <x>0.000000</x>
+   <y>1.000000</y>
+   <z>0.000000</z>
+  </axis>
+ </animation>
+
+	
+ <!-- Cranking effects -->
+
+  <model>
+    <path>Aircraft/daVinci_P-51D/Models/Effects/cranking/cranking.xml</path>
+    <offsets>
+      <x-m>1.189</x-m>
+      <y-m> -0.506 </y-m>
+      <z-m>0.132</z-m>
+      <pitch-deg>  45 </pitch-deg>
+    </offsets>
+  </model>
+
+<model>
+    <path>Aircraft/daVinci_P-51D/Models/Effects/cranking/cranking.xml</path>
+    <offsets>
+      <x-m>1.671</x-m>
+      <y-m> -0.506 </y-m>
+      <z-m>0.132</z-m>
+      <pitch-deg>  45 </pitch-deg>
+    </offsets>
+  </model>
+
+
+<model>
+    <path>Aircraft/daVinci_P-51D/Models/Effects/cranking/cranking.xml</path>
+    <offsets>
+      <x-m>1.189</x-m>
+      <y-m>0.506 </y-m>
+      <z-m>0.132</z-m>
+      <pitch-deg>  45 </pitch-deg>
+    </offsets>
+  </model>
+
+<model>
+    <path>Aircraft/daVinci_P-51D/Models/Effects/cranking/cranking.xml</path>
+    <offsets>
+      <x-m>1.671</x-m>
+      <y-m> 0.506 </y-m>
+      <z-m>0.132</z-m>
+      <pitch-deg>  45 </pitch-deg>
+    </offsets>
+  </model>
+
+<!-- Tire Smoke -->
+ 
+ <!--  Tail Wheel -->
+  <model>
+    <path>Aircraft/daVinci_P-51D/Models/Effects/ground/ground2.xml</path>
+    <offsets>
+      <x-m>7.770</x-m>
+      <y-m>0.000</y-m>
+      <z-m>-0.538</z-m>
+    </offsets>
+  </model>
+
+  <!-- Port Wheel -->
+  <model>
+    <path>Aircraft/daVinci_P-51D/Models/Effects/ground/ground1.xml</path>
+    <offsets>
+      <x-m>3.324</x-m>
+      <y-m>-1.842</y-m>
+      <z-m>-1.950</z-m>
+    </offsets>
+  </model>
+
+  <!-- Star Wheel -->
+  <model>
+    <path>Aircraft/daVinci_P-51D/Models/Effects/ground/ground0.xml</path>
+    <offsets>
+      <x-m>3.324</x-m>
+      <y-m>1.842</y-m>
+      <z-m>-1.950</z-m>
+    </offsets>
+  </model>
+
+<!-- Air Pollution effects -->
+
+<model>
+    <path>Aircraft/daVinci_P-51D/Models/Effects/exhaustsmoke.xml</path>
+    <offsets>
+      <x-m>2.376</x-m>
+      <y-m> -0.434 </y-m>
+      <z-m>0.147</z-m>
+      <pitch-deg>  45 </pitch-deg>
+    </offsets>
+  </model>
+
+<model>
+    <path>Aircraft/daVinci_P-51D/Models/Effects/exhaustsmoke.xml</path>
+    <offsets>
+      <x-m>2.376</x-m>
+      <y-m>0.434</y-m>
+      <z-m>0.147</z-m>
+      <pitch-deg>  45 </pitch-deg>
+    </offsets>
+  </model>
+
+<!--Contrails-->
+
+<model>
+    <path>Aircraft/daVinci_P-51D/Models/Effects/contrail.xml</path>
+    <offsets>
+      <x-m>8.744</x-m>
+      <y-m>0.434</y-m>
+      <z-m>0.147</z-m>
+      <pitch-deg>  45 </pitch-deg>
+    </offsets>
+  </model>
+
+<model>
+    <path>Aircraft/daVinci_P-51D/Models/Effects/contrail.xml</path>
+    <offsets>
+      <x-m>8.744</x-m>
+      <y-m>-0.434</y-m>
+      <z-m>0.147</z-m>
+      <pitch-deg>  45 </pitch-deg>
+    </offsets>
+  </model>
+
+<!-- Condensation -->
+ 
+	<model>
+		<path>Aircraft/daVinci_P-51D/Models/Effects/Condensation-Left.xml</path>
+		<offsets>
+			<x-m>4.344</x-m>
+			<y-m>-5.378</y-m>
+			<z-m>-0.138</z-m>
+			<pitch-deg>0</pitch-deg>
+		</offsets>
+	</model>
+
+	<model>
+		<path>Aircraft/daVinci_P-51D/Models/Effects/Condensation-Right.xml</path>
+		<offsets>
+			<x-m>4.344</x-m>
+			<y-m>5.378</y-m>
+			<z-m>-0.138</z-m>
+			<pitch-deg>0</pitch-deg>
+		</offsets>
+	</model>
+
+
+ <animation>
+  <type>select</type>
+  <object-name>Prop</object-name>
+  <condition>
+   <less-than>
+    <property>engines/engine[0]/rpm</property>
+    <value>1000</value>
+   </less-than>
+  </condition>
+ </animation>
+
+<animation>
+  <type>spin</type>
+  <object-name>Prop</object-name>
+  <property>engines/engine[0]/rpm</property>
+  <factor>-0.479</factor>
+  <center>
+   <x-m>0.579</x-m>
+   <y-m>0.0</y-m>
+   <z-m>0.089</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+
+<animation>
+  <type>spin</type>
+  <object-name>Spinner</object-name>
+    <property>engines/engine[0]/rpm</property>
+    <factor>0.579</factor>
+  <center>
+   <x-m>-3.018</x-m>
+   <y-m>0.0</y-m>
+   <z-m>0.089</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+  <model> 
+   <path>Aircraft/daVinci_P-51D/Models/pdisk.xml</path>
+   <name>pdisk</name>
+   <offsets> 
+   <x-m>0.579</x-m>
+   <y-m>0.0</y-m>
+   <z-m>0.089</z-m>
+    </offsets>
+  </model>
+
+<animation>
+  <type>noshadow</type>
+  <object-name>slowpdisk</object-name>
+  <object-name>fastpdisk</object-name>
+</animation>
+
+<!-- De-select non-visibile parts when retracted -->
+
+  <animation>
+    <type>select</type>
+        <object-name>StarWheel</object-name>
+	<object-name>PortWheel</object-name>
+        <object-name>PortTire</object-name>
+        <object-name>StarTire</object-name>
+	<object-name>PortLowerStrut</object-name>
+        <object-name>StarLowerStrut</object-name>
+        <condition>
+      <greater-than>
+        <property>gear/gear[1]/position-norm</property>
+        <value>0.05</value>
+      </greater-than>
+    </condition>
+  </animation>
+
+ 
+<!--Port Maingear -->
+
+ <animation>
+    <type>rotate</type>
+    <object-name>PortStrutCover</object-name>
+    <object-name>PortWheel</object-name>
+    <object-name>PortTire</object-name>
+    <object-name>PortUpperSpring</object-name>
+    <object-name>PortLowerSpring</object-name>
+    <object-name>PortUpperStrut</object-name>
+    <object-name>PortLowerStrut</object-name>
+    <property>gear/gear[1]/position-norm</property>
+    <interpolation>
+      <entry><ind> 0 </ind><dep>90.30</dep></entry>
+      <entry><ind> 1 </ind><dep>  0 </dep></entry>
+    </interpolation>
+    <center>
+      <x-m>2.500</x-m>
+      <y-m>-1.830</y-m>
+      <z-m>-0.425</z-m>
+    </center>
+     <axis>
+      <x>1.0</x>
+      <y>-0.125</y>
+      <z>-0.233</z>
+    </axis>
+  </animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>PortInnerGearDoor</object-name>
+  <object-name>PortInnerGearDoor2</object-name>
+  <property>gear/gear[1]/position-norm</property>
+  <interpolation>
+   <entry>
+    <ind>0.0</ind>
+    <dep>90.5</dep>
+   </entry>
+   <entry>
+    <ind>0.11</ind>
+    <dep>0</dep>
+   </entry>
+   <entry>
+    <ind>1.00</ind>
+    <dep>0.0</dep>
+   </entry>
+  </interpolation>
+  <center>
+   <x-m>3.173</x-m>
+   <y-m>-0.024</y-m>
+   <z-m>-0.774</z-m>
+  </center>
+  <axis>
+   <x>-1.0</x>
+   <y>0.0</y>
+   <z>0.05</z>
+  </axis>
+ </animation>
+ 
+
+<!-- Starboard Maingear -->
+
+ <animation>
+    <type>rotate</type>
+    <object-name>StarStrutCover</object-name>
+    <object-name>StarWheel</object-name>
+    <object-name>StarTire</object-name>
+    <object-name>StarUpperSpring</object-name>
+    <object-name>StarLowerSpring</object-name>
+    <object-name>StarUpperStrut</object-name>
+    <object-name>StarLowerStrut</object-name>
+    <property>gear/gear[2]/position-norm</property>
+    <interpolation>
+      <entry><ind> 0 </ind><dep>-90.5</dep></entry>
+      <entry><ind> 1 </ind><dep>   0 </dep></entry>
+    </interpolation>
+    <center>
+      <x-m>2.799</x-m>
+      <y-m>1.870</y-m>
+      <z-m> -0.470</z-m>
+    </center>
+     <axis>
+      <x>1.0</x>
+      <y>0.085</y>
+      <z>-0.300</z>
+    </axis>
+  </animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>StarInnerGearDoor</object-name>
+  <object-name>StarInnerGearDoor2</object-name>
+  <property>gear/gear[2]/position-norm</property>
+  <interpolation>
+   <entry>
+    <ind>0.0</ind>
+    <dep>90.5</dep>
+   </entry>
+   <entry>
+    <ind>0.11</ind>
+    <dep>0</dep>
+   </entry>
+   <entry>
+    <ind>1.00</ind>
+    <dep>0.0</dep>
+   </entry>
+  </interpolation>
+  <center>
+   <x-m>3.173</x-m>
+   <y-m>0.024</y-m>
+   <z-m>-0.774</z-m>
+  </center>
+  <axis>
+   <x>1.0</x>
+   <y>0.0</y>
+   <z>-0.05</z>
+  </axis>
+ </animation>
+
+<!-- Steering/TailGear Animation -->
+
+<animation>
+  <type>rotate</type>
+   <object-name>TailLowerStrut</object-name>
+   <object-name>TailWheel</object-name>
+  <property>sim/multiplay/generic/float[16]</property>
+  <factor>1</factor>
+  <center> 
+        <x-m>7.573</x-m>
+        <y-m>0</y-m>
+        <z-m>-0.472</z-m>
+      </center>
+
+  <axis>
+   <x>0</x>
+   <y>0</y>
+   <z>1</z>
+  </axis>
+ </animation>
+
+<animation>
+  <type>rotate</type>
+   <object-name>TailLowerStrut</object-name>
+   <object-name>TailWheel</object-name>
+  <property>surface-positions/rudder-pos-norm</property>
+  <factor>30</factor>
+  <center> 
+        <x-m>7.573</x-m>
+        <y-m>0</y-m>
+        <z-m>-0.472</z-m>
+      </center>
+
+  <axis>
+   <x>0</x>
+   <y>0</y>
+   <z>1</z>
+  </axis>
+ </animation>
+
+
+  <!-- Tail Gear Animation -->
+  <animation>
+	<type>rotate</type>
+	<object-name>TailGearStrut</object-name>
+        <object-name>TailLowerStrut</object-name>
+        <object-name>TailWheel</object-name>
+    <property>gear/gear[2]/position-norm</property>
+    <interpolation>
+      <entry>
+        <ind>0.0</ind>
+        <dep>90.0</dep>
+      </entry>
+      <entry>
+        <ind>0.5</ind>
+        <dep>90</dep>
+      </entry>
+      <entry>
+        <ind>1.0</ind>
+        <dep>0.0</dep>
+      </entry>
+    </interpolation>
+    <center> 
+        <x-m>7.941</x-m>
+        <y-m>0</y-m>
+        <z-m>-0.190</z-m>
+   </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>PortTailGearDoor</object-name>
+  <property>gear/gear[2]/position-norm</property>
+  <interpolation>
+   <entry>
+    <ind>0.0</ind>
+    <dep>0</dep>
+   </entry>
+   <entry>
+    <ind>0.3</ind>
+    <dep>80</dep>
+   </entry>
+   <entry>
+    <ind>1.00</ind>
+    <dep>90</dep>
+   </entry>
+  </interpolation>
+  <axis>   
+   <x1-m>7.881</x1-m>
+   <y1-m>-0.119</y1-m>
+   <z1-m>-0.312</z1-m>
+   <x2-m>7.295</x2-m>
+   <y2-m>-0.119</y2-m>
+   <z2-m>-0.397</z2-m>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>StarTailGearDoor</object-name>
+ <property>gear/gear[2]/position-norm</property>
+  <interpolation>
+   <entry>
+    <ind>0.0</ind>
+    <dep>0</dep>
+   </entry>
+   <entry>
+    <ind>0.3</ind>
+    <dep>-80</dep>
+   </entry>
+   <entry>
+    <ind>1.00</ind>
+    <dep>-90</dep>
+   </entry>
+  </interpolation>
+  <axis>   
+   <x1-m>7.881</x1-m>
+   <y1-m>0.119</y1-m>
+   <z1-m>-0.312</z1-m>
+   <x2-m>7.295</x2-m>
+   <y2-m>0.119</y2-m>
+   <z2-m>-0.397</z2-m>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>StarFlap</object-name>
+  <object-name>StarFlapBottom</object-name>
+  <property>surface-positions/flap-pos-norm</property>
+  <factor>40.0</factor>
+
+   <center>
+   <x-m>4.393</x-m>
+   <y-m>1.849</y-m>
+   <z-m>-0.472</z-m>
+  </center>
+
+  <axis>
+   <x>-0.125779</x>
+   <y>1.300</y>
+   <z>0.092485</z>
+  </axis>
+ </animation>
+
+
+ <animation>
+  <type>rotate</type>
+  <object-name>PortFlap</object-name>
+  <object-name>PortFlapBottom</object-name>
+  <property>surface-positions/flap-pos-norm</property>
+  <factor>40.0</factor>
+
+   <center>
+   <x-m>4.393</x-m>
+   <y-m>-1.849</y-m>
+   <z-m>-0.472</z-m>
+  </center>
+
+  <axis>
+   <x>0.125779</x>
+   <y>1.300</y>
+   <z>-0.092485</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>PortAileron</object-name>
+  <object-name>PortAileronBottom</object-name>
+  <property>sim/multiplay/generic/float[13]</property>
+  <factor>-12.0</factor>
+
+  <center>
+   <x-m>4.214</x-m>
+   <y-m>-4.364</y-m>
+   <z-m>-0.246</z-m>
+  </center>
+
+  <axis>
+   <x1-m>0.500</x1-m>
+   <y1-m>-5.347</y1-m>
+   <z1-m>-0.241</z1-m>
+   <x2-m>0.719</x2-m>
+   <y2-m>-3.340</y2-m>
+   <z2-m>-0.378</z2-m>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>StarAileron</object-name>
+  <object-name>StarAileronBottom</object-name>
+  <property>sim/multiplay/generic/float[13]</property>
+  <factor>-12.0</factor>
+
+ <center>
+   <x-m>4.214</x-m>
+   <y-m>4.364</y-m>
+   <z-m>-0.246</z-m>
+  </center>
+
+  <axis>
+   <x1-m>0.500</x1-m>
+   <y1-m>5.347</y1-m>
+   <z1-m>-0.241</z1-m>
+   <x2-m>0.719</x2-m>
+   <y2-m>3.340</y2-m>
+   <z2-m>-0.378</z2-m>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Rudder</object-name>
+  <object-name>RudderLight</object-name>
+ <property>surface-positions/rudder-pos-norm</property>
+  <factor>20.0</factor>
+
+  <center>
+   <x-m>9.054</x-m>
+   <y-m>0</y-m>
+   <z-m>0.684</z-m>
+  </center>
+
+  <axis>
+   <x>0.000000</x>
+   <y>0.000000</y>
+   <z>1.000000</z>
+  </axis>
+ </animation>
+
+ 
+ <animation>
+  <type>rotate</type>
+  <object-name>Elevators</object-name>
+  <object-name>ElevatorBottoms</object-name>
+  <property>surface-positions/elevator-pos-norm</property>
+  <interpolation>
+   <entry>
+    <ind>-1.0</ind>
+    <dep>-20.0</dep>
+   </entry>
+   <entry>
+    <ind>0.0</ind>
+    <dep>0</dep>
+   </entry>
+   <entry>
+    <ind>1.00</ind>
+    <dep>20.0</dep>
+   </entry>
+  </interpolation>
+  <center>
+   <x-m>8.442</x-m>
+   <y-m>0.000</y-m>
+   <z-m>0.301</z-m>
+  </center>
+  <axis>
+   <x>0.000000</x>
+   <y>1.000000</y>
+   <z>0.000000</z>
+   </axis>
+ </animation>
+
+
+<!-- Canopy -->
+    
+  <animation>
+    <type>translate</type>
+    <object-name>CanopyFrame</object-name>
+    <object-name>InnerCanopyFrame</object-name>
+    <object-name>CanopyGlass</object-name>
+    <property>sim/multiplay/generic/float[0]</property>
+    <factor>0.650</factor>
+    <center> 
+        <x-m>0.051</x-m>
+        <y-m>0.000</y-m>
+        <z-m>-0.492</z-m>
+   </center>
+    <axis>
+      <x>0.460</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+<!-- Suspensions Compression -->
+  <animation>
+    <name>PortGearAssy</name>
+    <object-name>PortWheel</object-name>
+    <object-name>PortLowerStrut</object-name>
+    <object-name>PortLowerSpring</object-name> 
+    <object-name>PortTire</object-name>  
+   </animation>
+  
+  <animation>
+    <type>rotate</type>
+    <object-name>PortUpperSpring</object-name>
+    <property>sim/multiplay/generic/float[14]</property>
+    <interpolation>
+      <entry><ind> 0.000 </ind><dep>  0 </dep></entry>
+      <entry><ind> 0.235 </ind><dep>  0 </dep></entry>
+      <entry><ind> 1.000 </ind><dep> 35 </dep></entry>
+    </interpolation>
+    <center>
+      <x-m>3.155</x-m>
+      <y-m> -2.513</y-m>
+      <z-m> -1.162</z-m>
+    </center>
+    <axis>
+      <x> 0 </x>
+      <y>1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+ 
+  <animation>
+    <type>translate</type>
+    <object-name>PortGearAssy</object-name>
+    <property>sim/multiplay/generic/float[14]</property>
+    <interpolation>
+      <entry><ind> 0.000 </ind><dep> -0.02 </dep></entry>
+      <entry><ind> 0.235 </ind><dep>  0.00 </dep></entry>
+      <entry><ind> 1.000 </ind><dep>  0.10 </dep></entry>
+    </interpolation>
+    <axis>
+      <x> 0 </x>
+      <y> 0 </y>
+      <z> 1 </z>
+    </axis>
+  </animation>
+ 
+  <animation>
+    <type>rotate</type>
+    <object-name>PortLowerSpring</object-name>
+    <property>sim/multiplay/generic/float[14]</property>
+    <interpolation>
+      <entry><ind> 0.000 </ind><dep>   0 </dep></entry>
+      <entry><ind> 0.235 </ind><dep>   0 </dep></entry>
+      <entry><ind> 1.000 </ind><dep> -35 </dep></entry>
+    </interpolation>
+    <center>
+      <x-m>3.126</x-m>
+      <y-m> -2.522</y-m>
+      <z-m> -1.336</z-m>
+    </center>
+    <axis>
+      <x> 0 </x>
+      <y>-1</y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+ 
+  <animation>
+    <name>StarGearAssy</name>
+    <object-name>StarWheel</object-name>
+    <object-name>StarLowerStrut</object-name>
+    <object-name>StarLowerSpring</object-name> 
+    <object-name>StarTire</object-name>  
+   </animation>
+  
+  <animation>
+    <type>rotate</type>
+    <object-name>StarUpperSpring</object-name>
+    <property>sim/multiplay/generic/float[15]</property>
+    <interpolation>
+      <entry><ind> 0.000 </ind><dep>  0 </dep></entry>
+      <entry><ind> 0.235 </ind><dep>  0 </dep></entry>
+      <entry><ind> 1.000 </ind><dep> 35 </dep></entry>
+    </interpolation>
+    <center>
+      <x-m>3.162</x-m>
+      <y-m> 2.483</y-m>
+      <z-m> -1.186</z-m>
+    </center>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+ 
+  <animation>
+    <type>translate</type>
+    <object-name>StarGearAssy</object-name>
+    <property>sim/multiplay/generic/float[15]</property>
+    <interpolation>
+      <entry><ind> 0.000 </ind><dep> -0.02 </dep></entry>
+      <entry><ind> 0.235 </ind><dep>  0.00 </dep></entry>
+      <entry><ind> 1.000 </ind><dep>  0.10 </dep></entry>
+    </interpolation>
+    <axis>
+      <x> 0 </x>
+      <y> 0 </y>
+      <z> 1 </z>
+    </axis>
+  </animation>
+ 
+  <animation>
+    <type>rotate</type>
+    <object-name>StarLowerSpring</object-name>
+    <property>sim/multiplay/generic/float[15]</property>
+    <interpolation>
+      <entry><ind> 0.000 </ind><dep>   0 </dep></entry>
+      <entry><ind> 0.235 </ind><dep>   0 </dep></entry>
+      <entry><ind> 1.000 </ind><dep> -35 </dep></entry>
+    </interpolation>
+    <center>
+      <x-m>3.136</x-m>
+      <y-m> 2.494</y-m>
+      <z-m> -1.359</z-m>
+    </center>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+<!-- Rolling Wheels -->
+
+<!-- Port Wheel -->
+  <animation>
+    <type>spin</type>
+    <object-name>PortWheel</object-name>
+    <object-name>PortTire</object-name>
+    <property>sim/multiplay/generic/float[10]</property>
+    <factor> 30 </factor>
+    <center>
+      <x-m>2.806</x-m>
+      <y-m>-1.843</y-m>
+      <z-m>-1.720</z-m>
+    </center>
+    <axis>
+      <x>0</x>
+      <y> -1 </y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+<!-- Star Wheel -->
+
+  <animation>
+    <type>spin</type>
+    <object-name>StarWheel</object-name>
+    <object-name>StarTire</object-name>
+    <property>sim/multiplay/generic/float[9]</property>
+    <factor> 30 </factor>
+    <center>
+      <x-m>2.807</x-m>
+      <y-m>1.838</y-m>
+      <z-m>-1.718</z-m>
+    </center>
+    <axis>
+      <x>0</x>
+      <y> -1 </y>
+      <z>0</z>
+    </axis>
+  </animation>	
+
+<animation>
+    <type>spin</type>
+   <object-name>TailWheel</object-name>
+    <property>sim/multiplay/generic/float[11]</property>
+    <factor> 30 </factor>
+    <center>
+      <x-m>7.669</x-m>
+      <y-m>0.000</y-m>
+      <z-m>-0.651</z-m>
+    </center>
+    <axis>
+      <x>  0 </x>
+      <y> -1 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+<model>
+    <path>Aircraft/daVinci_P-51D/Models/throttleblock.xml</path>
+    <offsets>
+      <x-m>0</x-m>
+      <y-m>0</y-m>
+      <z-m>0</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+    
+<model>
+    <name>FTag</name>
+    <path>/Aircraft/FTag/FTag-Models.xml</path>
+    <offsets>
+        <x-m>15</x-m>
+        <y-m>0</y-m>
+        <z-m>0</z-m>
+    </offsets>
+</model>
+
+<model>
+    <path>Aircraft/daVinci_P-51D/Particles/smoke.xml</path>
+    <offsets>
+      <x-m>10.000</x-m>
+      <y-m>0</y-m>
+      <z-m>0.147</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>  
+  
+</PropertyList>

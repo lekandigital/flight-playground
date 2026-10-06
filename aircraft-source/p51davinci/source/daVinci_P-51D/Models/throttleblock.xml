@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+
+  <path>Throttleblock.ac</path>
+
+  <animation>
+    <object-name>ThrottleHandle</object-name>
+    <object-name>PitchKnob</object-name>
+    <object-name>MixtureKnob</object-name>
+   </animation>
+       
+<!-- Throttle -->
+<animation>
+    <type>rotate</type>
+    <object-name>ThrottleHandle</object-name>
+    <property>controls/engines/engine[0]/throttle</property>
+    <factor>75</factor>
+    <center>
+      <x-m>3.907</x-m>
+      <y-m>  0.00000 </y-m>
+      <z-m> 0.304</z-m>
+    </center>
+    <axis>
+      <x>0</x>
+      <y>-1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+
+ <!-- Prop Pitch -->
+<animation>
+    <type>rotate</type>
+    <object-name>PitchKnob</object-name>
+    <property>controls/engines/engine[0]/propeller-pitch</property>
+    <factor>75</factor>
+    <center>
+      <x-m>3.907</x-m>
+      <y-m>  0.00000 </y-m>
+      <z-m> 0.304</z-m>
+    </center>
+    <axis>
+      <x>0</x>
+      <y>-1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+<!-- Mixture -->
+<animation>
+    <type>rotate</type>
+    <object-name>MixtureKnob</object-name>
+    <property>controls/engines/engine[0]/mixture</property>
+    <factor>-45</factor>
+    <center>
+      <x-m>3.900</x-m>
+      <y-m>  0.00000 </y-m>
+      <z-m> 0.262</z-m>
+    </center>
+    <axis>
+      <x>0</x>
+      <y>-1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+
+</PropertyList>

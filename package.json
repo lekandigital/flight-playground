@@ -6,7 +6,9 @@
   "scripts": {
     "build": "esbuild src/main.js --bundle --minify --format=esm --outfile=dist/game.js",
     "dev": "node scripts/dev-server.mjs",
-    "test": "node tests/corsair.test.mjs && node tests/aircraft.test.mjs && node tests/caproni.test.mjs && node tests/additional-aircraft.test.mjs"
+    "test": "node tests/corsair.test.mjs && node tests/aircraft.test.mjs && node tests/caproni.test.mjs && node tests/additional-aircraft.test.mjs",
+    "test:lab": "node scripts/test-lab.mjs",
+    "test:flightgear": "node scripts/test-flightgear.mjs"
   },
   "dependencies": {
     "three": "0.180.0"

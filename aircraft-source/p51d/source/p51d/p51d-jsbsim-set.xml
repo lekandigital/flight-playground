@@ -1,0 +1,880 @@
+<?xml version="1.0"?>
+
+<!--
+************************************************************************
+P-51D simulation config. This files ties together all the components
+used by FGFS to represent the P-51D. Components include the flight data 
+model, instrument panel, and external 3D model.
+
+March 2003 Jim Wilson, jimw@kelcomaine.com
+Apr. 2010 Hal V. Engel hvengel@yahoo.com (JSBSim model)
+************************************************************************
+-->
+
+<PropertyList>
+
+ <sim include="Sim/views.xml">
+
+  <minimum-fg-version>2017.3.1</minimum-fg-version>
+
+  <description>North American Aviation P-51D-25-NA</description>
+  <long-description>The North American Aviation P-51 Mustang is an American long-range, single-seat fighter and fighter-bomber used during World War II, the Korean War and other conflicts.</long-description>
+
+  <author>Jim Wilson, Jon Berndt, Hal V. Engel, and onox</author>
+
+  <status>production</status>
+  <aircraft-version type="int">1</aircraft-version>
+  <rating>
+     <FDM type="int">5</FDM>
+     <systems type="int">4</systems>
+     <model type="int">5</model>
+     <cockpit type="int">4</cockpit>
+  </rating>
+
+  <tags>
+      <tag>north-american</tag>
+      <tag>low-wing</tag>
+      <tag>tail-dragger</tag>
+      <tag>retractable-gear</tag>
+      <tag>castering</tag>
+      <tag>single-engine</tag>
+      <tag>piston</tag>
+      <tag>supercharged</tag>
+      <tag>variable-pitch</tag>
+      <tag>fighter</tag>
+      <tag>ww2</tag>
+  </tags>
+
+   <user>
+       <callsign>N5428V</callsign>
+   </user>
+   
+  <flight-model>jsb</flight-model>
+  <aero>p51d-jsbsim</aero>
+  <controls>
+    <brake-cancels-parking-brake>false</brake-cancels-parking-brake>
+  </controls>
+
+  <fuel-fraction>0.50</fuel-fraction>
+  
+        <previews>
+            <preview>
+                <type>exterior</type>
+                <path>Splashs/splash1.png</path>
+                <splash type="bool">true</splash>
+            </preview>
+            <preview>
+                <type>exterior</type>
+                <path>Splashs/splash2.png</path>
+                <splash type="bool">true</splash>
+            </preview>
+            <preview>
+                <type>exterior</type>
+                <path>Splashs/splash3.png</path>
+                <splash type="bool">true</splash>
+            </preview>
+            <preview>
+                <type>exterior</type>
+                <path>Splashs/splash4.png</path>
+                <splash type="bool">true</splash>
+            </preview>
+            <preview>
+                <type>exterior</type>
+                <path>Splashs/splash5.png</path>
+                <splash type="bool">true</splash>
+            </preview>
+        </previews>
+
+  <virtual-cockpit archive="y">true</virtual-cockpit>
+  <allow-toggle-cockpit archive="y">false</allow-toggle-cockpit>
+  
+  <sound> 
+   <audible>true</audible>
+   <path>Aircraft/p51d/p51d-sound.xml</path>
+   <volume type="double">0.26</volume>
+  </sound>
+
+  <submodels> 
+    <serviceable type="bool">true</serviceable>
+    <path>Aircraft/p51d/submodels.xml</path>
+  </submodels>
+
+  <panel>
+     <path/>
+     <visibility>false</visibility>
+	 <visibility archive="y">false</visibility>
+  </panel>
+
+  <model>
+   <path>Aircraft/p51d/Models/P-51D-25-NA.xml</path>
+   <livery>
+     <file type="string">DD</file>
+   </livery>
+   <is-remote type="bool">false</is-remote>
+  </model> 
+
+    <systems>
+        <path>Aircraft/p51d/Systems/systems.xml</path>
+        <autopilot n="0">
+            <path>Aircraft/p51d/Systems/autopilot.xml</path>
+        </autopilot>
+        <autopilot n="1">
+            <path>Aircraft/p51d/Systems/thunder.xml</path>
+        </autopilot>
+        <autopilot n="2">
+            <path>Aircraft/p51d/Systems/engine.xml</path>
+        </autopilot>
+        <property-rule n="100">
+            <path>Aircraft/p51d/Systems/views.xml</path>
+        </property-rule>
+    </systems>
+
+  <hud>
+   <enable3d>false</enable3d>
+  </hud>
+
+  <help include="Sim/help.xml"/>
+  
+        <!-- multi-play bombable -->
+        <multiplay>
+            <generic>
+            <!--
+            needed triggers for bombable
+            controls/armament/rocket[1]/trigger through controls/armament/rocket[10]/trigger
+            controls/armament/bomb-trigger-1 and controls/armament/bomb-trigger-2
+            controls/armament/drop-tank-release-1 and controls/armament/drop-tank-release-2
+            /fdm/jsbsim/systems/armament/gun-SmokeAnimated/Inner
+            /fdm/jsbsim/systems/armament/gun-SmokeAnimatedOuter
+            /fdm/jsbsim/systems/armament/ejectionAnimatedOuter
+            /fdm/jsbsim/systems/armament/ejectionAnimatedInner
+            -->
+                <float n="0"/> <!-- /fdm/jsbsim/systems/gear/inner-doors -->
+
+                <!-- float[1..2] unused -->
+
+                <float n="3" alias="/aircraft/cooling/coolant-pos-norm" />
+                <float n="4" alias="/aircraft/cooling/oil-pos-norm" />
+                <float n="5" /> <!-- /fdm/jsbsim/gear/unit[2]/steering-angle-deg -->
+
+                <!-- float[6..11] unused -->
+
+                <float n="12" alias="/gear/gear[0]/rollspeed-ms"/>
+                <float n="13" alias="/gear/gear[1]/rollspeed-ms"/>
+                <float n="14" alias="/gear/gear[2]/rollspeed-ms"/>
+
+                <!-- Flight control surfaces -->
+                <float n="15" alias="/aircraft/surface-positions/aileron-pos-norm"/>
+                <float n="16" alias="/aircraft/surface-positions/elevator-pos-norm"/>
+                <float n="17" alias="/aircraft/surface-positions/rudder-pos-norm"/>
+
+                <!-- Trim tabs -->
+                <float n="18" alias="/aircraft/surface-positions/roll-trim-pos-norm"/>
+                <float n="19" alias="/aircraft/surface-positions/pitch-trim-pos-norm"/>
+                <float n="20" alias="/aircraft/surface-positions/yaw-trim-pos-norm"/>
+
+                <!-- Position lights -->
+                <short n="0" alias="/aircraft/lighting/wing-position-lights"/>
+                <short n="1" alias="/aircraft/lighting/tail-position-lights"/>
+
+                <short n="78" type="int"/> <!-- FlightGear version -->
+                <short n="79" alias="/sim/aircraft-version"/>
+
+                <!-- Securing -->
+                <bool n="0" alias="/aircraft/securing/pitot-cover-visible"/>
+                <bool n="1" alias="/aircraft/securing/left-tiedown-visible"/>
+                <bool n="2" alias="/aircraft/securing/right-tiedown-visible"/>
+                <bool n="3" alias="/aircraft/securing/tail-left-tiedown-visible"/>
+                <bool n="4" alias="/aircraft/securing/tail-right-tiedown-visible"/>
+
+                <!-- Landing light -->
+                <bool n="5" alias="/aircraft/lighting/landing-light"/>
+
+                <!-- Recognition lights on right wing -->
+                <bool n="6" alias="/aircraft/lighting/red-rec-light"/>
+                <bool n="7" alias="/aircraft/lighting/green-rec-light"/>
+                <bool n="8" alias="/aircraft/lighting/amber-rec-light"/>
+
+                <bool n="9" alias="/engines/engine[0]/cranking"/>
+                <bool n="10" alias="/controls/armament/gun-trigger"/>
+
+                <!-- Rockets -->
+                <bool n="11" alias="/ai/submodels/submodel[12]/count"/>
+                <bool n="12" alias="/ai/submodels/submodel[13]/count"/>
+                <bool n="13" alias="/ai/submodels/submodel[14]/count"/>
+                <bool n="14" alias="/ai/submodels/submodel[15]/count"/>
+                <bool n="15" alias="/ai/submodels/submodel[16]/count"/>
+                <bool n="16" alias="/ai/submodels/submodel[17]/count"/>
+                <bool n="17" alias="/ai/submodels/submodel[18]/count"/>
+                <bool n="18" alias="/ai/submodels/submodel[19]/count"/>
+                <bool n="19" alias="/ai/submodels/submodel[20]/count"/>
+                <bool n="20" alias="/ai/submodels/submodel[21]/count"/>
+
+                <!-- Bombs -->
+                <bool n="21" alias="/ai/submodels/submodel[22]/count"/>
+                <bool n="22" alias="/ai/submodels/submodel[23]/count"/>
+
+                <!-- External tanks -->
+                <bool n="23" alias="/ai/submodels/submodel[24]/count"/>
+                <bool n="24" alias="/ai/submodels/submodel[25]/count"/>
+
+                <bool n="25" alias="/sim/failure-manager/engines/engine/serviceable"/>
+
+                <!-- Contact sparks: wings, tail, nose, belly, dog house -->
+                <bool n="26" alias="/gear/gear[7]/spark"/>
+                <bool n="27" alias="/gear/gear[8]/spark"/>
+                <bool n="28" alias="/gear/gear[9]/spark"/>
+                <bool n="29" alias="/gear/gear[10]/spark"/>
+                <bool n="30" alias="/gear/gear[12]/spark"/>
+                <bool n="31" alias="/gear/gear[14]/spark"/>
+                <bool n="32" alias="/gear/gear[15]/spark"/>
+
+                <bool n="33" alias="/aircraft/settings/show-blades"/>
+
+                <!-- Pylons under wing -->
+                <bool n="34" alias="/aircraft/armament/bomb-pylons"/>
+                <bool n="35" alias="/aircraft/armament/outer-pylons"/>
+                <bool n="36" alias="/aircraft/armament/inner-pylons"/>
+            </generic>
+        </multiplay>
+
+  <!-- increase pilot g tolarance -->
+  <!-- this plane has g-suit support so the pilot
+       can tolerate high G levels -->
+  <rendering>
+    <redout>
+       <parameters>
+         <blackout-onset-g type="double">5.0</blackout-onset-g>
+         <blackout-complete-g type="double">7.0</blackout-complete-g>
+         <redout-onset-g type="double">-2.5</redout-onset-g>
+         <redout-complete-g type="double">-3.5</redout-complete-g>
+       </parameters>
+    </redout>
+    <als-secondary-lights>
+        <!-- Adjustable up to 6 deg according to maintenance manual -->
+        <landing-light3-offset-deg type="double">0.0</landing-light3-offset-deg>
+    </als-secondary-lights>
+  </rendering>
+  
+  <signals>
+    <fdm-initialized type="int">0</fdm-initialized>
+  </signals>
+
+ <menubar include="gui/dialogs/menu-bar.xml" />
+   <checklists include="Checklists/p51d-checklists.xml"/>
+
+         <current-view>
+             <z-offset-dec-step type="double">0.0</z-offset-dec-step>
+             <z-offset-inc-step type="double">0.0</z-offset-inc-step>
+             <can-change-z-offset type="bool">false</can-change-z-offset>
+ 
+             <z-offset-min-m type="float">10.0</z-offset-min-m>
+             <z-offset-max-m type="float">300.0</z-offset-max-m>
+         </current-view>
+
+        <!-- Save some properties when the simulator is shut down -->
+        <aircraft-data>
+            <path>/aircraft/settings/show-blades</path>
+            <path>/aircraft/pilot/always-visible</path>
+            <path>/aircraft/securing/pitot-cover-visible</path>
+            <path>/aircraft/securing/left-tiedown-visible</path>
+            <path>/aircraft/securing/right-tiedown-visible</path>
+            <path>/aircraft/securing/tail-left-tiedown-visible</path>
+            <path>/aircraft/securing/tail-right-tiedown-visible</path>
+        </aircraft-data>
+
+        <!-- Fix scrolling direction of knobs -->
+        <mouse>
+            <invert-mouse-wheel type="bool">true</invert-mouse-wheel>
+        </mouse>
+
+        <instrumentation>
+            <path>Systems/instrumentation.xml</path>
+        </instrumentation>
+
+    </sim>
+
+    <!-- Transmitted as short floats in 2017.2 protocol -->
+    <engines>
+        <engine n="1">
+            <n1 alias="/aircraft/tiedowns/left/heading-deg"/>
+            <n2 alias="/aircraft/tiedowns/left/pitch-deg"/>
+            <rpm alias="/aircraft/tiedowns/left/length-m"/>
+        </engine>
+        <engine n="2">
+            <n1 alias="/aircraft/tiedowns/right/heading-deg"/>
+            <n2 alias="/aircraft/tiedowns/right/pitch-deg"/>
+            <rpm alias="/aircraft/tiedowns/right/length-m"/>
+        </engine>
+        <engine n="3">
+            <n1 alias="/aircraft/tiedowns/tail-left/heading-deg"/>
+            <n2 alias="/aircraft/tiedowns/tail-left/pitch-deg"/>
+            <rpm alias="/aircraft/tiedowns/tail-left/length-m"/>
+        </engine>
+        <engine n="4">
+            <n1 alias="/aircraft/tiedowns/tail-right/heading-deg"/>
+            <n2 alias="/aircraft/tiedowns/tail-right/pitch-deg"/>
+            <rpm alias="/aircraft/tiedowns/tail-right/length-m"/>
+        </engine>
+
+        <engine n="5">
+            <n1 alias="/aircraft/pilot/heading-deg"/>
+            <n2 alias="/aircraft/pilot/pitch-deg"/>
+        </engine>
+
+        <engine n="6">
+            <n1 alias="/fdm/jsbsim/propulsion/engine/blade-angle"/>
+            <rpm alias="/fdm/jsbsim/propulsion/engine/propeller-rpm"/>
+        </engine>
+    </engines>
+
+ <instrumentation>
+    <magnetic-compass>
+       <bookmark-heading-deg type="double">43.0</bookmark-heading-deg>
+    </magnetic-compass>
+    <comm n="1">
+       <power-btn type="int">0</power-btn>
+    </comm> 
+ </instrumentation>
+ 
+    <gear>
+        <gear n="1">
+            <position-norm type="float">1</position-norm>
+        </gear>
+        <gear n="7">
+            <spark type="bool">false</spark>
+            <rollspeed-ms type="double">0.0</rollspeed-ms>
+        </gear>
+        <gear n="8">
+            <spark type="bool">false</spark>
+            <rollspeed-ms type="double">0.0</rollspeed-ms>
+        </gear>
+        <gear n="9">
+            <spark type="bool">false</spark>
+            <rollspeed-ms type="double">0.0</rollspeed-ms>
+        </gear>
+        <gear n="10">
+            <spark type="bool">false</spark>
+            <rollspeed-ms type="double">0.0</rollspeed-ms>
+        </gear>
+        <gear n="12">
+            <spark type="bool">false</spark>
+            <rollspeed-ms type="double">0.0</rollspeed-ms>
+        </gear>
+        <gear n="14">
+            <spark type="bool">false</spark>
+            <rollspeed-ms type="double">0.0</rollspeed-ms>
+        </gear>
+        <gear n="15">
+            <spark type="bool">false</spark>
+            <rollspeed-ms type="double">0.0</rollspeed-ms>
+        </gear>
+        <jackstandsZ type="float">0</jackstandsZ>
+    </gear>
+ 
+ <input>
+     <keyboard include="Sim/keyboard.xml"/>
+    <mice include="Sim/mice.xml"/>
+ </input>
+ 
+<!-- initialize control properties -->
+ <canopy>
+      <position-norm type="float">1.0</position-norm>
+      <direction type="int">1</direction>
+ </canopy>
+ <controls>   
+   <engines>
+      <engine n="0">
+        <magnetos type="int">0</magnetos>
+        <supercharger-switch type="int">0</supercharger-switch>
+        <blower-light-check type="int">0</blower-light-check>
+        <primer-time type="float">0.0</primer-time>
+        <master-bat type="int">0</master-bat>
+      </engine>
+   </engines>
+   <lighting>
+      <tail-position-lights type="int">0</tail-position-lights>
+      <wing-position-lights type="int">0</wing-position-lights>
+      <red-rec-light-sw type="int"> 0 </red-rec-light-sw>
+      <green-rec-light-sw type="int"> 0 </green-rec-light-sw>
+      <amber-rec-light-sw type="int"> 0 </amber-rec-light-sw>
+      <rec-light-key type="int">0</rec-light-key>
+      <right-flor-pos type="int"> 0 </right-flor-pos>
+      <left-flor-pos type="int">0</left-flor-pos>
+   </lighting>
+   <electric>
+      <reset type="int">0</reset>
+   </electric>
+   <anti-ice>
+     <pitot-heat type="int"> 0 </pitot-heat>
+     <gun-heat type="int"> 0 </gun-heat>
+   </anti-ice>
+   <canopy>
+      <open-command type="float">1.0</open-command>
+   </canopy>
+   <fuel>
+      <on type="bool">false</on>
+      <tank-selector type="int">0</tank-selector>
+      <tank n="1">
+         <to_tank type="int">1</to_tank>
+      </tank>
+      <tank n="2">
+         <to_tank type="int">2</to_tank>
+      </tank>
+      <tank n="3">
+         <to_tank type="int">3</to_tank>
+      </tank>
+      <tank n="4">
+         <to_tank type="int">4</to_tank>
+      </tank>
+   </fuel>
+   <armament>
+     <User-Selected-Stores type="int">0</User-Selected-Stores>
+     <gunsight>		
+		<!-- gunsight computer parameters -->
+        
+        <!-- start/stop the sight computer
+       	     the computer will be reinitialized if the power is cycled -->	
+        <computer-on type="int">0</computer-on>			 	
+        <!-- offset of guns below sight line in feet -->		
+		<z-offsetFeet type="float">3.125</z-offsetFeet>
+		<!-- average lateral offset of guns in feet relative to sight line -->
+        <y-offsetFeet type="float">0.0</y-offsetFeet>
+		<!-- elevation of guns relative to alpha in degrees -->
+        <gunElevationDegrees type="float">1.0</gunElevationDegrees>
+        <ballisticCoefficienct type="float">0.00136354</ballisticCoefficienct> <!-- 0.50 BMG -->
+        <muzzleVelocity type="float">2900.0</muzzleVelocity>  <!-- feet per second 0.50 BMG -->
+		<!-- convergence distance in feet -->
+        <gunHarminizationRangeFeet type="float">900.0</gunHarminizationRangeFeet>
+		<timeStep type="float">0.1</timeStep>  <!-- cycle rate of gun sight computer in seconds -->
+		<!-- sight computer damping factor must be between 0.3 and 1.0 -->
+		<dampingFactor type="float">1.0</dampingFactor>	
+		<gunsight-computer-initialized type="int">0</gunsight-computer-initialized>
+		<maxAzimuth type="int">170</maxAzimuth>  <!-- maximum sight deflection in mils -->
+		<maxElevation type="int">170</maxElevation>
+        <SIG type="float">0.4</SIG>
+        <timeStep type="float">0.2</timeStep>
+		
+		<!-- K14 parameters -->
+		
+		<power-on type="int">0</power-on>
+        <intensity type="float">1.0</intensity>
+		<mask-off type="int">1</mask-off>
+		<reticleSelectorPos type="int">0</reticleSelectorPos>
+		<rocketLadder type="int">1</rocketLadder>  <!-- set to 0 for K14 and 1 for other K14 models -->
+		
+		<!-- The next three are to setup the reticle to the correct starting values -->
+		<span type="int">30</span>
+		<mils type="float">0.0</mils>
+		<range type="float">1000.0</range> <!-- in feet -->
+		
+		<fixedReticleOn type="int">0</fixedReticleOn>
+		<zCenterLine type="float">0.7375</zCenterLine> <!-- sight line distance from model z axis in meters -->
+		<K14C type="int">0</K14C>  <!-- set to 1 for K14C -->
+		
+		<sunScreenDown type="int">1</sunScreenDown>
+     </gunsight>
+	 <throttle>
+	    <twistCenterX type="float">0.0985 </twistCenterX>
+		<twistCenterZ type="float">0.0827 </twistCenterZ>
+	 </throttle>
+     <weapons-select type="int">0</weapons-select>
+     <next-RX type="int">1</next-RX>
+     <instant type="int">1</instant>
+     <rockets type="int"> 0 </rockets>
+     <bombs-train type="int"> 0 </bombs-train>
+     <bombs-both type="int"> 0 </bombs-both>
+     <guns-enabled type="int">0</guns-enabled>p
+     <left-bomb-arm-chem-release type="int">0</left-bomb-arm-chem-release>
+     <right-bomb-arm-chem-release type="int">0</right-bomb-arm-chem-release>
+     <rocket-controler type="int"> 0 </rocket-controler>
+     <triggerLast type="int"> 0 </triggerLast>
+     <salvoCount type="int"> 1 </salvoCount>
+     <trigger-released type="int"> 0 </trigger-released>
+     <trigger type="int">0</trigger>
+     <guns-enabled type="int"> 0 </guns-enabled>
+     <trigger2 type="bool"> 0 </trigger2>
+     <bomb-trigger-1 type="int">0</bomb-trigger-1>
+     <bomb-trigger-2 type="int">0</bomb-trigger-2>
+     <drop-tank-release-2 type="int">0</drop-tank-release-2>
+     <drop-tank-release-1 type="int">0</drop-tank-release-1>
+     <salvo-right type="int">0</salvo-right>
+     <salvo-left type="int">0</salvo-left>
+     <trigger type="int">0</trigger>
+     <rocket n="1">
+       <trigger type="int">0</trigger>
+     </rocket>
+     <rocket n="2">
+       <trigger type="int">0</trigger>
+     </rocket>
+     <rocket n="3">
+       <trigger type="int">0</trigger>
+     </rocket>
+     <rocket n="4">
+       <trigger type="int">0</trigger>
+     </rocket>
+     <rocket n="5">
+       <trigger type="int">0</trigger>
+     </rocket>
+     <rocket n="6">
+       <trigger type="int">0</trigger>
+     </rocket>
+     <rocket n="7">
+       <trigger type="int">0</trigger>
+     </rocket>
+     <rocket n="8">
+       <trigger type="int">0</trigger>
+     </rocket>
+     <rocket n="9">
+       <trigger type="int">0</trigger>
+     </rocket>
+     <rocket n="10">
+       <trigger type="int">0</trigger>
+     </rocket>
+   </armament>
+   <gear>
+      <gear-safe-light-check type="int">0</gear-safe-light-check>
+      <gear-unsafe-light-check type="int">0</gear-unsafe-light-check>
+      <leverPos type="float">0.0</leverPos>
+   </gear>
+   <flight>
+      <flaps type="float">0.0</flaps>
+   </flight>   
+        <switches>
+            <starter type="bool">false</starter>
+            <primer type="bool">false</primer>
+
+            <supercharger-guard-switch type="bool">false</supercharger-guard-switch>
+            <starter-guard-switch type="bool">false</starter-guard-switch>
+            <primer-guard-switch type="bool">false</primer-guard-switch>
+        </switches>
+    </controls>
+    <aircraft>
+        <afcs>
+            <locks>
+                <roll type="bool">false</roll>
+                <pitch type="bool">false</pitch>
+                <speed type="bool">false</speed>
+                <rudder type="bool">false</rudder>
+                <tail type="bool">false</tail>
+                <takeoff type="bool">false</takeoff>
+                <wings-level-vs-hold type="bool">false</wings-level-vs-hold>
+            </locks>
+            <target>
+                <heading-deg type="float">0.0</heading-deg>
+                <speed-kt type="float">80.0</speed-kt>
+                <pitch-deg type="float">2.0</pitch-deg>
+                <roll-deg type="float">0.0</roll-deg>
+                <vs-fpm type="float">0.0</vs-fpm>
+
+                <pitch-rate-degps type="float">0.0</pitch-rate-degps>
+                <roll-rate-degps type="float">0.0</roll-rate-degps>
+            </target>
+            <settings>
+                <roll-rate-limit type="double">60.0</roll-rate-limit>
+                <pitch-rate-limit type="double">10.0</pitch-rate-limit>
+
+                <roll-hold-limit type="double">25.0</roll-hold-limit>
+
+                <pitch-hold-min type="double">-3.0</pitch-hold-min>
+                <pitch-hold-max type="double">15.0</pitch-hold-max>
+            </settings>
+        </afcs>
+
+        <armament>
+            <bomb-pylons type="bool">false</bomb-pylons>
+            <outer-pylons type="bool">false</outer-pylons>
+            <inner-pylons type="bool">false</inner-pylons>
+        </armament>
+
+        <brakes>
+            <release-parking type="bool">false</release-parking>
+            <parking-set type="bool">false</parking-set>
+        </brakes>
+
+        <lighting>
+            <landing-light type="bool">false</landing-light>
+            <wing-position-lights type="int">0</wing-position-lights>
+            <tail-position-lights type="int">0</tail-position-lights>
+
+            <red-rec-light type="bool">false</red-rec-light>
+            <green-rec-light type="bool">false</green-rec-light>
+            <amber-rec-light type="bool">false</amber-rec-light>
+        </lighting>
+
+        <switches>
+            <!-- Coolant and oil radiator controls are set to AUTOMATIC,
+                 because their guard switches are closed after FG has started
+            -->
+            <coolant type="int">2</coolant>
+            <oil type="int">2</oil>
+        </switches>
+
+        <tiedowns>
+            <left>
+                <pitch-deg type="double">0.0</pitch-deg>
+                <heading-deg type="double">0.0</heading-deg>
+                <length-m type="double">0.0</length-m>
+                <ref-length-m type="double">0.0</ref-length-m>
+                <x type="double">-3.5</x>
+                <y type="double">-4.5</y>
+            </left>
+            <right>
+                <pitch-deg type="double">0.0</pitch-deg>
+                <heading-deg type="double">0.0</heading-deg>
+                <length-m type="double">0.0</length-m>
+                <ref-length-m type="double">0.0</ref-length-m>
+                <x type="double">-3.5</x>
+                <y type="double">4.5</y>
+            </right>
+            <tail-left>
+                <pitch-deg type="double">0.0</pitch-deg>
+                <heading-deg type="double">0.0</heading-deg>
+                <length-m type="double">0.0</length-m>
+                <ref-length-m type="double">0.0</ref-length-m>
+                <x type="double">-6.2</x>
+                <y type="double">-0.7</y>
+            </tail-left>
+            <tail-right>
+                <pitch-deg type="double">0.0</pitch-deg>
+                <heading-deg type="double">0.0</heading-deg>
+                <length-m type="double">0.0</length-m>
+                <ref-length-m type="double">0.0</ref-length-m>
+                <x type="double">-6.2</x>
+                <y type="double">0.7</y>
+            </tail-right>
+        </tiedowns>
+
+        <securing>
+            <!-- RBF: pitot cover "remove before flight" -->
+            <pitot-cover-visible type="bool">false</pitot-cover-visible>
+
+            <!-- Tie-downs attached to the wings and tail used to secure plane -->
+            <left-tiedown-visible type="bool">false</left-tiedown-visible>
+            <right-tiedown-visible type="bool">false</right-tiedown-visible>
+
+            <tail-left-tiedown-visible type="bool">false</tail-left-tiedown-visible>
+            <tail-right-tiedown-visible type="bool">false</tail-right-tiedown-visible>
+        </securing>
+
+        <pilot>
+            <always-visible type="bool">false</always-visible>
+
+            <head>
+                <heading-deg type="double">0.0</heading-deg>
+                <pitch-deg type="double">0.0</pitch-deg>
+            </head>
+        </pilot>
+
+        <settings>
+            <show-blades type="bool">false</show-blades>
+        </settings>
+
+        <sounds>
+            <engine-repair type="bool">false</engine-repair>
+        </sounds>
+
+        <gui>
+            <can-repair type="bool">false</can-repair>
+        </gui>
+    </aircraft>
+
+ <consumables>
+   <fuel>
+      <tank n="0">
+         <name>Main Left Wing</name>
+      </tank>
+      <tank n="1">
+         <name>Main Right Wing</name>
+      </tank>
+      <tank n="2">
+         <name>Fuselage</name>
+      </tank>
+      <tank n="3">
+         <name>Combat Tank Left</name>
+      </tank>
+      <tank n="4">
+         <name>Combat Tank Right</name>
+      </tank>
+   </fuel>
+ </consumables>
+ 
+ <fdm>
+   <jsbsim>
+      <velocities>
+        <zero type="float">0.0</zero>
+      </velocities> 
+      <propulsion>
+        <engine>
+          <prop-induced-velocity_fps_clipped type="float">0.0</prop-induced-velocity_fps_clipped>
+        </engine>
+      </propulsion>        
+      <systems>
+        <compressibility>
+           <hertz type="float">0.0</hertz>
+           <strength type="float">0.0</strength>
+        </compressibility>     
+        <crash-detect>
+          <wing-load type="float">0.0</wing-load>
+        </crash-detect> 
+        <armament>
+           <trigger-right type="int">0</trigger-right>
+           <trigger-left type="int">0</trigger-left>
+        </armament>
+        <Ox>
+           <blinker type="int">0</blinker>
+           <pressure type="float"> 400.0 </pressure>
+        </Ox>
+        <hydraulic>
+           <pressure type="float"> 0.0 </pressure>
+        </hydraulic>
+        <brakes>
+            <brake-scaling type="float">1.0</brake-scaling>
+        </brakes>
+        <cooling>
+           <radiator-door-pos type="float"> 0.0 </radiator-door-pos>
+           <oil-door-pos type="float"> 0.0 </oil-door-pos>
+        </cooling>
+      </systems>
+      <ap>
+        <map-error type="float">0.0</map-error>
+      </ap>
+      <fcs>
+        <flap-cmd-norm type="float">1.0</flap-cmd-norm>
+        <qbar-psf_clipped type="float">0.0</qbar-psf_clipped>
+      </fcs>  
+      <damage>
+        <repairing type="bool">false</repairing>
+      </damage>
+   </jsbsim>
+ </fdm>
+ 
+<ai>
+   <submodels>
+      <submodel n="2">
+         <count type="int">0</count>
+      </submodel>
+      <submodel n="3">
+         <count type="int">0</count>
+      </submodel>
+      <submodel n="4">
+         <count type="int">0</count>
+      </submodel>
+      <submodel n="5">
+         <count type="int">0</count>
+      </submodel>
+      <submodel n="6">
+         <count>0</count>
+      </submodel>
+      <submodel n="7">
+         <count type="int">0</count>
+      </submodel>
+      <submodel n="8">
+         <count type="int">0</count>
+      </submodel>
+      <submodel n="9">
+         <count type="int">0</count>
+      </submodel>
+      <submodel n="10">
+         <count type="int">0</count>
+      </submodel>
+      <submodel n="11">
+         <count type="int">0</count>
+      </submodel>
+      <submodel n="12">
+         <count>0</count>
+      </submodel>
+      <submodel n="13">
+         <count type="int">0</count>
+      </submodel>
+      <submodel n="14">
+         <count type="int">0</count>
+      </submodel>
+      <submodel n="15">
+         <count type="int">0</count>
+      </submodel>
+      <submodel n="16">
+         <count type="int">0</count>
+      </submodel>
+      <submodel n="17">
+         <count type="int">0</count>
+      </submodel>
+      <submodel n="18">
+         <count type="int">0</count>
+      </submodel>
+      <submodel n="19">
+         <count type="int">0</count>
+      </submodel>
+      <submodel n="20">
+         <count type="int">0</count>
+      </submodel>
+      <submodel n="21">
+         <count type="int">0</count>
+      </submodel>
+	  <submodel n="22">
+         <count type="int">0</count>
+      </submodel>
+      <submodel n="23">
+         <count type="int">0</count>
+      </submodel>
+	  <submodel n="24">
+         <count type="int">0</count>
+      </submodel>
+      <submodel n="25">
+         <count type="int">0</count>
+      </submodel>
+   </submodels>
+ </ai>
+
+    <nasal>
+        <!-- c172p is part of FGDATA and thus always present -->
+        <math_ext>
+            <file>Aircraft/c172p/Nasal/generic/math_ext.nas</file>
+        </math_ext>
+        <logger>
+            <file>Aircraft/c172p/Nasal/generic/logger.nas</file>
+        </logger>
+        <updateloop>
+            <file>Aircraft/Generic/updateloop.nas</file>
+        </updateloop>
+        <sounds>
+            <file>Nasal/sound.nas</file>
+        </sounds>
+        <thunder>
+            <file>Nasal/generic/thunder.nas</file>
+        </thunder>
+        <damage>
+            <file>Nasal/generic/damage.nas</file>
+        </damage>
+        <p51gui>
+            <file>Nasal/generic/canvas-toolkit.nas</file>
+        </p51gui>
+        <dialogs>
+            <file>Nasal/aircraft-options.nas</file>
+        </dialogs>
+    <p51d>
+      <file>Aircraft/p51d/Nasal/over-ride-flaps.nas</file>
+      <file>Aircraft/p51d/Nasal/stores.nas</file>
+      <file>Aircraft/p51d/Nasal/limits.nas</file>
+      <file>Aircraft/p51d/Nasal/engine-start.nas</file>
+      <file>Aircraft/p51d/Nasal/sputter.nas</file>
+      <file>Aircraft/p51d/Nasal/gear-doors.nas</file>
+      <file>Aircraft/p51d/Nasal/liveries.nas</file>
+      <file>Aircraft/p51d/Nasal/tyresmoke.nas</file>
+      <file>Aircraft/p51d/Nasal/damage.nas</file>
+      <file>Aircraft/p51d/Nasal/autopilot.nas</file>
+      <file>Aircraft/p51d/Nasal/payloads.nas</file>
+      <file>Aircraft/p51d/Nasal/views.nas</file>
+      <file>Aircraft/p51d/Nasal/pilot.nas</file>
+      <file>Aircraft/p51d/Nasal/miscellaneous.nas</file>
+      <file>Nasal/tiedowns.nas</file>
+    </p51d>
+    <SCR_522C>
+      <file>Aircraft/Instruments-3d/SCR-522C/Nasal/SCR-522C.nas</file>
+    </SCR_522C>
+	<K14>
+	  <file>Aircraft/Instruments-3d/computing-gun-sights/Nasal/lead-computer.nas</file>
+	  <file>Aircraft/Instruments-3d/computing-gun-sights/K14/Nasal/K14-reticle.nas</file>
+	</K14>
+    </nasal>
+
+</PropertyList>
