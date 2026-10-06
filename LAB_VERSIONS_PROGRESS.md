@@ -1,6 +1,6 @@
 # Lab versions progress
 
-Branch: `lab-versions`. Baseline: `cd1fc73750cd4ac54894dcae896f62c0a33e2f57`. Existing ChatGPT modules, aircraft settings, tests, artifacts and README sections are protected. No push without a new user instruction.
+Implementation branch: `lab-versions`, integrated into `main` on 2026-10-05 at the user's request. Baseline: `cd1fc73750cd4ac54894dcae896f62c0a33e2f57`. Existing ChatGPT modules, aircraft settings, tests, artifacts and README sections are protected. The user authorized publication and merging into the default branch.
 
 ## Shared helpers
 
@@ -705,3 +705,9 @@ Remaining source requests: official P51D original enclosure mesh/XML and travel;
 ### Remote publication
 
 The user requested the complete branch be pushed after the per-model summary. Publication includes all12 Lab versions beside preserved originals, all four aircraft imported from commit45596a3, their models/textures/runtime facts, provided source/attribution, tests, built demo and review artifacts. Destination: the existing private [lekandigital/flight-playground](https://github.com/lekandigital/flight-playground/tree/lab-versions) repository, branch `lab-versions`. Earlier “local/no push” notes describe the state before this request. The source branch `codex/flight-playground-2026-10-04` remains the documented import source.
+
+### Default-branch integration — 2026-10-05
+
+The user requested that the branches be merged if the aircraft were ready. A fresh fetch confirmed `main` at cd1fc73, `lab-versions` at 254d11e and the source aircraft branch at 45596a3, with no additional remote changes. The build, four unchanged original suites, 14 Lab test files and 27 native-aircraft tests passed. An independent audit confirmed the 25 protected files and original 10,630-byte README prefix unchanged; all 153 native runtime assets, 93 provided source files and four aircraft modules match the source branch. Compiled facts preserve animation, material, livery, geometry and numeric-default data.
+
+`main` now includes both branch histories: merge 3541190 integrates `lab-versions`; merge 8b6b76d records `codex/flight-playground-2026-10-04` using the already reviewed import. The source merge deliberately retains the current tree, including the improved Ca.60 and preserved original aircraft. Source baseline rewrites, the simplified Ca.60 replacement, duplicate fact files and unused reference/build tools are excluded. The merged runtime tree is byte-identical to validated `lab-versions`. Canonical branch: [`main`](https://github.com/lekandigital/flight-playground/tree/main). Remaining historical and source-data requests remain open in the per-aircraft records; merging does not assert exact reconstruction.
